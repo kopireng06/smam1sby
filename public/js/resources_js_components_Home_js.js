@@ -174,6 +174,108 @@ var Carousel = function Carousel() {
 
 /***/ }),
 
+/***/ "./resources/js/components/ContainerCard.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/ContainerCard.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+var ContainerCard = function ContainerCard() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "lg:container mx-auto",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "text-4xl px-5 my-5 text-smam1 font-bold",
+      children: "BERITA"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-4",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        to: "#",
+        className: "card-news relative w-3/4 h-96 bg-smam1 mx-auto my-3 bg-cover bg-no-repeat bg-center",
+        style: {
+          backgroundImage: "url(../image/carnival-1.jpg)"
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "card-content-wrapper absolute flex flex-col bottom-0 w-full bg-smam1-a-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-lg font-bold text-white px-5 pt-3 a",
+            children: "1 MUHARRAM, SMAM 1 ADAKAN LOMBA CARNIVAL"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            className: "ml-auto p-2 text-white text-xs",
+            children: "12 September 2020"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "news-content px-5 text-white text-sm pb-3",
+            children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate distinctio laborum id sapiente voluptatum itaque. Saepe ullam, illum labore beatae cupiditate harum natus magni sequi praesentium, dolor doloremque consectetur est!"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "news-category absolute right-0 bg-yellow-400 font-bold text-sm px-3",
+            children: "HALO"
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        to: "#",
+        className: "card-news relative w-3/4 h-96 bg-smam1 mx-auto my-3 bg-cover bg-no-repeat bg-center",
+        style: {
+          backgroundImage: "url(../image/carnival-1.jpg)"
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "card-content-wrapper absolute flex flex-col bottom-0 w-full bg-smam1-a-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-lg font-bold text-white px-5 pt-3 a",
+            children: "1 MUHARRAM, SMAM 1 ADAKAN LOMBA CARNIVAL"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            className: "ml-auto p-2 text-white text-xs",
+            children: "12 September 2020"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "news-content px-5 text-white text-sm pb-3",
+            children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate distinctio laborum id sapiente voluptatum itaque. Saepe ullam, illum labore beatae cupiditate harum natus magni sequi praesentium, dolor doloremque consectetur est!"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "news-category absolute right-0 bg-yellow-400 font-bold text-sm px-3",
+            children: "HALO"
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        to: "#",
+        className: "card-news relative w-3/4 h-96 bg-smam1 mx-auto my-3 bg-cover bg-no-repeat bg-center",
+        style: {
+          backgroundImage: "url(../image/carnival-1.jpg)"
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "card-content-wrapper absolute flex flex-col bottom-0 w-full bg-smam1-a-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-lg font-bold text-white px-5 pt-3 a",
+            children: "1 MUHARRAM, SMAM 1 ADAKAN LOMBA CARNIVAL"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            className: "ml-auto p-2 text-white text-xs",
+            children: "12 September 2020"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "news-content px-5 text-white text-sm pb-3",
+            children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate distinctio laborum id sapiente voluptatum itaque. Saepe ullam, illum labore beatae cupiditate harum natus magni sequi praesentium, dolor doloremque consectetur est!"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "news-category absolute right-0 bg-yellow-400 font-bold text-sm px-3",
+            children: "HALO"
+          })]
+        })
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerCard);
+
+/***/ }),
+
 /***/ "./resources/js/components/Home.js":
 /*!*****************************************!*\
   !*** ./resources/js/components/Home.js ***!
@@ -189,6 +291,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Carousel */ "./resources/js/components/Carousel.js");
+/* harmony import */ var _ContainerCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ContainerCard */ "./resources/js/components/ContainerCard.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -216,6 +319,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Home = /*#__PURE__*/function (_Component) {
   _inherits(Home, _Component);
 
@@ -237,17 +341,7 @@ var Home = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Carousel__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          children: "HALO"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          children: "HALO"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          children: "HALO"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          children: "HALO"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          children: "HALO"
-        })]
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Carousel__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ContainerCard__WEBPACK_IMPORTED_MODULE_3__.default, {})]
       });
     }
   }]);

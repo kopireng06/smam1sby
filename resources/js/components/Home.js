@@ -1,5 +1,6 @@
 import React, { Component,Fragment } from 'react'
 import Carousel from './Carousel';
+import ContainerCard from './ContainerCard';
 
 export class Home extends Component {
     
@@ -14,11 +15,7 @@ export class Home extends Component {
         return (
             <Fragment>
                 <Carousel/>
-                <div>HALO</div>
-                <div>HALO</div>
-                <div>HALO</div>
-                <div>HALO</div>
-                <div>HALO</div>
+                <ContainerCard/>
             </Fragment>
         )
     }

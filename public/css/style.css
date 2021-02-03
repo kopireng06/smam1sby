@@ -7,6 +7,9 @@
 .bg-smam1-a{
     background-color: rgba(32, 65, 127, 0.5);
 }
+.bg-smam1-a-2{
+    background-color: rgba(32, 65, 127, 0.8);
+}
 .text-smam1{
     color: #013880;
 }
@@ -47,4 +50,25 @@
 }
 .hamburger-smam1{
     filter: invert(11%) sepia(49%) saturate(6517%) hue-rotate(205deg) brightness(95%) contrast(101%);
+}
+.news-content{
+    display: none;
+    transition: display 1s;
+}
+.news-category{
+    transition: all 1s;
+    top: -0.75rem;
+}
+.card-content-wrapper{
+    transition: height 1s;
+    height: auto;
+}
+.card-news:hover .news-content{
+    display: block;
+}
+.card-news:hover .card-content-wrapper{
+    height: 100%;
+}
+.card-news:hover .news-category{
+    top: 0;
 }
