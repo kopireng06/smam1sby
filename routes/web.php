@@ -21,8 +21,48 @@ Route::get('/keong', function () {
     return json_encode($a);
 });
 
-Route::get('/dashboard', function () {
-    return view('contohadmin');
-})->middleware(['auth'])->name('dashboard');
 
+
+
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/dashboard', function () {
+        return view('contohadmin');
+    });
+
+    Route::get('/alumni','App\Http\Controllers\AlumniController@index');
+    Route::get('/alumni/{id_alumni}/edit','App\Http\Controllers\AlumniController@edit');
+    Route::post('/alumni/{id_alumni}/update','App\Http\Controllers\AlumniController@update');
+    Route::get('/alumni/{id_alumni}/delete','App\Http\Controllers\AlumniController@delete');
+    Route::post('/alumni/import','App\Http\Controllers\AlumniController@import');
+
+    Route::get('/prestasi','App\Http\Controllers\PrestasiController@index');
+    Route::post('/prestasi/import','App\Http\Controllers\PrestasiController@import');
+    Route::get('/prestasi/{id_prestasi}/edit','App\Http\Controllers\PrestasiController@edit');
+    Route::post('/prestasi/{id_prestasi}/update','App\Http\Controllers\PrestasiController@update');
+    Route::get('/prestasi/{id_prestasi}/delete','App\Http\Controllers\PrestasiController@delete');
+
+    Route::get('/prestasi/delete-selection','App\Http\Controllers\PrestasiController@deleteSelection');
+
+    Route::get('/konten','App\Http\Controllers\KontenController@index');
+    Route::post('/konten/create','App\Http\Controllers\KontenController@create');
+    Route::get('/konten/{id_konten}/edit','App\Http\Controllers\KontenController@edit');
+    Route::post('/konten/{id_konten}/update','App\Http\Controllers\KontenController@update');
+    Route::get('/konten/{id_konten}/delete','App\Http\Controllers\KontenController@delete');
+
+    Route::get('/kelompok-konten','App\Http\Controllers\KelKontenController@index');
+    Route::post('/kelompok-konten/create','App\Http\Controllers\KelKontenController@create');
+    Route::get('/kelompok-konten/{id_kelompok_konten}/edit','App\Http\Controllers\KelKontenController@edit');
+    Route::post('/kelompok-konten/{id_kelompok_konten}/update','App\Http\Controllers\KelKontenController@update');
+    Route::get('/kelompok-konten/{id_kelompok_konten}/delete','App\Http\Controllers\KelKontenController@delete');
+
+    Route::get('/web-terkait','App\Http\Controllers\WebTerkaitController@index');
+    Route::post('/web-terkait/create','App\Http\Controllers\WebTerkaitController@create');
+    Route::get('/web-terkait/{id_web}/edit','App\Http\Controllers\WebTerkaitController@edit');
+    Route::post('/web-terkait/{id_web}/update','App\Http\Controllers\WebTerkaitController@update');
+    Route::get('/web-terkait/{id_web}/delete','App\Http\Controllers\WebTerkaitController@delete');
+
+    Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
+    
+});
 require __DIR__.'/auth.php';
