@@ -1,19 +1,38 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import ReactDOM from 'react-dom';
+import loadable from '@loadable/component';
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import Navbar from './Navbar'
+import Sidebar from './Sidebar'
 
-function Root() {
-    return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
+const Home = loadable(() => import('./Home'));
+const Root = () => {
+    const [sidebarStat, setSidebarStat] = useState(0);
+    
+    const changeSidebarStat = () => {
+        if(sidebarStat==0){
+            setSidebarStat(1);
+        }
+        else{
+            setSidebarStat(0);
+        }
+    }
 
-                        <div className="card-body">I'm an example component!</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    const deliverPropsToSidebar = () => {
+        if(sidebarStat==0){
+            return '-15rem';
+        }
+        else{
+            return '0';
+        }
+    }
+
+    return(
+        <Router>
+            <Navbar changeSidebarStat={changeSidebarStat}/>
+            <Sidebar sidebarStat={deliverPropsToSidebar()}/>
+            <Route path="/" component={Home} />
+        </Router> 
     );
 }
 

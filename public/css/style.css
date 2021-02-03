@@ -1,0 +1,50 @@
+.h-sidebar{
+    height: calc(100vh - 80px);
+}
+.bg-smam1{
+    background-color: #013880;
+}
+.bg-smam1-a{
+    background-color: rgba(32, 65, 127, 0.5);
+}
+.text-smam1{
+    color: #013880;
+}
+.fixed-x-center{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.fixed-y-center{
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#dots-container{
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.slick-dots{
+    position: absolute !important;
+    bottom: 100px !important;
+    text-align: left !important;
+    margin-left: 50px !important;
+}
+.keong{
+    max-width: 1024px;
+    display: flex !important;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.slick-active > .custom-paging{
+    width: 5rem;
+}
+.hamburger-white{
+    filter: invert(1);
+}
+.hamburger-smam1{
+    filter: invert(11%) sepia(49%) saturate(6517%) hue-rotate(205deg) brightness(95%) contrast(101%);
+}

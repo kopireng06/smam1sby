@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('smam1sby');
 });
+Route::get('/keong', function () {
+    $a = '<div class="text-white w-full bg-red-400 font-bold text-5xl">KEONG</div>';
+    return json_encode($a);
+});
 
 
 
