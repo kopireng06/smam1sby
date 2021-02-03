@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
-<body id="root">
-    
+<body class="w-full overflow-x-hidden">
+    <div id="root"></div>
 </body>
     <script src="{{asset('js/app.js')}}"></script>
 </html>
