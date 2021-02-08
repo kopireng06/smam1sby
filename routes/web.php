@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KategoriartikelController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\QuotesController;
+use App\Http\Controllers\TestiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +68,33 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/web-terkait/{id_web}/update','App\Http\Controllers\WebTerkaitController@update');
     Route::get('/web-terkait/{id_web}/delete','App\Http\Controllers\WebTerkaitController@delete');
 
+    //Route Kategori Artikel
+    Route::resource('/dashboard/kategori_artikel', KategoriartikelController::class)->except([
+        'show', 'create'
+    ]);
+
+    //Route Artikel
+    Route::resource('/dashboard/artikel', ArtikelController::class)->except([
+        'create'
+    ]);
+
+    //Route Pengumuman
+    Route::resource('/dashboard/pengumuman', PengumumanController::class)->except([
+        'create', 'edit'
+    ]);
+
+    //Route Quotes
+    Route::resource('/dashboard/quotes', QuotesController::class)->except([
+        'create', 'edit'
+    ]);
+
+    //Route Testi
+    Route::resource('/dashboard/testi', TestiController::class)->except([
+        'create', 'edit'
+    ]);
+    Route::post('/dashboard/testi/import','App\Http\Controllers\TestiController@import');
+
+    
     Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
     
 });

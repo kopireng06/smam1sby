@@ -30,27 +30,42 @@
             </div>
         </div>
         <div class="sidebar px-3 vh-100">
-            <div class="w-100 d-flex flex-column" style="margin-top:150px;" >
+            <div class="w-100 d-flex flex-column" style="margin-top:30px;" >
                 <a href="/dashboard" class="menu arialrounded-mt-bold my-2 d-block">
                     DASHBOARD
                 </a>
-                <a href="/alumni" class="menu arialrounded-mt-bold my-2 d-block">
+                <a href="/alumni" class="menu arialrounded-mt-bold my-1 d-block">
                     Alumni
                 </a>
-                <a href="/konten" class="menu arialrounded-mt-bold my-2 d-block">
+                <a href="/konten" class="menu arialrounded-mt-bold my-1 d-block">
                     Konten
                 </a>
-                <a href="/kelompok-konten" class="menu arialrounded-mt-bold my-2 d-block">
+                <a href="/kelompok-konten" class="menu arialrounded-mt-bold my-1 d-block">
                     Kelompok Konten
                 </a>
-                <a href="/prestasi" class="menu arialrounded-mt-bold my-2 d-block">
+                <a href="/prestasi" class="menu arialrounded-mt-bold my-1 d-block">
                     Prestasi
                 </a>
-                <a href="#" class="menu arialrounded-mt-bold my-2 d-block">
+                <a href="#" class="menu arialrounded-mt-bold my-1 d-block">
                     Caraousel
                 </a>
-                <a href="/web-terkait" class="menu arialrounded-mt-bold my-2 d-block">
+                <a href="/web-terkait" class="menu arialrounded-mt-bold my-1 d-block">
                     Web Terkait
+                </a>
+                <a href="/dashboard/artikel" class="menu arialrounded-mt-bold my-1 d-block">
+                    Artikel
+                </a>
+                <a href="/dashboard/kategori_artikel" class="menu arialrounded-mt-bold my-1 d-block">
+                    Kategori Artikel
+                </a>
+                <a href="/dashboard/pengumuman" class="menu arialrounded-mt-bold my-1 d-block">
+                    Pengumuman
+                </a>
+                <a href="/dashboard/quotes" class="menu arialrounded-mt-bold my-1 d-block">
+                    Quote
+                </a>
+                <a href="/dashboard/testi" class="menu arialrounded-mt-bold my-1 d-block">
+                    Testimoni
                 </a>
             </div>
         </div>
