@@ -2628,24 +2628,29 @@ var Navbar = function Navbar(props) {
       hamburgerColor = _useState6[0],
       setHamburgerColor = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(' shadow-none'),
+      _useState8 = _slicedToArray(_useState7, 2),
+      shadowNavbar = _useState8[0],
+      setShadowNavbar = _useState8[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     window.onscroll = function () {
-      console.log(window.pageYOffset);
-
       if (window.pageYOffset > 30) {
         setNavbarColor(' bg-white');
         setLinkColor(' text-smam1');
         setHamburgerColor(' hamburger-smam1');
+        setShadowNavbar(' shadow-md');
       } else {
         setNavbarColor('');
         setLinkColor(' text-white');
         setHamburgerColor(' hamburger-white');
+        setShadowNavbar(' shadow-none');
       }
     };
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "fixed-x-center w-full z-20 h-12 md:h-20 py-5 px-5 md:px-14 flex items-center justify-between transition-all duratiion-150" + navbarColor,
+      className: "fixed-x-center w-full z-20 h-12 md:h-20 py-5 px-5 md:px-14 flex items-center justify-between transition-all duratiion-150 shadow-md" + navbarColor + shadowNavbar,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
         src: "image/logo-sma-2.png",
         className: "h-6 md:h-10",

@@ -1,6 +1,8 @@
 import React, { Component,Fragment } from 'react'
 import Carousel from './Carousel';
-import ContainerCard from './ContainerCard';
+import ContainerCardNews from './ContainerCardNews';
+import ContainerKaPres from './ContainerKaPres';
+
 
 export class Home extends Component {
     
@@ -9,13 +11,13 @@ export class Home extends Component {
         this.state = {stat:0}
     }
 
-    
-
     render() {
+        
         return (
             <Fragment>
                 <Carousel/>
-                <ContainerCard/>
+                <ContainerCardNews/>
+                <ContainerKaPres/>
             </Fragment>
         )
     }

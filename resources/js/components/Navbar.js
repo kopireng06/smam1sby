@@ -7,26 +7,28 @@ const Navbar = (props) => {
     const[navbarColor,setNavbarColor] = useState('');
     const[linkColor,setLinkColor] = useState(' text-white');
     const[hamburgerColor,setHamburgerColor] = useState(' hamburger-white');
+    const[shadowNavbar,setShadowNavbar] = useState(' shadow-none');
 
     useEffect(() => {
         window.onscroll = () => {
-            console.log(window.pageYOffset);
             if(window.pageYOffset > 30){
                 setNavbarColor(' bg-white');
                 setLinkColor(' text-smam1');
                 setHamburgerColor(' hamburger-smam1');
+                setShadowNavbar(' shadow-md');
             }
             else{
                 setNavbarColor('');
                 setLinkColor(' text-white');
                 setHamburgerColor(' hamburger-white');
+                setShadowNavbar(' shadow-none');
             }
         }
     });
 
     return (
         <Fragment>
-            <div className={"fixed-x-center w-full z-20 h-12 md:h-20 py-5 px-5 md:px-14 flex items-center justify-between transition-all duratiion-150" +navbarColor}>
+            <div className={"fixed-x-center w-full z-20 h-12 md:h-20 py-5 px-5 md:px-14 flex items-center justify-between transition-all duratiion-150 shadow-md" +navbarColor+shadowNavbar}>
                 <img src="image/logo-sma-2.png" className="h-6 md:h-10" alt=""/>
                 <div className="flex items-center">
                     <Link to="#" className={"hidden md:block font-bold mx-2"+linkColor}>

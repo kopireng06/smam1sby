@@ -1,5 +1,64 @@
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Home_js"],{
 
+/***/ "./resources/js/components/CardNews.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/CardNews.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+var CardNews = function CardNews(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "card-news relative w-10/12 h-96 bg-smam1 mx-auto my-3 bg-cover bg-no-repeat bg-center",
+    style: {
+      backgroundImage: "url(../image/carnival-1.jpg)"
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "card-content-wrapper overflow-hidden absolute flex flex-col bottom-0 w-full bg-smam1-a-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "ml-auto p-2 text-white text-xs",
+        children: "12 September 2020"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "text-md font-bold text-white px-5 mb-2",
+        children: "1 MUHARRAM, SMAM 1 ADAKAN LOMBA CARNIVAL, PAK CAMAT PUN IKUT HADIR"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "news-content px-5 text-white text-sm",
+        children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate distinctio laborum id sapiente voluptatum itaque. Saepe ullam, illum labore beatae cupiditate harum natus magni sequi praesentium, dolor doloremque consectetur est ...."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "news-button justify-center items-center mt-5",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "flex-1 mx-2 h-0.5 bg-white"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+          to: "#",
+          className: "border-white border-2 px-2 py-1 rounded text-center text-sm text-white",
+          children: "BACA"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "flex-1 mx-2 h-0.5 bg-white"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "news-category absolute left-0 bg-yellow-400 font-bold text-sm px-3",
+      children: "EVENT"
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardNews);
+
+/***/ }),
+
 /***/ "./resources/js/components/Carousel.js":
 /*!*********************************************!*\
   !*** ./resources/js/components/Carousel.js ***!
@@ -55,7 +114,7 @@ var Carousel = function Carousel() {
     slidesToScroll: 1,
     fade: true,
     arrows: false,
-    dotsClass: 'keong',
+    dotsClass: 'mydot',
     autoplay: false,
     beforeChange: function beforeChange(current, next) {
       return setNextSlide(next);
@@ -80,9 +139,9 @@ var Carousel = function Carousel() {
   // });
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "relative h-screen w-full",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_slick__WEBPACK_IMPORTED_MODULE_2__.default, _objectSpread(_objectSpread({}, settings), {}, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_slick__WEBPACK_IMPORTED_MODULE_2__.default, _objectSpread(_objectSpread({}, settings), {}, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
             className: "bg-center bg-no-repeat bg-cover h-screen",
@@ -162,10 +221,7 @@ var Carousel = function Carousel() {
             })
           })
         })]
-      })), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "absolute",
-        id: "dots-container"
-      })]
+      }))
     })
   });
 };
@@ -174,10 +230,10 @@ var Carousel = function Carousel() {
 
 /***/ }),
 
-/***/ "./resources/js/components/ContainerCard.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/ContainerCard.js ***!
-  \**************************************************/
+/***/ "./resources/js/components/ContainerCardNews.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/ContainerCardNews.js ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -187,92 +243,159 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _CardNews__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CardNews */ "./resources/js/components/CardNews.js");
 
 
 
 
 
-var ContainerCard = function ContainerCard() {
+
+var ContainerCardNews = function ContainerCardNews() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "lg:container mx-auto",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "text-4xl px-5 my-5 text-smam1 font-bold",
+      className: "text-4xl px-5 my-5 mb-8 text-smam1 font-bold",
       children: "BERITA"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-4",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-        to: "#",
-        className: "card-news relative w-3/4 h-96 bg-smam1 mx-auto my-3 bg-cover bg-no-repeat bg-center",
-        style: {
-          backgroundImage: "url(../image/carnival-1.jpg)"
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "card-content-wrapper absolute flex flex-col bottom-0 w-full bg-smam1-a-2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "text-lg font-bold text-white px-5 pt-3 a",
-            children: "1 MUHARRAM, SMAM 1 ADAKAN LOMBA CARNIVAL"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-            className: "ml-auto p-2 text-white text-xs",
-            children: "12 September 2020"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "news-content px-5 text-white text-sm pb-3",
-            children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate distinctio laborum id sapiente voluptatum itaque. Saepe ullam, illum labore beatae cupiditate harum natus magni sequi praesentium, dolor doloremque consectetur est!"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "news-category absolute right-0 bg-yellow-400 font-bold text-sm px-3",
-            children: "HALO"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-        to: "#",
-        className: "card-news relative w-3/4 h-96 bg-smam1 mx-auto my-3 bg-cover bg-no-repeat bg-center",
-        style: {
-          backgroundImage: "url(../image/carnival-1.jpg)"
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "card-content-wrapper absolute flex flex-col bottom-0 w-full bg-smam1-a-2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "text-lg font-bold text-white px-5 pt-3 a",
-            children: "1 MUHARRAM, SMAM 1 ADAKAN LOMBA CARNIVAL"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-            className: "ml-auto p-2 text-white text-xs",
-            children: "12 September 2020"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "news-content px-5 text-white text-sm pb-3",
-            children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate distinctio laborum id sapiente voluptatum itaque. Saepe ullam, illum labore beatae cupiditate harum natus magni sequi praesentium, dolor doloremque consectetur est!"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "news-category absolute right-0 bg-yellow-400 font-bold text-sm px-3",
-            children: "HALO"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-        to: "#",
-        className: "card-news relative w-3/4 h-96 bg-smam1 mx-auto my-3 bg-cover bg-no-repeat bg-center",
-        style: {
-          backgroundImage: "url(../image/carnival-1.jpg)"
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "card-content-wrapper absolute flex flex-col bottom-0 w-full bg-smam1-a-2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "text-lg font-bold text-white px-5 pt-3 a",
-            children: "1 MUHARRAM, SMAM 1 ADAKAN LOMBA CARNIVAL"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-            className: "ml-auto p-2 text-white text-xs",
-            children: "12 September 2020"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "news-content px-5 text-white text-sm pb-3",
-            children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate distinctio laborum id sapiente voluptatum itaque. Saepe ullam, illum labore beatae cupiditate harum natus magni sequi praesentium, dolor doloremque consectetur est!"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "news-category absolute right-0 bg-yellow-400 font-bold text-sm px-3",
-            children: "HALO"
-          })]
-        })
-      })]
+      className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_CardNews__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_CardNews__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_CardNews__WEBPACK_IMPORTED_MODULE_2__.default, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "w-full flex justify-end mt-3",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        className: "text-smam1 text-md mr-5 lg:mr-0",
+        children: "berita lainnya"
+      })
     })]
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerCard);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerCardNews);
+
+/***/ }),
+
+/***/ "./resources/js/components/ContainerKaPres.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/ContainerKaPres.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _SliderKataAlumni__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SliderKataAlumni */ "./resources/js/components/SliderKataAlumni.js");
+/* harmony import */ var _ContainerPrestasi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ContainerPrestasi */ "./resources/js/components/ContainerPrestasi.js");
+
+
+
+
+
+
+var ContainerKaPres = function ContainerKaPres() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: "relative w-full my-8 bg-smam1",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "lg:container flex flex-col md:flex-row mx-auto",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SliderKataAlumni__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ContainerPrestasi__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerKaPres);
+
+/***/ }),
+
+/***/ "./resources/js/components/ContainerPrestasi.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/ContainerPrestasi.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Prestasi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Prestasi */ "./resources/js/components/Prestasi.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var ContainerPrestasi = function ContainerPrestasi() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      posActive = _useState2[0],
+      setPosActive = _useState2[1];
+
+  var changePosActive = function changePosActive(posActive2) {
+    if (posActive2 == posActive) {
+      setPosActive('');
+    } else {
+      setPosActive(posActive2);
+    }
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    console.log(posActive);
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "relative md:absolute right-0 h-auto pb-5 md:h-full w-full md:w-6/12 lg:w-4/12 bg-yellow-400",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "text-4xl px-5 mt-5 text-smam1 text-white font-bold mb-8 md:mb-14",
+      children: "PRESTASI"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "mx-auto md:ml-8 mb-12 md:mb-0 max-w-sm md:max-w-xs pb-2 rounded-md bg-white shadow-md flex flex-col",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Prestasi__WEBPACK_IMPORTED_MODULE_2__.default, {
+        pos: 1,
+        posActive: posActive,
+        changePosActive: changePosActive
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Prestasi__WEBPACK_IMPORTED_MODULE_2__.default, {
+        pos: 2,
+        posActive: posActive,
+        changePosActive: changePosActive
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Prestasi__WEBPACK_IMPORTED_MODULE_2__.default, {
+        pos: 3,
+        posActive: posActive,
+        changePosActive: changePosActive
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Prestasi__WEBPACK_IMPORTED_MODULE_2__.default, {
+        pos: 4,
+        posActive: posActive,
+        changePosActive: changePosActive
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "w-full flex justify-end absolute bottom-0 h-10",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        to: "#",
+        className: "text-smam1 text-md mr-5",
+        children: "prestasi lainnya"
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerPrestasi);
 
 /***/ }),
 
@@ -291,7 +414,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Carousel */ "./resources/js/components/Carousel.js");
-/* harmony import */ var _ContainerCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ContainerCard */ "./resources/js/components/ContainerCard.js");
+/* harmony import */ var _ContainerCardNews__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ContainerCardNews */ "./resources/js/components/ContainerCardNews.js");
+/* harmony import */ var _ContainerKaPres__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ContainerKaPres */ "./resources/js/components/ContainerKaPres.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -320,6 +444,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Home = /*#__PURE__*/function (_Component) {
   _inherits(Home, _Component);
 
@@ -341,7 +466,7 @@ var Home = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Carousel__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ContainerCard__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Carousel__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ContainerCardNews__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ContainerKaPres__WEBPACK_IMPORTED_MODULE_4__.default, {})]
       });
     }
   }]);
@@ -349,6 +474,218 @@ var Home = /*#__PURE__*/function (_Component) {
   return Home;
 }(react__WEBPACK_IMPORTED_MODULE_1__.Component);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
+
+/***/ }),
+
+/***/ "./resources/js/components/KataAlumni.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/KataAlumni.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+
+
+var KataAlumni = function KataAlumni() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: "outline-none",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "relative h-80 bg-white rounded-lg shadow m-10 p-5",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+        src: "image/petik-biru.png",
+        className: "h-8 my-2",
+        alt: ""
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "h-40 flex flex-col justify-center",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+          className: "text-center italic text-md p-3",
+          children: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur velit dolores soluta aperiam suscipit repellat maiores totam , quas, enim iste nam quo cumque voluptate? Quae quisquam odit explicabo expedita sint."
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "block text-center font-bold mt-5 mb-1",
+        children: "ZIDAN NUR K"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "block text-center text-xs",
+        children: "Sistem Informasi , Universitas Airlangga"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "absolute-x-center -top-10 bg-center bg-no-repeat bg-cover border-2 border-yellow-300 shadow\r h-24 w-24 rounded-full",
+        style: {
+          backgroundImage: "url(../image/aku.jpg)"
+        }
+      })]
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (KataAlumni);
+
+/***/ }),
+
+/***/ "./resources/js/components/Prestasi.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Prestasi.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var Prestasi = function Prestasi(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(' h-0'),
+      _useState2 = _slicedToArray(_useState, 2),
+      classHeight = _useState2[0],
+      setClassHeight = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('+'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      iconDropDown = _useState4[0],
+      setIconDropDown = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (props.pos == props.posActive) {
+      setClassHeight(' h-16');
+      setIconDropDown('-');
+    } else {
+      setClassHeight(' h-0');
+      setIconDropDown('+');
+    }
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "m-2 mb-0 flex justify-between items-center px-3 h-14 bg-yellow-400",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "font-bold text-smam1 text-sm uppercase",
+        children: "lomba maido wong"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "text-smam1 cursor-pointer",
+        onClick: function onClick() {
+          return props.changePosActive(props.pos);
+        },
+        children: iconDropDown
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "mx-2 mt-0 px-3 flex flex-col justify-center bg-smam1 text-sm overflow-hidden transition-all duration-1000" + classHeight,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "text-white",
+        children: "Juara : 1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "text-white",
+        children: "Tingkat : Nasional"
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Prestasi);
+
+/***/ }),
+
+/***/ "./resources/js/components/SliderKataAlumni.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/SliderKataAlumni.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
+/* harmony import */ var slick_carousel_slick_slick_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! slick-carousel/slick/slick.css */ "./node_modules/slick-carousel/slick/slick.css");
+/* harmony import */ var slick_carousel_slick_slick_theme_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! slick-carousel/slick/slick-theme.css */ "./node_modules/slick-carousel/slick/slick-theme.css");
+/* harmony import */ var _KataAlumni__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./KataAlumni */ "./resources/js/components/KataAlumni.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+var SliderKataAlumni = function SliderKataAlumni() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    arrows: false,
+    dotsClass: 'mydot2',
+    customPaging: function customPaging(i) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "custom-paging bg-white h-2 cursor-pointer transition-all duration-150 w-4 mx-1 rounded"
+      });
+    },
+    responsive: [{
+      breakpoint: 1300,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    }]
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "w-full md:w-6/12 lg:w-8/12",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "text-4xl px-5 my-5 text-white font-bold",
+      children: "KATA ALUMNI"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_slick__WEBPACK_IMPORTED_MODULE_2__.default, _objectSpread(_objectSpread({}, settings), {}, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_KataAlumni__WEBPACK_IMPORTED_MODULE_5__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_KataAlumni__WEBPACK_IMPORTED_MODULE_5__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_KataAlumni__WEBPACK_IMPORTED_MODULE_5__.default, {})]
+    })), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "w-full flex justify-end relative bottom-5",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+        to: "#",
+        className: "text-white text-md mr-5",
+        children: "alumni lainnya"
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SliderKataAlumni);
 
 /***/ }),
 
