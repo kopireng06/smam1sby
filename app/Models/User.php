@@ -42,18 +42,18 @@ class User extends Authenticatable
     ];
 
     public function artikel(){
-        return $this->hasMany('App\Artikel');
+        return $this->hasMany(Artikel::class);
     }
      
     public function pengumuman(){        
-    return $this->hasMany('App\Pengumuman');}
+    return $this->hasMany(Pengumuman::class);}
     
     
     public function quote(){
-        return $this->hasMany('App\Quote');
+        return $this->hasMany(Quote::class);
     }
 
     public function testi(){
-        return $this->hasMany('App\Testi');
+        return $this->hasMany(Testi::class);
     }
 }

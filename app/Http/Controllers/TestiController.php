@@ -19,7 +19,7 @@ class TestiController extends Controller
      */
     public function index()
     {
-        $testi = Testi::all();
+        $testi = Testi::with('user')->paginate(10);
         $user = User::all();
 
         return view('testi.index', compact('testi', 'user'));
@@ -81,7 +81,7 @@ class TestiController extends Controller
      */
     public function show($id)
     {
-        $testi = Testi::find($id);
+        $testi = Testi::with('user')->find($id);
         $user = User::all();
 
         return view('testi.show', compact('testi', 'user'));
@@ -118,7 +118,7 @@ class TestiController extends Controller
 
         $testi = new Testi;
         $testi->penulis_testi=\Auth::user()->id;
-        Pengumuman::find($id)->update($request->all());
+        Testi::find($id)->update($request->all());
 
         return redirect()->route('testi.index')
             ->with('success', 'Testimoni Berhasil di Update !');
@@ -143,10 +143,7 @@ class TestiController extends Controller
     {
         $file = $request->file('file');
 
-        $testi = new Testi;
-        $testi->penulis_testi = \Auth::user()->id;
         Excel::import(new TestiImport, $file);
-        $testi->save();
 
         return redirect()->route('testi.index')
             ->with('success', 'Testimoni Berhasil di Import !');
