@@ -360,12 +360,12 @@ var ContainerPrestasi = function ContainerPrestasi() {
     console.log(posActive);
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "relative md:absolute right-0 h-auto pb-5 md:h-full w-full md:w-6/12 lg:w-4/12 bg-yellow-400",
+    className: "relative md:absolute right-0 h-auto pb-5 md:h-full w-full md:w-6/12 lg:w-4/12 bg-white",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "text-4xl px-5 mt-5 text-smam1 text-white font-bold mb-8 md:mb-14",
       children: "PRESTASI"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "mx-auto md:ml-8 mb-12 md:mb-0 max-w-sm md:max-w-xs pb-2 rounded-md bg-white shadow-md flex flex-col",
+      className: "mx-auto md:ml-8 mb-12 md:mb-0 max-w-sm md:max-w-xs-2 pb-2 rounded-md bg-white shadow-md flex flex-col",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Prestasi__WEBPACK_IMPORTED_MODULE_2__.default, {
         pos: 1,
         posActive: posActive,
@@ -384,10 +384,10 @@ var ContainerPrestasi = function ContainerPrestasi() {
         changePosActive: changePosActive
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "w-full flex justify-end absolute bottom-0 h-10",
+      className: "md:max-w-xs-2 w-full md:ml-8 absolute bottom-0 flex justify-end h-10",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         to: "#",
-        className: "text-smam1 text-md mr-5",
+        className: "mr-5 md:mr-0  text-smam1 text-md",
         children: "prestasi lainnya"
       })
     })]
@@ -506,7 +506,7 @@ var KataAlumni = function KataAlumni() {
         className: "h-40 flex flex-col justify-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
           className: "text-center italic text-md p-3",
-          children: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur velit dolores soluta aperiam suscipit repellat maiores totam , quas, enim iste nam quo cumque voluptate? Quae quisquam odit explicabo expedita sint."
+          children: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur velit dolores soluta aperiam suscipit repellat maiores totam , quas, enim iste nam quo cumque voluptate"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
         className: "block text-center font-bold mt-5 mb-1",
