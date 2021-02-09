@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import "animate.css"
-import ReactHtmlParser from 'react-html-parser';
+// import ReactHtmlParser from 'react-html-parser';
 
 const Carousel = () => {
 
@@ -34,7 +34,7 @@ const Carousel = () => {
     //     .then(response => response.json())
     //     .then(data => setcoba(data));
     // });
-
+    // const coba = ''
     return (
       <Fragment>
         <div className="relative h-screen w-full">

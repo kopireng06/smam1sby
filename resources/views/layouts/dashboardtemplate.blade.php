@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{asset('css/admin.css')}}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         @yield('title')
@@ -89,16 +90,71 @@
             $('input:checkbox').not(this).prop('checked', this.checked);
         });
     </script>
-    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script src="{{ asset('js/vendors.js') }}"></script>
     <script type="text/javascript">
     $(document).ready(function () {
-        $('.ckeditor').ckeditor();
+
+        let img_array = [];
+
+        ClassicEditor
+                    .create(document.querySelector('.ckeditor'), {
+                        // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+                        simpleUpload: {
+                            uploadUrl: {
+                                url: "{{ route('article-upload-image', ['_token' => csrf_token()]) }}"
+                            }
+                        }
+                    })
+                    .then(editor => {
+                        let editorModel = editor.model;
+                        let editorDocument = editorModel.document;
+
+                        editorDocument.on('change:data', (event) => {
+                            let root = editorDocument.getRoot();
+                            let children = root.getChildren();
+
+                            let img_temp = [];
+
+                            for (let child of children) {
+                                if (child.is('image')) {
+                                    let img = child._attrs.get('src');
+                                    if (img) {
+                                        console.log(img);
+                                        img_temp.push(img);
+                                    }
+                                }
+                            }
+
+                            img_array.forEach(value => {
+                                if (img_temp.indexOf(value) !== -1) {
+                                    //Exist
+                                } else {
+                                    //Doesnt Exist
+                                    $.post("{{ route('article-delete-image') }}", {
+                                        url: value,
+                                        _token: "{{ csrf_token() }}"
+                                    });
+                                    console.log("DELETE " + value);
+                                }
+                            });
+
+                            img_array = img_temp;
+
+                            var articleText = editor.getData();
+                        });
+
+                        window.editor = editor;
+
+                    })
+                    .catch(err => {
+                        console.error(err.stack);
+                    });
     });
     </script>
     <script type="text/javascript">
-    CKEDITOR.replace('wysiwyg-editor', {
-        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
-        filebrowserUploadMethod: 'form'
-    });
+    // CKEDITOR.replace('wysiwyg-editor', {
+    //     filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+    //     filebrowserUploadMethod: 'form'
+    // });
     </script>
 </html>

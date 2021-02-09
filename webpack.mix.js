@@ -16,5 +16,8 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss("resources/css/app.css", "public/css", [
         require("tailwindcss"),
        ]);
-    
+mix.scripts([
+'node_modules/ckeditor5-build-laravel-image/build/ckeditor.js',
+], 'public/js/vendors.js');
+
 //mix.browserSync(‘localhost:8000’);

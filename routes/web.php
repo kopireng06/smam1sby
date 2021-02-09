@@ -78,6 +78,11 @@ Route::group(['middleware' => ['auth']], function(){
         'create'
     ]);
 
+     /* Article Image */
+    
+    Route::post('/article/upload/image', [ArtikelController::class, 'uploadImage'])->name('article-upload-image');
+    Route::post('/article/delete/image', [ArtikelController::class, 'deleteImage'])->name('article-delete-image');
+
     //Route Pengumuman
     Route::resource('/dashboard/pengumuman', PengumumanController::class)->except([
         'create', 'edit'
