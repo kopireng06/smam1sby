@@ -94,3 +94,14 @@
 .card-news:hover .news-button{
     display: flex;
 }
+.max-w-xs-2{
+    max-width: 22rem;
+}
+.-bottom-30{
+    bottom: -7.5em;
+}
+@media(min-width:768px){
+    .md\:max-w-xs-2 {
+        max-width: 22rem;
+    }
+}

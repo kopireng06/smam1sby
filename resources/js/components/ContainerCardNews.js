@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import CardNews from './CardNews';
 
 const ContainerCardNews = () => {
+    
     return (
         <div className="lg:container mx-auto">
             <div className="text-4xl px-5 my-5 mb-8 text-smam1 font-bold">

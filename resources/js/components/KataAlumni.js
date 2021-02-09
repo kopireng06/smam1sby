@@ -9,7 +9,7 @@ const KataAlumni = () => {
                     <p className="text-center italic text-md p-3">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur velit dolores 
                         soluta aperiam suscipit repellat maiores totam
-                        , quas, enim iste nam quo cumque voluptate? Quae quisquam odit explicabo expedita sint.
+                        , quas, enim iste nam quo cumque voluptate
                     </p>
                 </div>
                 <span className="block text-center font-bold mt-5 mb-1">ZIDAN NUR K</span>

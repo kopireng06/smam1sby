@@ -2649,33 +2649,36 @@ var Navbar = function Navbar(props) {
     };
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "fixed-x-center w-full z-20 h-12 md:h-20 py-5 px-5 md:px-14 flex items-center justify-between transition-all duratiion-150 shadow-md" + navbarColor + shadowNavbar,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-        src: "image/logo-sma-2.png",
-        className: "h-6 md:h-10",
-        alt: ""
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "flex items-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-          to: "#",
-          className: "hidden md:block font-bold mx-2" + linkColor,
-          children: "TENTANG"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-          to: "#",
-          className: "hidden md:block font-bold mx-2" + linkColor,
-          children: "BERITA"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-          to: "#",
-          className: "hidden md:block font-bold mx-2" + linkColor,
-          children: "PRESTASI"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: "image/hamburger.png",
-          className: "block md:hidden ml-8 h-6 md:h-8 cursor-pointer" + hamburgerColor,
-          alt: "",
-          onClick: props.changeSidebarStat
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "w-full fixed-x-center z-20" + navbarColor + shadowNavbar,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "lg:container mx-auto h-12 md:h-20 py-5 px-5 flex items-center justify-between transition-all duratiion-150",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+          src: "image/logo-sma-2.png",
+          className: "h-6 md:h-10",
+          alt: ""
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "flex items-center",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "hidden md:block font-bold mx-2" + linkColor,
+            children: "TENTANG"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "hidden md:block font-bold mx-2" + linkColor,
+            children: "BERITA"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "hidden md:block font-bold mx-2" + linkColor,
+            children: "PRESTASI"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+            src: "image/hamburger.png",
+            className: "block md:hidden ml-8 h-6 md:h-8 cursor-pointer" + hamburgerColor,
+            alt: "",
+            onClick: props.changeSidebarStat
+          })]
         })]
-      })]
+      })
     })
   });
 };
@@ -2812,7 +2815,7 @@ var Sidebar = function Sidebar(props) {
     setToggleLeft(props.sidebarStat);
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "w-60 transition-all duration-1000 p-7 flex flex-col fixed z-20 bottom-0 h-screen bg-smam1 shadow-md",
+    className: "w-60 transition-all duration-1000 p-7 flex flex-col fixed z-20 top-0 h-screen bg-smam1 shadow-md",
     style: {
       left: toggleLeft
     },
