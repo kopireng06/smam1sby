@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Kategori_artikel;
 use App\Models\User;
 use App\Models\Artikel;
@@ -58,7 +62,7 @@ class ArtikelController extends Controller
         $artikel->judul_artikel = $judul;        
         $artikel->isi_artikel = $isi;
         $artikel->id_kategoriartikel = $kat;
-        $artikel->penulis_artikel=\Auth::user()->id;
+        $artikel->penulis_artikel=Auth::user()->id;
         $artikel->save();
 
 
@@ -114,7 +118,7 @@ class ArtikelController extends Controller
         //Kategori_artikel::create($request->all());
 
         $artikel = new Artikel;
-        $artikel->penulis_artikel=\Auth::user()->id;
+        $artikel->penulis_artikel=Auth::user()->id;
         Artikel::find($id)->update($request->all());
 
 
@@ -136,4 +140,37 @@ class ArtikelController extends Controller
         return redirect()->route('artikel.index')
             ->with('success', 'Artikel Berhasil di Hapus !');
     }
+
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            $img_title = Str::random(100);
+            $img = Image::make($request->upload);
+            $img->resize(null, 600, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode('jpg', 50);
+            $img->stream(); // <-- Key point
+            Storage::disk('public')->put("article/" . $img_title . '.jpg', $img, 'public');
+        }
+
+        $response = [
+            'uploaded' => true,
+            "url" => url("") . "/storage/article/" . $img_title . ".jpg"
+        ];
+
+        return response()->json($response);
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $url = explode('/', $request->url);
+        $file = end($url);
+        Storage::disk('public')->delete("article/" . $file);
+        $response = [
+            'deleted' => true,
+            "url" => url("") . "/app/article/" . $file . ".jpg"
+        ];
+        return response()->json($response);
+    }
+
 }

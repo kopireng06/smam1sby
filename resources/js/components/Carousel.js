@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import "animate.css"
-import ReactHtmlParser from 'react-html-parser';
+// import ReactHtmlParser from 'react-html-parser';
 
 const Carousel = () => {
 
@@ -15,7 +15,7 @@ const Carousel = () => {
         slidesToScroll: 1,
         fade:true,
         arrows:false,
-        dotsClass:'keong',
+        dotsClass:'mydot',
         autoplay:false,
         beforeChange: (current, next) => setNextSlide(next),
         customPaging: i => <div className="custom-paging bg-yellow-400 h-2 cursor-pointer transition-all duration-150 w-4 mx-1 rounded"></div>
@@ -34,7 +34,7 @@ const Carousel = () => {
     //     .then(response => response.json())
     //     .then(data => setcoba(data));
     // });
-
+    // const coba = ''
     return (
       <Fragment>
         <div className="relative h-screen w-full">
@@ -116,7 +116,6 @@ const Carousel = () => {
               </div>
             </div>
           </Slider>
-          <div className="absolute" id="dots-container"></div>
         </div>
       </Fragment>
     );

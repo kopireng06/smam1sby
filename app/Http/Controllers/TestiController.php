@@ -19,7 +19,7 @@ class TestiController extends Controller
      */
     public function index()
     {
-        $testi = Testi::with('user')->paginate(10);
+        $testi = Testi::with('user')->get();
         $user = User::all();
 
         return view('testi.index', compact('testi', 'user'));

@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ckeditor.css')}}">
 </head>
 <body class="w-full overflow-x-hidden">
     <div id="root"></div>
