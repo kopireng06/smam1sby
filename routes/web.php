@@ -68,6 +68,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/web-terkait/{id_web}/update','App\Http\Controllers\WebTerkaitController@update');
     Route::get('/web-terkait/{id_web}/delete','App\Http\Controllers\WebTerkaitController@delete');
 
+    Route::get('/caraousel','App\Http\Controllers\CaraouselController@index');
+
     //Route Kategori Artikel
     Route::resource('/dashboard/kategori_artikel', KategoriartikelController::class)->except([
         'show', 'create'
