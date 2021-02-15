@@ -97,11 +97,46 @@
 .max-w-xs-2{
     max-width: 22rem;
 }
+.max-w-md-2{
+    max-width: 29rem;
+}
 .-bottom-30{
     bottom: -7.5em;
+}
+.border-smam1{
+    border-color: #013880;
+}
+.container-yt{
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.sub-link{
+    display: none;
+}
+.multi-link:hover .sub-link{
+    display: block;
 }
 @media(min-width:768px){
     .md\:max-w-xs-2 {
         max-width: 22rem;
+    }
+    .md\:max-w-md-2 {
+        max-width: 29rem;
+    }
+}
+@media(min-width:1280px){
+    .xl\:absolute-x-center{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
