@@ -2531,7 +2531,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/Root */ "./resources/js/components/Root.js");
+__webpack_require__(/*! ./components/Base/Root */ "./resources/js/components/Base/Root.js");
 
 /***/ }),
 
@@ -2579,10 +2579,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/Navbar.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Navbar.js ***!
-  \*******************************************/
+/***/ "./resources/js/components/Base/Navbar.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/Base/Navbar.js ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2660,20 +2660,63 @@ var Navbar = function Navbar(props) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "flex items-center",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-            to: "#",
-            className: "hidden md:block font-bold mx-2" + linkColor,
-            children: "TENTANG"
+            to: "/",
+            className: "hidden lg:block font-bold mx-2" + linkColor,
+            children: "HOME"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "cursor-pointer multi-link relative hidden lg:block font-bold mx-2" + linkColor,
+            children: ["PROFIL ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+              className: "inline-block relative text-xs transform rotate-90" + linkColor,
+              children: [" ", '>', " "]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "sub-link absolute rounded shadow-md w-40 p-3 bg-white flex flex-col",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                to: "#",
+                className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
+                children: "SAMBUTAN KEPSEK"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                to: "#",
+                className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
+                children: "SMAMSA"
+              })]
+            })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
             to: "#",
-            className: "hidden md:block font-bold mx-2" + linkColor,
+            className: "hidden lg:block font-bold mx-2" + linkColor,
             children: "BERITA"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
             to: "#",
-            className: "hidden md:block font-bold mx-2" + linkColor,
+            className: "hidden lg:block font-bold mx-2" + linkColor,
             children: "PRESTASI"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "hidden lg:block font-bold mx-2" + linkColor,
+            children: "ALUMNI"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "hidden lg:block font-bold mx-2" + linkColor,
+            children: "FASILITAS"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            to: "#",
+            className: "cursor-pointer multi-link hidden lg:block font-bold mx-2" + linkColor,
+            children: ["LINK TERKAIT ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+              className: "inline-block relative text-xs transform rotate-90" + linkColor,
+              children: [" ", '>', " "]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "sub-link absolute rounded shadow-md w-40 p-3 bg-white flex flex-col",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                to: "#",
+                className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
+                children: "PPDB"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                to: "#",
+                className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
+                children: "E-LEARNING"
+              })]
+            })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
             src: "image/hamburger.png",
-            className: "block md:hidden ml-8 h-6 md:h-8 cursor-pointer" + hamburgerColor,
+            className: "block lg:hidden ml-8 h-6 md:h-8 cursor-pointer" + hamburgerColor,
             alt: "",
             onClick: props.changeSidebarStat
           })]
@@ -2687,10 +2730,10 @@ var Navbar = function Navbar(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Root.js":
-/*!*****************************************!*\
-  !*** ./resources/js/components/Root.js ***!
-  \*****************************************/
+/***/ "./resources/js/components/Base/Root.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Base/Root.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2704,8 +2747,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _loadable_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @loadable/component */ "./node_modules/@loadable/component/dist/loadable.esm.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
-/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/Sidebar.js");
+/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Base/Navbar.js");
+/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/Base/Sidebar.js");
 
 
 
@@ -2727,8 +2770,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Home = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__.default)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Home_js").then(__webpack_require__.bind(__webpack_require__, /*! ./Home */ "./resources/js/components/Home.js"));
+var HomePage = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__.default)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Home_HomePage_js").then(__webpack_require__.bind(__webpack_require__, /*! ../Home/HomePage */ "./resources/js/components/Home/HomePage.js"));
+});
+var PengumumanPage = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__.default)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Pengumuman_PengumumanPage_js").then(__webpack_require__.bind(__webpack_require__, /*! ../Pengumuman/PengumumanPage */ "./resources/js/components/Pengumuman/PengumumanPage.js"));
 });
 
 var Root = function Root() {
@@ -2759,8 +2805,13 @@ var Root = function Root() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_5__.default, {
       sidebarStat: deliverPropsToSidebar()
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+      exact: true,
       path: "/",
-      component: Home
+      component: HomePage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+      exact: true,
+      path: "/pengumuman",
+      component: PengumumanPage
     })]
   });
 };
@@ -2773,10 +2824,10 @@ if (document.getElementById('root')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Sidebar.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Sidebar.js ***!
-  \********************************************/
+/***/ "./resources/js/components/Base/Sidebar.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/Base/Sidebar.js ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2811,26 +2862,93 @@ var Sidebar = function Sidebar(props) {
       toggleLeft = _useState2[0],
       setToggleLeft = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(' h-0'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      heightSubProfil = _useState4[0],
+      setHeightSubProfil = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(' h-0'),
+      _useState6 = _slicedToArray(_useState5, 2),
+      heightSubLinkTerkait = _useState6[0],
+      setHeightSubLinkTerkait = _useState6[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setToggleLeft(props.sidebarStat);
   });
+
+  var handleClickProfil = function handleClickProfil() {
+    if (heightSubProfil == ' h-0') {
+      setHeightSubProfil(' h-5');
+    } else {
+      setHeightSubProfil(' h-0');
+    }
+  };
+
+  var handleClickLinkTerkait = function handleClickLinkTerkait() {
+    if (heightSubLinkTerkait == ' h-0') {
+      setHeightSubLinkTerkait(' h-5');
+    } else {
+      setHeightSubLinkTerkait(' h-0');
+    }
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "w-60 transition-all duration-1000 p-7 flex flex-col fixed z-20 top-0 h-screen bg-smam1 shadow-md",
+    className: "w-60 transition-all duration-1000 p-7 pt-14 flex flex-col fixed z-20 top-0 h-screen bg-smam1 shadow-md",
     style: {
       left: toggleLeft
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       to: "#",
-      className: "font-bold text-white my-1",
-      children: "TENTANG"
+      className: "font-bold text-white text-sm my-1",
+      children: "HOME"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      to: "#",
+      className: "font-bold text-white text-sm my-1",
+      onClick: handleClickProfil,
+      children: ["PROFIL ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+        className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
+        children: [" ", '>', " "]
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       to: "#",
-      className: "font-bold text-white my-1",
+      className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
+      children: "SAMBUTAN KEPSEK"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      to: "#",
+      className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
+      children: "SMAMSA"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      to: "#",
+      className: "font-bold text-white text-sm my-1",
       children: "BERITA"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
       to: "#",
-      className: "font-bold text-white my-1",
+      className: "font-bold text-white text-sm my-1",
       children: "PRESTASI"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      to: "#",
+      className: "font-bold text-white text-sm my-1",
+      children: "ALUMNI"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      to: "#",
+      className: "font-bold text-white text-sm my-1",
+      children: "FASILITAS"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      to: "#",
+      className: "font-bold text-white text-sm my-1",
+      onClick: handleClickLinkTerkait,
+      children: ["LINK TERKAIT ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+        className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
+        children: [" ", '>', " "]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      to: "#",
+      className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubLinkTerkait,
+      children: "PPDB"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      to: "#",
+      className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubLinkTerkait,
+      children: "E-LEARNING"
     })]
   });
 };
@@ -71601,7 +71719,7 @@ function valueEqual(a, b) {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_components_Home_js") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Home_HomePage_js":1,"resources_js_components_Pengumuman_PengumumanPage_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
@@ -71728,7 +71846,7 @@ function valueEqual(a, b) {
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
 /******/ 					} else {
-/******/ 						if("resources_js_components_Home_js" == chunkId) {
+/******/ 						if("css/app" != chunkId) {
 /******/ 							// setup Promise in chunk cache
 /******/ 							var promise = new Promise((resolve, reject) => {
 /******/ 								installedChunkData = installedChunks[chunkId] = [resolve, reject];
