@@ -22,7 +22,7 @@ class ArtikelController extends Controller
     public function index()
     {
         //$artikel = Artikel::paginate(10);
-        $artikel = Artikel::all();
+        $artikel = Artikel::with('user', 'kategori')->get();
         $user = User::all();
         $kategori = Kategori_artikel::all();
 
@@ -51,18 +51,23 @@ class ArtikelController extends Controller
             'judul_artikel'=>'required',
             'isi_artikel'=>'required',
             'id_kategoriartikel'=>'required',
+            'foto_artikel'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);        
         //Kategori_artikel::create($request->all());
         
         $judul = $request->judul_artikel;
         $isi = $request->isi_artikel;
         $kat = $request->id_kategoriartikel;
+        $foto = $request->file('foto_artikel');
+        $nama_foto = time().'.'.$foto->extension();
+        $foto->move(public_path('images\artikel'), $nama_foto);
 
         $artikel = new Artikel;
         $artikel->judul_artikel = $judul;        
         $artikel->isi_artikel = $isi;
         $artikel->id_kategoriartikel = $kat;
-        $artikel->penulis_artikel=Auth::user()->id;
+        $artikel->penulis_artikel=\Auth::user()->id;
+        $artikel->foto_artikel = $nama_foto;
         $artikel->save();
 
 
@@ -78,8 +83,7 @@ class ArtikelController extends Controller
      */
     public function show($id)
     {
-        //$artikel = Artikel::with('user')->where('title', $property->title)->get();
-        $artikel = Artikel::find($id);
+        $artikel = Artikel::with('user', 'kategori')->find($id);
         $user = User::all();
         $kategori = Kategori_artikel::all();
 
@@ -109,21 +113,38 @@ class ArtikelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {         
         $request->validate([
             'judul_artikel'=>'required',
             'isi_artikel'=>'required',
             'id_kategoriartikel'=>'required',
-        ]);        
-        //Kategori_artikel::create($request->all());
+            'foto_artikel'=>'image|mimes:jpg,png,jpeg,gif,svg|max:4500',
+        ]);
 
-        $artikel = new Artikel;
-        $artikel->penulis_artikel=Auth::user()->id;
-        Artikel::find($id)->update($request->all());
+        if($request->file('foto_artikel')==""){            
 
+            $artikel = new Artikel;
+            $artikel->penulis_artikel=\Auth::user()->id;
+            Artikel::find($id)->update($request->all());
 
-        return redirect()->route('artikel.index')
-            ->with('success', 'Artikel Berhasil di Update !');
+        }else{ 
+
+            $foto = $request->file('foto_artikel');
+            $nama_foto = time().'.'.$foto->extension();
+            $foto->move(public_path('images/artikel'), $nama_foto);
+
+            $artikel = Artikel::find($id);
+            unlink(public_path('images/artikel').'/'.$artikel->foto_artikel);
+                        
+            $artikel->judul_artikel = $request->judul_artikel;        
+            $artikel->isi_artikel = $request->isi_artikel;
+            $artikel->id_kategoriartikel = $request->id_kategoriartikel;
+            $artikel->penulis_artikel=\Auth::user()->id;
+            $artikel->foto_artikel = $nama_foto;
+            $artikel->save(); 
+        }
+
+        return back()->with('success', 'Artikel Berhasil di Update !');
     }
 
     /**
@@ -133,10 +154,12 @@ class ArtikelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        Artikel::find($id)
-            ->delete();
-            
+    {        
+        $artikel = Artikel::find($id);
+        unlink(public_path('images/artikel').'/'.$artikel->foto_artikel); 
+        $artikel->delete();
+        
+        
         return redirect()->route('artikel.index')
             ->with('success', 'Artikel Berhasil di Hapus !');
     }

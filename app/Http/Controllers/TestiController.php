@@ -50,6 +50,7 @@ class TestiController extends Controller
             'jurusan_testi'=>'nullable|string',
             'fakultas_testi'=>'nullable|string',
             'universitas_testi'=>'nullable|string',
+            'foto_testi'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);
         
         $nama = $request->nama_testi;
@@ -58,6 +59,9 @@ class TestiController extends Controller
         $jurusan = $request->jurusan_testi;
         $fakultas = $request->fakultas_testi;
         $universitas = $request->universitas_testi;
+        $foto = $request->file('foto_testi');
+        $nama_foto = time().'.'.$foto->extension();
+        $foto->move(public_path('images\testimoni'), $nama_foto);
 
         $testi = new Testi;
         $testi->nama_testi = $nama;        
@@ -67,6 +71,7 @@ class TestiController extends Controller
         $testi->fakultas_testi = $fakultas;
         $testi->universitas_testi = $universitas;
         $testi->penulis_testi = \Auth::user()->id;
+        $testi->foto_testi = $nama_foto;
         $testi->save();        
 
         return redirect()->route('testi.index')
@@ -114,14 +119,36 @@ class TestiController extends Controller
             'jurusan_testi'=>'nullable|string',
             'fakultas_testi'=>'nullable|string',
             'universitas_testi'=>'nullable|string',
+            'foto_testi'=>'image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);
 
-        $testi = new Testi;
-        $testi->penulis_testi=\Auth::user()->id;
-        Testi::find($id)->update($request->all());
+        if($request->file('foto_testi')==""){
 
-        return redirect()->route('testi.index')
-            ->with('success', 'Testimoni Berhasil di Update !');
+            $testi = new Testi;
+            $testi->penulis_testi=\Auth::user()->id;
+            Testi::find($id)->update($request->all());
+
+        }else{
+
+            $foto = $request->file('foto_testi');
+            $nama_foto = time().'.'.$foto->extension();
+            $foto->move(public_path('images\testimoni'), $nama_foto);
+
+            $testi = Testi::find($id);
+            
+            $testi->nama_testi = $request->nama_testi;
+            $testi->isi_testi = $request->isi_testi;
+            $testi->pekerjaan_testi = $request->pekerjaan_testi;
+            $testi->jurusan_testi = $request->jurusan_testi;
+            $testi->fakultas_testi = $request->fakultas_testi;
+            $testi->universitas_testi = $request->universitas_testi;
+            $testi->penulis_testi=\Auth::user()->id;
+            $testi->foto_testi = $nama_foto;
+            $testi->save();
+
+        }
+
+        return back()->with('success', 'Testimoni Berhasil di Update !');
     }
 
     /**
@@ -132,8 +159,10 @@ class TestiController extends Controller
      */
     public function destroy($id)
     {
-        Testi::find($id)
-            ->delete();
+        $testi=Testi::find($id);
+        unlink(public_path('images/testimoni').'/'.$testi->foto_testi); 
+        // \File::delete('public/images/testimoni'.$testi->foto_testi);
+        $testi->delete();
             
         return redirect()->route('testi.index')
             ->with('success', 'Testimoni Berhasil di Hapus !');
@@ -147,5 +176,37 @@ class TestiController extends Controller
 
         return redirect()->route('testi.index')
             ->with('success', 'Testimoni Berhasil di Import !');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            $img_title = Str::random(100);
+            $img = Image::make($request->upload);
+            $img->resize(null, 600, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode('jpg', 50);
+            $img->stream(); // <-- Key point
+            Storage::disk('public')->put("testimoni/" . $img_title . '.jpg', $img, 'public');
+        }
+
+        $response = [
+            'uploaded' => true,
+            "url" => url("") . "/storage/testimoni/" . $img_title . ".jpg"
+        ];
+
+        return response()->json($response);
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $url = explode('/', $request->url);
+        $file = end($url);
+        Storage::disk('public')->delete("testimoni/" . $file);
+        $response = [
+            'deleted' => true,
+            "url" => url("") . "/app/testimoni/" . $file . ".jpg"
+        ];
+        return response()->json($response);
     }
 }

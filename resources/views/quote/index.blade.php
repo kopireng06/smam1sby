@@ -7,7 +7,7 @@
     <div class="main-content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mb-3">
                     <div class="panel">
 					    <div class="panel-heading">
                             <h1 class="panel-title">Data Quotes</h1>
@@ -20,6 +20,16 @@
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success">
                                 <p>{{ $message }}</p>
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Oops!</strong> Inputan Anda Salah !.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         @endif
                             <table class="table table-hover">
@@ -36,7 +46,7 @@
                                     <tr>
                                         <td>{{++$key}}</td>
                                         <td>{{ Str::limit($quote->nama_quote, 40) }}</td>
-                                        <td>{{ Str::limit($quote->isi_quote, 55) }}</td>
+                                        <td>{!! Str::limit($quote->isi_quote, 55) !!}</td>
                                         <td>                                       
                                         <form action="{{ route('quotes.destroy',$quote->id_quote) }}" method="POST">
                                             <a class="btn btn-warning" href="{{ route('quotes.show',$quote->id_quote) }}" >Preview</a>
@@ -92,7 +102,14 @@
                         <label for="jabatan_quote">Jabatan Tokoh</label>
                         <input type="text" name="jabatan_quote" class="form-control @error('jabatan_quote') is-invalid @enderror" placeholder="Jabatan Tokoh" required/>
                         @error('jabatan_quote')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                    </div>        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foto_quote">Foto Sampul</label>
+                        <input type="file" name="foto_quote" class="form-control @error('foto_quote') is-invalid @enderror" onchange="previewFile(this)">
+                        @error('foto_quote')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <img id="previewImg" alt="foto_quote" style="max-width:150px;margin-top:20px;">
+                    </div> 
 
                     <div class="form-group">
                         <label for="isi_quote">Isi Quote</label>

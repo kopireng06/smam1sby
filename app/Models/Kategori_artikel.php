@@ -18,6 +18,6 @@ class Kategori_artikel extends Model
     ];
     
     public function artikel(){
-        return $this->hasMany('App\Artikel');
+        return $this->hasMany(Artikel::class);
     }
 }

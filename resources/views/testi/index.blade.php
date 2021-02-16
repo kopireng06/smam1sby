@@ -5,9 +5,9 @@
 @section('konten')
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid">
+        <div class="container-fluid mb-3">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mb-3">
                     <div class="panel">
 					    <div class="panel-heading">
                             <h1 class="panel-title">Data Testimoni Alumni</h1>
@@ -27,13 +27,22 @@
                                 <p>{{ $message }}</p>
                             </div>
                         @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Oops!</strong> Inputan Anda Salah !.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th width="80px">No.</th>
                                         <th>Nama</th>
-                                        <th width="300px">Isi Testimoni</th>
-                                        <th>Penulis</th>
+                                        <th width="350px">Isi Testimoni</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -42,8 +51,7 @@
                                     <tr>
                                         <td>{{++$key}}</td>
                                         <td>{{ Str::limit($testi1->nama_testi, 40) }}</td>
-                                        <td>{{ Str::limit($testi1->isi_testi, 55) }}</td>
-                                        <td>{{ $testi1->user->name }}</td>
+                                        <td>{!! Str::limit($testi1->isi_testi, 55) !!}</td>
                                         <td>                                       
                                         <form action="{{ route('testi.destroy',$testi1->id_testi) }}" method="POST">
                                             <a class="btn btn-warning" href="{{ route('testi.show',$testi1->id_testi) }}" >Preview</a>
@@ -83,6 +91,13 @@
                         <label for="nama_testi">Nama Tokoh</label>
                         <input type="text" name="nama_testi" class="form-control @error('nama_testi') is-invalid @enderror" placeholder="Nama Tokoh" required/>
                         @error('nama_testi')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foto_testi">Foto Sampul</label>
+                        <input type="file" name="foto_testi" class="form-control @error('foto_testi') is-invalid @enderror" onchange="previewFile(this)">
+                        @error('foto_testi')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <img id="previewImg" alt="foto_testi" style="max-width:150px;margin-top:20px;">
                     </div>
 
                     <div class="form-group">

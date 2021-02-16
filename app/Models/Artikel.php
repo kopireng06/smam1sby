@@ -21,11 +21,11 @@ class Artikel extends Model
 
     ];
     
-    public function kategori_artikel(){
-        return $this->belongsTo('App\Kategori_artikel');
+    public function kategori(){
+        return $this->belongsTo(Kategori_artikel::class, 'id_kategoriartikel');
     }
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class, 'penulis_artikel');
     }
 }

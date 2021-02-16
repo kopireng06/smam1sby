@@ -22,6 +22,16 @@
                                 <p>{{ $message }}</p>
                             </div>
                         @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Oops!</strong> Inputan Anda Salah !.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -36,7 +46,7 @@
                                     <tr>
                                         <td>{{++$key}}</td>
                                         <td>{{ Str::limit($pengumuman->judul_pengumuman, 40) }}</td>
-                                        <td>{{ Str::limit($pengumuman->isi_pengumuman, 55) }}</td>
+                                        <td>{!! Str::limit($pengumuman->isi_pengumuman, 55) !!}</td>
                                         <td>                                       
                                         <form action="{{ route('pengumuman.destroy',$pengumuman->id_pengumuman) }}" method="POST">
                                             <a class="btn btn-warning" href="{{ route('pengumuman.show',$pengumuman->id_pengumuman) }}" >Preview</a>
@@ -61,7 +71,7 @@
 </div>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Pengumuman</h5>
@@ -92,6 +102,13 @@
                         <label for="tanggal_pengumuman">Tanggal Pengumuman</label>                    
                         <input type="date" name="tanggal_pengumuman" class="form-control" id="tanggal_pengumuman" aria-describedby="tanggal_pengumuman" >                
                     </div>
+
+                    <div class="form-group">
+                        <label for="foto_pengumuman">Foto Sampul</label>
+                        <input type="file" name="foto_pengumuman" class="form-control @error('foto_pengumuman') is-invalid @enderror" onchange="previewFile(this)">
+                        @error('foto_pengumuman')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <img id="previewImg" alt="foto_pengumuman" style="max-width:150px;margin-top:20px;">
+                    </div> 
 
                     <div class="form-group">
                         <label for="isi_pengumuman">Isi Pengumuman</label>
