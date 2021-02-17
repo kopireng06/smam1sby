@@ -34,6 +34,8 @@
         "animate.css": "^4.1.1",
         "ckeditor5-build-laravel-image": "^1.0.1",
         "react-html-parser": "^2.0.2",
+        "react-infinite-scroll-component": "^6.0.0",
+        "react-loading-skeleton": "^2.1.1",
         "react-router-dom": "^5.2.0",
         "react-slick": "^0.28.0",
         "slick-carousel": "^1.8.1"

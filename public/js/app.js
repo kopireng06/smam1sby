@@ -2898,7 +2898,7 @@ var Sidebar = function Sidebar(props) {
       left: toggleLeft
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
+      to: "/",
       className: "font-bold text-white text-sm my-1",
       children: "HOME"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {

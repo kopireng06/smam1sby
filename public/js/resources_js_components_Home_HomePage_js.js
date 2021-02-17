@@ -90,9 +90,9 @@ var Footer = function Footer() {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "w-full bg-black",
+      className: "w-full bg-yellow-400",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "lg:container mx-auto h-8 text-center text-white pt-2 text-xs font-semibold",
+        className: "lg:container mx-auto h-8 text-center pt-2 text-xs font-bold",
         children: "Copyright \xA9 SMAMSA . All Right Reserved."
       })
     })]

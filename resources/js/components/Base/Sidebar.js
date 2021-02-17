@@ -31,7 +31,7 @@ const Sidebar = (props) => {
 
     return (
         <div className="w-60 transition-all duration-1000 p-7 pt-14 flex flex-col fixed z-20 top-0 h-screen bg-smam1 shadow-md" style={{left:toggleLeft}}>
-            <Link to="#" className="font-bold text-white text-sm my-1">
+            <Link to="/" className="font-bold text-white text-sm my-1">
                 HOME
             </Link>
             <Link to="#" className="font-bold text-white text-sm my-1" onClick={handleClickProfil}>

@@ -19,9 +19,7 @@ use App\Http\Controllers\TestiController;
 |
 */
 
-Route::get( '/{path?}', function(){
-    return view('smam1sby');
-})->where('path', '.*');
+
 Route::get('/keong', function () {
     $a = '<div class="text-white w-full bg-red-400 font-bold text-5xl">KEONG</div>';
     return json_encode($a);
@@ -104,5 +102,11 @@ Route::group(['middleware' => ['auth']], function(){
     
     Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
     
+    
 });
+
+
 require __DIR__.'/auth.php';
+Route::get( '/{path?}', function(){
+    return view('smam1sby');
+})->where('path', '.*');

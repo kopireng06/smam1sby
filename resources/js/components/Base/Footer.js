@@ -37,8 +37,8 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full bg-black">
-                <div className="lg:container mx-auto h-8 text-center text-white pt-2 text-xs font-semibold">Copyright © SMAMSA . All Right Reserved.</div>
+            <div className="w-full bg-yellow-400">
+                <div className="lg:container mx-auto h-8 text-center pt-2 text-xs font-bold">Copyright © SMAMSA . All Right Reserved.</div>
             </div>
         </>
     );
