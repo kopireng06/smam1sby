@@ -16,7 +16,7 @@ class QuotesController extends Controller
      */
     public function index()
     {
-        $quote = Quote::all();
+        $quote = Quote::with('user')->get();
         $user = User::all();
 
         return view('quote.index', compact('quote', 'user'));
@@ -44,6 +44,7 @@ class QuotesController extends Controller
             'nama_quote'=>'required',
             'jabatan_quote'=>'required',
             'isi_quote'=>'required',
+            'foto_quote'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);
         
         //Pengumuman::create($request->all());
@@ -51,12 +52,16 @@ class QuotesController extends Controller
         $nama = $request->nama_quote;
         $jabatan = $request->jabatan_quote;
         $isi = $request->isi_quote;
+        $foto = $request->file('foto_quote');
+        $nama_foto = time().'.'.$foto->extension();
+        $foto->move(public_path('images/quotes'), $nama_foto);
 
         $quote = new Quote;
         $quote->nama_quote = $nama;        
         $quote->jabatan_quote = $jabatan;
         $quote->isi_quote = $isi;
         $quote->penulis_quote = \Auth::user()->id;
+        $quote->foto_quote = $nama_foto;
         $quote->save();        
 
         return redirect()->route('quotes.index')
@@ -71,7 +76,7 @@ class QuotesController extends Controller
      */
     public function show($id)
     {
-        $quote = Quote::find($id);
+        $quote = Quote::with('user')->find($id);
         $user = User::all();
 
         return view('quote.show', compact('quote', 'user'));
@@ -101,14 +106,34 @@ class QuotesController extends Controller
             'nama_quote'=>'required',
             'jabatan_quote'=>'required',
             'isi_quote'=>'required',
+            'foto_quote'=>'image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);
 
-        $quote = new Quote;
-        $quote->penulis_quote=\Auth::user()->id;
-        Quote::find($id)->update($request->all());
+        if($request->file('foto_quote')==""){
 
-        return redirect()->route('quotes.index')
-            ->with('success', 'Pengumuman Berhasil di Update !');
+            $quote = new Quote;
+            $quote->penulis_quote=\Auth::user()->id;
+            Quote::find($id)->update($request->all());
+
+        }else{
+
+            $foto = $request->file('foto_quote');
+            $nama_foto = time().'.'.$foto->extension();
+            $foto->move(public_path('images/quotes'), $nama_foto);
+
+            $quote = Quote::find($id);
+            unlink(public_path('images/quotes').'/'.$quote->foto_quote); //Delete this syntax if you'd like to keep the image file of $this quote
+            
+            $quote->nama_quote = $request->nama_quote;        
+            $quote->jabatan_quote = $request->jabatan_quote;
+            $quote->isi_quote = $request->isi_quote;
+            $quote->penulis_quote=\Auth::user()->id;
+            $quote->foto_quote = $nama_foto;
+            $quote->save(); 
+
+        }        
+
+        return back()->with('success', 'Pengumuman Berhasil di Update !');
     }
 
     /**
@@ -119,8 +144,9 @@ class QuotesController extends Controller
      */
     public function destroy($id)
     {
-        Quote::find($id)
-            ->delete();
+        $quote = Quote::find($id);
+        unlink(public_path('images/quotes').'/'.$quote->foto_quote);
+        $quote->delete();
             
         return redirect()->route('quotes.index')
             ->with('success', 'Pengumuman Berhasil di Hapus !');

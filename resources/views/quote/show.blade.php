@@ -12,14 +12,29 @@
         <div class="main-content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-5">
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <p>{{ $message }}</p>
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Oops!</strong> Inputan Anda Salah !.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="card mb-3" style="width: 56rem;">
-                            <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Nahdlatul_Ulama.jpg/1200px-Flag_of_Nahdlatul_Ulama.jpg" alt="Card image cap" width="500px" height="500px">
+                            <img class="card-img-top" src="{{ asset('images/quotes') }}/{{ $quote->foto_quote }}" alt="Card image cap" style="max-width:550px;max-height:400px;margin-top:20px;margin-bottom:10px;margin-left:auto;margin-right:auto;">
                             <div class="card-body">
                                 <h3 class="card-title" >{{ $quote->nama_quote }}</h3>
-                                <a class="card-text"><small class="text-muted">{{ $quote->created_at }}</small></a>
+                                <a class="card-text"><small class="text-muted">{{ $quote->created_at->diffForHumans() }}</small></a>
                                 <br>
-                                <p class="card-text">{{ $quote->isi_quote }}</p>
+                                <p class="card-text">{!! $quote->isi_quote !!}</p>
                                 <div class="flex-container">
                                     <form action="{{ route('quotes.destroy',$quote->id_quote) }}" method="POST">
                                         <button type="button" class="btn btn-warning float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -71,6 +86,13 @@
                         <input type="text" name="jabatan_quote" class="form-control @error('jabatan_quote') is-invalid @enderror" value= "{{ $quote->jabatan_quote }}" placeholder="Jabatan Tokoh" required/>
                         @error('jabatan_quote')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
+
+                    <div class="form-group">
+                        <label for="foto_quote">Foto Sampul</label>
+                        <input type="file" name="foto_quote" class="form-control @error('foto_quote') is-invalid @enderror" onchange="previewFile(this)">
+                        @error('foto_quote')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <img id="previewImg" alt="foto_quote" src="{{ asset('images/quotes') }}/{{ $quote->foto_quote }}" style="max-width:150px;margin-top:20px;">
+                    </div> 
 
                     <div class="form-group">
                         <label for="isi_quote">Isi Quote</label>

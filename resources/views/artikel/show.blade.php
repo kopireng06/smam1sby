@@ -12,15 +12,31 @@
         <div class="main-content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-5">
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <p>{{ $message }}</p>
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Oops!</strong> Inputan Anda Salah !.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="card mb-3" style="width: 56rem;">
-                            <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Nahdlatul_Ulama.jpg/1200px-Flag_of_Nahdlatul_Ulama.jpg" alt="Card image cap" width="500px" height="500px">
+                            <img class="card-img-top" src="{{ asset('images/artikel') }}/{{ $artikel->foto_artikel }}" alt="Card image cap" style="max-width:550px;max-height:400px;margin-top:20px;margin-bottom:10px;margin-left:auto;margin-right:auto;">
                             <div class="card-body">
                                 <h3 class="card-title" >{{ $artikel->judul_artikel }}</h3>
-                                <a class="card-text"><small class="text-muted">{{ $artikel->created_at }}</small></a>
-                                <b class="card-text"><small class="text-muted">{{ $artikel->name }}</small></b>
+                                <a class="card-text"><small class="text-muted">{{ $artikel->created_at->diffForHumans() }}</small></a>
+                                <b class="card-text"><small class="text-muted">{{ $artikel->user->name }}</small></b>
+                                <b class="card-text"><small class="text-muted">{{ $artikel->kategori->nama_kategoriartikel }}</small></b>
                                 <br>
-                                <p class="card-text">{{ $artikel->isi_artikel }}</p>
+                                <p class="card-text">{!! $artikel->isi_artikel !!}</p>
                                 <div class="flex-container">
                                     <form action="{{ route('artikel.destroy',$artikel->id_artikel) }}" method="POST">
                                         <button type="button" class="btn btn-warning float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -66,15 +82,21 @@
                         <input type="text" name="judul_artikel" class="form-control @error('judul_artikel') is-invalid @enderror" value= "{{ $artikel->judul_artikel }}" placeholder="Judul Artikel" required/>
                         @error('judul_artikel')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
-                    
+
                     <div class="dropdown">
                         <label for="id_kategoriartikel">Kategori Artikel</label>
                         <select class="form-control" name="id_kategoriartikel" id="id_kategoriartikel">
-                            <option selected>{{ $artikel->id_kategoriartikel }}</option>
                             @foreach ($kategori as $kategori)
                             <option value="{{$kategori->id_kategoriartikel}}">{{$kategori->nama_kategoriartikel}}</option> 
                             @endforeach                                                   
                         </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="foto_artikel">Foto Sampul</label>
+                        <input type="file" name="foto_artikel" class="form-control @error('foto_artikel') is-invalid @enderror" onchange="previewFile(this)">
+                        @error('foto_artikel')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <img id="previewImg" alt="foto_artikel" src="{{ asset('images/artikel') }}/{{ $artikel->foto_artikel }}" style="max-width:150px;margin-top:20px;">
                     </div> 
 
                     <div class="form-group">
@@ -91,4 +113,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    function previewFile(input){
+        var file = $("input[type=file]").get(0).files[0];
+        if (file){
+            var reader = new FileReader();
+            reader.onload = function(){
+                $('#previewImg').attr("src",reader.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+</script>
 @endsection

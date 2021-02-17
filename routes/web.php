@@ -80,24 +80,34 @@ Route::group(['middleware' => ['auth']], function(){
 
      /* Article Image */
     
-    Route::post('/article/upload/image', [ArtikelController::class, 'uploadImage'])->name('article-upload-image');
-    Route::post('/article/delete/image', [ArtikelController::class, 'deleteImage'])->name('article-delete-image');
+    Route::post('/dashboard/artikel/upload/image', [ArtikelController::class, 'uploadImage'])->name('artikel-upload-image');
+    Route::post('/dashboard/artikel/delete/image', [ArtikelController::class, 'deleteImage'])->name('artikel-delete-image');
 
     //Route Pengumuman
     Route::resource('/dashboard/pengumuman', PengumumanController::class)->except([
         'create', 'edit'
     ]);
+    Route::post('/dashboard/pengumuman/upload/image', [PengumumanController::class, 'uploadImage'])->name('pengumuman-upload-image');
+    Route::post('/dashboard/pengumuman/delete/image', [PengumumanController::class, 'deleteImage'])->name('pengumuman-delete-image');
 
     //Route Quotes
     Route::resource('/dashboard/quotes', QuotesController::class)->except([
         'create', 'edit'
     ]);
 
+    Route::post('/dashboard/quotes/upload/image', [QuotesController::class, 'uploadImage'])->name('quotes-upload-image');
+    Route::post('/dashboard/quotes/delete/image', [QuotesController::class, 'deleteImage'])->name('quotes-delete-image');
+
+
     //Route Testi
     Route::resource('/dashboard/testi', TestiController::class)->except([
         'create', 'edit'
     ]);
     Route::post('/dashboard/testi/import','App\Http\Controllers\TestiController@import');
+
+    Route::post('/dashboard/testi/upload/image', [TestiController::class, 'uploadImage'])->name('testi-upload-image');
+    Route::post('/dashboard/testi/delete/image', [TestiController::class, 'deleteImage'])->name('testi-delete-image');
+
 
     
     Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');

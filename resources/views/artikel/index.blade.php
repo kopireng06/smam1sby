@@ -7,7 +7,7 @@
     <div class="main-content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mb-3">
                     <div class="panel">
 					    <div class="panel-heading">
                             <h1 class="panel-title">Data Artikel</h1>
@@ -22,12 +22,23 @@
                                 <p>{{ $message }}</p>
                             </div>
                         @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Oops!</strong> Inputan Anda Salah !.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th width="80px">No.</th>
+                                        <th>No.</th>
                                         <th>Judul Artikel</th>
-                                        <th width="300px">Isi Artikel</th>
+                                        <th>Isi Artikel</th>                                        
+                                        <th>Kategori<th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -35,8 +46,9 @@
                                     @foreach($artikel as $key=>$artikel1)
                                     <tr>
                                         <td>{{++$key}}</td>
-                                        <td>{{ Str::limit($artikel1->judul_artikel, 40) }}</td>
-                                        <td>{{ Str::limit($artikel1->isi_artikel, 55) }}</td>
+                                        <td>{{ Str::limit( $artikel1->judul_artikel, 20 ) }}</td>
+                                        <td>{!! Str::limit( $artikel1->isi_artikel, 30  ) !!}</td>
+                                        <td>{{ $artikel1->kategori->nama_kategoriartikel }}</td>
                                         <td>                                       
                                         <form action="{{ route('artikel.destroy',$artikel1->id_artikel) }}" method="POST">
                                             <a class="btn btn-warning" href="{{ route('artikel.show',$artikel1->id_artikel) }}" >Preview</a>
@@ -61,7 +73,7 @@
 </div>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Kategori Artikel</h5>
@@ -96,6 +108,13 @@
                             <option value="{{$kategori->id_kategoriartikel}}">{{$kategori->nama_kategoriartikel}}</option> 
                             @endforeach                                                   
                         </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="foto_artikel">Foto Sampul</label>
+                        <input type="file" name="foto_artikel" class="form-control @error('foto_artikel') is-invalid @enderror" onchange="previewFile(this)">
+                        @error('foto_artikel')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <img id="previewImg" alt="foto_artikel" style="max-width:150px;margin-top:20px;">
                     </div> 
 
                     <div class="form-group">
