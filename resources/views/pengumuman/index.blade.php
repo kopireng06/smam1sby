@@ -5,17 +5,32 @@
 @section('konten')
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid">
+        <div class="container-fluid mb-3 mt-3">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mb-3">
                     <div class="panel">
 					    <div class="panel-heading">
                             <h1 class="panel-title">Data Pengumuman</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            + Tambah Pengumuman
-                        </button>
-                        <br>
+                        <div class="d-flex justify-content-between mt-3 mb-3">
+                            <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                + Tambah Pengumuman
+                            </button>
+                            <form action="{{ route('pengumuman.index') }}" method="GET" role="search">
+                                {{csrf_field()}}
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="search" placeholder="Cari Judul" value="{{ request()->query('search') }}">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary float-right" type="submit">Search</button>
+                                    </span>
+                                    <a href="{{ route('pengumuman.index') }}">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-danger px-3"><i class="fas fa-users" aria-hidden="true"></i>Refresh</button>
+                                        </span>
+                                    </a>
+                                </div>
+                            </form>                        
+                        </div>                                                 
                         <div class="panel-body">
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success">
@@ -42,14 +57,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($pengumuman as $key=>$pengumuman)
+                                    @forelse($pengumuman as $pengumuman1)
                                     <tr>
-                                        <td>{{++$key}}</td>
-                                        <td>{{ Str::limit($pengumuman->judul_pengumuman, 40) }}</td>
-                                        <td>{!! Str::limit($pengumuman->isi_pengumuman, 55) !!}</td>
+                                        <td>{{$count++}}</td>
+                                        <td>{{ Str::limit($pengumuman1->judul_pengumuman, 40) }}</td>
+                                        <td>{!! Str::limit($pengumuman1->isi_pengumuman, 55) !!}</td>
                                         <td>                                       
-                                        <form action="{{ route('pengumuman.destroy',$pengumuman->id_pengumuman) }}" method="POST">
-                                            <a class="btn btn-warning" href="{{ route('pengumuman.show',$pengumuman->id_pengumuman) }}" >Preview</a>
+                                        <form action="{{ route('pengumuman.destroy',$pengumuman1->id_pengumuman) }}" method="POST">
+                                            <a class="btn btn-warning" href="{{ route('pengumuman.show',$pengumuman1->id_pengumuman) }}" >Preview</a>
                         
                                             @csrf
                                             @method('DELETE')
@@ -58,10 +73,16 @@
                                         </form>
                                         </td>
                                     </tr>
-                                    @endforeach
-                                   
+                                    @empty
+                                        <h4 class="text-center">
+                                            Tidak ada hasil untuk : <strong>{{ request()->query('search') }}</strong>
+                                        </h4>
+                                    @endforelse                                   
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="div text-center">
+                            {{ $pengumuman ->links() }}
                         </div>
                     </div>
                 </div>

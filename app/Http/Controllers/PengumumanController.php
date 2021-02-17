@@ -16,10 +16,20 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $pengumuman = Pengumuman::with('user')->get();
-        $user = User::all();
+        $search = request()->query('search');
 
-        return view('pengumuman.index', compact('pengumuman', 'user'));
+        if($search){
+            $pengumuman = Pengumuman::where('judul_pengumuman', 'LIKE', "%{$search}%")->with('user')->simplePaginate(5);
+
+        }else{            
+            $pengumuman = Pengumuman::with('user')->simplePaginate(5);
+
+        }
+
+        $count = $pengumuman->firstItem();
+
+
+        return view('pengumuman.index', compact('pengumuman', 'count'));
     }
 
     /**

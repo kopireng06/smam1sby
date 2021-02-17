@@ -5,33 +5,48 @@
 @section('konten')
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid">
+        <div class="container-fluid mb-3 mt-3">
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <div class="panel">
 					    <div class="panel-heading">
                             <h1 class="panel-title">Data Quotes</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            + Tambah Quotes
-                        </button>
-                        <br>
+                        <div class="d-flex justify-content-between mb-3 mt-3">
+                            <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                + Tambah Quotes
+                            </button>
+                            <form action="{{ route('quotes.index') }}" method="GET" role="search">
+                                {{csrf_field()}}
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="search" placeholder="Cari Nama" value="{{ request()->query('search') }}">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary float-right" type="submit">Search</button>
+                                    </span>
+                                    <a href="{{ route('quotes.index') }}">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-danger px-3"><i class="fas fa-users" aria-hidden="true"></i>Refresh</button>
+                                        </span>
+                                    </a>
+                                </div>
+                            </form>                        
+                        </div>
                         <div class="panel-body">
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <strong>Oops!</strong> Inputan Anda Salah !.<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div>
+                            @endif
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <strong>Oops!</strong> Inputan Anda Salah !.<br><br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -42,26 +57,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($quote as $key=>$quote)
+                                    @forelse($quote as $quote1)
                                     <tr>
-                                        <td>{{++$key}}</td>
-                                        <td>{{ Str::limit($quote->nama_quote, 40) }}</td>
-                                        <td>{!! Str::limit($quote->isi_quote, 55) !!}</td>
+                                        <td>{{$count++}}</td>
+                                        <td>{{ Str::limit($quote1->nama_quote, 40) }}</td>
+                                        <td>{!! Str::limit($quote1->isi_quote, 55) !!}</td>
                                         <td>                                       
-                                        <form action="{{ route('quotes.destroy',$quote->id_quote) }}" method="POST">
-                                            <a class="btn btn-warning" href="{{ route('quotes.show',$quote->id_quote) }}" >Preview</a>
-                        
-                                            @csrf
+                                        <form action="{{ route('quotes.destroy',$quote1->id_quote) }}" method="POST">
+                                            <a class="btn btn-warning" href="{{ route('quotes.show',$quote1->id_quote) }}" >Preview</a>
+                                            {{csrf_field()}}                                            
                                             @method('DELETE')
                             
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus?')">Delete</button>
                                         </form>
                                         </td>
                                     </tr>
-                                    @endforeach
-                                   
+                                    @empty
+                                        <h4 class="text-center">
+                                            Tidak ada hasil untuk : <strong>{{ request()->query('search') }}</strong>
+                                        </h4>
+                                    @endforelse                                   
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="div text-center">
+                            {{ $quote->links() }}
                         </div>
                     </div>
                 </div>

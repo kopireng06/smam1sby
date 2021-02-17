@@ -5,9 +5,9 @@
 @section('konten')
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid">
+        <div class="container-fluid mt-3 mb-3">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mb-3">
                     <div class="panel">
 					    <div class="panel-heading">
                             <h1 class="panel-title">Data Kategori Artikel</h1>

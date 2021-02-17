@@ -16,10 +16,19 @@ class QuotesController extends Controller
      */
     public function index()
     {
-        $quote = Quote::with('user')->get();
-        $user = User::all();
+        $search = request()->query('search');
 
-        return view('quote.index', compact('quote', 'user'));
+        if($search){
+            $quote = Quote::where('nama_quote', 'LIKE', "%{$search}%")->with('user')->simplePaginate(5);
+
+        }else{            
+            $quote = Quote::with('user')->simplePaginate(5);
+
+        }
+
+        $count = $quote->firstItem();
+
+        return view('quote.index', compact('quote', 'count'));
     }
 
     /**

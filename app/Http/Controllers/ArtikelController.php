@@ -19,14 +19,22 @@ class ArtikelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$artikel = Artikel::paginate(10);
-        $artikel = Artikel::with('user', 'kategori')->get();
-        $user = User::all();
-        $kategori = Kategori_artikel::all();
+        $search = request()->query('search');
 
-        return view('artikel.index', compact('artikel', 'user', 'kategori'));
+        if($search){
+            $artikel= Artikel::where('judul_artikel', 'LIKE', "%{$search}%")->with('user', 'kategori')->simplePaginate(5);
+
+        }else{            
+            $artikel = Artikel::with('user', 'kategori')->simplePaginate(5);
+
+        }
+        
+        $kategori = Kategori_artikel::all();
+        $count = $artikel->firstItem();
+
+        return view('artikel.index', compact('artikel', 'count', 'kategori'));
     }
 
     /**
@@ -123,9 +131,13 @@ class ArtikelController extends Controller
 
         if($request->file('foto_artikel')==""){            
 
-            $artikel = new Artikel;
+            $artikel = Artikel::find($id);
+                       
+            $artikel->judul_artikel = $request->judul_artikel;        
+            $artikel->isi_artikel = $request->isi_artikel;
+            $artikel->id_kategoriartikel = $request->id_kategoriartikel;
             $artikel->penulis_artikel=\Auth::user()->id;
-            Artikel::find($id)->update($request->all());
+            $artikel->save(); 
 
         }else{ 
 

@@ -18,11 +18,21 @@ class TestiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $testi = Testi::with('user')->get();
-        $user = User::all();
+    {       
 
-        return view('testi.index', compact('testi', 'user'));
+        $search = request()->query('search');
+
+        if($search){
+            $testi = Testi::where('nama_testi', 'LIKE', "%{$search}%")->with('user')->simplePaginate(5);
+
+        }else{            
+            $testi = Testi::with('user')->simplePaginate(5);
+
+        }
+
+        $count = $testi->firstItem();
+
+        return view('testi.index', compact('testi', 'count'));
     }
 
     /**
