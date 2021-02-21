@@ -65,7 +65,7 @@
                 <a href="/dashboard/quotes" class="menu arialrounded-mt-bold my-1 d-block">
                     Quote
                 </a>
-                <a href="/dashboard/testi" class="menu arialrounded-mt-bold my-1 d-block">
+                <a href="/dashboard/testimoni" class="menu arialrounded-mt-bold my-1 d-block">
                     Testimoni
                 </a>
             </div>

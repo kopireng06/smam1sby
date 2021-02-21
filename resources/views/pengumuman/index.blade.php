@@ -113,26 +113,26 @@
                 
                     {{csrf_field()}}
       
-                    <div class="form-group">
-                        <label for="judul_pengumuman">Judul Pengumuman</label>
+                    <div class="form-group mb-2">
+                        <label for="judul_pengumuman"><strong>Judul Pengumuman</strong></label>
                         <input type="text" name="judul_pengumuman" class="form-control @error('judul_pengumuman') is-invalid @enderror" placeholder="Judul Pengumuman" required/>
                         @error('judul_pengumuman')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     
-                    <div class="form-group">
-                        <label for="tanggal_pengumuman">Tanggal Pengumuman</label>                    
+                    <div class="form-group mb-2">
+                        <label for="tanggal_pengumuman"><strong>Tanggal Pengumuman</strong></label>                    
                         <input type="date" name="tanggal_pengumuman" class="form-control" id="tanggal_pengumuman" aria-describedby="tanggal_pengumuman" >                
                     </div>
 
-                    <div class="form-group">
-                        <label for="foto_pengumuman">Foto Sampul</label>
+                    <div class="form-group mb-2">
+                        <label for="foto_pengumuman"><strong>Foto Sampul</strong></label>
                         <input type="file" name="foto_pengumuman" class="form-control @error('foto_pengumuman') is-invalid @enderror" onchange="previewFile(this)">
                         @error('foto_pengumuman')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         <img id="previewImg" alt="foto_pengumuman" style="max-width:150px;margin-top:20px;">
                     </div> 
 
-                    <div class="form-group">
-                        <label for="isi_pengumuman">Isi Pengumuman</label>
+                    <div class="form-group mb-2">
+                        <label for="isi_pengumuman"><strong>Isi Pengumuman</strong></label>
                         <textarea name="isi_pengumuman" class="ckeditor form-control" name="wysiwyg-editor"></textarea>
                     </div>
 

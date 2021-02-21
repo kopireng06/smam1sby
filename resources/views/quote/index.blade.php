@@ -112,27 +112,27 @@
                 
                     {{csrf_field()}}
       
-                    <div class="form-group">
-                        <label for="nama_quote">Nama Tokoh</label>
+                    <div class="form-group mb-2">
+                        <label for="nama_quote"><strong>Nama Tokoh</strong></label>
                         <input type="text" name="nama_quote" class="form-control @error('nama_quote') is-invalid @enderror" placeholder="Nama Tokoh" required/>
                         @error('nama_quote')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
-                    <div class="form-group">
-                        <label for="jabatan_quote">Jabatan Tokoh</label>
+                    <div class="form-group mb-2">
+                        <label for="jabatan_quote"><strong>Jabatan Tokoh</strong></label>
                         <input type="text" name="jabatan_quote" class="form-control @error('jabatan_quote') is-invalid @enderror" placeholder="Jabatan Tokoh" required/>
                         @error('jabatan_quote')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
-                    <div class="form-group">
-                        <label for="foto_quote">Foto Sampul</label>
+                    <div class="form-group mb-2">
+                        <label for="foto_quote"><strong>Foto Sampul</strong></label>
                         <input type="file" name="foto_quote" class="form-control @error('foto_quote') is-invalid @enderror" onchange="previewFile(this)">
                         @error('foto_quote')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         <img id="previewImg" alt="foto_quote" style="max-width:150px;margin-top:20px;">
                     </div> 
 
-                    <div class="form-group">
-                        <label for="isi_quote">Isi Quote</label>
+                    <div class="form-group mb-2">
+                        <label for="isi_quote"><strong>Isi Quote</strong></label>
                         <textarea name="isi_quote" class="ckeditor form-control" name="wysiwyg-editor"></textarea>
                     </div>
 

@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Route Artikel
     Route::resource('/dashboard/artikel', ArtikelController::class)->except([
-        'create'
+        'create', 'edit'
     ]);
 
      /* Article Image */
@@ -99,8 +99,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/dashboard/quotes/delete/image', [QuotesController::class, 'deleteImage'])->name('quotes-delete-image');
 
 
-    //Route Testi
-    Route::resource('/dashboard/testi', TestiController::class)->except([
+    //Route Testimoni
+    Route::resource('/dashboard/testimoni', TestiController::class)->except([
         'create', 'edit'
     ]);
     Route::post('/dashboard/testi/import','App\Http\Controllers\TestiController@import');

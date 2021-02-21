@@ -23,16 +23,16 @@ class TestiController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $testi = Testi::where('nama_testi', 'LIKE', "%{$search}%")->with('user')->simplePaginate(5);
+            $testi = Testi::where('nama_testi', 'LIKE', "%{$search}%")->with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }else{            
-            $testi = Testi::with('user')->simplePaginate(5);
+            $testi = Testi::with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }
 
         $count = $testi->firstItem();
 
-        return view('testi.index', compact('testi', 'count'));
+        return view('testimoni.index', compact('testi', 'count'));
     }
 
     /**
@@ -56,19 +56,17 @@ class TestiController extends Controller
         $request->validate([
             'nama_testi'=>'required|string',
             'isi_testi'=>'required',
+            'jurusan_testi'=>'required|string',
+            'universitas_testi'=>'required',
             'pekerjaan_testi'=>'nullable|string',
-            'jurusan_testi'=>'nullable|string',
-            'fakultas_testi'=>'nullable|string',
-            'universitas_testi'=>'nullable|string',
             'foto_testi'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);
         
         $nama = $request->nama_testi;
         $isi = $request->isi_testi;
-        $pekerjaan = $request->pekerjaan_testi;
         $jurusan = $request->jurusan_testi;
-        $fakultas = $request->fakultas_testi;
         $universitas = $request->universitas_testi;
+        $pekerjaan = $request->pekerjaan_testi;
         $foto = $request->file('foto_testi');
         $nama_foto = time().'.'.$foto->extension();
         $foto->move(public_path('images\testimoni'), $nama_foto);
@@ -76,15 +74,14 @@ class TestiController extends Controller
         $testi = new Testi;
         $testi->nama_testi = $nama;        
         $testi->isi_testi = $isi;
-        $testi->pekerjaan_testi = $pekerjaan;
-        $testi->jurusan_testi = $jurusan;        
-        $testi->fakultas_testi = $fakultas;
+        $testi->jurusan_testi = $jurusan;
         $testi->universitas_testi = $universitas;
+        $testi->pekerjaan_testi = $pekerjaan;
         $testi->penulis_testi = \Auth::user()->id;
         $testi->foto_testi = $nama_foto;
         $testi->save();        
 
-        return redirect()->route('testi.index')
+        return redirect()->route('testimoni.index')
             ->with('success', 'Testimoni Berhasil di Tambahkan !');
     }
 
@@ -99,7 +96,7 @@ class TestiController extends Controller
         $testi = Testi::with('user')->find($id);
         $user = User::all();
 
-        return view('testi.show', compact('testi', 'user'));
+        return view('testimoni.show', compact('testi', 'user'));
     }
 
     /**
@@ -125,33 +122,37 @@ class TestiController extends Controller
         $request->validate([
             'nama_testi'=>'required|string',
             'isi_testi'=>'required',
+            'jurusan_testi'=>'required|string',
+            'universitas_testi'=>'required',
             'pekerjaan_testi'=>'nullable|string',
-            'jurusan_testi'=>'nullable|string',
-            'fakultas_testi'=>'nullable|string',
-            'universitas_testi'=>'nullable|string',
             'foto_testi'=>'image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);
 
         if($request->file('foto_testi')==""){
 
-            $testi = new Testi;
+            $testi = Testi::find($id);            
+            $testi->nama_testi = $request->nama_testi;
+            $testi->isi_testi = $request->isi_testi;
+            $testi->jurusan_testi = $request->jurusan_testi;
+            $testi->universitas_testi = $request->universitas_testi;
+            $testi->pekerjaan_testi = $request->pekerjaan_testi;
             $testi->penulis_testi=\Auth::user()->id;
-            Testi::find($id)->update($request->all());
+            $testi->save();
 
         }else{
 
             $foto = $request->file('foto_testi');
             $nama_foto = time().'.'.$foto->extension();
-            $foto->move(public_path('images\testimoni'), $nama_foto);
+            $foto->move(public_path('images/testimoni'), $nama_foto);
 
             $testi = Testi::find($id);
-            
+            unlink(public_path('images/testimoni').'/'.$artikel->foto_testi); //Bisa dihapus kalo data foto lawas gamau ilang
+
             $testi->nama_testi = $request->nama_testi;
             $testi->isi_testi = $request->isi_testi;
-            $testi->pekerjaan_testi = $request->pekerjaan_testi;
             $testi->jurusan_testi = $request->jurusan_testi;
-            $testi->fakultas_testi = $request->fakultas_testi;
             $testi->universitas_testi = $request->universitas_testi;
+            $testi->pekerjaan_testi = $request->pekerjaan_testi;
             $testi->penulis_testi=\Auth::user()->id;
             $testi->foto_testi = $nama_foto;
             $testi->save();
@@ -174,7 +175,7 @@ class TestiController extends Controller
         // \File::delete('public/images/testimoni'.$testi->foto_testi);
         $testi->delete();
             
-        return redirect()->route('testi.index')
+        return redirect()->route('testimoni.index')
             ->with('success', 'Testimoni Berhasil di Hapus !');
     }
 
@@ -184,7 +185,7 @@ class TestiController extends Controller
 
         Excel::import(new TestiImport, $file);
 
-        return redirect()->route('testi.index')
+        return redirect()->route('testimoni.index')
             ->with('success', 'Testimoni Berhasil di Import !');
     }
 

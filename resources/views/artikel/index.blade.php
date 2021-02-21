@@ -116,31 +116,31 @@
                 
                     {{csrf_field()}}
       
-                    <div class="form-group">
-                        <label for="judul_artikel">Judul Artikel</label>
+                    <div class="form-group mb-2">
+                        <label for="judul_artikel"><strong>Judul Artikel</strong></label>
                         <input type="text" name="judul_artikel" class="form-control @error('judul_artikel') is-invalid @enderror" placeholder="Judul Artikel" required/>
                         @error('judul_artikel')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     
-                    <div class="dropdown">
-                        <label for="id_kategoriartikel">Kategori Artikel</label>
+                    <div class="dropdown mb-2">
+                        <label for="id_kategoriartikel"><strong>Kategori Artikel</strong></label>
                         <select class="form-control" name="id_kategoriartikel" id="id_kategoriartikel">
-                            <option selected disabled>Pilih Kategori Artikel...</option>
+                            <option selected disabled><strong>Pilih Kategori Artikel...</strong></option>
                             @foreach ($kategori as $kategori)
                             <option value="{{$kategori->id_kategoriartikel}}">{{$kategori->nama_kategoriartikel}}</option> 
                             @endforeach                                                   
                         </select>
                     </div>
 
-                    <div class="form-group mb-3">
-                        <label for="foto_artikel">Foto Sampul</label>
+                    <div class="form-group mb-2">
+                        <label for="foto_artikel"><strong>Foto Sampul</strong></label>
                         <input type="file" name="foto_artikel" class="form-control @error('foto_artikel') is-invalid @enderror" onchange="previewFile(this)">
                         @error('foto_artikel')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         <img id="previewImg" alt="foto_artikel" style="max-width:150px;margin-top:20px;">
                     </div> 
 
-                    <div class="form-group">
-                        <label for="isi_artikel">Isi Artikel</label>
+                    <div class="form-group mb-2">
+                        <label for="isi_artikel"><strong>Isi Artikel</strong></label>
                         <textarea name="isi_artikel" class="ckeditor form-control" name="wysiwyg-editor"></textarea>
                     </div>
 

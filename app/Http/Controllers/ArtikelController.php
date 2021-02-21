@@ -23,11 +23,11 @@ class ArtikelController extends Controller
     {
         $search = request()->query('search');
 
-        if($search){
-            $artikel= Artikel::where('judul_artikel', 'LIKE', "%{$search}%")->with('user', 'kategori')->simplePaginate(5);
-
+        if($search = ""){
+            $artikel = Artikel::with('user', 'kategori')->orderBy('created_at', 'DESC')->simplePaginate(5);
+            
         }else{            
-            $artikel = Artikel::with('user', 'kategori')->simplePaginate(5);
+            $artikel= Artikel::where('judul_artikel', 'LIKE', "%{$search}%")->with('user', 'kategori')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }
         
@@ -131,8 +131,7 @@ class ArtikelController extends Controller
 
         if($request->file('foto_artikel')==""){            
 
-            $artikel = Artikel::find($id);
-                       
+            $artikel = Artikel::find($id);                       
             $artikel->judul_artikel = $request->judul_artikel;        
             $artikel->isi_artikel = $request->isi_artikel;
             $artikel->id_kategoriartikel = $request->id_kategoriartikel;

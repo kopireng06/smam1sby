@@ -19,10 +19,10 @@ class PengumumanController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $pengumuman = Pengumuman::where('judul_pengumuman', 'LIKE', "%{$search}%")->with('user')->simplePaginate(5);
+            $pengumuman = Pengumuman::where('judul_pengumuman', 'LIKE', "%{$search}%")->with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }else{            
-            $pengumuman = Pengumuman::with('user')->simplePaginate(5);
+            $pengumuman = Pengumuman::with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }
 

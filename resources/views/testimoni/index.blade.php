@@ -3,6 +3,7 @@
     <title>Dashboard</title>
 @endsection
 @section('konten')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 <div class="main">
     <div class="main-content">
         <div class="container-fluid mb-3 mt-3">
@@ -22,14 +23,14 @@
                                 </button>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <form action="{{ route('testi.index') }}" method="GET" role="search">
+                                <form action="{{ route('testimoni.index') }}" method="GET" role="search">
                                     {{csrf_field()}}
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="search" placeholder="Cari Nama" value="{{ request()->query('search') }}">
                                         <span class="input-group-btn">
                                             <button class="btn btn-primary float-right" type="submit">Search</button>
                                         </span>
-                                        <a href="{{ route('testi.index') }}">
+                                        <a href="{{ route('testimoni.index') }}">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-danger px-3"><i class="fas fa-users" aria-hidden="true"></i>Refresh</button>
                                             </span>
@@ -71,8 +72,8 @@
                                             <td>{{ Str::limit($testi1->nama_testi, 40) }}</td>
                                             <td>{!! Str::limit($testi1->isi_testi, 55) !!}</td>
                                             <td>                                       
-                                            <form action="{{ route('testi.destroy',$testi1->id_testi) }}" method="POST">
-                                                <a class="btn btn-warning" href="{{ route('testi.show',$testi1->id_testi) }}" >Preview</a>
+                                            <form action="{{ route('testimoni.destroy',$testi1->id_testi) }}" method="POST">
+                                                <a class="btn btn-warning" href="{{ route('testimoni.show',$testi1->id_testi) }}" >Preview</a>
                             
                                                 {{csrf_field()}}
                                                 @method('DELETE')
@@ -106,26 +107,44 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Testimoni</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('testi.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('testimoni.store') }}" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 
                     {{csrf_field()}}
       
-                    <div class="form-group">
-                        <label for="nama_testi">Nama Tokoh</label>
-                        <input type="text" name="nama_testi" class="form-control @error('nama_testi') is-invalid @enderror" placeholder="Nama Tokoh" required/>
+                    <div class="form-group mb-2">
+                        <label for="nama_testi"><strong>Nama</strong></label>
+                        <input type="text" name="nama_testi" class="form-control @error('nama_testi') is-invalid @enderror" placeholder="Nama" required/>
                         @error('nama_testi')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
-                    <div class="form-group">
-                        <label for="foto_testi">Foto Sampul</label>
+                    <div class="form-group mb-2">
+                        <label for="jurusan_testi"><strong>Jurusan</strong></label>
+                        <input type="text" name="jurusan_testi" class="form-control @error('jurusan_testi') is-invalid @enderror" placeholder="Jurusan" required/>
+                        @error('jurusan_testi')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="universitas_testi"><strong>Universitas</strong></label>
+                        <input type="text" name="universitas_testi" class="form-control @error('universitas_testi') is-invalid @enderror" placeholder="Universitas" required/>
+                        @error('universitas_testi')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="pekerjaan_testi"><strong>Pekerjaan</strong></label>
+                        <input type="text" name="pekerjaan_testi" class="form-control @error('pekerjaan_testi') is-invalid @enderror" placeholder="Pekerjaan"/>
+                        @error('pekerjaan_testi')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="foto_testi"><strong>Foto Sampul</strong></label>
                         <input type="file" name="foto_testi" class="form-control @error('foto_testi') is-invalid @enderror" onchange="previewFile(this)">
                         @error('foto_testi')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         <img id="previewImg" alt="foto_testi" style="max-width:150px;margin-top:20px;">
                     </div>
-
-                    <div class="form-group">
-                        <label for="isi_testi">Isi Testimoni</label>
+                    
+                    <div class="form-group mb-2">
+                        <label for="isi_testi"><strong>Isi Testimoni</strong></label>
                         <textarea name="isi_testi" class="ckeditor form-control" name="wysiwyg-editor"></textarea>
                     </div>
 
@@ -151,8 +170,8 @@
                 
                     {{csrf_field()}}
       
-                    <div class="form-group">
-                        <label for="file">Data Testimoni</label>
+                    <div class="form-group mb-2">
+                        <label for="file"><strong>Data Testimoni</strong></label>
                         <input type="file" name="file" class="form-control"/>
                     </div>
                     <a href="https://drive.google.com/file/d/1AzWCoz1mwNtQ06GZg6YKPbSuR4B3Ll8f/view?usp=sharing" download>Download Format</a>
@@ -165,5 +184,7 @@
         </div>
     </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 @endsection

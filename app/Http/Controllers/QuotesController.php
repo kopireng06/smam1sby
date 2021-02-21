@@ -19,10 +19,10 @@ class QuotesController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $quote = Quote::where('nama_quote', 'LIKE', "%{$search}%")->with('user')->simplePaginate(5);
+            $quote = Quote::where('nama_quote', 'LIKE', "%{$search}%")->with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }else{            
-            $quote = Quote::with('user')->simplePaginate(5);
+            $quote = Quote::with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }
 
