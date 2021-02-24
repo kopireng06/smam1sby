@@ -9,17 +9,16 @@ class Testi extends Model
 {
     use HasFactory;
 
-    protected $table = 'testi';
+    protected $table = 'testimoni';
 
     protected $primaryKey = 'id_testi';
 
     protected $fillable = [
         'nama_testi',
         'isi_testi',
-        'pekerjaan_testi',
-        'jurusan_testi',
-        'fakultas_testi',        
+        'jurusan_testi',        
         'universitas_testi',
+        'pekerjaan_testi',
         'foto_testi',
         'penulis_testi',
     ];

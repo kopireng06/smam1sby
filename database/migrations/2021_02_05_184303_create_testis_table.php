@@ -13,14 +13,13 @@ class CreateTestisTable extends Migration
      */
     public function up()
     {
-        Schema::create('testi', function (Blueprint $table) {
+        Schema::create('testimoni', function (Blueprint $table) {
             $table->increments('id_testi');
             $table->string('nama_testi');
             $table->text('isi_testi');
+            $table->string('jurusan_testi');
+            $table->string('universitas_testi');
             $table->string('pekerjaan_testi')->nullable();
-            $table->string('jurusan_testi')->nullable();
-            $table->string('fakultas_testi')->nullable();
-            $table->string('universitas_testi')->nullable();
             $table->string('foto_testi')->nullable();
             $table->integer('penulis_testi')->unsigned();
             $table->foreign('penulis_testi')->references('id')->on('users')            

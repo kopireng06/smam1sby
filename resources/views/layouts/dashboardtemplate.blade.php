@@ -47,7 +47,7 @@
                 <a href="/prestasi" class="menu arialrounded-mt-bold my-1 d-block">
                     Prestasi
                 </a>
-                <a href="/caraousel" class="menu arialrounded-mt-bold my-1 d-block">
+                <a href="/carousel" class="menu arialrounded-mt-bold my-1 d-block">
                     Caraousel
                 </a>
                 <a href="/web-terkait" class="menu arialrounded-mt-bold my-1 d-block">
@@ -65,7 +65,7 @@
                 <a href="/dashboard/quotes" class="menu arialrounded-mt-bold my-1 d-block">
                     Quote
                 </a>
-                <a href="/dashboard/testi" class="menu arialrounded-mt-bold my-1 d-block">
+                <a href="/dashboard/testimoni" class="menu arialrounded-mt-bold my-1 d-block">
                     Testimoni
                 </a>
             </div>

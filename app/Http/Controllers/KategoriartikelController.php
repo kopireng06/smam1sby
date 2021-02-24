@@ -15,8 +15,21 @@ class KategoriartikelController extends Controller
      */
     public function index()
     {
+
         $kategori = Kategori_artikel::all();
         return view ('kategori_artikel.index', compact('kategori'));
+        
+        // $search = request()->query('search');
+
+        // if($search){
+        //     $kategori = Kategori_artikel::where('nama_kategoriartikel', 'LIKE', "%{$search}%")->get();
+
+        // }else{            
+        //     $kategori = Kategori_artikel::all();
+
+        // }
+
+        // return view ('kategori_artikel.index', compact('kategori'));
     }
 
     /**

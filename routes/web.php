@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\WebTerkaitController;
+
 use App\Http\Controllers\KategoriartikelController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\PengumumanController;
@@ -60,13 +63,17 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/kelompok-konten/{id_kelompok_konten}/update','App\Http\Controllers\KelKontenController@update');
     Route::get('/kelompok-konten/{id_kelompok_konten}/delete','App\Http\Controllers\KelKontenController@delete');
 
-    Route::get('/web-terkait','App\Http\Controllers\WebTerkaitController@index');
-    Route::post('/web-terkait/create','App\Http\Controllers\WebTerkaitController@create');
-    Route::get('/web-terkait/{id_web}/edit','App\Http\Controllers\WebTerkaitController@edit');
-    Route::post('/web-terkait/{id_web}/update','App\Http\Controllers\WebTerkaitController@update');
-    Route::get('/web-terkait/{id_web}/delete','App\Http\Controllers\WebTerkaitController@delete');
+    Route::get('/web-terkait',[WebTerkaitController::class,'index']);
+    Route::post('/web-terkait/create',[WebTerkaitController::class,'create']);
+    Route::get('/web-terkait/{id_web}/edit',[WebTerkaitController::class,'edit']);
+    Route::post('/web-terkait/{id_web}/update',[WebTerkaitController::class,'update']);
+    Route::get('/web-terkait/{id_web}/delete',[WebTerkaitController::class,'delete']);
 
-    Route::get('/caraousel','App\Http\Controllers\CaraouselController@index');
+    Route::get('/carousel',[CarouselController::class,'index']);
+    Route::post('/carousel/create',[CarouselController::class,'store'])->name("carousel.store");
+    Route::get('/carousel/{id_car}/edit',[CarouselController::class,'edit']);
+    Route::post('/carousel/{id_car}/update',[CarouselController::class,'update'])->name("carousel.update");
+    Route::get('/carousel/{id_car}/delete',[CarouselController::class,'delete']);
 
     //Route Kategori Artikel
     Route::resource('/dashboard/kategori_artikel', KategoriartikelController::class)->except([
@@ -75,7 +82,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Route Artikel
     Route::resource('/dashboard/artikel', ArtikelController::class)->except([
-        'create'
+        'create', 'edit'
     ]);
 
      /* Article Image */
@@ -99,8 +106,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/dashboard/quotes/delete/image', [QuotesController::class, 'deleteImage'])->name('quotes-delete-image');
 
 
-    //Route Testi
-    Route::resource('/dashboard/testi', TestiController::class)->except([
+    //Route Testimoni
+    Route::resource('/dashboard/testimoni', TestiController::class)->except([
         'create', 'edit'
     ]);
     Route::post('/dashboard/testi/import','App\Http\Controllers\TestiController@import');
