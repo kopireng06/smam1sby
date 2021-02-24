@@ -8,7 +8,7 @@ const Keunggulan = () => {
                     SMAM 1 MUHAMMADIYAH SURABAYA
                 </div>
                 <div className="text-center mb-8 text-xl italic text-smam1">"Excellent With Morality"</div>
-                <div className="w-full xl:absolute xl:absolute-x-center px-5 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-center place-items-center gap-4">
+                <div className="lg:container  xl:absolute xl:absolute-x-center px-5 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-center place-items-center gap-4">
                     <div className="h-56 w-11/12 bg-smam1 rounded shadow">
                         <div className="text-smam1 text-xl text-center font-bold py-3 bg-white rounded-t">GURU KOMPETEN</div>
                         <div className="text-center text-white text-sm p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. 

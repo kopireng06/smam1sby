@@ -2101,23 +2101,172 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
-var BackgroundNavbar = function BackgroundNavbar() {
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var BackgroundNavbar = function BackgroundNavbar(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+      _useState2 = _slicedToArray(_useState, 2),
+      navBackground = _useState2[0],
+      setNavBackground = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setNavBackground(function () {
+      if (getMainPath(props.location.pathname) == 'kumpulan-profil') {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "/",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "HOME"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-md md:text-xl text-white font-bold mb-2 mx-2",
+            children: "/"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "PROFIL"
+          })]
+        });
+      }
+
+      if (getMainPath(props.location.pathname) == 'berita') {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "/",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "HOME"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-md md:text-xl text-white font-bold mb-2 mx-2",
+            children: "/"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "BERITA"
+          })]
+        });
+      }
+
+      if (getMainPath(props.location.pathname) == 'kumpulan-prestasi') {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "/",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "HOME"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-md md:text-xl text-white font-bold mb-2 mx-2",
+            children: "/"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "PRESTASI"
+          })]
+        });
+      }
+
+      if (getMainPath(props.location.pathname) == 'kumpulan-alumni') {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "/",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "HOME"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-md md:text-xl text-white font-bold mb-2 mx-2",
+            children: "/"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "ALUMNI"
+          })]
+        });
+      }
+
+      if (getMainPath(props.location.pathname) == 'kumpulan-ekstrakurikuler') {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "/",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "HOME"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-md md:text-xl text-white font-bold mb-2 mx-2",
+            children: "/"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "EKSTRAKURIKULER"
+          })]
+        });
+      }
+
+      if (getMainPath(props.location.pathname) == 'kumpulan-fasilitas') {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "/",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "HOME"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-md md:text-xl text-white font-bold mb-2 mx-2",
+            children: "/"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "FASILITAS"
+          })]
+        });
+      }
+
+      if (getMainPath(props.location.pathname) == 'pengumuman') {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "/",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "HOME"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-md md:text-xl text-white font-bold mb-2 mx-2",
+            children: "/"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            to: "#",
+            className: "text-md md:text-xl text-white font-bold mb-2",
+            children: "PENGUMUMAN"
+          })]
+        });
+      }
+    });
+  }, [props]);
+
+  var getMainPath = function getMainPath(str) {
+    var regex = /^\/([^?\/]+)/;
+    return str.match(regex)[1];
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: "w-100 bg-smam1",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "lg:container px-5 mx-auto h-40",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "text-xl text-white font-bold relative top-28",
-        children: "HOME / PENGUMUMAN"
-      })
+      className: "lg:container px-5 mx-auto h-32 md:h-40 flex items-end",
+      children: navBackground
     })
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BackgroundNavbar);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router__WEBPACK_IMPORTED_MODULE_3__.withRouter)(BackgroundNavbar));
 
 /***/ }),
 
@@ -2278,23 +2427,44 @@ var ContainerPengumuman = function ContainerPengumuman() {
       dataPost = _useState4[0],
       setDataPost = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([1, 2, 3, 4, 5]),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(),
       _useState6 = _slicedToArray(_useState5, 2),
       hasilSearch = _useState6[0],
       setHasilSearch = _useState6[1];
 
-  var handleSubmitSearch = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(event) {
+  var handleSubmitSearch = function handleSubmitSearch(event) {
+    renderHasilSearch().then(function (done) {
+      setHasilSearch(done);
+    });
+    setDataPost(dataSearch);
+    setHasilSearch( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SkeletonPengumuman__WEBPACK_IMPORTED_MODULE_5__.default, {}));
+    event.preventDefault();
+  };
+
+  var handleChangeSearch = function handleChangeSearch(event) {
+    setDataSearch(event.target.value);
+  };
+
+  var renderHasilSearch = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
+      var jsonSearch;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              x().then(function (done) {
-                setHasilSearch(done);
+              jsonSearch = [1, 2, 3, 4, 5, 6];
+              _context.next = 3;
+              return new Promise(function (resolve) {
+                setTimeout(function () {
+                  jsonSearch = jsonSearch.map(function (i, index) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Pengumuman__WEBPACK_IMPORTED_MODULE_3__.default, {}, index);
+                  });
+                  resolve(0);
+                }, 1000);
               });
-              setDataPost(dataSearch);
-              setHasilSearch( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SkeletonPengumuman__WEBPACK_IMPORTED_MODULE_5__.default, {}));
-              event.preventDefault();
+
+            case 3:
+              return _context.abrupt("return", jsonSearch);
 
             case 4:
             case "end":
@@ -2304,23 +2474,18 @@ var ContainerPengumuman = function ContainerPengumuman() {
       }, _callee);
     }));
 
-    return function handleSubmitSearch(_x) {
+    return function renderHasilSearch() {
       return _ref.apply(this, arguments);
     };
   }();
 
-  var handleChangeSearch = function handleChangeSearch(event) {
-    setDataSearch(event.target.value);
+  var renderPengumuman = function renderPengumuman() {
+    if (dataPost != '') {
+      return hasilSearch;
+    } else {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_InfinitePengumuman__WEBPACK_IMPORTED_MODULE_4__.default, {});
+    }
   };
-
-  function x() {
-    var promise = new Promise(function (resolve, reject) {
-      setTimeout(function () {
-        resolve( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Pengumuman__WEBPACK_IMPORTED_MODULE_3__.default, {}));
-      }, 1000);
-    });
-    return promise;
-  }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "lg:container mx-auto",
@@ -2346,13 +2511,7 @@ var ContainerPengumuman = function ContainerPengumuman() {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "w-11/12 md:w-7/12 mx-auto bg-smam1 shadow rounded p-2 flex flex-col mb-5",
-      children: function () {
-        if (dataPost != '') {
-          return hasilSearch;
-        } else {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_InfinitePengumuman__WEBPACK_IMPORTED_MODULE_4__.default, {});
-        }
-      }()
+      children: renderPengumuman()
     })]
   });
 };
@@ -2398,7 +2557,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var InfinitePengumuman = function InfinitePengumuman() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(Array.from({
-    length: 3
+    length: 0
   })),
       _useState2 = _slicedToArray(_useState, 2),
       dataPengumuman = _useState2[0],
@@ -2409,15 +2568,19 @@ var InfinitePengumuman = function InfinitePengumuman() {
       hasMoreItems = _useState4[0],
       setHasMoreItems = _useState4[1];
 
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    getDataPengumuman();
+  }, []);
+
   var getDataPengumuman = function getDataPengumuman() {
-    if (dataPengumuman.length >= 10) {
+    if (dataPengumuman.length >= 30) {
       setHasMoreItems(false);
       return;
     }
 
     setTimeout(function () {
       setDataPengumuman(dataPengumuman.concat(Array.from({
-        length: 3
+        length: 10
       })));
     }, 1000);
   };
@@ -2458,7 +2621,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Pengumuman = function Pengumuman() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-    to: "#",
+    to: "/pengumuman/1",
     className: "cursor-pointer bg-white transition-all duration-200 hover:bg-gray-50 shadow rounded flex flex-col justify-between p-3 h-28 my-1",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "text-smam1 text-md md:text-lg font-medium",
@@ -2566,23 +2729,44 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 var SkeletonPengumuman = function SkeletonPengumuman() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_2__.SkeletonTheme, {
-    color: "#FFFFFF",
-    highlightColor: "#D8D8D8",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "cursor-pointer transition-all duration-200 bg-gray-100 shadow rounded flex flex-col justify-between p-3 h-28 my-1",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "text-smam1 text-md md:text-lg font-medium",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_2__.default, {
-          count: 2
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "self-end w-20",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_2__.default, {})
-      })]
-    })
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([1, 2, 3]),
+      _useState2 = _slicedToArray(_useState, 2),
+      length = _useState2[0],
+      setLength = _useState2[1];
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: function () {
+      return length.map(function (i) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "cursor-pointer transition-all duration-200 bg-white shadow rounded flex flex-col justify-between p-3 h-28 my-1",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-smam1 text-md md:text-lg font-medium",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_2__.default, {
+              count: 2
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "self-end w-20",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_2__.default, {})
+          })]
+        }, i);
+      });
+    }()
   });
 };
 

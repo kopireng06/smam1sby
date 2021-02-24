@@ -2592,7 +2592,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/Base/Sidebar.js");
 
 
 
@@ -2611,8 +2612,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Navbar = function Navbar(props) {
-  //const[navbarStat,setNavbarStat] = useState('transparent');
+
+var Navbar = function Navbar() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       navbarColor = _useState2[0],
@@ -2633,6 +2634,16 @@ var Navbar = function Navbar(props) {
       shadowNavbar = _useState8[0],
       setShadowNavbar = _useState8[1];
 
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(window.location.origin + '/'),
+      _useState10 = _slicedToArray(_useState9, 2),
+      windowOrigin = _useState10[0],
+      setWindowOrigin = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState12 = _slicedToArray(_useState11, 2),
+      sidebarStat = _useState12[0],
+      setSidebarStat = _useState12[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     window.onscroll = function () {
       if (window.pageYOffset > 30) {
@@ -2648,18 +2659,35 @@ var Navbar = function Navbar(props) {
       }
     };
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+
+  var changeSidebarStat = function changeSidebarStat() {
+    if (sidebarStat == 0) {
+      setSidebarStat(1);
+    } else {
+      setSidebarStat(0);
+    }
+  };
+
+  var deliverPropsToSidebar = function deliverPropsToSidebar() {
+    if (sidebarStat == 0) {
+      return '-15rem';
+    } else {
+      return '0';
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "w-full fixed-x-center z-20" + navbarColor + shadowNavbar,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "lg:container mx-auto h-12 md:h-20 py-5 px-5 flex items-center justify-between transition-all duratiion-150",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: "image/logo-sma-2.png",
+          src: windowOrigin + "image/logo-sma-2.png",
           className: "h-6 md:h-10",
           alt: ""
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "flex items-center",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
             to: "/",
             className: "hidden lg:block font-bold mx-2" + linkColor,
             children: "HOME"
@@ -2670,59 +2698,64 @@ var Navbar = function Navbar(props) {
               children: [" ", '>', " "]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "sub-link absolute rounded shadow-md w-40 p-3 bg-white flex flex-col",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                to: "#",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+                to: "/kumpulan-profil/SAMBUTAN KEPSEK",
                 className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
                 children: "SAMBUTAN KEPSEK"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                to: "#",
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+                to: "/kumpulan-profil/SMAMSA",
                 className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
                 children: "SMAMSA"
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-            to: "#",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/berita",
             className: "hidden lg:block font-bold mx-2" + linkColor,
             children: "BERITA"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-            to: "#",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-prestasi",
             className: "hidden lg:block font-bold mx-2" + linkColor,
             children: "PRESTASI"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-            to: "#",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-alumni/2018",
             className: "hidden lg:block font-bold mx-2" + linkColor,
             children: "ALUMNI"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-            to: "#",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-ekstrakurikuler/IPM",
+            className: "hidden lg:block font-bold mx-2" + linkColor,
+            children: "EKSTRAKURIKULER"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-fasilitas/AULA",
             className: "hidden lg:block font-bold mx-2" + linkColor,
             children: "FASILITAS"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            to: "#",
             className: "cursor-pointer multi-link hidden lg:block font-bold mx-2" + linkColor,
             children: ["LINK TERKAIT ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
               className: "inline-block relative text-xs transform rotate-90" + linkColor,
               children: [" ", '>', " "]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "sub-link absolute rounded shadow-md w-40 p-3 bg-white flex flex-col",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
                 to: "#",
                 className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
                 children: "PPDB"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
                 to: "#",
                 className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
                 children: "E-LEARNING"
               })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-            src: "image/hamburger.png",
+            src: windowOrigin + "image/hamburger.png",
             className: "block lg:hidden ml-8 h-6 md:h-8 cursor-pointer" + hamburgerColor,
             alt: "",
-            onClick: props.changeSidebarStat
+            onClick: changeSidebarStat
           })]
         })]
       })
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_2__.default, {
+      sidebarStat: deliverPropsToSidebar()
+    })]
   });
 };
 
@@ -2745,24 +2778,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _loadable_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @loadable/component */ "./node_modules/@loadable/component/dist/loadable.esm.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Base/Navbar.js");
-/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/Base/Sidebar.js");
-
-
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -2776,42 +2794,51 @@ var HomePage = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__.default)(func
 var PengumumanPage = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__.default)(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_Pengumuman_PengumumanPage_js").then(__webpack_require__.bind(__webpack_require__, /*! ../Pengumuman/PengumumanPage */ "./resources/js/components/Pengumuman/PengumumanPage.js"));
 });
+var BeritaPage = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__.default)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Berita_BeritaPage_js").then(__webpack_require__.bind(__webpack_require__, /*! ../Berita/BeritaPage */ "./resources/js/components/Berita/BeritaPage.js"));
+});
+var PrestasiPage = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__.default)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Prestasi_PrestasiPage_js").then(__webpack_require__.bind(__webpack_require__, /*! ../Prestasi/PrestasiPage */ "./resources/js/components/Prestasi/PrestasiPage.js"));
+});
+var ArtikelPage = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__.default)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Artikel_ArtikelPage_js").then(__webpack_require__.bind(__webpack_require__, /*! ../Artikel/ArtikelPage */ "./resources/js/components/Artikel/ArtikelPage.js"));
+});
+var BacaBerita = (0,_loadable_component__WEBPACK_IMPORTED_MODULE_3__.default)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Base_BacaBerita_js").then(__webpack_require__.bind(__webpack_require__, /*! ../Base/BacaBerita */ "./resources/js/components/Base/BacaBerita.js"));
+});
 
 var Root = function Root() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
-      _useState2 = _slicedToArray(_useState, 2),
-      sidebarStat = _useState2[0],
-      setSidebarStat = _useState2[1];
-
-  var changeSidebarStat = function changeSidebarStat() {
-    if (sidebarStat == 0) {
-      setSidebarStat(1);
-    } else {
-      setSidebarStat(0);
-    }
-  };
-
-  var deliverPropsToSidebar = function deliverPropsToSidebar() {
-    if (sidebarStat == 0) {
-      return '-15rem';
-    } else {
-      return '0';
-    }
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.BrowserRouter, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.default, {
-      changeSidebarStat: changeSidebarStat
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_5__.default, {
-      sidebarStat: deliverPropsToSidebar()
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
-      exact: true,
-      path: "/",
-      component: HomePage
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
-      exact: true,
-      path: "/pengumuman",
-      component: PengumumanPage
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.BrowserRouter, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Switch, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        exact: true,
+        path: "/",
+        component: HomePage
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        exact: true,
+        path: "/pengumuman",
+        component: PengumumanPage
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        exact: true,
+        path: "/berita",
+        component: BeritaPage
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        exact: true,
+        path: "/berita/:judul",
+        component: BacaBerita
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        exact: true,
+        path: "/pengumuman/:judul",
+        component: BacaBerita
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        exact: true,
+        path: "/kumpulan-prestasi",
+        component: PrestasiPage
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        exact: true,
+        path: "/:centerPath/:lastPath",
+        component: ArtikelPage
+      })]
     })]
   });
 };
@@ -2874,7 +2901,7 @@ var Sidebar = function Sidebar(props) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setToggleLeft(props.sidebarStat);
-  });
+  }, [props]);
 
   var handleClickProfil = function handleClickProfil() {
     if (heightSubProfil == ' h-0') {
@@ -2901,41 +2928,43 @@ var Sidebar = function Sidebar(props) {
       to: "/",
       className: "font-bold text-white text-sm my-1",
       children: "HOME"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
-      className: "font-bold text-white text-sm my-1",
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "font-bold cursor-pointer text-white text-sm my-1",
       onClick: handleClickProfil,
       children: ["PROFIL ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
         children: [" ", '>', " "]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
+      to: "/kumpulan-profil/SAMBUTAN KEPSEK",
       className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
       children: "SAMBUTAN KEPSEK"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
+      to: "/kumpulan-profil/SMAMSA",
       className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
       children: "SMAMSA"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
+      to: "/berita",
       className: "font-bold text-white text-sm my-1",
       children: "BERITA"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
+      to: "/kumpulan-prestasi",
       className: "font-bold text-white text-sm my-1",
       children: "PRESTASI"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
+      to: "/kumpulan-alumni/2018",
       className: "font-bold text-white text-sm my-1",
       children: "ALUMNI"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
+      to: "/kumpulan-ekstrakurikuler/IPM",
+      className: "font-bold text-white text-sm my-1",
+      children: "EKSTRAKURIKULER"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      to: "/kumpulan-fasilitas/AULA",
       className: "font-bold text-white text-sm my-1",
       children: "FASILITAS"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
-      className: "font-bold text-white text-sm my-1",
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "font-bold cursor-pointer text-white text-sm my-1",
       onClick: handleClickLinkTerkait,
       children: ["LINK TERKAIT ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
@@ -71719,7 +71748,7 @@ function valueEqual(a, b) {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Home_HomePage_js":1,"resources_js_components_Pengumuman_PengumumanPage_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Home_HomePage_js":1,"resources_js_components_Pengumuman_PengumumanPage_js":1,"resources_js_components_Berita_BeritaPage_js":1,"resources_js_components_Prestasi_PrestasiPage_js":1,"resources_js_components_Artikel_ArtikelPage_js":1,"resources_js_components_Base_BacaBerita_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
