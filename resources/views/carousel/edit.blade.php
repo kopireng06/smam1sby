@@ -23,7 +23,7 @@
                                     <div class="form-group">
                                         <label for="file">Choose File Image</label>
                                         <input type="file" name="foto_car" class="form-control" onchange="previewFile(this)" value="{{$carousel->foto_car}}"/>
-                                        <img id="previewImg" alt="Image" src="{{asset('images')}}/{{$carousel->foto_car}}"style="max-width:130px;margin-top:20px;"/>
+                                        <img id="previewImg" alt="Image" src="{{$carousel->foto_car}}"style="max-width:130px;margin-top:20px;"/>
                                     </div>
 
                                     <div class="form-group">
