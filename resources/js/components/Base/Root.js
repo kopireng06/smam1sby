@@ -1,40 +1,29 @@
-import React ,{useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import loadable from '@loadable/component';
-import {BrowserRouter as Router,Route} from "react-router-dom";
+import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
 import Navbar from './Navbar'
-import Sidebar from './Sidebar'
 
 const HomePage = loadable(() => import('../Home/HomePage'));
 const PengumumanPage = loadable(() => import('../Pengumuman/PengumumanPage'));
+const BeritaPage = loadable(() => import('../Berita/BeritaPage'));
+const PrestasiPage = loadable(() => import('../Prestasi/PrestasiPage'));
+const ArtikelPage =  loadable(() => import('../Artikel/ArtikelPage'));
+const BacaBerita = loadable(() => import('../Base/BacaBerita'));
 
 const Root = () => {
-    const [sidebarStat, setSidebarStat] = useState(0);
-    
-    const changeSidebarStat = () => {
-        if(sidebarStat==0){
-            setSidebarStat(1);
-        }
-        else{
-            setSidebarStat(0);
-        }
-    }
-
-    const deliverPropsToSidebar = () => {
-        if(sidebarStat==0){
-            return '-15rem';
-        }
-        else{
-            return '0';
-        }
-    }
-
     return(
         <Router>
-            <Navbar changeSidebarStat={changeSidebarStat}/>
-            <Sidebar sidebarStat={deliverPropsToSidebar()}/>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/pengumuman" component={PengumumanPage} />
+            <Navbar/>
+            <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/pengumuman" component={PengumumanPage} />
+                <Route exact path="/berita" component={BeritaPage} />
+                <Route exact path="/berita/:judul" component={BacaBerita} />
+                <Route exact path="/pengumuman/:judul" component={BacaBerita} />
+                <Route exact path="/kumpulan-prestasi" component={PrestasiPage} />
+                <Route exact path="/:centerPath/:lastPath" component={ArtikelPage}/>
+            </Switch>
         </Router> 
     );
 }

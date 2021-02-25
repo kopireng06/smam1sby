@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ContainerNews from './ContainerNews';
+import ContainerBerita from './ContainerBerita';
 import ContainerPengumuman from './ContainerPengumuman';
 
 const ContainerKabar = () => {
@@ -7,7 +7,7 @@ const ContainerKabar = () => {
     return (
         <div className="lg:container flex flex-col lg:flex-row mx-auto">
             <ContainerPengumuman/>
-            <ContainerNews/>
+            <ContainerBerita/>
         </div>
     );
 }

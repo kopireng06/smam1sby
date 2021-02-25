@@ -103,10 +103,10 @@ var Footer = function Footer() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Home/CardNews.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/Home/CardNews.js ***!
-  \**************************************************/
+/***/ "./resources/js/components/Home/Berita.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/Home/Berita.js ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var CardNews = function CardNews(props) {
+var Berita = function Berita() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "card-news relative w-10/12 h-96 bg-smam1 mx-auto my-3 bg-cover bg-no-repeat bg-center",
     style: {
@@ -144,7 +144,7 @@ var CardNews = function CardNews(props) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "flex-1 mx-2 h-0.5 bg-yellow-400"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-          to: "#",
+          to: "/berita/1",
           className: "bg-yellow-400 px-2 py-1 rounded text-center text-sm",
           children: "BACA"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -158,7 +158,7 @@ var CardNews = function CardNews(props) {
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardNews);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Berita);
 
 /***/ }),
 
@@ -332,6 +332,51 @@ var Carousel = function Carousel() {
 
 /***/ }),
 
+/***/ "./resources/js/components/Home/ContainerBerita.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Home/ContainerBerita.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Berita__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Berita */ "./resources/js/components/Home/Berita.js");
+
+
+
+
+
+
+var ContainerBerita = function ContainerBerita() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "w-full lg:w-8/12",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "text-4xl px-5 my-5 mb-8 text-smam1 font-bold",
+      children: "BERITA"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "grid grid-cols-1 md:grid-cols-2 gap-4",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Berita__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Berita__WEBPACK_IMPORTED_MODULE_2__.default, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "w-full flex justify-end mt-3",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        to: "/berita",
+        className: "text-smam1 text-md mr-5 lg:mr-0",
+        children: "berita lainnya"
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerBerita);
+
+/***/ }),
+
 /***/ "./resources/js/components/Home/ContainerKaPres.js":
 /*!*********************************************************!*\
   !*** ./resources/js/components/Home/ContainerKaPres.js ***!
@@ -380,7 +425,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _ContainerNews__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContainerNews */ "./resources/js/components/Home/ContainerNews.js");
+/* harmony import */ var _ContainerBerita__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContainerBerita */ "./resources/js/components/Home/ContainerBerita.js");
 /* harmony import */ var _ContainerPengumuman__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ContainerPengumuman */ "./resources/js/components/Home/ContainerPengumuman.js");
 
 
@@ -391,56 +436,11 @@ __webpack_require__.r(__webpack_exports__);
 var ContainerKabar = function ContainerKabar() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "lg:container flex flex-col lg:flex-row mx-auto",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ContainerPengumuman__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ContainerNews__WEBPACK_IMPORTED_MODULE_2__.default, {})]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ContainerPengumuman__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ContainerBerita__WEBPACK_IMPORTED_MODULE_2__.default, {})]
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerKabar);
-
-/***/ }),
-
-/***/ "./resources/js/components/Home/ContainerNews.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/Home/ContainerNews.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _CardNews__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CardNews */ "./resources/js/components/Home/CardNews.js");
-
-
-
-
-
-
-var ContainerNews = function ContainerNews() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "w-full lg:w-8/12",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "text-4xl px-5 my-5 mb-8 text-smam1 font-bold",
-      children: "BERITA"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "grid grid-cols-1 md:grid-cols-2 gap-4",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_CardNews__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_CardNews__WEBPACK_IMPORTED_MODULE_2__.default, {})]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "w-full flex justify-end mt-3",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        to: "#",
-        className: "text-smam1 text-md mr-5 lg:mr-0",
-        children: "berita lainnya"
-      })
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerNews);
 
 /***/ }),
 
@@ -567,7 +567,7 @@ var ContainerPrestasi = function ContainerPrestasi() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "max-w-md-2 w-full md:ml-8 absolute bottom-0 flex justify-end h-10",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        to: "#",
+        to: "/kumpulan-prestasi",
         className: "mr-5 md:mr-0  text-smam1 text-md",
         children: "prestasi lainnya"
       })
@@ -743,7 +743,7 @@ var Keunggulan = function Keunggulan() {
         className: "text-center mb-8 text-xl italic text-smam1",
         children: "\"Excellent With Morality\""
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "w-full xl:absolute xl:absolute-x-center px-5 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-center place-items-center gap-4",
+        className: "lg:container  xl:absolute xl:absolute-x-center px-5 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-center place-items-center gap-4",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "h-56 w-11/12 bg-smam1 rounded shadow",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -811,7 +811,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Pengumuman = function Pengumuman() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-    to: "#",
+    to: "/pengumuman/1",
     className: "cursor-pointer bg-white transition-all duration-200 hover:bg-gray-50 shadow rounded flex flex-col justify-between p-3 h-20 my-1",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "text-smam1 font-medium",
@@ -840,6 +840,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
 
 
 
@@ -877,7 +878,7 @@ var Prestasi = function Prestasi(props) {
       setIconDropDown('+');
     }
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
       className: "m-2 mb-0 flex justify-between items-center px-3 h-14 bg-yellow-400",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -980,7 +981,7 @@ var SliderKataAlumni = function SliderKataAlumni() {
     })), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "w-full flex justify-end relative bottom-5",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
-        to: "#",
+        to: "/kumpulan-alumni/2019",
         className: "text-white text-md mr-5",
         children: "alumni lainnya"
       })

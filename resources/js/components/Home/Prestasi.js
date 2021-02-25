@@ -1,4 +1,4 @@
-import React, { Fragment,useEffect,useState } from 'react';
+import React, {useEffect,useState } from 'react';
 
 const Prestasi = (props) => {
 
@@ -17,7 +17,7 @@ const Prestasi = (props) => {
     });
 
     return (  
-        <Fragment>
+        <>
             <div className="m-2 mb-0 flex justify-between items-center px-3 h-14 bg-yellow-400">
                 <div className="font-bold text-smam1 text-sm uppercase">lomba maido wong</div>
                 <div className="text-smam1 cursor-pointer" onClick={()=>props.changePosActive(props.pos)}>{iconDropDown}</div>
@@ -27,7 +27,7 @@ const Prestasi = (props) => {
                 <span className="text-white">Juara : 1</span>
                 <span className="text-white">Tingkat : Nasional</span>
             </div> 
-        </Fragment> 
+        </> 
     );
 }
  
