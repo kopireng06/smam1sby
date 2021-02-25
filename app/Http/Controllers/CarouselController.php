@@ -19,12 +19,12 @@ class CarouselController extends Controller
     {
         $image = $request->file('foto_car');
         $imageName = time().'.'.$image->extension();
-        $image->move(public_path('images'),$imageName);
+        $image->move(public_path('images/carousel'),$imageName);
 
         $judul = $request->judul_car;
         $isi = $request->isi_car;
         $carousel = new Carousel();
-        $carousel->foto_car = "http://127.0.0.1:8000/images/".$imageName;
+        $carousel->foto_car = $imageName;
         $carousel->judul_car = $judul;
         $carousel->isi_car = $isi;
         $carousel->save();
@@ -50,13 +50,15 @@ class CarouselController extends Controller
         }else{
             $image = $request->file('foto_car');
             $imageName = time().'.'.$image->extension();
-            $image->move(public_path('images'),$imageName);
+            $image->move(public_path('images/carousel'),$imageName);
 
             $judul = $request->judul_car;
             $isi = $request->isi_car;
             $carousel = new Carousel();
             $carousel = \App\Models\Carousel::find($request->id_car);
-            $carousel->foto_car = "http://127.0.0.1:8000/images/".$imageName;
+            unlink(public_path('images/carousel/').$carousel->foto_car);
+            
+            $carousel->foto_car = $imageName;
             $carousel->judul_car = $judul;
             $carousel->isi_car = $isi;
             $carousel->save();
