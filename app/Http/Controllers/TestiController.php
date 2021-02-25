@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Testi;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\TestiImport;
-
+use Carbon\Carbon;
 
 class TestiController extends Controller
 {
@@ -17,7 +17,7 @@ class TestiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {       
 
         $search = request()->query('search');
@@ -31,6 +31,8 @@ class TestiController extends Controller
         }
 
         $count = $testi->firstItem();
+
+        Testi::where('created_at', '<', Carbon::now()->subYears(7))->delete(); //Auto delete untuk durasi 7 tahun
 
         return view('testimoni.index', compact('testi', 'count'));
     }
@@ -128,9 +130,10 @@ class TestiController extends Controller
             'foto_testi'=>'image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);
 
-        if($request->file('foto_testi')==""){
+        $testi = Testi::find($id);
 
-            $testi = Testi::find($id);            
+        if($request->file('foto_testi')==""){
+        
             $testi->nama_testi = $request->nama_testi;
             $testi->isi_testi = $request->isi_testi;
             $testi->jurusan_testi = $request->jurusan_testi;
@@ -145,17 +148,30 @@ class TestiController extends Controller
             $nama_foto = time().'.'.$foto->extension();
             $foto->move(public_path('images/testimoni'), $nama_foto);
 
-            $testi = Testi::find($id);
-            unlink(public_path('images/testimoni').'/'.$artikel->foto_testi); //Bisa dihapus kalo data foto lawas gamau ilang
+            if ($testi->foto_testi == ""){        
+                
+                $testi->nama_testi = $request->nama_testi;
+                $testi->isi_testi = $request->isi_testi;
+                $testi->jurusan_testi = $request->jurusan_testi;
+                $testi->universitas_testi = $request->universitas_testi;
+                $testi->pekerjaan_testi = $request->pekerjaan_testi;
+                $testi->penulis_testi=\Auth::user()->id;
+                $testi->foto_testi = $nama_foto;
+                $testi->save();              
 
-            $testi->nama_testi = $request->nama_testi;
-            $testi->isi_testi = $request->isi_testi;
-            $testi->jurusan_testi = $request->jurusan_testi;
-            $testi->universitas_testi = $request->universitas_testi;
-            $testi->pekerjaan_testi = $request->pekerjaan_testi;
-            $testi->penulis_testi=\Auth::user()->id;
-            $testi->foto_testi = $nama_foto;
-            $testi->save();
+            }else{
+
+                unlink(public_path('images/testimoni').'/'.$testi->foto_testi);
+                $testi->nama_testi = $request->nama_testi;
+                $testi->isi_testi = $request->isi_testi;
+                $testi->jurusan_testi = $request->jurusan_testi;
+                $testi->universitas_testi = $request->universitas_testi;
+                $testi->pekerjaan_testi = $request->pekerjaan_testi;
+                $testi->penulis_testi=\Auth::user()->id;
+                $testi->foto_testi = $nama_foto;
+                $testi->save();
+
+            }            
 
         }
 
@@ -181,6 +197,10 @@ class TestiController extends Controller
 
     public function import(Request $request)
     {
+        $this->validate($request, [
+            'file' => 'required'
+        ]);
+
         $file = $request->file('file');
 
         Excel::import(new TestiImport, $file);

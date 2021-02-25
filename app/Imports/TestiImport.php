@@ -21,7 +21,6 @@ class TestiImport implements ToModel,WithHeadingRow
             "isi_testi" => $row["isi_testi"],
             "pekerjaan_testi" => $row["pekerjaan_testi"],
             "jurusan_testi" => $row["jurusan_testi"],
-            "fakultas_testi" => $row["fakultas_testi"],
             "universitas_testi" => $row["universitas_testi"],
             "penulis_testi"=> \Auth::user()->id,
         ]);

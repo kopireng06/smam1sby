@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori_artikel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KategoriartikelController extends Controller
 {
@@ -16,20 +17,21 @@ class KategoriartikelController extends Controller
     public function index()
     {
 
-        $kategori = Kategori_artikel::all();
-        return view ('kategori_artikel.index', compact('kategori'));
-        
         // $search = request()->query('search');
 
         // if($search){
-        //     $kategori = Kategori_artikel::where('nama_kategoriartikel', 'LIKE', "%{$search}%")->get();
+        //     $kategori = Kategori_artikel::where('nama_kategoriartikel', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         // }else{            
-        //     $kategori = Kategori_artikel::all();
+        //     $kategori = Kategori_artikel::orderBy('created_at', 'DESC')->simplePaginate(5);
 
         // }
 
-        // return view ('kategori_artikel.index', compact('kategori'));
+        $kat=DB::table('kategori_artikel')->whereNotNull('id_kategoriartikel')
+        ->get();
+
+        return view ('kategori_artikel.index', compact('kat'));
+
     }
 
     /**
@@ -55,7 +57,7 @@ class KategoriartikelController extends Controller
         ]);
 
         Kategori_artikel::create($request->all());
-        return redirect()->route('kategori_artikel.index')
+        return redirect()->route('kategori-artikel.index')
             ->with('success', 'Kategori Artikel Berhasil di Tambahkan !');
     }
 
@@ -97,7 +99,7 @@ class KategoriartikelController extends Controller
 
         Kategori_artikel::find($id)->update($request->all());
 
-        return redirect()->route('kategori_artikel.index')
+        return redirect()->route('kategori-artikel.index')
             ->with('success', 'Kategori Artikel Berhasil di Update !');
         
     }
@@ -113,7 +115,7 @@ class KategoriartikelController extends Controller
         Kategori_artikel::find($id)
             ->delete();
             
-        return redirect()->route('kategori_artikel.index')
+        return redirect()->route('kategori-artikel.index')
             ->with('success', 'Kategori Artikel Berhasil di Hapus !');
     }
 }

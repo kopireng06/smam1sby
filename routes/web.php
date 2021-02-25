@@ -70,9 +70,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/carousel/create','App\Http\Controllers\CarouselController@store')->name("carousel.store");    
 
     //Route Kategori Artikel
-    Route::resource('/dashboard/kategori_artikel', KategoriartikelController::class)->except([
-        'show', 'create'
-    ]);
+    Route::resource('/dashboard/kategori-artikel', KategoriartikelController::class);
 
     //Route Artikel
     Route::resource('/dashboard/artikel', ArtikelController::class)->except([
@@ -95,7 +93,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/dashboard/quotes', QuotesController::class)->except([
         'create', 'edit'
     ]);
-
     Route::post('/dashboard/quotes/upload/image', [QuotesController::class, 'uploadImage'])->name('quotes-upload-image');
     Route::post('/dashboard/quotes/delete/image', [QuotesController::class, 'deleteImage'])->name('quotes-delete-image');
 
@@ -104,7 +101,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/dashboard/testimoni', TestiController::class)->except([
         'create', 'edit'
     ]);
-    Route::post('/dashboard/testi/import','App\Http\Controllers\TestiController@import');
+    Route::post('/dashboard/testimoni/import','App\Http\Controllers\TestiController@import');
 
     Route::post('/dashboard/testi/upload/image', [TestiController::class, 'uploadImage'])->name('testi-upload-image');
     Route::post('/dashboard/testi/delete/image', [TestiController::class, 'deleteImage'])->name('testi-delete-image');

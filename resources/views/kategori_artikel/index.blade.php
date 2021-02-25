@@ -3,60 +3,53 @@
     <title>Dashboard</title>
 @endsection
 @section('konten')
-<div class="main">
-    <div class="main-content">
-        <div class="container-fluid mt-3 mb-3">
-            <div class="row">
-                <div class="col-md-12 mb-3">
-                    <div class="panel">
-					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Kategori Artikel</h1>
-                        </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            + Tambah Kategori Artikel
-                        </button>
-                            
-                        <div class="panel-body">
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
-                                </div>
-                            @endif
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>No. </th>
-                                        <th>Kategori Artikel</th>
-                                        <th >Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($kategori as $key=>$kategori)
-                                    <tr>
-                                        <td>{{++$key}}</td>
-                                        <td>{{$kategori->nama_kategoriartikel}}</td>
-                                        <td>                                       
-                                        <form action="{{ route('kategori_artikel.destroy',$kategori->id_kategoriartikel) }}" method="POST">
-                                        <button type="button" class="btn btn-warning float-right" data-bs-toggle="modal" data-bs-target="#myModal">
-                                            Edit
-                                        </button>
-                                            @csrf
-                                            @method('DELETE')
-                            
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus?')">Delete</button>
-                                        </form>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<div class="d-flex justify-content-start mt-3 mb-3">
+    <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        + Tambah Kategori Artikel
+    </button>
 </div>
+
+@if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        <p>{{ $message }}</p>
+    </div>
+@endif
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Oops!</strong> Inputan Anda Salah !.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<table class="table table-bordered">
+    <tr>
+        <th>No. </th>
+        <th>Kategori Artikel</th>
+        <th >Aksi</th>
+    </tr>
+    @foreach ($kat as $kategori)
+    <tr>
+        <td class="text-center">{{ $loop->iteration }}</td>
+        <td>{{ $kategori->nama_kategoriartikel }}</td>
+        <td class="text-center">
+            <form action="{{ route('kategori-artikel.destroy',$kategori->id_kategoriartikel) }}" method="POST"> 
+                <button type="button" class="btn btn-warning float-right" data-bs-toggle="modal" data-bs-target="#myModal">
+                    Edit
+                </button>
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">Delete</button>
+            </form>
+        </td>
+    </tr>
+    @endforeach
+</table>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -75,7 +68,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('kategori_artikel.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('kategori-artikel.store') }}" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 
                     {{csrf_field()}}
@@ -112,14 +105,14 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('kategori_artikel.update', $kategori->id_kategoriartikel) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('kategori-artikel.update', $kat->id_kategoriartikel) }} " method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 
                     {{csrf_field()}} {{ method_field('PUT') }}
       
                     <div class="form-group">
                         <label for="nama_kategoriartikel">Kategori Artikel</label>
-                        <input type="text" name="nama_kategoriartikel" class="form-control" value="{{$kategori->nama_kategoriartikel}}"/>
+                        <input type="text" name="nama_kategoriartikel" class="form-control" value="{{$kat->nama_kategoriartikel}}"/>
                     </div>
                 </div>
                 <div class="modal-footer">

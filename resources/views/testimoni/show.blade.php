@@ -1,28 +1,21 @@
-@extends('layouts.preview')
+@extends('layouts.dashboardtemplate')
 @section('title')
     <title>Data Konten</title>
 @endsection
 @section('konten')
-<section class="section single-wrapper">
-<style>
-.section
-{
-    width: 900px;
-    margin-left: 150px;
-    margin-right: 0px;
-    margin-top : 0px;
-}
 
-p 
-{
-  text-align: justify;
-  text-justify: inter-word;
-}
+<style>
+    p { 
+    text-align:justify;
+    margin-left: auto;
+    margin-right: auto;
+    }
 </style>
-    <div class="container mb-5">
-        <div class="row">            
-            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                <div class="page-wrapper">
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5">
+                <div class="card">
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
@@ -38,46 +31,34 @@ p
                             </ul>
                         </div>
                     @endif
-                    <div class="blog-title-area text-center">
-                        <h3>{{ $testi->nama_testi }}</h3>
-
-                        <div class="blog-meta big-meta">
-                            <small><a>{{ $testi->created_at->diffForHumans() }}</a></small>
-                            <small><a>by : {{ $testi->user->name }}</a></small>
-                        </div><!-- end meta -->
-
-                    </div><!-- end title -->
-
-                    <div class="single-post-media">
-                        <img class="card-img-top" src="{{ asset('images/testimoni') }}/{{ $testi->foto_testi }}" alt="Card image cap" style="max-width:550px;max-height:400px;margin-top:20px;margin-bottom:10px;margin-left:auto;margin-right:auto;">
-                    </div><!-- end media -->
-
-                    <div class="blog-content">
-                        <div class="pp">
-                            <p> {!! $testi->isi_testi !!}</p>
-                    </div><!-- end content -->
-
-                    <div class="blog-title-area">
-                        <div class="tag-cloud-single">
-                            <span>Tags</span>
-                            <small><a href="#" title="">Testimoni</a></small>
-                        </div><!-- end meta -->                                
-                    </div><!-- end title -->
-                    <br>
+                    <div class="card-header">
+                        Kata Alumni
+                    </div>
+                    <img class="card-img-top rounded-circle" src="{{ asset('images/testimoni') }}/{{ $testi->foto_testi }}" alt="Card image cap" style="max-width:200px;max-height:200px;margin-top:20px;margin-bottom:10px;margin-left:auto;margin-right:auto;">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                        <p>{!! $testi->isi_testi !!}</p>
+                        <footer class="blockquote-footer mt-2">{{ $testi->nama_testi }}, <cite title="Source Title">{{ $testi-> universitas_testi}}</cite></footer>
+                        </blockquote>
+                        <div class="d-flex justify-content-end">
+                            <span>{{ $testi->created_at->diffForhumans() }}</span>                            
+                        </div>
+                    </div>                        
+                </div>
+                <div class="d-flex justify-content-end mt-3">
                     <form action="{{ route('testimoni.destroy',$testi->id_testi) }}" method="POST">
                         <button type="button" class="btn btn-warning float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Edit Testimoni
                         </button>
                         @csrf
                         @method('DELETE')
-
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus?')">Delete</button>
                     </form>
-                </div><!-- end page-wrapper -->
-            </div><!-- end col -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

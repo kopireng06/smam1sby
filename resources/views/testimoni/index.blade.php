@@ -174,7 +174,7 @@
                         <label for="file"><strong>Data Testimoni</strong></label>
                         <input type="file" name="file" class="form-control"/>
                     </div>
-                    <a href="https://drive.google.com/file/d/1AzWCoz1mwNtQ06GZg6YKPbSuR4B3Ll8f/view?usp=sharing" download>Download Format</a>
+                    <a href="https://docs.google.com/uc?export=download&id=15-R54u7hl0N2GJEbbsKiDuARKjzZGaLn" download>Download Format</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

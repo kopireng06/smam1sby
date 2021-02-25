@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Kategori_artikel;
 use App\Models\User;
 use App\Models\Artikel;
+use Carbon\Carbon;
 
 class ArtikelController extends Controller
 {
@@ -33,6 +34,8 @@ class ArtikelController extends Controller
         
         $kategori = Kategori_artikel::all();
         $count = $artikel->firstItem();
+
+        Artikel::where('created_at', '<', Carbon::now()->subYears(2))->delete(); //Auto delete untuk durasi 2 tahun
 
         return view('artikel.index', compact('artikel', 'count', 'kategori'));
     }

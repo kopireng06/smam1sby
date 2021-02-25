@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Quote;
+use Carbon\Carbon;
 
 class QuotesController extends Controller
 {
@@ -14,7 +15,7 @@ class QuotesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $search = request()->query('search');
 
@@ -27,6 +28,8 @@ class QuotesController extends Controller
         }
 
         $count = $quote->firstItem();
+
+        Quote::where('created_at', '<', Carbon::now()->subYears(7))->delete(); // Auto delete untuk durasi 7 tahun
 
         return view('quote.index', compact('quote', 'count'));
     }
@@ -55,8 +58,6 @@ class QuotesController extends Controller
             'isi_quote'=>'required',
             'foto_quote'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);
-        
-        //Pengumuman::create($request->all());
 
         $nama = $request->nama_quote;
         $jabatan = $request->jabatan_quote;
@@ -74,7 +75,7 @@ class QuotesController extends Controller
         $quote->save();        
 
         return redirect()->route('quotes.index')
-            ->with('success', 'Pengumuman Berhasil di Tambahkan !');
+            ->with('success', 'Quotes Berhasil di Tambahkan !');
     }
 
     /**
@@ -119,10 +120,13 @@ class QuotesController extends Controller
         ]);
 
         if($request->file('foto_quote')==""){
-
-            $quote = new Quote;
+            
+            $quote = Quote::find($id);
+            $quote->nama_quote = $request->nama_quote;        
+            $quote->jabatan_quote = $request->jabatan_quote;
+            $quote->isi_quote = $request->isi_quote;
             $quote->penulis_quote=\Auth::user()->id;
-            Quote::find($id)->update($request->all());
+            $quote->save(); 
 
         }else{
 
@@ -142,7 +146,7 @@ class QuotesController extends Controller
 
         }        
 
-        return back()->with('success', 'Pengumuman Berhasil di Update !');
+        return back()->with('success', 'Quotes Berhasil di Update !');
     }
 
     /**
@@ -158,6 +162,6 @@ class QuotesController extends Controller
         $quote->delete();
             
         return redirect()->route('quotes.index')
-            ->with('success', 'Pengumuman Berhasil di Hapus !');
+            ->with('success', 'Quotes Berhasil di Hapus !');
     }
 }

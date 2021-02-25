@@ -5,7 +5,7 @@
 @section('konten')
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid mb-3 mt-3">
+        <div class="container-fluid mb-3">
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <div class="panel">
@@ -64,15 +64,15 @@
                                             <td>{{ Str::limit( $artikel1->judul_artikel, 20 ) }}</td>
                                             <td>{!! Str::limit( $artikel1->isi_artikel, 30  ) !!}</td>
                                             <td>{{ $artikel1->kategori->nama_kategoriartikel }}</td>
-                                            <td>                                       
-                                            <form action="{{ route('artikel.destroy',$artikel1->id_artikel) }}" method="POST">
-                                                <a class="btn btn-warning" href="{{ route('artikel.show',$artikel1->id_artikel) }}" >Preview</a>
-                            
-                                                @csrf
-                                                @method('DELETE')
+                                            <td>
+                                                <form action="{{ route('artikel.destroy',$artikel1->id_artikel) }}" method="POST">
+                                                    <a class="btn btn-warning" href="{{ route('artikel.show',$artikel1->id_artikel) }}" >Preview</a>
                                 
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus?')">Delete</button>
-                                            </form>
+                                                    @csrf
+                                                    @method('DELETE')
+                                    
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus?')">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @empty

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pengumuman;
+use Carbon\Carbon;
 
 class PengumumanController extends Controller
 {
@@ -14,7 +15,7 @@ class PengumumanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $search = request()->query('search');
 
@@ -28,6 +29,7 @@ class PengumumanController extends Controller
 
         $count = $pengumuman->firstItem();
 
+        Pengumuman::where('created_at', '<', Carbon::now()->subYears(3))->delete(); //Auto delete untuk durasi 3 tahun
 
         return view('pengumuman.index', compact('pengumuman', 'count'));
     }
@@ -121,9 +123,12 @@ class PengumumanController extends Controller
 
         if($request->file('foto_pengumuman')==""){
 
-            $pengumuman = new Pengumuman;
+            $pengumuman = Pengumuman::find($id);
+            $pengumuman->judul_pengumuman = $request->judul_pengumuman;
+            $pengumuman->isi_pengumuman = $request->isi_pengumuman;
+            $pengumuman->tanggal_pengumuman = $request->tanggal_pengumuman;
             $pengumuman->penulis_pengumuman=\Auth::user()->id;
-            Pengumuman::find($id)->update($request->all());
+            $pengumuman->save();
         }else{
 
             $foto = $request->file('foto_pengumuman');
@@ -131,7 +136,7 @@ class PengumumanController extends Controller
             $foto->move(public_path('images/pengumuman'), $nama_foto);
 
             $pengumuman = Pengumuman::find($id);
-            unlink(public_path('images/pengumuman').'/'.$pengumuman->foto_pengumuman); //Delete this syntax if you'd like to keep the image file of $this artikel
+            unlink(public_path('images/pengumuman').'/'.$pengumuman->foto_pengumuman); //Delete this syntax if you'd like to keep the image file of $this pengumuman
 
             $pengumuman->judul_pengumuman = $request->judul_pengumuman;
             $pengumuman->isi_pengumuman = $request->isi_pengumuman;

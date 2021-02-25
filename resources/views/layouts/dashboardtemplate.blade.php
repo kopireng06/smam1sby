@@ -38,35 +38,35 @@
                 <a href="/alumni" class="menu arialrounded-mt-bold my-1 d-block">
                     Alumni
                 </a>
-                <a href="/konten" class="menu arialrounded-mt-bold my-1 d-block">
-                    Konten
+                <a href="/dashboard/artikel" class="menu arialrounded-mt-bold my-1 d-block">
+                    Artikel
+                </a>
+                <a href="/carousel" class="menu arialrounded-mt-bold my-1 d-block">
+                    Carousel
+                </a>
+                <a href="/dashboard/kategori-artikel" class="menu arialrounded-mt-bold my-1 d-block">
+                    Kategori Artikel
                 </a>
                 <a href="/kelompok-konten" class="menu arialrounded-mt-bold my-1 d-block">
                     Kelompok Konten
                 </a>
-                <a href="/prestasi" class="menu arialrounded-mt-bold my-1 d-block">
-                    Prestasi
-                </a>
-                <a href="/carousel" class="menu arialrounded-mt-bold my-1 d-block">
-                    Caraousel
-                </a>
-                <a href="/web-terkait" class="menu arialrounded-mt-bold my-1 d-block">
-                    Web Terkait
-                </a>
-                <a href="/dashboard/artikel" class="menu arialrounded-mt-bold my-1 d-block">
-                    Artikel
-                </a>
-                <a href="/dashboard/kategori_artikel" class="menu arialrounded-mt-bold my-1 d-block">
-                    Kategori Artikel
+                <a href="/konten" class="menu arialrounded-mt-bold my-1 d-block">
+                    Konten
                 </a>
                 <a href="/dashboard/pengumuman" class="menu arialrounded-mt-bold my-1 d-block">
                     Pengumuman
+                </a>
+                <a href="/prestasi" class="menu arialrounded-mt-bold my-1 d-block">
+                    Prestasi
                 </a>
                 <a href="/dashboard/quotes" class="menu arialrounded-mt-bold my-1 d-block">
                     Quote
                 </a>
                 <a href="/dashboard/testimoni" class="menu arialrounded-mt-bold my-1 d-block">
                     Testimoni
+                </a>
+                <a href="/web-terkait" class="menu arialrounded-mt-bold my-1 d-block">
+                    Web Terkait
                 </a>
             </div>
         </div>
