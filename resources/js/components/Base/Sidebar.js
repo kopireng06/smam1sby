@@ -9,7 +9,7 @@ const Sidebar = (props) => {
 
     useEffect(() => {
         setToggleLeft(props.sidebarStat);
-    });
+    },[props]);
 
     const handleClickProfil = () =>{
         if(heightSubProfil == ' h-0'){
@@ -34,30 +34,33 @@ const Sidebar = (props) => {
             <Link to="/" className="font-bold text-white text-sm my-1">
                 HOME
             </Link>
-            <Link to="#" className="font-bold text-white text-sm my-1" onClick={handleClickProfil}>
+            <div className="font-bold cursor-pointer text-white text-sm my-1" onClick={handleClickProfil}>
                 PROFIL <span className="text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90"> {'>'} </span>
-            </Link>
-                <Link to="#" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubProfil}>
+            </div>
+                <Link to="/kumpulan-profil/SAMBUTAN KEPSEK" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubProfil}>
                     SAMBUTAN KEPSEK
                 </Link>
-                <Link to="#" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubProfil}>
+                <Link to="/kumpulan-profil/SMAMSA" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubProfil}>
                     SMAMSA
                 </Link>
-            <Link to="#" className="font-bold text-white text-sm my-1">
+            <Link to="/berita" className="font-bold text-white text-sm my-1">
                 BERITA
             </Link>
-            <Link to="#" className="font-bold text-white text-sm my-1">
+            <Link to="/kumpulan-prestasi" className="font-bold text-white text-sm my-1">
                 PRESTASI
             </Link>
-            <Link to="#" className="font-bold text-white text-sm my-1">
+            <Link to="/kumpulan-alumni/2018" className="font-bold text-white text-sm my-1">
                 ALUMNI
             </Link>
-            <Link to="#" className="font-bold text-white text-sm my-1">
+            <Link to="/kumpulan-ekstrakurikuler/IPM" className="font-bold text-white text-sm my-1">
+                EKSTRAKURIKULER
+            </Link>
+            <Link to="/kumpulan-fasilitas/AULA" className="font-bold text-white text-sm my-1">
                 FASILITAS
             </Link>
-            <Link to="#" className="font-bold text-white text-sm my-1" onClick={handleClickLinkTerkait}>
+            <div  className="font-bold cursor-pointer text-white text-sm my-1" onClick={handleClickLinkTerkait}>
                 LINK TERKAIT <span className="text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90"> {'>'} </span>
-            </Link>
+            </div>
                 <Link to="#" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubLinkTerkait}>
                     PPDB
                 </Link>

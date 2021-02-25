@@ -35,8 +35,8 @@
                                         <td>{{$carousel->isi_car}}</td>
 
                                         <td>
-                                            <a href="/carousel/{{$carousel->id_carousel}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="/carousel/{{$carousel->id_carousel}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">Delete</a>
+                                            <a href="/carousel/{{$carousel->id_car}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="/carousel/{{$carousel->id_car}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -72,12 +72,12 @@
 
                     <div class="form-group">
                         <label for="file">Judul</label>
-                        <input type="text" name="judul_car" class="form-control" placeholder="Kelompok Konten" required/>
+                        <input type="text" name="judul_car" class="form-control" placeholder="Judul Carousel" required/>
                     </div>
 
                     <div class="form-group">
-                        <label for="file">Foto</label>
-                        <input type="text" name="isi_car" class="form-control" placeholder="Kelompok Konten" required/>
+                        <label for="file">Isi</label>
+                        <input type="text" name="isi_car" class="form-control" placeholder="Isi Carousel" required/>
                     </div>
 
 

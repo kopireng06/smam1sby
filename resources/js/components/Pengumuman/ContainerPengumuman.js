@@ -6,13 +6,13 @@ import SkeletonPengumuman from './SkeletonPengumuman';
 const ContainerPengumuman = () => {
     const [dataSearch, setDataSearch] = useState('');
     const [dataPost, setDataPost]= useState('');
-    const [hasilSearch, setHasilSearch] = useState([1,2,3,4,5]);
+    const [hasilSearch, setHasilSearch] = useState();
 
 
-    const handleSubmitSearch = async (event) => {
-        x().then(function(done) {
+    const handleSubmitSearch = (event) => {
+        renderHasilSearch().then(function(done) {
            setHasilSearch(done);
-          });
+        });
 
         setDataPost(dataSearch);
         setHasilSearch(
@@ -26,14 +26,33 @@ const ContainerPengumuman = () => {
         setDataSearch(event.target.value);
     }
 
-    function x() {
-        var promise = new Promise(function(resolve, reject) {
-          setTimeout(function() {
-            resolve(<Pengumuman/>);
-          },1000);
+    const renderHasilSearch = async () => { 
+        var jsonSearch = [1,2,3,4,5,6];
+
+        await new Promise((resolve)=>{
+            setTimeout(()=>{
+                jsonSearch = jsonSearch.map((i, index) => (
+                    <Pengumuman key={index}/>
+                ));
+                resolve(0);
+            },1000)
         });
-        return promise;
-     }
+
+        return jsonSearch;
+    }
+
+    const renderPengumuman = () =>{
+        if (dataPost != ''){
+            return(
+                hasilSearch
+            )
+        }
+        else{
+            return(
+                <InfinitePengumuman/>
+            )
+        }
+    }
 
     return (
         <div className="lg:container mx-auto">
@@ -48,18 +67,7 @@ const ContainerPengumuman = () => {
             </form>
             <div className="w-11/12 md:w-7/12 mx-auto bg-smam1 shadow rounded p-2 flex flex-col mb-5">
                 {
-                    (() => {
-                        if (dataPost != ''){
-                            return(
-                                hasilSearch
-                            )
-                        }
-                        else{
-                            return(
-                                <InfinitePengumuman/>
-                            )
-                        }
-                    })()
+                   renderPengumuman()
                 }
             </div>
         </div>

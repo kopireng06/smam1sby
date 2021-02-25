@@ -130,6 +130,18 @@
 .multi-link:hover .sub-link{
     display: block;
 }
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
 @media(min-width:768px){
     .md\:max-w-xs-2 {
         max-width: 22rem;

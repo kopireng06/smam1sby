@@ -31,7 +31,7 @@ const ContainerPrestasi = () => {
                 <Prestasi pos={4} posActive={posActive} changePosActive={changePosActive}/>
             </div>
             <div className="max-w-md-2 w-full md:ml-8 absolute bottom-0 flex justify-end h-10">
-                <Link to="#" className="mr-5 md:mr-0  text-smam1 text-md">prestasi lainnya</Link>
+                <Link to="/kumpulan-prestasi" className="mr-5 md:mr-0  text-smam1 text-md">prestasi lainnya</Link>
             </div>
         </div>
     );

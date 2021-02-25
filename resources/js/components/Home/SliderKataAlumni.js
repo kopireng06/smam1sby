@@ -39,7 +39,7 @@ const SliderKataAlumni = () => {
                 <KataAlumni/>
             </Slider>
             <div className="w-full flex justify-end relative bottom-5">
-                <Link to="#" className="text-white text-md mr-5">alumni lainnya</Link>
+                <Link to="/kumpulan-alumni/2019" className="text-white text-md mr-5">alumni lainnya</Link>
             </div>
         </div>
     );
