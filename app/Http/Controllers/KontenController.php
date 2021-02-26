@@ -10,8 +10,9 @@ class KontenController extends Controller
     public function index()
     {
         $konten = \App\Models\Konten::all();
+        $kelkonten = \App\Models\KelKonten::all();
 
-        return view("konten.index",['konten' => $konten]);
+        return view("konten.index",['konten' => $konten],['kelkonten' => $kelkonten]);
     }
 
     public function create(Request $request)
