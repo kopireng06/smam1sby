@@ -53,4 +53,11 @@ class PrestasiController extends Controller
         
         return redirect("/prestasi");
     }
+
+    public function deleteChecked(Request $request)
+    {
+        $ids = $request->ids;
+        \App\Models\Prestasi::where("id_prestasi", $ids)->delete();
+        return response()->json(['success'=>"Prestasi dihapus"]);
+    }
 }

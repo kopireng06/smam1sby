@@ -68,8 +68,8 @@
                     
                     <div class="dropdown">
                         <label for="file">Kelompok Konten</label>
-                        <select name="kelompok_konten" class="form-control" id="exampleFormControlSelect1">
-                            <option>Choose One</option>
+                        <select name="kelompok_konten" class="form-control" id="exampleFormControlSelect1" required>
+                            <option selected disabled>Choose One</option>
                             @foreach ($kelkonten as $kelkonten)
                                 <option value="{{$kelkonten->nama_kelompok_konten}}">{{$kelkonten->nama_kelompok_konten}}</option>
                             @endforeach
