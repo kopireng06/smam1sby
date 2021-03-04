@@ -13,6 +13,9 @@
 .text-smam1{
     color: #013880;
 }
+.pt-60p {
+    padding-top: 60%;
+}
 .fixed-x-center{
     position: fixed;
     left: 50%;
@@ -129,6 +132,10 @@
 }
 .multi-link:hover .sub-link{
     display: block;
+}
+
+p {
+    margin: 10px 0;
 }
 
 table {
