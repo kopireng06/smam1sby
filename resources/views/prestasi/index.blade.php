@@ -15,7 +15,9 @@
                         <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Import Data Prestasi
                         </button>
-                        <a href="/prestasi/delete-selection" type="button" name="submit" class="btn btn-danger" id="deleteAllSelect">Delete All</a>
+
+                        <button type="button" class="btn btn-danger" id="deleteAllSelectedRecords">Delete Selected</button>
+                        
                             
                         <div class="panel-body">
                             <table class="table table-hover">
@@ -30,9 +32,9 @@
                                 </thead>
                                 <tbody>
                                 @foreach($prestasi as $prestasi)
-                                    <tr>
+                                    <tr id="sid{{$prestasi->id_prestasi}}">
                                         <td>
-                                            <input name='id[]' type="checkbox" value="{{$prestasi->id_prestasi}}" id="checkItem">
+                                            <input name="ids" class="checkBoxClass" type="checkbox" value="{{$prestasi->id_prestasi}}" id="checkItem">
                                         </td>
                                         <td>{{$prestasi->nama_prestasi}}</td>
                                         <td>{{$prestasi->juara_prestasi}}</td>

@@ -66,9 +66,14 @@
                         <input type="text" name="judul_konten" class="form-control" placeholder="Judul Konten" required/>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="dropdown">
                         <label for="file">Kelompok Konten</label>
-                        <input type="text" name="kelompok_konten" class="form-control" placeholder="Kelompok Konten" required/>
+                        <select name="kelompok_konten" class="form-control" id="exampleFormControlSelect1" required>
+                            <option selected disabled>Choose One</option>
+                            @foreach ($kelkonten as $kelkonten)
+                                <option value="{{$kelkonten->nama_kelompok_konten}}">{{$kelkonten->nama_kelompok_konten}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">

@@ -33,44 +33,68 @@
             </div>
         </div>
         <div class="sidebar px-3 vh-100">
-            <div class="w-100 d-flex flex-column" style="margin-top:30px;" >
-                <a href="/dashboard" class="menu arialrounded-mt-bold my-2 d-block">
-                    DASHBOARD
-                </a>
-                <a href="/alumni" class="menu arialrounded-mt-bold my-1 d-block">
-                    Alumni
-                </a>
-                <a href="/dashboard/artikel" class="menu arialrounded-mt-bold my-1 d-block">
-                    Artikel
-                </a>
-                <a href="/carousel" class="menu arialrounded-mt-bold my-1 d-block">
-                    Carousel
-                </a>
-                <a href="/dashboard/kategori-artikel" class="menu arialrounded-mt-bold my-1 d-block">
-                    Kategori Artikel
-                </a>
-                <a href="/kelompok-konten" class="menu arialrounded-mt-bold my-1 d-block">
-                    Kelompok Konten
-                </a>
-                <a href="/konten" class="menu arialrounded-mt-bold my-1 d-block">
-                    Konten
-                </a>
-                <a href="/dashboard/pengumuman" class="menu arialrounded-mt-bold my-1 d-block">
-                    Pengumuman
-                </a>
-                <a href="/prestasi" class="menu arialrounded-mt-bold my-1 d-block">
-                    Prestasi
-                </a>
-                <a href="/dashboard/quotes" class="menu arialrounded-mt-bold my-1 d-block">
-                    Quote
-                </a>
-                <a href="/dashboard/testimoni" class="menu arialrounded-mt-bold my-1 d-block">
-                    Testimoni
-                </a>
-                <a href="/web-terkait" class="menu arialrounded-mt-bold my-1 d-block">
-                    Web Terkait
-                </a>
-            </div>
+            <ul class="sidebar-nav w-100 d-flex flex-column" style="margin-top:30px;" >
+                <li class="sidebar-brand">
+                    <a href="/dashboard" class="arialrounded-mt-bold my-2 d-block">
+                        DASHBOARD
+                    </a>
+                </li>
+                <li>
+                    <a href="/alumni" class="arialrounded-mt-bold my-1 d-block">
+                        Alumni
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard/artikel" class=" arialrounded-mt-bold my-1 d-block">
+                        Artikel
+                    </a>
+                </li>
+                <li>
+                    <a href="/carousel" class="arialrounded-mt-bold my-1 d-block">
+                        Carousel
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard/kategori-artikel" class="arialrounded-mt-bold my-1 d-block">
+                        Kategori Artikel
+                    </a>
+                </li>
+                <li>
+                    <a href="/kelompok-konten" class="arialrounded-mt-bold my-1 d-block">
+                        Kelompok Konten
+                    </a>
+                </li>
+                <li>
+                    <a href="/konten" class="arialrounded-mt-bold my-1 d-block">
+                        Konten
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard/pengumuman" class="arialrounded-mt-bold my-1 d-block">
+                        Pengumuman
+                    </a>
+                </li>
+                <li>
+                    <a href="/prestasi" class="arialrounded-mt-bold my-1 d-block">
+                        Prestasi
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard/quotes" class="arialrounded-mt-bold my-1 d-block">
+                        Quote
+                    </a>
+                </li>
+                <li>
+                    <a href="/dashboard/testimoni" class="arialrounded-mt-bold my-1 d-block">
+                        Testimoni
+                    </a>
+                </li>
+                <li>
+                    <a href="/web-terkait" class="arialrounded-mt-bold my-1 d-block">
+                        Web Terkait
+                    </a>
+                </li>
+            </ul>
         </div>
         <div class="footer py-2">
             Copyright SMA Muhammadiyah 1 Surabaya,2020.
@@ -87,11 +111,37 @@
         });
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script language="javascript">
-        $("#checkAll").click(function () {
-            $('input:checkbox').not(this).prop('checked', this.checked);
+
+    <script>
+        $(function(e){
+            $("#checkAll").click(function () {
+                $(".checkBoxClass").prop('checked',$(this).prop('checked'));
+            });
+            
+            $('#deleteAllSelectedRecords').click(function(e){
+                e.preventDefault();
+                var allids = [];
+                $("input.checkbox[name=ids]:checked").each(function(){
+                    allids.push($(this).val());
+                });
+
+                $.ajax({
+                    url:"{{route('prestasi.deleteSelected')}}",
+                    type:'DELETE',
+                    data:{
+                        ids:allids,
+                        _token:$("input[name=_token]").val()
+                    },
+                    success:function(response){
+                        $.each(allids,function(key,val){
+                            $('#sid'+val).remove();
+                        })
+                    }
+                })
+            })
         });
     </script>
+    
     <script src="{{ asset('js/vendors.js') }}"></script>
     <script type="text/javascript">
     $(document).ready(function () {

@@ -116,7 +116,7 @@ Route::group(['middleware' => ['auth']], function(){
     
     Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
     
-    
+    Route::delete('/selectd-students','App\Http\Controllers\PrestasiController@deleteChecked')->name('prestasi.deleteSelected');
 });
 
 
