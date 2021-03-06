@@ -14,23 +14,21 @@ class KategoriartikelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        // $search = request()->query('search');
+        $search = request()->query('search');
 
-        // if($search){
-        //     $kategori = Kategori_artikel::where('nama_kategoriartikel', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(5);
+        if($search){
+            $kategori = Kategori_artikel::where('nama_kategoriartikel', 'LIKE', "%{$search}%")->simplePaginate(5);
 
-        // }else{            
-        //     $kategori = Kategori_artikel::orderBy('created_at', 'DESC')->simplePaginate(5);
+        }else{            
+            $kategori = Kategori_artikel::simplePaginate(5);
+        }
 
-        // }
+        $count = $kategori->firstItem();
 
-        $kat=DB::table('kategori_artikel')->whereNotNull('id_kategoriartikel')
-        ->get();
-
-        return view ('kategori_artikel.index', compact('kat'));
+        return view ('kategori_artikel.index', compact('kategori', 'count'));
 
     }
 
@@ -52,9 +50,16 @@ class KategoriartikelController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_kategoriartikel'=>'required',
-        ]);
+
+        $this->validate(
+            $request, 
+            [   
+                'nama_kategoriartikel'=>'required',
+            ],
+            [   
+                'nama_kategoriartikel.required'    => 'Harap nama kategori artikel di isi !.',
+            ]
+        );
 
         Kategori_artikel::create($request->all());
         return redirect()->route('kategori-artikel.index')
@@ -69,7 +74,9 @@ class KategoriartikelController extends Controller
      */
     public function show($id)
     {
-        //
+        $kategori = Kategori_artikel::find($id);
+        
+        return view('kategori_artikel.show', compact('kategori'));
     }
 
     /**
@@ -80,8 +87,7 @@ class KategoriartikelController extends Controller
      */
     public function edit($id)
     {
-        $kategori = Kategori_artikel::find($id);
-        return view('kategori_artikel.show', compact('kategori'));
+        //
     }
 
     /**
@@ -93,9 +99,15 @@ class KategoriartikelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama_kategoriartikel' => 'required',
-        ]);
+        $this->validate(
+            $request, 
+            [   
+                'nama_kategoriartikel'=>'required',
+            ],
+            [   
+                'nama_kategoriartikel.required'    => 'Harap nama kategori artikel di isi !.',
+            ]
+        );
 
         Kategori_artikel::find($id)->update($request->all());
 

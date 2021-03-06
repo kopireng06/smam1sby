@@ -32,7 +32,7 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        Kata Alumni
+                        Testimoni Alumni
                     </div>
                     <img class="card-img-top rounded-circle" src="{{ asset('images/testimoni') }}/{{ $testi->foto_testi }}" alt="Card image cap" style="max-width:200px;max-height:200px;margin-top:20px;margin-bottom:10px;margin-left:auto;margin-right:auto;">
                     <div class="card-body">
@@ -127,19 +127,4 @@
         </div>
     </div>
 </div>
-
-<script>
-        function previewFile(input){
-            var file = $("input[type=file]").get(0).files[0];
-            if (file){
-                var reader = new FileReader();
-                reader.onload = function(){
-                    $('#previewImg').attr("src",reader.result);
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
-
-    </script>
 @endsection

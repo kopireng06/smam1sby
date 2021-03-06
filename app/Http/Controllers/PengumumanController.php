@@ -52,12 +52,22 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'judul_pengumuman'=>'required',
-            'isi_pengumuman'=>'required',
-            'tanggal_pengumuman'=>'required',
-            'foto_pengumuman'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
-        ]);
+        $this->validate(
+            $request, 
+            [   
+                'judul_pengumuman'=>'required',
+                'isi_pengumuman'=>'required',
+                'tanggal_pengumuman'=>'required',
+                'foto_pengumuman'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
+            ],
+            [   
+                'judul_pengumuman.required'    => 'Harap isi judul pengumumuman !.',
+                'isi_pengumuman.required'      => 'Harap isi pengumuman di tulis !',
+                'tanggal_pengumuman.required' => 'Harap sertakan tanggal pengumuman !',
+                'foto_pengumuman.required'      => 'Harap sertakan foto cover untuk pengumuman !',
+                'foto_pengumuman.image'      => 'Format foto yang diperbolehkan adalah JPG, JPEG, PNG.',
+            ]
+        );
         
         //Pengumuman::create($request->all());
 
@@ -114,12 +124,23 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'judul_pengumuman'=>'required',
-            'isi_pengumuman'=>'required',
-            'tanggal_pengumuman'=>'required',
-            'foto_pengumuman'=>'image|mimes:jpg,png,jpeg,gif,svg|max:4500',
-        ]);
+        $this->validate(
+            $request, 
+            [   
+                'judul_pengumuman'  =>'required',
+                'isi_pengumuman'    =>'required',
+                'tanggal_pengumuman'=>'required',
+                'foto_pengumuman'   =>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
+            ],
+            [   
+                'judul_pengumuman.required'     => 'Harap isi judul pengumumuman !.',
+                'isi_pengumuman.required'       => 'Harap isi pengumuman di tulis !',
+                'tanggal_pengumuman.required'   => 'Harap sertakan tanggal pengumuman !',
+                'foto_pengumuman.required'      => 'Harap sertakan foto cover untuk pengumuman !',
+                'foto_pengumuman.image'         => 'Format foto yang diperbolehkan adalah JPG, JPEG, PNG.',
+                'foto_pengumuman.mimes'         => 'Ukuran foto terlalu besar, max : 4,5 MB !',
+            ]
+        );
 
         if($request->file('foto_pengumuman')==""){
 

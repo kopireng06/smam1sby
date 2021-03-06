@@ -5,12 +5,12 @@
 @section('konten')
 <div class="main">
     <div class="main-content">
-        <div class="container-fluid mb-3 mt-3">
+        <div class="container-fluid mb-3">
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Pengumuman</h1>
+                            <h1 class="panel-title">Pengumuman</h1>
                         </div>
                         <div class="d-flex justify-content-between mt-3 mb-3">
                             <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -73,10 +73,10 @@
                                         </form>
                                         </td>
                                     </tr>
-                                    @empty
-                                        <h4 class="text-center">
-                                            Tidak ada hasil untuk : <strong>{{ request()->query('search') }}</strong>
-                                        </h4>
+                                        @empty
+                                            <h4 class="text-center">
+                                                Tidak ada hasil untuk : <strong>{{ request()->query('search') }}</strong>
+                                            </h4>
                                     @endforelse                                   
                                 </tbody>
                             </table>
@@ -95,7 +95,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Pengumuman</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Tambah Pengumuman</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             @if ($errors->any())

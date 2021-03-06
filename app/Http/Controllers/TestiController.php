@@ -23,10 +23,10 @@ class TestiController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $testi = Testi::where('nama_testi', 'LIKE', "%{$search}%")->with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
+            $testi = Testi::where('nama_testi', 'LIKE', "%{$search}%")->with('user')->orderBy('created_at', 'DESC')->simplePaginate(10);
 
         }else{            
-            $testi = Testi::with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
+            $testi = Testi::with('user')->orderBy('created_at', 'DESC')->simplePaginate(10);
 
         }
 

@@ -78,11 +78,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboard/quotes" class="arialrounded-mt-bold my-1 d-block">
-                        Quote
-                    </a>
-                </li>
-                <li>
                     <a href="/dashboard/testimoni" class="arialrounded-mt-bold my-1 d-block">
                         Testimoni
                     </a>

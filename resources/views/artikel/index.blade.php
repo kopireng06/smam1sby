@@ -10,7 +10,7 @@
                 <div class="col-md-12 mb-3">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Artikel</h1>
+                            <h1 class="panel-title">Artikel</h1>
                         </div>
                         <div class="d-flex justify-content-between mt-3 mb-3">
                             <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -65,9 +65,8 @@
                                             <td>{!! Str::limit( $artikel1->isi_artikel, 30  ) !!}</td>
                                             <td>{{ $artikel1->kategori->nama_kategoriartikel }}</td>
                                             <td>
-                                                <form action="{{ route('artikel.destroy',$artikel1->id_artikel) }}" method="POST">
-                                                    <a class="btn btn-warning" href="{{ route('artikel.show',$artikel1->id_artikel) }}" >Preview</a>
-                                
+                                                <a class="btn btn-warning" href="{{ route('artikel.show',$artikel1->id_artikel) }}" >Preview</a>
+                                                <form action="{{ route('artikel.destroy',$artikel1->id_artikel) }}" method="POST">                                             
                                                     @csrf
                                                     @method('DELETE')
                                     
@@ -98,7 +97,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Kategori Artikel</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Tambah Artikel</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             @if ($errors->any())
@@ -124,7 +123,7 @@
                     
                     <div class="dropdown mb-2">
                         <label for="id_kategoriartikel"><strong>Kategori Artikel</strong></label>
-                        <select class="form-control" name="id_kategoriartikel" id="id_kategoriartikel">
+                        <select class="form-control" name="id_kategoriartikel" id="id_kategoriartikel" required>
                             <option selected disabled><strong>Pilih Kategori Artikel...</strong></option>
                             @foreach ($kategori as $kategori)
                             <option value="{{$kategori->id_kategoriartikel}}">{{$kategori->nama_kategoriartikel}}</option> 
@@ -134,7 +133,7 @@
 
                     <div class="form-group mb-2">
                         <label for="foto_artikel"><strong>Foto Sampul</strong></label>
-                        <input type="file" name="foto_artikel" class="form-control @error('foto_artikel') is-invalid @enderror" onchange="previewFile(this)">
+                        <input type="file" name="foto_artikel" class="form-control @error('foto_artikel') is-invalid @enderror" onchange="previewFile(this)" required>
                         @error('foto_artikel')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         <img id="previewImg" alt="foto_artikel" style="max-width:150px;margin-top:20px;">
                     </div> 

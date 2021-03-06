@@ -24,11 +24,13 @@ class ArtikelController extends Controller
     {
         $search = request()->query('search');
 
-        if($search = ""){
-            $artikel = Artikel::with('user', 'kategori')->orderBy('created_at', 'DESC')->simplePaginate(5);
-            
-        }else{            
+        if($search){
+
             $artikel= Artikel::where('judul_artikel', 'LIKE', "%{$search}%")->with('user', 'kategori')->orderBy('created_at', 'DESC')->simplePaginate(5);
+            
+        }else{
+
+            $artikel = Artikel::with('user', 'kategori')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }
         
@@ -58,11 +60,27 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate(
+            $request, 
+            [   
+                'judul_artikel'     =>'required',
+                'isi_artikel'       =>'required',
+                'id_kategoriartikel'=>'required',
+                'foto_artikel'      =>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
+            ],
+            [   
+                'judul_artikel.required'     => 'Harap isi judul artikel !.',
+                'isi_artikel.required'       => 'Harap isi artikel di tulis !',
+                'id_kategoriartikel.required'=> 'Harap isi kategori artikel !',
+                'foto_artikel.required'      => 'Harap sertakan foto cover untuk artikel !',
+                'foto_artikel.image'         => 'Format foto yang diperbolehkan adalah JPG, JPEG, PNG.',
+                'foto_artikel.mimes'         => 'Ukuran foto terlalu besar, max : 4,5 MB !',
+            ]
+        );
+
         $request->validate([
-            'judul_artikel'=>'required',
-            'isi_artikel'=>'required',
-            'id_kategoriartikel'=>'required',
-            'foto_artikel'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
+            
         ]);        
         //Kategori_artikel::create($request->all());
         

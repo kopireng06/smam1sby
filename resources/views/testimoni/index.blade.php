@@ -3,7 +3,6 @@
     <title>Dashboard</title>
 @endsection
 @section('konten')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 <div class="main">
     <div class="main-content">
         <div class="container-fluid mb-3 mt-3">
@@ -11,7 +10,7 @@
                 <div class="col-md-12 mb-3">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Testimoni Alumni</h1>
+                            <h1 class="panel-title">Testimoni Alumni</h1>
                         </div>
                         <div class="d-flex justify-content-between mt-3 mb-3">
                             <div class="d-flex justify-content-start">
@@ -101,10 +100,10 @@
 </div>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Testimoni</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Tambah Testimoni Alumni</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('testimoni.store') }}" method="POST" enctype="multipart/form-data">
