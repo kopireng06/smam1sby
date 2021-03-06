@@ -68,6 +68,7 @@ class TestiController extends Controller
         $isi = $request->isi_testi;
         $jurusan = $request->jurusan_testi;
         $universitas = $request->universitas_testi;
+        $stts = "waiting";
         $pekerjaan = $request->pekerjaan_testi;
         $foto = $request->file('foto_testi');
         $nama_foto = time().'.'.$foto->extension();
@@ -78,6 +79,7 @@ class TestiController extends Controller
         $testi->isi_testi = $isi;
         $testi->jurusan_testi = $jurusan;
         $testi->universitas_testi = $universitas;
+        $testi->stts = $stts;
         $testi->pekerjaan_testi = $pekerjaan;
         $testi->penulis_testi = \Auth::user()->id;
         $testi->foto_testi = $nama_foto;
@@ -126,18 +128,24 @@ class TestiController extends Controller
             'isi_testi'=>'required',
             'jurusan_testi'=>'required|string',
             'universitas_testi'=>'required',
+            'stts'=>'required',
             'pekerjaan_testi'=>'nullable|string',
             'foto_testi'=>'image|mimes:jpg,png,jpeg,gif,svg|max:4500',
         ]);
 
         $testi = Testi::find($id);
 
-        if($request->file('foto_testi')==""){
+        if($request->stts=="delete"){
+            Testi::find($id)->delete();
+            return redirect()->route('testimoni.index')->with('success', 'Testimoni Berhasil di Update !');
+
+        }elseif($request->file('foto_testi')==""){
         
             $testi->nama_testi = $request->nama_testi;
             $testi->isi_testi = $request->isi_testi;
             $testi->jurusan_testi = $request->jurusan_testi;
             $testi->universitas_testi = $request->universitas_testi;
+            $testi->stts = $request->stts;
             $testi->pekerjaan_testi = $request->pekerjaan_testi;
             $testi->penulis_testi=\Auth::user()->id;
             $testi->save();
@@ -154,6 +162,7 @@ class TestiController extends Controller
                 $testi->isi_testi = $request->isi_testi;
                 $testi->jurusan_testi = $request->jurusan_testi;
                 $testi->universitas_testi = $request->universitas_testi;
+                $testi->stts = $request->stts;
                 $testi->pekerjaan_testi = $request->pekerjaan_testi;
                 $testi->penulis_testi=\Auth::user()->id;
                 $testi->foto_testi = $nama_foto;
@@ -166,6 +175,7 @@ class TestiController extends Controller
                 $testi->isi_testi = $request->isi_testi;
                 $testi->jurusan_testi = $request->jurusan_testi;
                 $testi->universitas_testi = $request->universitas_testi;
+                $testi->stts = $request->stts;
                 $testi->pekerjaan_testi = $request->pekerjaan_testi;
                 $testi->penulis_testi=\Auth::user()->id;
                 $testi->foto_testi = $nama_foto;

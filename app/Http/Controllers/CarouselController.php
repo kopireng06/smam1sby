@@ -10,7 +10,7 @@ class CarouselController extends Controller
 {
     public function index()
     {
-        $carousel = \App\Models\Carousel::all();
+        $carousel = Carousel::all();
 
         return view("carousel.index",['carousel' => $carousel]);
     }
@@ -28,12 +28,12 @@ class CarouselController extends Controller
         $carousel->judul_car = $judul;
         $carousel->isi_car = $isi;
         $carousel->save();
-        return redirect("/carousel");
+        return redirect("/dashboard/carousel");
     }
 
     public function edit($id_car)
     {
-        $carousel = \App\Models\Carousel::find($id_car);
+        $carousel = Carousel::find($id_car);
         return view('carousel.edit',compact('carousel'));
     }
 
@@ -43,7 +43,7 @@ class CarouselController extends Controller
         if($request->file('foto_car')==""){ 
             $judul = $request->judul_car;
             $isi = $request->isi_car;
-            $carousel = \App\Models\Carousel::find($request->id_car);
+            $carousel = Carousel::find($request->id_car);
             $carousel->judul_car = $judul;
             $carousel->isi_car = $isi;
             $carousel->save();
@@ -55,7 +55,7 @@ class CarouselController extends Controller
             $judul = $request->judul_car;
             $isi = $request->isi_car;
             $carousel = new Carousel();
-            $carousel = \App\Models\Carousel::find($request->id_car);
+            $carousel = Carousel::find($request->id_car);
             unlink(public_path('images/carousel/').$carousel->foto_car);
             
             $carousel->foto_car = $imageName;
@@ -63,13 +63,13 @@ class CarouselController extends Controller
             $carousel->isi_car = $isi;
             $carousel->save();
         }
-        return redirect('/carousel');
+        return redirect('/dashboard/carousel');
     }
 
     public function delete($id_car)
     {
-        $carousel = \App\Models\Carousel::find($id_car);
+        $carousel = Carousel::find($id_car);
         $carousel->delete();
-        return redirect('/carousel');
+        return redirect('/dashboard/carousel');
     }
 }

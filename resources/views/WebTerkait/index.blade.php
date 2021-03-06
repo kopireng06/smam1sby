@@ -32,8 +32,8 @@
                                         <td>{{$web->link_web}}</td>
 
                                         <td>
-                                            <a href="/web-terkait/{{$web->id_web}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="/web-terkait/{{$web->id_web}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">Delete</a>
+                                            <a href="/dashboard/web-terkait/{{$web->id_web}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="/dashboard/web-terkait/{{$web->id_web}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -54,7 +54,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Website Terkait</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/web-terkait/create" method="POST" enctype="multipart/form-data">
+            <form action="/dashboard/web-terkait/create" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 
                     {{csrf_field()}}

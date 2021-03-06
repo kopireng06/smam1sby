@@ -19,6 +19,7 @@ class CreateTestisTable extends Migration
             $table->text('isi_testi');
             $table->string('jurusan_testi');
             $table->string('universitas_testi');
+            $table->string('stts');
             $table->string('pekerjaan_testi')->nullable();
             $table->string('foto_testi')->nullable();
             $table->integer('penulis_testi')->unsigned();

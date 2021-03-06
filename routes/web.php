@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\KontenController;
+use App\Http\Controllers\KelKontenController;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\WebTerkaitController;
 
@@ -37,43 +41,43 @@ Route::group(['middleware' => ['auth']], function(){
         return view('contohadmin');
     });
 
-    Route::get('/alumni','App\Http\Controllers\AlumniController@index');
-    Route::get('/alumni/{id_alumni}/edit','App\Http\Controllers\AlumniController@edit');
-    Route::post('/alumni/{id_alumni}/update','App\Http\Controllers\AlumniController@update');
-    Route::get('/alumni/{id_alumni}/delete','App\Http\Controllers\AlumniController@delete');
-    Route::post('/alumni/import','App\Http\Controllers\AlumniController@import');
+    Route::get('/dashboard/alumni',[AlumniController::class,'index']);
+    Route::post('/dashboard/alumni/import',[AlumniController::class,'import']);
+    Route::get('/dashboard/alumni/{id_alumni}/edit',[AlumniController::class,'edit']);
+    Route::post('/dashboard/alumni/{id_alumni}/update',[AlumniController::class,'update']);
+    Route::get('/dashboard/alumni/{id_alumni}/delete',[AlumniController::class,'delete']);
 
-    Route::get('/prestasi','App\Http\Controllers\PrestasiController@index');
-    Route::post('/prestasi/import','App\Http\Controllers\PrestasiController@import');
-    Route::get('/prestasi/{id_prestasi}/edit','App\Http\Controllers\PrestasiController@edit');
-    Route::post('/prestasi/{id_prestasi}/update','App\Http\Controllers\PrestasiController@update');
-    Route::get('/prestasi/{id_prestasi}/delete','App\Http\Controllers\PrestasiController@delete');
+    Route::get('/dashboard/prestasi',[PrestasiController::class,'index']);
+    Route::post('/dashboard/prestasi/import',[PrestasiController::class,'import']);
+    Route::get('/dashboard/prestasi/{id_prestasi}/edit',[PrestasiController::class,'edit']);
+    Route::post('/dashboard/prestasi/{id_prestasi}/update',[PrestasiController::class,'update']);
+    Route::get('/dashboard/prestasi/{id_prestasi}/delete',[PrestasiController::class,'delete']);
 
-    Route::get('/prestasi/delete-selection','App\Http\Controllers\PrestasiController@deleteSelection');
+    Route::get('/dashboard/prestasi/delete-selection','App\Http\Controllers\PrestasiController@deleteSelection');
 
-    Route::get('/konten','App\Http\Controllers\KontenController@index');
-    Route::post('/konten/create','App\Http\Controllers\KontenController@create');
-    Route::get('/konten/{id_konten}/edit','App\Http\Controllers\KontenController@edit');
-    Route::post('/konten/{id_konten}/update','App\Http\Controllers\KontenController@update');
-    Route::get('/konten/{id_konten}/delete','App\Http\Controllers\KontenController@delete');
+    Route::get('/dashboard/konten',[KontenController::class,'index']);
+    Route::post('/dashboard/konten/create',[KontenController::class,'create']);
+    Route::get('/dashboard/konten/{id_konten}/edit',[KontenController::class,'edit']);
+    Route::post('/dashboard/konten/{id_konten}/update',[KontenController::class,'update']);
+    Route::get('/dashboard/konten/{id_konten}/delete',[KontenController::class,'delete']);
 
-    Route::get('/kelompok-konten','App\Http\Controllers\KelKontenController@index');
-    Route::post('/kelompok-konten/create','App\Http\Controllers\KelKontenController@create');
-    Route::get('/kelompok-konten/{id_kelompok_konten}/edit','App\Http\Controllers\KelKontenController@edit');
-    Route::post('/kelompok-konten/{id_kelompok_konten}/update','App\Http\Controllers\KelKontenController@update');
-    Route::get('/kelompok-konten/{id_kelompok_konten}/delete','App\Http\Controllers\KelKontenController@delete');
+    Route::get('/dashboard/kelompok-konten',[KelKontenController::class,'index']);
+    Route::post('/dashboard/kelompok-konten/create',[KelKontenController::class,'create']);
+    Route::get('/dashboard/kelompok-konten/{id_kelompok_konten}/edit',[KelKontenController::class,'edit']);
+    Route::post('/dashboard/kelompok-konten/{id_kelompok_konten}/update',[KelKontenController::class,'update']);
+    Route::get('/dashboard/kelompok-konten/{id_kelompok_konten}/delete',[KelKontenController::class,'delete']);
 
-    Route::get('/web-terkait',[WebTerkaitController::class,'index']);
-    Route::post('/web-terkait/create',[WebTerkaitController::class,'create']);
-    Route::get('/web-terkait/{id_web}/edit',[WebTerkaitController::class,'edit']);
-    Route::post('/web-terkait/{id_web}/update',[WebTerkaitController::class,'update']);
-    Route::get('/web-terkait/{id_web}/delete',[WebTerkaitController::class,'delete']);
+    Route::get('/dashboard/web-terkait',[WebTerkaitController::class,'index']);
+    Route::post('/dashboard/web-terkait/create',[WebTerkaitController::class,'create']);
+    Route::get('/dashboard/web-terkait/{id_web}/edit',[WebTerkaitController::class,'edit']);
+    Route::post('/dashboard/web-terkait/{id_web}/update',[WebTerkaitController::class,'update']);
+    Route::get('/dashboard/web-terkait/{id_web}/delete',[WebTerkaitController::class,'delete']);
 
-    Route::get('/carousel',[CarouselController::class,'index']);
-    Route::post('/carousel/create',[CarouselController::class,'store'])->name("carousel.store");
-    Route::get('/carousel/{id_car}/edit',[CarouselController::class,'edit']);
-    Route::post('/carousel/{id_car}/update',[CarouselController::class,'update'])->name("carousel.update");
-    Route::get('/carousel/{id_car}/delete',[CarouselController::class,'delete']);
+    Route::get('/dashboard/carousel',[CarouselController::class,'index']);
+    Route::post('/dashboard/carousel/create',[CarouselController::class,'store'])->name("carousel.store");
+    Route::get('/dashboard/carousel/{id_car}/edit',[CarouselController::class,'edit']);
+    Route::post('/dashboard/carousel/{id_car}/update',[CarouselController::class,'update'])->name("carousel.update");
+    Route::get('/dashboard/carousel/{id_car}/delete',[CarouselController::class,'delete']);
 
     //Route Kategori Artikel
     Route::resource('/dashboard/kategori-artikel', KategoriartikelController::class);

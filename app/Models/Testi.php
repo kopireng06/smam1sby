@@ -18,6 +18,7 @@ class Testi extends Model
         'isi_testi',
         'jurusan_testi',        
         'universitas_testi',
+        'stts',
         'pekerjaan_testi',
         'foto_testi',
         'penulis_testi',

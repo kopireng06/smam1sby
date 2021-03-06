@@ -61,6 +61,7 @@
                                         <th width="80px">No.</th>
                                         <th>Nama</th>
                                         <th width="350px">Isi Testimoni</th>
+                                        <th width="100px">Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -70,6 +71,7 @@
                                             <td>{{ $count++ }}</td>
                                             <td>{{ Str::limit($testi1->nama_testi, 40) }}</td>
                                             <td>{!! Str::limit($testi1->isi_testi, 55) !!}</td>
+                                            <td>{{$testi1->stts}}</td>
                                             <td>                                       
                                             <form action="{{ route('testimoni.destroy',$testi1->id_testi) }}" method="POST">
                                                 <a class="btn btn-warning" href="{{ route('testimoni.show',$testi1->id_testi) }}" >Preview</a>

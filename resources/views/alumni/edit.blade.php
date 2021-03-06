@@ -15,7 +15,7 @@
                             
                         <div class="panel-body">
                             
-                            <form action="/alumni/{{$alumni->id_alumni}}/update" method="POST" enctype="multipart/form-data">
+                            <form action="/dashboard/alumni/{{$alumni->id_alumni}}/update" method="POST" enctype="multipart/form-data">
                                 <div class="modal-body">
                                 
                                     {{csrf_field()}}

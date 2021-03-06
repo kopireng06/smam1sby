@@ -14,7 +14,7 @@
                         </div>
                             
                         <div class="panel-body">
-                            <form action="/kelompok-konten/{{$kelompok_konten->id_kelompok_konten}}/update" method="POST" enctype="multipart/form-data">
+                            <form action="/dashboard/kelompok-konten/{{$kelompok_konten->id_kelompok_konten}}/update" method="POST" enctype="multipart/form-data">
                                 <div class="modal-body">
                                 
                                     {{csrf_field()}}
