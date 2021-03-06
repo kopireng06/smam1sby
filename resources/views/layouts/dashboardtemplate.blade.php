@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+        <link rel="stylesheet" href="{{asset('css/ckeditor.css')}}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         @yield('title')
     </head>
@@ -16,13 +17,14 @@
                 <div class="w-100">
                     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
                         <div class="container-fluid d-flex justify-content-between">
-                        <a class="navbar-brand" href="#">
-                            <img src="{{asset('image/logo-sma.png')}}" style="width:125px;">
-                        </a>
-                        <button class="navbar-toggler" type="button">
-                            <span class="navbar-toggler-icon is-closed"></span>
-                        </button> 
+                            <a class="navbar-brand" href="#">
+                                <img src="{{asset('image/logo-sma.png')}}" style="width:125px;">
+                            </a>
+                            <button class="navbar-toggler" type="button">
+                                <span class="navbar-toggler-icon is-closed"></span>
+                            </button> 
                         </div>
+                        <a class="me-4 d-block" href="{{ route('logout') }}">LOGOUT</a>
                     </nav>
                 </div>
                 <div class="w-90 shadow-sm p-4 rounded mx-auto mt-5">

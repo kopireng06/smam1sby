@@ -14,7 +14,7 @@ const Berita = () => {
                 illum labore beatae cupiditate harum natus magni sequi praesentium, dolor doloremque consectetur est ....</div>
                 <div className="news-button justify-center items-center mt-5">
                     <div className="flex-1 mx-2 h-0.5 bg-yellow-400"></div>
-                    <Link to="/berita/1" className="bg-yellow-400 px-2 py-1 rounded text-center text-sm">BACA</Link>
+                    <Link to="/berita/Department of Physiology and Medical Biochemistry focuses on developing tele-education skills" className="bg-yellow-400 px-2 py-1 rounded text-center text-sm">BACA</Link>
                     <div className="flex-1 mx-2 h-0.5 bg-yellow-400"></div>
                 </div>
             </div>

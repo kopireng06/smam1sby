@@ -20,7 +20,7 @@ class ArtikelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $search = request()->query('search');
 
@@ -198,19 +198,25 @@ class ArtikelController extends Controller
 
     public function uploadImage(Request $request)
     {
+        \Log::debug("aaa");
+        $nama_foto = "";
         if ($request->hasFile('upload')) {
-            $img_title = Str::random(100);
-            $img = Image::make($request->upload);
-            $img->resize(null, 600, function ($constraint) {
-                $constraint->aspectRatio();
-            })->encode('jpg', 50);
-            $img->stream(); // <-- Key point
-            Storage::disk('public')->put("article/" . $img_title . '.jpg', $img, 'public');
+            $foto = $request->file('upload');
+            $nama_foto = time().'.'.$foto->extension();
+            $foto->move(public_path('images\artikel'), $nama_foto);
+            // \Log::debug("bbb");
+            // $img_title = Str::random(100);
+            // $img = Image::make($request->upload);
+            // $img->resize(null, 600, function ($constraint) {
+            //     $constraint->aspectRatio();
+            // })->encode('jpg', 50);
+            // $img->stream(); // <-- Key pointx
+            // Storage::disk('public_uploads')->put("images/artikel/" . $img_title . '.jpg', $request->file('upload'), 'public');
         }
 
         $response = [
             'uploaded' => true,
-            "url" => url("") . "/storage/article/" . $img_title . ".jpg"
+            "url" => url("") . "/images/artikel/" . $nama_foto 
         ];
 
         return response()->json($response);

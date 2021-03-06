@@ -1,8 +1,32 @@
-import React from 'react';
+import React ,{useEffect} from 'react';
+import ReactHtmlParser from 'react-html-parser';
 
-const Bacaan = () => {
+const Bacaan = (props) => {
+
+    useEffect(() => {
+        // console.log(props.data[0]);
+    },[]);
+
     return (
-        <div className="text-xl md:text-9xl font-bold text-smam1 text-center my-20">NDANG MARI NDANG WES</div>
+        (()=>{
+            if(props.data[0].foto_artikel){
+                return (
+                    <>
+                        <div className="w-11/12 md:w-7/12 mx-auto my-2">
+                            <div className="w-full pt-60p bg-center bg-cover bg-no-repeat" 
+                            style={{backgroundImage:'url('+window.origin+'/images/artikel/'+props.data[0].foto_artikel+')'}}></div>
+                            <div className="text-smam1 text-xl md:text-2xl text-center font-bold my-5">{props.data[0].judul_artikel}</div>
+                        </div>
+                        <div className="w-11/12 md:w-7/12 mx-auto mb-5">
+                            {ReactHtmlParser(props.data[0].isi_artikel)}
+                        </div>
+                    </>
+                )
+            }
+            else{
+               return <div>mno</div>
+            }
+        })()
     );
 }
  

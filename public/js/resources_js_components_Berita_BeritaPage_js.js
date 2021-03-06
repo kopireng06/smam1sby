@@ -2786,7 +2786,7 @@ var Berita = function Berita() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "flex-1 mx-2 h-0.5 bg-yellow-400"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-          to: "/berita/1",
+          to: "/berita/Department of Physiology and Medical Biochemistry focuses on developing tele-education skills",
           className: "bg-yellow-400 px-2 py-1 rounded text-center text-sm",
           children: "BACA"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {

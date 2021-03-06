@@ -3,7 +3,7 @@ import SkeletonTabel from './SkeletonTabel';
 import Tabel from './Tabel';
 import SkeletonArtikel from './SkeletonArtikel';
 import Bacaan from './Bacaan';
-
+import axios from 'axios';
 
 const Artikel = (props) => {
     
@@ -31,19 +31,15 @@ const Artikel = (props) => {
 
     const getDataArtikel = async () => {
         var data;
-        await new Promise((resolve)=>{
-            setTimeout(()=>{
-                data = ()=>{
-                    if(props.centerPath=='kumpulan-alumni'){
-                        return (<Tabel/>)
-                    }
-                    else{
-                        return (<Bacaan/>)
-                    }
-                };
-                resolve(0);
-            },1000)
-        })
+        await axios.get(window.origin+'/api/'+props.centerPath+'/'+props.judul)
+            .then((res)=>{
+                if(props.centerPath=='kumpulan-alumni'){
+                    data = (<Tabel/>)
+                }
+                else{
+                    data = (<Bacaan data={res.data} />)
+                }
+            });
         return data;
     }
 
