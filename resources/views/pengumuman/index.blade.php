@@ -129,6 +129,12 @@
                         <input type="file" name="foto_pengumuman" class="form-control @error('foto_pengumuman') is-invalid @enderror" onchange="previewFile(this)">
                         @error('foto_pengumuman')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         <img id="previewImg" alt="foto_pengumuman" style="max-width:150px;margin-top:20px;">
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="link_file"><strong>Link Downloadable File</strong></label>
+                        <input type="text" name="link_file" class="form-control @error('link_file') is-invalid @enderror" placeholder="Link Downloadable File"/>
+                        @error('link_file')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div> 
 
                     <div class="form-group mb-2">

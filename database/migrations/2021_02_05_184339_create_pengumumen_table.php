@@ -18,7 +18,8 @@ class CreatePengumumenTable extends Migration
             $table->string('judul_pengumuman');
             $table->text('isi_pengumuman');
             $table->date('tanggal_pengumuman');
-            $table->string('foto_pengumuman')->nullable();            
+            $table->string('foto_pengumuman')->nullable();
+            $table->string('link_file')->nullable();
             $table->integer('penulis_pengumuman')->unsigned();
             $table->foreign('penulis_pengumuman')->references('id')->on('users')            
             ->onUpdate('cascade')

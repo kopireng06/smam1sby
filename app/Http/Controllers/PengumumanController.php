@@ -74,6 +74,7 @@ class PengumumanController extends Controller
         $judul = $request->judul_pengumuman;
         $isi = $request->isi_pengumuman;
         $tanggal = $request->tanggal_pengumuman;
+        $link = $request->link_file;
         $foto = $request->file('foto_pengumuman');
         $nama_foto = time().'.'.$foto->extension();
         $foto->move(public_path('images/pengumuman'), $nama_foto);
@@ -84,6 +85,7 @@ class PengumumanController extends Controller
         $pengumuman->tanggal_pengumuman = $tanggal;
         $pengumuman->penulis_pengumuman = \Auth::user()->id;        
         $pengumuman->foto_pengumuman = $nama_foto;
+        $pengumuman->link_file = $link;
         $pengumuman->save();        
 
         return redirect()->route('pengumuman.index')
@@ -148,6 +150,7 @@ class PengumumanController extends Controller
             $pengumuman->judul_pengumuman = $request->judul_pengumuman;
             $pengumuman->isi_pengumuman = $request->isi_pengumuman;
             $pengumuman->tanggal_pengumuman = $request->tanggal_pengumuman;
+            $pengumuman->link_file = $request->link_file;
             $pengumuman->penulis_pengumuman=\Auth::user()->id;
             $pengumuman->save();
         }else{
@@ -162,6 +165,7 @@ class PengumumanController extends Controller
             $pengumuman->judul_pengumuman = $request->judul_pengumuman;
             $pengumuman->isi_pengumuman = $request->isi_pengumuman;
             $pengumuman->tanggal_pengumuman = $request->tanggal_pengumuman;
+            $pengumuman->link_file = $request->link_file;
             $pengumuman->penulis_pengumuman=\Auth::user()->id;
             $pengumuman->foto_pengumuman = $nama_foto;
             $pengumuman->save();

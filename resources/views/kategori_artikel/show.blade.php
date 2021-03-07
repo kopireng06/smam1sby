@@ -32,7 +32,7 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        Kata Alumni
+                        <h4>Kategori Artikel</h4>
                     </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">

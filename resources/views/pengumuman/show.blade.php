@@ -96,6 +96,12 @@
                     </div> 
 
                     <div class="form-group mb-2">
+                        <label for="link_file"><strong>Link Downloadable File</strong></label>
+                        <input type="text" name="link_file" class="form-control @error('link_file') is-invalid @enderror" value="{{ $pengumuman->link_file }}"/>
+                        @error('link_file')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div> 
+
+                    <div class="form-group mb-2">
                         <label for="isi_pengumuman"><strong>Isi Pengumuman</strong></label>
                         <textarea name="isi_pengumuman" class="ckeditor form-control" name="wysiwyg-editor">{{ $pengumuman->isi_pengumuman }}</textarea>
                     </div>
