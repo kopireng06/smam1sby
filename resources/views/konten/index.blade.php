@@ -34,8 +34,8 @@
                                         <td>{{$konten->isi_konten}}</td>
 
                                         <td>
-                                            <a href="/konten/{{$konten->id_konten}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="/konten/{{$konten->id_konten}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">Delete</a>
+                                            <a href="/dashboard/konten/{{$konten->id_konten}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="/dashboard/konten/{{$konten->id_konten}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -56,7 +56,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Import Data Alumni</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/konten/create" method="POST" enctype="multipart/form-data">
+            <form action="/dashboard/konten/create" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 
                     {{csrf_field()}}

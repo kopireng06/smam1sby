@@ -118,6 +118,15 @@
                         <textarea name="isi_testi" class="ckeditor form-control" name="wysiwyg-editor">{{ $testi->isi_testi}}</textarea>
                     </div>
 
+                    <div class="dropdown">
+                        <label for="file">Status</label>
+                        <select name="stts" class="form-control" id="exampleFormControlSelect1" required>
+                            <option selected disabled>Choose One</option>
+                            <option value="accept">Accept</option>
+                            <option value="delete">Delete</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

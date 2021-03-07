@@ -15,15 +15,11 @@
                         <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Import Data Prestasi
                         </button>
-
-                        <button type="button" class="btn btn-danger" id="deleteAllSelectedRecords">Delete Selected</button>
-                        
                             
                         <div class="panel-body">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th><input type="checkbox" id="checkAll"></th>
                                         <th>Nama</th>
                                         <th>Juara</th>
                                         <th>Tingkat</th>
@@ -33,16 +29,13 @@
                                 <tbody>
                                 @foreach($prestasi as $prestasi)
                                     <tr id="sid{{$prestasi->id_prestasi}}">
-                                        <td>
-                                            <input name="ids" class="checkBoxClass" type="checkbox" value="{{$prestasi->id_prestasi}}" id="checkItem">
-                                        </td>
                                         <td>{{$prestasi->nama_prestasi}}</td>
                                         <td>{{$prestasi->juara_prestasi}}</td>
                                         <td>{{$prestasi->tingkat_prestasi}}</td>
 
                                         <td>
-                                            <a href="/prestasi/{{$prestasi->id_prestasi}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="/prestasi/{{$prestasi->id_prestasi}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">Delete</a>
+                                            <a href="/dashboard/prestasi/{{$prestasi->id_prestasi}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="/dashboard/prestasi/{{$prestasi->id_prestasi}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -63,7 +56,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Import Data Prestasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/prestasi/import" method="POST" enctype="multipart/form-data">
+            <form action="/dashboard/prestasi/import" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                 
                     {{csrf_field()}}

@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/alumni" class="arialrounded-mt-bold my-1 d-block">
+                    <a href="/dashboard/alumni" class="arialrounded-mt-bold my-1 d-block">
                         Alumni
                     </a>
                 </li>
@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/carousel" class="arialrounded-mt-bold my-1 d-block">
+                    <a href="/dashboard/carousel" class="arialrounded-mt-bold my-1 d-block">
                         Carousel
                     </a>
                 </li>
@@ -60,12 +60,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/kelompok-konten" class="arialrounded-mt-bold my-1 d-block">
+                    <a href="/dashboard/kelompok-konten" class="arialrounded-mt-bold my-1 d-block">
                         Kelompok Konten
                     </a>
                 </li>
                 <li>
-                    <a href="/konten" class="arialrounded-mt-bold my-1 d-block">
+                    <a href="/dashboard/konten" class="arialrounded-mt-bold my-1 d-block">
                         Konten
                     </a>
                 </li>
@@ -75,7 +75,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/prestasi" class="arialrounded-mt-bold my-1 d-block">
+                    <a href="/dashboard/prestasi" class="arialrounded-mt-bold my-1 d-block">
                         Prestasi
                     </a>
                 </li>
@@ -85,7 +85,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/web-terkait" class="arialrounded-mt-bold my-1 d-block">
+                    <a href="/dashboard/web-terkait" class="arialrounded-mt-bold my-1 d-block">
                         Web Terkait
                     </a>
                 </li>

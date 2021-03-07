@@ -17,7 +17,7 @@
                         </button>
                             
                         <div class="panel-body">
-                            <form action="/web-terkait/{{$web_terkait->id_web}}/update" method="POST" enctype="multipart/form-data">
+                            <form action="/dashboard/web-terkait/{{$web_terkait->id_web}}/update" method="POST" enctype="multipart/form-data">
                                 <div class="modal-body">
                                 
                                     {{csrf_field()}}

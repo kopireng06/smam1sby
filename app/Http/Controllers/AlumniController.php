@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumni;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Imports\AlumniImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class AlumniController extends Controller
 {
     public function index()
     {
-        $data_alumni = \App\Models\Alumni::all();
+        $data_alumni = Alumni::all();
+        Alumni::where('created_at', '<', Carbon::now()->subYears(7))->delete();
         return view('alumni.index',['data_alumni' => $data_alumni]);
     }
 
@@ -21,27 +24,27 @@ class AlumniController extends Controller
 
         Excel::import(new AlumniImport, $file);
 
-        return redirect("/alumni");
+        return redirect("/dashboard/alumni");
     }
     
     public function edit($id_alumni)
     {
-        $alumni = \App\Models\Alumni::find($id_alumni);
+        $alumni = Alumni::find($id_alumni);
         return view('alumni.edit',['alumni' => $alumni]);
     }
 
     public function update(Request $request, $id_alumni)
     {
-        $alumni = \App\Models\Alumni::find($id_alumni);
+        $alumni = Alumni::find($id_alumni);
         $alumni->update($request->all());
-        return redirect('/alumni');
+        return redirect('/dashboard/alumni');
     }
 
     public function delete($id_alumni)
     {
-        $alumni = \App\Models\Alumni::find($id_alumni);
+        $alumni = Alumni::find($id_alumni);
         $alumni->delete();
-        return redirect('/alumni');
+        return redirect('/dashboard/alumni');
     }
     
     

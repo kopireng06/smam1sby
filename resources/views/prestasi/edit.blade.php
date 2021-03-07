@@ -17,7 +17,7 @@
                         </button>
                             
                         <div class="panel-body">
-                            <form action="/prestasi/{{$prestasi->id_prestasi}}/update" method="POST" enctype="multipart/form-data">
+                            <form action="/dashboard/prestasi/{{$prestasi->id_prestasi}}/update" method="POST" enctype="multipart/form-data">
                                 <div class="modal-body">
                                 
                                     {{csrf_field()}}
