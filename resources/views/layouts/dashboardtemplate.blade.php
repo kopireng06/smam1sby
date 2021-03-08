@@ -24,7 +24,6 @@
                                 <span class="navbar-toggler-icon is-closed"></span>
                             </button> 
                         </div>
-                        <a class="me-4 d-block" href="{{ route('logout') }}">LOGOUT</a>
                     </nav>
                 </div>
                 <div class="w-90 shadow-sm p-4 rounded mx-auto mt-5">
@@ -34,6 +33,7 @@
         </div>
         <div class="sidebar px-3 vh-100">
             <ul class="sidebar-nav w-100 d-flex flex-column" style="margin-top:30px;" >
+
                 <li>
                     <a href="/dashboard/alumni" class="arialrounded-mt-bold my-1 d-block">
                         Alumni
@@ -83,6 +83,9 @@
                     <a href="/dashboard/web-terkait" class="arialrounded-mt-bold my-1 d-block">
                         Web Terkait
                     </a>
+                </li>
+                <li>
+                    <a class="me-4 d-block" href="{{ route('logout') }}">LOGOUT</a>
                 </li>
             </ul>
         </div>
