@@ -10,11 +10,11 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Alumni</h1>
+                            <h1 class="panel-title">Alumni</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Import Data Alumni
-                        </button>
+                        <a href="/dashboard/alumni/import-alumni" class="btn btn-primary float-right">
+                            Import Alumni
+                        </a>
                             
                         <div class="panel-body">
                             <table class="table table-hover">
@@ -23,6 +23,7 @@
                                         <th>Nama</th>
                                         <th>Universitas</th>
                                         <th>Jurusan</th>
+                                        <th>Angkatan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -32,6 +33,7 @@
                                         <td>{{$alumni->nama_alumni}}</td>
                                         <td>{{$alumni->univ_alumni}}</td>
                                         <td>{{$alumni->jurusan_alumni}}</td>
+                                        <td>{{$alumni->angkatan}}</td>
 
                                         <td>
                                             <a href="/dashboard/alumni/{{$alumni->id_alumni}}/edit" class="btn btn-warning btn-sm">Edit</a>
@@ -48,33 +50,5 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Import Data Alumni</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="/dashboard/alumni/import" method="POST" enctype="multipart/form-data">
-                <div class="modal-body">
-                
-                    {{csrf_field()}}
-      
-                    <div class="form-group">
-                        <label for="file">Choose File</label>
-                        <input type="file" name="file" class="form-control"/>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Import</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 
 @endsection

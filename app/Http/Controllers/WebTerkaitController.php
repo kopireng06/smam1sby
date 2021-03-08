@@ -14,6 +14,11 @@ class WebTerkaitController extends Controller
         return view ('WebTerkait.index',['web_terkait'=>$web]);
     }
 
+    public function createWebTerkait()
+    {
+        return view ('WebTerkait.create');
+    }
+
     public function create(Request $request)
     {
         WebTerkait::create($request->all());

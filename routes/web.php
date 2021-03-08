@@ -38,16 +38,18 @@ Route::get('/keong', function () {
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', function () {
-        return view('contohadmin');
+        return redirect('/dashboard/alumni');
     });
 
     Route::get('/dashboard/alumni',[AlumniController::class,'index']);
+    Route::get('/dashboard/alumni/import-alumni',[AlumniController::class,'importAlumni']);
     Route::post('/dashboard/alumni/import',[AlumniController::class,'import']);
     Route::get('/dashboard/alumni/{id_alumni}/edit',[AlumniController::class,'edit']);
     Route::post('/dashboard/alumni/{id_alumni}/update',[AlumniController::class,'update']);
     Route::get('/dashboard/alumni/{id_alumni}/delete',[AlumniController::class,'delete']);
 
     Route::get('/dashboard/prestasi',[PrestasiController::class,'index']);
+    Route::get('/dashboard/prestasi/import-prestasi',[PrestasiController::class,'importPrestasi']);
     Route::post('/dashboard/prestasi/import',[PrestasiController::class,'import']);
     Route::get('/dashboard/prestasi/{id_prestasi}/edit',[PrestasiController::class,'edit']);
     Route::post('/dashboard/prestasi/{id_prestasi}/update',[PrestasiController::class,'update']);
@@ -56,24 +58,28 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard/prestasi/delete-selection','App\Http\Controllers\PrestasiController@deleteSelection');
 
     Route::get('/dashboard/konten',[KontenController::class,'index']);
+    Route::get('/dashboard/konten/create-konten',[KontenController::class,'createKonten']);
     Route::post('/dashboard/konten/create',[KontenController::class,'create']);
     Route::get('/dashboard/konten/{id_konten}/edit',[KontenController::class,'edit']);
     Route::post('/dashboard/konten/{id_konten}/update',[KontenController::class,'update']);
     Route::get('/dashboard/konten/{id_konten}/delete',[KontenController::class,'delete']);
 
     Route::get('/dashboard/kelompok-konten',[KelKontenController::class,'index']);
+    Route::get('/dashboard/kelompok-konten/create-kelompok-konten',[KelKontenController::class,'createKelKonten']);
     Route::post('/dashboard/kelompok-konten/create',[KelKontenController::class,'create']);
     Route::get('/dashboard/kelompok-konten/{id_kelompok_konten}/edit',[KelKontenController::class,'edit']);
     Route::post('/dashboard/kelompok-konten/{id_kelompok_konten}/update',[KelKontenController::class,'update']);
     Route::get('/dashboard/kelompok-konten/{id_kelompok_konten}/delete',[KelKontenController::class,'delete']);
 
     Route::get('/dashboard/web-terkait',[WebTerkaitController::class,'index']);
+    Route::get('/dashboard/web-terkait/create-web-terkait',[WebTerkaitController::class,'createWebTerkait']);
     Route::post('/dashboard/web-terkait/create',[WebTerkaitController::class,'create']);
     Route::get('/dashboard/web-terkait/{id_web}/edit',[WebTerkaitController::class,'edit']);
     Route::post('/dashboard/web-terkait/{id_web}/update',[WebTerkaitController::class,'update']);
     Route::get('/dashboard/web-terkait/{id_web}/delete',[WebTerkaitController::class,'delete']);
 
     Route::get('/dashboard/carousel',[CarouselController::class,'index']);
+    Route::get('/dashboard/carousel/create-carousel',[CarouselController::class,'createCarousel']);
     Route::post('/dashboard/carousel/create',[CarouselController::class,'store'])->name("carousel.store");
     Route::get('/dashboard/carousel/{id_car}/edit',[CarouselController::class,'edit']);
     Route::post('/dashboard/carousel/{id_car}/update',[CarouselController::class,'update'])->name("carousel.update");
@@ -84,7 +90,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Route Artikel
     Route::resource('/dashboard/artikel', ArtikelController::class)->except([
-        'create', 'edit'
+        'edit'
     ]);
 
      /* Article Image */
@@ -94,7 +100,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Route Pengumuman
     Route::resource('/dashboard/pengumuman', PengumumanController::class)->except([
-        'create', 'edit'
+        'edit'
     ]);
     Route::post('/dashboard/pengumuman/upload/image', [PengumumanController::class, 'uploadImage'])->name('pengumuman-upload-image');
     Route::post('/dashboard/pengumuman/delete/image', [PengumumanController::class, 'deleteImage'])->name('pengumuman-delete-image');
@@ -109,7 +115,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     //Route Testimoni
     Route::resource('/dashboard/testimoni', TestiController::class)->except([
-        'create', 'edit'
+        'edit'
     ]);
     Route::post('/dashboard/testimoni/import','App\Http\Controllers\TestiController@import');
 

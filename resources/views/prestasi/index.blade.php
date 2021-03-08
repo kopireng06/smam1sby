@@ -10,11 +10,11 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Prestasi</h1>
+                            <h1 class="panel-title">Prestasi</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Import Data Prestasi
-                        </button>
+                        <a href="/dashboard/prestasi/import-prestasi" class="btn btn-primary float-right" >
+                            Import Prestasi
+                        </a>
                             
                         <div class="panel-body">
                             <table class="table table-hover">
@@ -48,6 +48,7 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -76,4 +77,6 @@
     </div>
 </div>
 
+=======
+>>>>>>> f0a2bc0c2465d038a687b0cfcdf1a3016a107832
 @endsection

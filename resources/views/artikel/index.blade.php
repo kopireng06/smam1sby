@@ -13,9 +13,9 @@
                             <h1 class="panel-title">Artikel</h1>
                         </div>
                         <div class="d-flex justify-content-between mt-3 mb-3">
-                            <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                + Tambah Artikel
-                            </button>
+                            <a href="{{ route('artikel.create') }}" class="btn btn-primary float-right">
+                                Tambah Artikel
+                            </a>
                             <form action="{{ route('artikel.index') }}" method="GET" role="search">
                                 {{csrf_field()}}
                                 <div class="input-group">
@@ -65,7 +65,7 @@
                                             <td>{!! Str::limit( $artikel1->isi_artikel, 30  ) !!}</td>
                                             <td>{{ $artikel1->kategori->nama_kategoriartikel }}</td>
                                             <td>
-                                                <a class="btn btn-warning" href="{{ route('artikel.show',$artikel1->id_artikel) }}" >Preview</a>
+                                                <a class="btn btn-warning" href="{{ route('artikel.show',$artikel1->id_artikel) }}" >Edit</a>
                                                 <form action="{{ route('artikel.destroy',$artikel1->id_artikel) }}" method="POST">                                             
                                                     @csrf
                                                     @method('DELETE')

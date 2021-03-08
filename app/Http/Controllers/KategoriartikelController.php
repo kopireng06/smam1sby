@@ -39,7 +39,7 @@ class KategoriartikelController extends Controller
      */
     public function create()
     {
-        //
+        return view ('kategori_artikel.create');
     }
 
     /**

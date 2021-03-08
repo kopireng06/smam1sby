@@ -14,6 +14,11 @@ class KelKontenController extends Controller
         return view ('kelkonten.index',['kelompok_konten'=> $kelkonten]);
     }
 
+    public function createKelKonten()
+    {
+        return view ('kelkonten.create');
+    }
+
     public function create(Request $request)
     {
         KelKonten::create($request->all());

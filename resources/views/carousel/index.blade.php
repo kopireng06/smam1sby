@@ -10,11 +10,11 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Carousel</h1>
+                            <h1 class="panel-title">Carousel</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Tambah Data Carousel
-                        </button>
+                        <a href="/dashboard/carousel/create-carousel" class="btn btn-primary float-right">
+                            Tambah Carousel
+                        </a>
                             
                         <div class="panel-body">
                             <table class="table table-hover">
@@ -50,45 +50,4 @@
         </div>
     </div>
 </div>
-
-
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Input Data Czarousel</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="/dashboard/carousel/create" method="POST" enctype="multipart/form-data">
-                <div class="modal-body">
-                
-                    {{csrf_field()}}
-
-                    <div class="form-group">
-                        <label for="file">Choose File Image</label>
-                        <input type="file" name="foto_car" class="form-control" onchange="previewFile(this)" required/>
-                        <img id="previewImg" alt="Image" style="max-width:130px;margin-top:20px;"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="file">Judul</label>
-                        <input type="text" name="judul_car" class="form-control" placeholder="Judul Carousel" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="file">Isi</label>
-                        <input type="text" name="isi_car" class="form-control" placeholder="Isi Carousel" required/>
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Create</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 @endsection

@@ -10,11 +10,11 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Konten</h1>
+                            <h1 class="panel-title">Konten</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <a href="/dashboard/konten/create-konten" class="btn btn-primary float-right">
                             Tambah Konten
-                        </button>
+                        </a>
                             
                         <div class="panel-body">
                             <table class="table table-hover">
@@ -31,7 +31,7 @@
                                     <tr>
                                         <td>{{$konten->judul_konten}}</td>
                                         <td>{{$konten->kelompok_konten}}</td>
-                                        <td>{{$konten->isi_konten}}</td>
+                                        <td>{!! $konten->isi_konten !!}</td>
 
                                         <td>
                                             <a href="/dashboard/konten/{{$konten->id_konten}}/edit" class="btn btn-warning btn-sm">Edit</a>
@@ -49,6 +49,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -92,4 +93,6 @@
 </div>
 
 
+=======
+>>>>>>> f0a2bc0c2465d038a687b0cfcdf1a3016a107832
 @endsection
