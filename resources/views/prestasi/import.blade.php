@@ -12,6 +12,7 @@
 					    <div class="panel-heading">
                             <h1 class="panel-title">Prestasi</h1>
                         </div>  
+                        <a href="{{asset('format')}}/Format Prestasi.xlsx">Download Format File Prestasi</a>
                         <div class="panel-body">
                         <form action="/dashboard/prestasi/import" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">

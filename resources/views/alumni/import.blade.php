@@ -11,7 +11,8 @@
                     <div class="panel">
 					    <div class="panel-heading">
                             <h1 class="panel-title">Alumni</h1>
-                        </div>  
+                        </div>
+                        <a href="{{asset('format')}}/Format Alumni.xlsx">Download Format File Alumni</a>
                         <div class="panel-body">
                         <form action="/dashboard/alumni/import" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
