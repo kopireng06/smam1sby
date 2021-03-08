@@ -38,7 +38,7 @@ Route::get('/keong', function () {
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', function () {
-        return view('contohadmin');
+        return redirect('/dashboard/alumni');
     });
 
     Route::get('/dashboard/alumni',[AlumniController::class,'index']);
