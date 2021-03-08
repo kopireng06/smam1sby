@@ -15,6 +15,11 @@ class CarouselController extends Controller
         return view("carousel.index",['carousel' => $carousel]);
     }
 
+    public function createCarousel()
+    {
+        return view ('carousel.create');
+    }
+
     public function store(Request $request)
     {
         $image = $request->file('foto_car');

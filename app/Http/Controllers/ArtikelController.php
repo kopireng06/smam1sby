@@ -49,7 +49,8 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        //
+        $kategori = Kategori_artikel::all();
+        return view('artikel.create', compact('kategori'));
     }
 
     /**

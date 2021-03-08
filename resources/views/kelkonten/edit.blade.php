@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Kelompok Konten</h1>
+                            <h1 class="panel-title">Edit Kelompok Konten</h1>
                         </div>
                             
                         <div class="panel-body">
@@ -20,7 +20,7 @@
                                     {{csrf_field()}}
                     
                                     <div class="form-group">
-                                        <label for="file">Nama Kelompok Konten</label>
+                                        <label for="file"><strong>Nama Kelompok Konten</strong></label>
                                         <input type="text" name="nama_kelompok_konten" class="form-control" placeholder="Nama Kelompok Konten" value="{{$kelompok_konten->nama_kelompok_konten}}"/>
                                     </div>
 

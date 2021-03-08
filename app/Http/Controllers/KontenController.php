@@ -17,6 +17,12 @@ class KontenController extends Controller
         return view("konten.index",['konten' => $konten],['kelkonten' => $kelkonten]);
     }
 
+    public function createKonten()
+    {
+        $kelkonten = KelKonten::all();
+        return view("konten.create",['kelkonten' => $kelkonten]);
+    }
+
     public function create(Request $request)
     {
         Konten::create($request->all());

@@ -18,6 +18,11 @@ class AlumniController extends Controller
         return view('alumni.index',['data_alumni' => $data_alumni]);
     }
 
+    public function importAlumni()
+    {
+        return view('alumni.import');
+    }
+    
     public function import(Request $request)
     {
         $file = $request->file('file');

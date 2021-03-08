@@ -34,11 +34,6 @@
         </div>
         <div class="sidebar px-3 vh-100">
             <ul class="sidebar-nav w-100 d-flex flex-column" style="margin-top:30px;" >
-                <li class="sidebar-brand">
-                    <a href="/dashboard" class="arialrounded-mt-bold my-2 d-block">
-                        DASHBOARD
-                    </a>
-                </li>
                 <li>
                     <a href="/dashboard/alumni" class="arialrounded-mt-bold my-1 d-block">
                         Alumni

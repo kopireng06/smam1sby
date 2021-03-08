@@ -41,7 +41,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        //
+        return view ('pengumuman.create');
     }
 
     /**

@@ -10,11 +10,11 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Konten</h1>
+                            <h1 class="panel-title">Konten</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <a href="/dashboard/konten/create-konten" class="btn btn-primary float-right">
                             Tambah Konten
-                        </button>
+                        </a>
                             
                         <div class="panel-body">
                             <table class="table table-hover">
@@ -31,7 +31,7 @@
                                     <tr>
                                         <td>{{$konten->judul_konten}}</td>
                                         <td>{{$konten->kelompok_konten}}</td>
-                                        <td>{{$konten->isi_konten}}</td>
+                                        <td>{!! $konten->isi_konten !!}</td>
 
                                         <td>
                                             <a href="/dashboard/konten/{{$konten->id_konten}}/edit" class="btn btn-warning btn-sm">Edit</a>
@@ -48,48 +48,5 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Import Data Alumni</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="/dashboard/konten/create" method="POST" enctype="multipart/form-data">
-                <div class="modal-body">
-                
-                    {{csrf_field()}}
-      
-                    <div class="form-group">
-                        <label for="file">Judul Konten</label>
-                        <input type="text" name="judul_konten" class="form-control" placeholder="Judul Konten" required/>
-                    </div>
-                    
-                    <div class="dropdown">
-                        <label for="file">Kelompok Konten</label>
-                        <select name="kelompok_konten" class="form-control" id="exampleFormControlSelect1" required>
-                            <option selected disabled>Choose One</option>
-                            @foreach ($kelkonten as $kelkonten)
-                                <option value="{{$kelkonten->nama_kelompok_konten}}">{{$kelkonten->nama_kelompok_konten}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="file">Isi Konten</label>
-                        <textarea name="isi_konten" class="ckeditor form-control" name="wysiwyg-editor"></textarea>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Import</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 
 @endsection

@@ -13,9 +13,9 @@
                             <h1 class="panel-title">Pengumuman</h1>
                         </div>
                         <div class="d-flex justify-content-between mt-3 mb-3">
-                            <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                + Tambah Pengumuman
-                            </button>
+                            <a href="{{ route('pengumuman.create') }}" class="btn btn-primary float-right">
+                                Tambah Pengumuman
+                            </a>
                             <form action="{{ route('pengumuman.index') }}" method="GET" role="search">
                                 {{csrf_field()}}
                                 <div class="input-group">
@@ -64,7 +64,7 @@
                                         <td>{!! Str::limit($pengumuman1->isi_pengumuman, 55) !!}</td>
                                         <td>                                       
                                         <form action="{{ route('pengumuman.destroy',$pengumuman1->id_pengumuman) }}" method="POST">
-                                            <a class="btn btn-warning" href="{{ route('pengumuman.show',$pengumuman1->id_pengumuman) }}" >Preview</a>
+                                            <a class="btn btn-warning" href="{{ route('pengumuman.show',$pengumuman1->id_pengumuman) }}" >Edit</a>
                         
                                             @csrf
                                             @method('DELETE')

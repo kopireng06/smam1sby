@@ -10,5 +10,5 @@ class alumni extends Model
     use HasFactory;
     protected $table = 'alumni';
     protected $primaryKey = 'id_alumni';
-    protected $fillable = ['id_alumni','nama_alumni','univ_alumni','jurusan_alumni'];
+    protected $fillable = ['id_alumni','nama_alumni','univ_alumni','jurusan_alumni','angkatan'];
 }

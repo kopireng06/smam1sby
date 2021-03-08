@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Prestasi</h1>
+                            <h1 class="panel-title">Edit Prestasi</h1>
                         </div>
                         <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Import Data Prestasi
@@ -23,17 +23,17 @@
                                     {{csrf_field()}}
                     
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Nama</label>
+                                        <label for="exampleInputEmail1"><strong>Nama</strong></label>
                                         <input name="nama_prestasi" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$prestasi->nama_prestasi}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Juara</label>
+                                        <label for="exampleInputEmail1"><strong>Juara</strong></label>
                                         <input name="juara_prestasi" type="integer" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$prestasi->juara_prestasi}}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Tingkat</label>
+                                        <label for="exampleInputEmail1"><strong>Tingkat</strong></label>
                                         <input name="tingkat_prestasi" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$prestasi->tingkat_prestasi}}">
                                     </div>
 

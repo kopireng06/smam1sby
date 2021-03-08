@@ -32,6 +32,7 @@ class CreateDatabase extends Migration
             $table->string('nama_alumni');
             $table->string('univ_alumni');
             $table->string('jurusan_alumni');
+            $table->string('angkatan');
             $table->timestamps();
         });
 

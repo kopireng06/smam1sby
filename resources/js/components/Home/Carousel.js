@@ -51,7 +51,7 @@ const Carousel = () => {
                   return(
                     dataCarousel.map((data,i)=>
                       <div key={i}>
-                        <div className="bg-center bg-no-repeat bg-cover h-screen" style={{backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("+data.foto_car+")"}}>
+                        <div className="bg-center bg-no-repeat bg-cover h-screen" style={{backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("+window.origin+"/images/carousel/"+data.foto_car+")"}}>
                           <div className="lg:container mx-auto p-5 flex flex-col h-screen items-center md:items-start justify-center">
                             {
                               (() =>{

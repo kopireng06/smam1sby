@@ -18,6 +18,11 @@ class PrestasiController extends Controller
         return view('prestasi.index',['prestasi' => $prestasi]);
     }
 
+    public function importPrestasi()
+    {
+        return view('prestasi.import');
+    }
+    
     public function import(Request $request)
     {
         $file = $request->file('file');

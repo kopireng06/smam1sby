@@ -13,9 +13,9 @@
                             <h1 class="panel-title">Kategori Artikel</h1>
                         </div>
                         <div class="d-flex justify-content-between mt-3 mb-3">
-                            <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                + Tambah Kategori Artikel
-                            </button>
+                            <a href="{{ route('kategori-artikel.create') }}" class="btn btn-primary float-right">
+                                Tambah Kategori Artikel
+                            </a>
                             <form action="{{ route('kategori-artikel.index') }}" method="GET" role="search">
                                 {{csrf_field()}}
                                 <div class="input-group">

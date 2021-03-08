@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Website Terkait</h1>
+                            <h1 class="panel-title">Edit Website Terkait</h1>
                         </div>
                         <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Tambah Data Website Terkait
@@ -23,12 +23,12 @@
                                     {{csrf_field()}}
                     
                                     <div class="form-group">
-                                        <label for="file">Nama Website</label>
+                                        <label for="file"><strong>Nama Website</strong></label>
                                         <input type="text" name="nama_web" class="form-control" placeholder="Nama Website" value="{{$web_terkait->nama_web}}"/>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="file">Link Website</label>
+                                        <label for="file"><strong>Link Website</strong></label>
                                         <input type="text" name="link_web" class="form-control" placeholder="Link Website" value="{{$web_terkait->link_web}}"/>
                                     </div>
 

@@ -10,11 +10,11 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Data Prestasi</h1>
+                            <h1 class="panel-title">Prestasi</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Import Data Prestasi
-                        </button>
+                        <a href="/dashboard/prestasi/import-prestasi" class="btn btn-primary float-right" >
+                            Import Prestasi
+                        </a>
                             
                         <div class="panel-body">
                             <table class="table table-hover">
@@ -48,32 +48,4 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Import Data Prestasi</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="/dashboard/prestasi/import" method="POST" enctype="multipart/form-data">
-                <div class="modal-body">
-                
-                    {{csrf_field()}}
-      
-                    <div class="form-group">
-                        <label for="file">Choose File</label>
-                        <input type="file" name="file" class="form-control"/>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Import</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 @endsection

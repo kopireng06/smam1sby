@@ -14,12 +14,9 @@
                         </div>
                         <div class="d-flex justify-content-between mt-3 mb-3">
                             <div class="d-flex justify-content-start">
-                                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    + Tambah Testimoni
-                                </button>                            
-                                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#myModal">
-                                    + Import Testimoni
-                                </button>
+                                <a href="{{ route('testimoni.create') }}" class="btn btn-primary float-right"s>
+                                    Tambah Testimoni
+                                </a>                            
                             </div>
                             <div class="d-flex justify-content-end">
                                 <form action="{{ route('testimoni.index') }}" method="GET" role="search">
@@ -61,7 +58,6 @@
                                         <th width="80px">No.</th>
                                         <th>Nama</th>
                                         <th width="350px">Isi Testimoni</th>
-                                        <th width="100px">Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -71,10 +67,9 @@
                                             <td>{{ $count++ }}</td>
                                             <td>{{ Str::limit($testi1->nama_testi, 40) }}</td>
                                             <td>{!! Str::limit($testi1->isi_testi, 55) !!}</td>
-                                            <td>{{$testi1->stts}}</td>
                                             <td>                                       
                                             <form action="{{ route('testimoni.destroy',$testi1->id_testi) }}" method="POST">
-                                                <a class="btn btn-warning" href="{{ route('testimoni.show',$testi1->id_testi) }}" >Preview</a>
+                                                <a class="btn btn-warning" href="{{ route('testimoni.show',$testi1->id_testi) }}" >Edit</a>
                             
                                                 {{csrf_field()}}
                                                 @method('DELETE')
