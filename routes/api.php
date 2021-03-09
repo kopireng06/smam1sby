@@ -131,5 +131,9 @@ Route::get('footer',function(){
     $footer['youtube'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Youtube')->limit(1)->get();
 
     return response()->json($footer);
+<<<<<<< HEAD
 });
 
+=======
+});
+>>>>>>> 7dc1ab9041aa7c1a449b7e20c835285622efd1e3

@@ -1,16 +1,13 @@
 @extends('layouts.dashboardtemplate')
-@section('title')
-    <title>Data Alumni</title>
-@endsection
 @section('konten')
 <div class="main">
     <div class="main-content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="panel">
+                    <div class="panel mb-4">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Artikel</h1>
+                            <h1 class="panel-title">Tambah Artikel</h1>
                         </div>  
                         <div class="panel-body">
                         @if ($errors->any())
@@ -44,7 +41,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group mb-2">
+                            <div class="form-group mb-2">
                                     <label for="foto_artikel"><strong>Foto Sampul</strong></label>
                                     <input type="file" name="foto_artikel" class="form-control @error('foto_artikel') is-invalid @enderror" onchange="previewFile(this)" required>
                                     @error('foto_artikel')<div class="invalid-feedback">{{ $message }}</div>@enderror
@@ -57,7 +54,9 @@
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
+                            <div class="d-flex justify-content-between mt-3 mb-3">
+                                <a href="{{ route('artikel.index') }}" class="btn btn-warning float-right">
+                                Kembali </a>
                                 <button type="submit" class="btn btn-primary">Tambah</button>
                             </div>
                         </form>

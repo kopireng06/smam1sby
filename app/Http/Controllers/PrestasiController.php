@@ -11,11 +11,22 @@ use Carbon\Carbon;
 
 class PrestasiController extends Controller
 {
-    public function index()
-    {
-        $prestasi = Prestasi::all();
+    public function index(Request $request)
+    {   
+        $search = request()->query('search');
+
+        if($search){
+            $prestasi = Prestasi::where('nama_prestasi', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(10);
+
+        }else{            
+            $prestasi = Prestasi::orderBy('created_at', 'DESC')->simplePaginate(10);
+
+        }
+
+        $count = $prestasi->firstItem();
         Prestasi::where('created_at', '<', Carbon::now()->subYears(7))->delete();
-        return view('prestasi.index',['prestasi' => $prestasi]);
+
+        return view('prestasi.index',compact('prestasi', 'count'));
     }
 
     public function importPrestasi()
@@ -29,7 +40,9 @@ class PrestasiController extends Controller
 
         Excel::import(new PrestasiImport, $file);
 
-        return redirect("/dashboard/prestasi");
+        return redirect("/dashboard/prestasi")
+            ->with('success', 'Prestasi Berhasil Diimport !');
+        
     }
 
     public function edit($id_prestasi)
@@ -42,14 +55,17 @@ class PrestasiController extends Controller
     {
         $prestasi = Prestasi::find($id_prestasi);
         $prestasi->update($request->all());
-        return redirect("/dashboard/prestasi");
+
+        return redirect("/dashboard/prestasi")
+            ->with('success', 'Prestasi Berhasil Diubah !');
     }
 
     public function delete($id_prestasi)
     {
         $prestasi = Prestasi::find($id_prestasi);
         $prestasi->delete();
-        return redirect("/dashboard/prestasi");
+        return redirect("/dashboard/prestasi")
+        ->with('success', 'Prestasi Berhasil Dihapus !');
     }
 
     public function deleteSelection(Request $request)

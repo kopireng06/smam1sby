@@ -57,37 +57,23 @@ class PengumumanController extends Controller
             [   
                 'judul_pengumuman'=>'required',
                 'isi_pengumuman'=>'required',
-                'tanggal_pengumuman'=>'required',
-                'foto_pengumuman'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
             ],
             [   
                 'judul_pengumuman.required'    => 'Harap isi judul pengumumuman !.',
                 'isi_pengumuman.required'      => 'Harap isi pengumuman di tulis !',
-                'tanggal_pengumuman.required' => 'Harap sertakan tanggal pengumuman !',
-                'foto_pengumuman.required'      => 'Harap sertakan foto cover untuk pengumuman !',
-                'foto_pengumuman.image'      => 'Format foto yang diperbolehkan adalah JPG, JPEG, PNG.',
             ]
         );
         
         //Pengumuman::create($request->all());
 
-        $judul = $request->judul_pengumuman;
-        $isi = $request->isi_pengumuman;
-        $tanggal = $request->tanggal_pengumuman;
-        $foto = $request->file('foto_pengumuman');
-        $nama_foto = time().'.'.$foto->extension();
-        $foto->move(public_path('images/pengumuman'), $nama_foto);
-
         $pengumuman = new Pengumuman;
-        $pengumuman->judul_pengumuman = $judul;        
-        $pengumuman->isi_pengumuman = $isi;
-        $pengumuman->tanggal_pengumuman = $tanggal;
-        $pengumuman->penulis_pengumuman = \Auth::user()->id;        
-        $pengumuman->foto_pengumuman = $nama_foto;
+        $pengumuman->judul_pengumuman = $request->judul_pengumuman;
+        $pengumuman->isi_pengumuman = $request->isi_pengumuman;
+        $pengumuman->penulis_pengumuman=\Auth::user()->id;
         $pengumuman->save();        
 
         return redirect()->route('pengumuman.index')
-            ->with('success', 'Pengumuman Berhasil di Tambahkan !');        
+            ->with('success', 'Pengumuman Berhasil Ditambahkan !');        
     }
 
     /**
@@ -129,45 +115,21 @@ class PengumumanController extends Controller
             [   
                 'judul_pengumuman'  =>'required',
                 'isi_pengumuman'    =>'required',
-                'tanggal_pengumuman'=>'required',
-                'foto_pengumuman'   =>'required|image|mimes:jpg,png,jpeg,gif,svg|max:4500',
             ],
             [   
                 'judul_pengumuman.required'     => 'Harap isi judul pengumumuman !.',
                 'isi_pengumuman.required'       => 'Harap isi pengumuman di tulis !',
-                'tanggal_pengumuman.required'   => 'Harap sertakan tanggal pengumuman !',
-                'foto_pengumuman.required'      => 'Harap sertakan foto cover untuk pengumuman !',
-                'foto_pengumuman.image'         => 'Format foto yang diperbolehkan adalah JPG, JPEG, PNG.',
-                'foto_pengumuman.mimes'         => 'Ukuran foto terlalu besar, max : 4,5 MB !',
             ]
         );
 
-        if($request->file('foto_pengumuman')==""){
+        $pengumuman = Pengumuman::find($id);
+        $pengumuman->judul_pengumuman = $request->judul_pengumuman;
+        $pengumuman->isi_pengumuman = $request->isi_pengumuman;
+        $pengumuman->penulis_pengumuman=\Auth::user()->id;
+        $pengumuman->save();
 
-            $pengumuman = Pengumuman::find($id);
-            $pengumuman->judul_pengumuman = $request->judul_pengumuman;
-            $pengumuman->isi_pengumuman = $request->isi_pengumuman;
-            $pengumuman->tanggal_pengumuman = $request->tanggal_pengumuman;
-            $pengumuman->penulis_pengumuman=\Auth::user()->id;
-            $pengumuman->save();
-        }else{
-
-            $foto = $request->file('foto_pengumuman');
-            $nama_foto = time().'.'.$foto->extension();
-            $foto->move(public_path('images/pengumuman'), $nama_foto);
-
-            $pengumuman = Pengumuman::find($id);
-            unlink(public_path('images/pengumuman').'/'.$pengumuman->foto_pengumuman); //Delete this syntax if you'd like to keep the image file of $this pengumuman
-
-            $pengumuman->judul_pengumuman = $request->judul_pengumuman;
-            $pengumuman->isi_pengumuman = $request->isi_pengumuman;
-            $pengumuman->tanggal_pengumuman = $request->tanggal_pengumuman;
-            $pengumuman->penulis_pengumuman=\Auth::user()->id;
-            $pengumuman->foto_pengumuman = $nama_foto;
-            $pengumuman->save();
-        }      
-
-        return back()->with('success', 'Pengumuman Berhasil di Update !');
+        return redirect()->route('pengumuman.index')
+        ->with('success', 'Pengumuman Berhasil Diubah !');  
     }
 
     /**
@@ -178,12 +140,11 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        $pengumuman = Pengumuman::find($id);
-        unlink(public_path('images/pengumuman').'/'.$pengumuman->foto_pengumuman);
-        $pengumuman->delete();
-            
+        $pengumuman = Pengumuman::find($id)
+        ->delete();
+
         return redirect()->route('pengumuman.index')
-            ->with('success', 'Pengumuman Berhasil di Hapus !');
+            ->with('success', 'Pengumuman Berhasil Dihapus !');
     }
 
     public function uploadImage(Request $request)

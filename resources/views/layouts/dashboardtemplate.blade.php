@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{asset('css/admin.css')}}">
         <link rel="stylesheet" href="{{asset('css/ckeditor.css')}}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        @yield('title')
+        <title>Dashboard</title>
     </head>
     <body class="w-100" style="overflow-x-hidden">
         <div class="d-flex flex-nowrap flex-row">
@@ -24,7 +24,6 @@
                                 <span class="navbar-toggler-icon is-closed"></span>
                             </button> 
                         </div>
-                        <a class="me-4 d-block" href="{{ route('logout') }}">LOGOUT</a>
                     </nav>
                 </div>
                 <div class="w-90 shadow-sm p-4 rounded mx-auto mt-5">
@@ -34,6 +33,7 @@
         </div>
         <div class="sidebar px-3 vh-100">
             <ul class="sidebar-nav w-100 d-flex flex-column" style="margin-top:30px;" >
+
                 <li>
                     <a href="/dashboard/alumni" class="arialrounded-mt-bold my-1 d-block">
                         Alumni
@@ -52,11 +52,6 @@
                 <li>
                     <a href="/dashboard/kategori-artikel" class="arialrounded-mt-bold my-1 d-block">
                         Kategori Artikel
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/kelompok-konten" class="arialrounded-mt-bold my-1 d-block">
-                        Kelompok Konten
                     </a>
                 </li>
                 <li>
@@ -83,6 +78,9 @@
                     <a href="/dashboard/web-terkait" class="arialrounded-mt-bold my-1 d-block">
                         Web Terkait
                     </a>
+                </li>
+                <li>
+                    <a class="me-4 d-block" href="{{ route('logout') }}">LOGOUT</a>
                 </li>
             </ul>
         </div>

@@ -17,7 +17,6 @@ class Pengumuman extends Model
         'judul_pengumuman',
         'isi_pengumuman',
         'tanggal_pengumuman',
-        'foto_pengumuman',
         'penulis_pengumuman',
     ];
 

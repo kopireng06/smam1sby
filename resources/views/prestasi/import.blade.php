@@ -1,7 +1,4 @@
 @extends('layouts.dashboardtemplate')
-@section('title')
-    <title>Data Alumni</title>
-@endsection
 @section('konten')
 <div class="main">
     <div class="main-content">
@@ -10,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Prestasi</h1>
+                            <h1 class="panel-title">Import Prestasi</h1>
                         </div>  
                         <a href="{{asset('format')}}/Format Prestasi.xlsx">Download Format File Prestasi</a>
                         <div class="panel-body">
@@ -25,7 +22,9 @@
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
+                            <div class="d-flex justify-content-between mt-3 mb-3">
+                                <a href="/dashboard/prestasi" class="btn btn-warning float-right">
+                                Kembali </a>
                                 <button type="submit" class="btn btn-primary">Import</button>
                             </div>
                         </form>

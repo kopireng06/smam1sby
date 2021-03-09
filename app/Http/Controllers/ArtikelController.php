@@ -20,7 +20,7 @@ class ArtikelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $search = request()->query('search');
 
@@ -100,9 +100,8 @@ class ArtikelController extends Controller
         $artikel->foto_artikel = $nama_foto;
         $artikel->save();
 
-
         return redirect()->route('artikel.index')
-            ->with('success', 'Artikel Berhasil di Tambahkan !');
+            ->with('success', 'Artikel Berhasil Ditambahkan !');
     }
 
     /**
@@ -177,7 +176,8 @@ class ArtikelController extends Controller
             $artikel->save(); 
         }
 
-        return back()->with('success', 'Artikel Berhasil di Update !');
+        return redirect()->route('artikel.index')
+                ->with('success', 'Artikel Berhasil Diubah !');
     }
 
     /**
@@ -194,7 +194,7 @@ class ArtikelController extends Controller
         
         
         return redirect()->route('artikel.index')
-            ->with('success', 'Artikel Berhasil di Hapus !');
+            ->with('success', 'Artikel Berhasil Dihapus !');
     }
 
     public function uploadImage(Request $request)

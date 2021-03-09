@@ -1,7 +1,4 @@
 @extends('layouts.dashboardtemplate')
-@section('title')
-    <title>Data Prestasi</title>
-@endsection
 @section('konten')
 <div class="main">
     <div class="main-content">
@@ -12,10 +9,7 @@
 					    <div class="panel-heading">
                             <h1 class="panel-title">Edit Prestasi</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Import Data Prestasi
-                        </button>
-                            
+                        
                         <div class="panel-body">
                             <form action="/dashboard/prestasi/{{$prestasi->id_prestasi}}/update" method="POST" enctype="multipart/form-data">
                                 <div class="modal-body">
@@ -38,8 +32,10 @@
                                     </div>
 
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-warning">Save</button>
+                                <div class="d-flex justify-content-between mt-3 mb-3">
+                                    <a href="/dashboard/prestasi" class="btn btn-warning float-right">
+                                    Kembali </a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </form>                            
 

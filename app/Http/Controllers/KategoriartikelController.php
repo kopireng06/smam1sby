@@ -63,7 +63,7 @@ class KategoriartikelController extends Controller
 
         Kategori_artikel::create($request->all());
         return redirect()->route('kategori-artikel.index')
-            ->with('success', 'Kategori Artikel Berhasil di Tambahkan !');
+            ->with('success', 'Kategori Artikel Berhasil Ditambahkan !');
     }
 
     /**
@@ -112,7 +112,7 @@ class KategoriartikelController extends Controller
         Kategori_artikel::find($id)->update($request->all());
 
         return redirect()->route('kategori-artikel.index')
-            ->with('success', 'Kategori Artikel Berhasil di Update !');
+            ->with('success', 'Kategori Artikel Berhasil Diubah !');
         
     }
 
@@ -128,6 +128,6 @@ class KategoriartikelController extends Controller
             ->delete();
             
         return redirect()->route('kategori-artikel.index')
-            ->with('success', 'Kategori Artikel Berhasil di Hapus !');
+            ->with('success', 'Kategori Artikel Berhasil Dihapus !');
     }
 }

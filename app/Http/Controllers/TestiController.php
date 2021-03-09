@@ -23,10 +23,10 @@ class TestiController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $testi = Testi::where('nama_testi', 'LIKE', "%{$search}%")->with('user')->orderBy('created_at', 'DESC')->simplePaginate(10);
+            $testi = Testi::where('nama_testi', 'LIKE', "%{$search}%")->with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }else{            
-            $testi = Testi::with('user')->orderBy('created_at', 'DESC')->simplePaginate(10);
+            $testi = Testi::with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }
 
@@ -84,7 +84,7 @@ class TestiController extends Controller
         $testi->save();        
 
         return redirect()->route('testimoni.index')
-            ->with('success', 'Testimoni Berhasil di Tambahkan !');
+            ->with('success', 'Testimoni Berhasil Ditambahkan !');
     }
 
     /**
@@ -175,7 +175,8 @@ class TestiController extends Controller
 
         }
 
-        return back()->with('success', 'Testimoni Berhasil di Update !');
+        return redirect()->route('testimoni.index')
+            ->with('success', 'Testimoni Berhasil Diubah !');
     }
 
     /**
@@ -192,7 +193,7 @@ class TestiController extends Controller
         $testi->delete();
             
         return redirect()->route('testimoni.index')
-            ->with('success', 'Testimoni Berhasil di Hapus !');
+            ->with('success', 'Testimoni Berhasil Dihapus !');
     }
 
     public function import(Request $request)
