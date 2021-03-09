@@ -2,23 +2,39 @@ import React,{useState,useEffect} from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Prestasi from '../Home/Prestasi';
 import SkeletonPrestasi from './SkeletonPrestasi';
+import axios from 'axios';
 
 const InfinitePrestasi = (props) => {
     const [dataPrestasi,setDataPrestasi] = useState(Array.from({length:0}));
     const [hasMoreItems, setHasMoreItems] = useState(true);
+    const [limit,setLimit] = useState(10);
+    const [offset,setOffset] = useState(0);
 
     useEffect(() => {
         getDataPrestasi();
     }, []);
 
-    const getDataPrestasi = () => {
-        if (dataPrestasi.length >= 30) {
-            setHasMoreItems(false);
-            return;
-          }
-          setTimeout(() => {
-            setDataPrestasi(dataPrestasi.concat(Array.from({length:10})));
-          }, 1000);     
+    const callDataPrestasi = async ()=>{
+        var data;
+        await axios.get(window.origin+'/api/prestasi/'+offset+'/'+limit)
+        .then((res)=>{
+            data = res.data;
+        });
+        return data;
+    }
+
+    const getDataPrestasi = () => { 
+        callDataPrestasi().then((res)=>{
+            if(res.length % 10 !=0){
+                setHasMoreItems(false);
+                setDataPrestasi(dataPrestasi.concat(res));
+                setOffset(offset+10);
+            }
+            else{
+                setDataPrestasi(dataPrestasi.concat(res));
+                setOffset(offset+10);
+            }
+        }); 
     }
 
     return ( 
@@ -29,8 +45,11 @@ const InfinitePrestasi = (props) => {
             loader={
                 <SkeletonPrestasi/>
             }>
-                    {dataPrestasi.map((i, index) => (
-                        <Prestasi pos={index+1} posActive={props.posActive} changePosActive={props.changePosActive} key={index}/>
+                    {dataPrestasi.map((data, i) => (
+                        <Prestasi key={i} pos={i+1} 
+                        posActive={props.posActive} changePosActive={props.changePosActive}
+                        nama={data.nama_prestasi} juara={data.juara_prestasi} tingkat={data.tingkat_prestasi}
+                        />
                     ))}
         </InfiniteScroll>
      );

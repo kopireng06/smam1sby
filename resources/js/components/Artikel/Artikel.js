@@ -7,11 +7,11 @@ import axios from 'axios';
 
 const Artikel = (props) => {
     
-    const [renderedArtikel,setRenderedArtikel] = useState();
+    const [renderedArtikel,setRenderedArtikel] = useState(0);
 
     useEffect(() => {
         renderArtikel();
-    },[props]);
+    },[props.pembeda]);
     
     const renderArtikel = () => {
         getDataArtikel().then((result)=>{
@@ -31,10 +31,11 @@ const Artikel = (props) => {
 
     const getDataArtikel = async () => {
         var data;
-        await axios.get(window.origin+'/api/'+props.centerPath+'/'+props.judul)
+        await axios.get(window.origin+'/api/'+props.centerPath+'/'+props.pembeda)
             .then((res)=>{
+                console.log(res);
                 if(props.centerPath=='kumpulan-alumni'){
-                    data = (<Tabel/>)
+                    data = (<Tabel data={res.data}/>)
                 }
                 else{
                     data = (<Bacaan data={res.data} />)

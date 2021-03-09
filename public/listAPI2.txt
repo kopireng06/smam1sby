@@ -1,0 +1,15 @@
+navbar = 
+	fasilitas = 1 judul fasilitas terbaru
+	eskul = 1 judul eskul terbaru
+	alumni = 1 judul alumni terbaru
+	profil = semua judul profil
+	web_terkait = semua web terkait beserta linknya
+
+footer = 
+	wa = 1 nomor wa
+	lokasi = 1 lokasi
+	email = 1 email
+	profil-footer = 1 profi-footer
+	yt = 1 yt
+
+keunggulan = 4 judul keunggulan beserta isi

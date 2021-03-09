@@ -16,7 +16,8 @@ const BacaBerita = (props) => {
     const judul = useParams().judul;
 
     useEffect(() => {
-        console.log(judul);
+        //console.log(judul);
+        //console.log(location);
     }, []);
 
     return (  
@@ -34,7 +35,7 @@ const BacaBerita = (props) => {
                     })()
                 }
             </div>
-            <Artikel judul={judul} centerPath={'berita'}/>
+            <Artikel pembeda={judul} centerPath={location}/>
             <Footer/>
         </>
     )

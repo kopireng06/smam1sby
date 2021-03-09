@@ -6,19 +6,34 @@ import SkeletonBerita from './SkeletonBerita';
 const InfiniteBerita = () => {
     const [dataBerita,setDataBerita] = useState(Array.from({length:0}));
     const [hasMoreItems, setHasMoreItems] = useState(true);
+    const [limit,setLimit] = useState(9);
+    const [offset,setOffset] = useState(0);
 
     useEffect(() => {
         getDataBerita();
     }, []);
 
+    const callDataBerita = async ()=>{
+        var data;
+        await axios.get(window.origin+'/api/berita/'+offset+'/'+limit)
+        .then((res)=>{
+            data = res.data;
+        });
+        return data;
+    }
+
     const getDataBerita = () => {
-        if (dataBerita.length >= 30) {
-            setHasMoreItems(false);
-            return;
-          }
-          setTimeout(() => {
-            setDataBerita(dataBerita.concat(Array.from({length:9})));
-          }, 1000);     
+        callDataBerita().then((res)=>{
+            if(res.length % 9 != 0){
+                setHasMoreItems(false);
+                setDataBerita(dataBerita.concat(res));
+                setOffset(offset+9);
+            }
+            else{
+                setDataBerita(dataBerita.concat(res));
+                setOffset(offset+9);
+            }
+        });     
     }
 
     return (  
@@ -31,9 +46,9 @@ const InfiniteBerita = () => {
             }
             className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5"}
             >
-                    {dataBerita.map((i, index) => (
-                        <Berita key={index}/>
-                    ))}
+                    {dataBerita.map((data ,i)=>
+                        <Berita key={i} judul={data.judul_artikel} foto={data.foto_artikel} tanggal={data.created_at}/>
+                    )}
         </InfiniteScroll>
     );
 }

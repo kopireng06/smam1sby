@@ -32,7 +32,7 @@ const Carousel = () => {
     }
       
     const [nextSlide, setNextSlide] = useState(0);
-    const [dataCarousel, setDataCarousel] = useState(0);
+    const [dataCarousel, setDataCarousel] = useState([]);
 
     useEffect(() => {
       callDataCarousel()
@@ -47,7 +47,6 @@ const Carousel = () => {
           <Slider {...settings}>
             {
               (()=>{
-                if(dataCarousel != 0){
                   return(
                     dataCarousel.map((data,i)=>
                       <div key={i}>
@@ -76,7 +75,6 @@ const Carousel = () => {
                       </div>
                     )
                   )
-                }
               }
               )()
             }

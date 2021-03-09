@@ -4,6 +4,8 @@ import Artikel from './Artikel';
 import JudulArtikel from './JudulArtikel';
 import SearchArtikel from './SearchArtikel';
 import SidebarArtikel from './SidebarArtikel';
+import Footer from '../Base/Footer';
+import axios from 'axios';
 
 const ContainerArtikel = () => {
     const history = useHistory();
@@ -12,26 +14,49 @@ const ContainerArtikel = () => {
     const {lastPath} = useParams();
     const [dataOption,setDataOption] = useState();
 
+    const callDataOption = async () =>{
+        var data = {};
+        
+        if(centerPath=='kumpulan-alumni'){
+            await axios.get(window.origin+'/api/list-alumni')
+            .then((res)=>{
+                data = res.data.map((data)=>data.angkatan)
+            }); 
+        }
+        if(centerPath=='kumpulan-fasilitas'){
+            await axios.get(window.origin+'/api/list-fasilitas')
+            .then((res)=>{
+                console.log(res.data[1].judul_konten);
+                data = res.data.map((data)=>data.judul_konten);
+            }); 
+        }
+        if(centerPath=='kumpulan-profil'){
+            await axios.get(window.origin+'/api/profil')
+            .then((res)=>{
+                console.log(res.data[1].judul_konten);
+                data = res.data.map((data)=>data.judul_konten);
+            });   
+        }
+        if(centerPath=='kumpulan-ekstrakurikuler'){
+            await axios.get(window.origin+'/api/list-ekstrakurikuler')
+            .then((res)=>{
+                console.log(res.data[1].judul_konten);
+                data = res.data.map((data)=>data.judul_konten)
+
+            }); 
+        }
+
+        return data;
+    }
+
     useEffect(() => {
-        setDataOption(()=>{
-            if(centerPath=='kumpulan-alumni'){
-                return [2018,2019,2020]
-            }
-            if(centerPath=='kumpulan-fasilitas'){
-                return ['AULA','KANTOR','MASJID']
-            }
-            if(centerPath=='kumpulan-profil'){
-                return ['SAMBUTAN KEPSEK','SMAMSA']
-            }
-            if(centerPath=='kumpulan-ekstrakurikuler'){
-                return ['IPM','TAHFIDZ','HISTORY CLUB','CLUB JEPANG','TAPAK SUCI','MULTIMEDIA','FUTSAL','BULU TANGKIS']
-            }
-        })
-        setPembeda(()=>{
-            return lastPath;
+        callDataOption().then((res)=>{
+            setDataOption(res);
+            setPembeda(lastPath);
         })
     },[centerPath,lastPath]);
 
+    
     const handleClick = (e) =>{
         history.push("/"+centerPath+"/"+e.target.dataset.value);
         setPembeda(e.target.dataset.value);
@@ -44,6 +69,7 @@ const ContainerArtikel = () => {
 
     if(dataOption !== undefined && centerPath !== undefined){
         return (  
+            <>
             <div className="w-full bg-gray-50">
                 <div className="lg:container mx-auto bg-white flex">
                     <SidebarArtikel dataOption={dataOption} centerPath={centerPath} pembeda={pembeda} handleClick={handleClick}/>
@@ -54,11 +80,13 @@ const ContainerArtikel = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
+            </>
         );
     }
     else{
         return(
-            <div>keong</div>
+            <div></div>
         )
     }
 }

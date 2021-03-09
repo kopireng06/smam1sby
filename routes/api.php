@@ -19,31 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('profil', function() {
-    $profil = DB::table('konten')->select('judul_konten')->where('kelompok_konten','profil')->get();
-    return response()->json($profil);
-});
-
-Route::get('alumni', function() {
-    $alumni = DB::table('alumni')->select('angkatan')->orderBy('angkatan', 'desc')->limit(1)->get();
-    return response()->json($alumni);
-});
-
-Route::get('ekstrakurikuler', function() {
-    $ekskul = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','ekstrakurikuler')->limit(1)->get();
-    return response()->json($ekskul);
-});
-
-Route::get('fasilitas', function() {
-    $fasilitas = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','fasilitas')->limit(1)->get();
-    return response()->json($fasilitas);
-});
-
-Route::get('web', function() {
-    $web = DB::table('web_terkait')->select('nama_web','link_web')->get();
-    return response()->json($web);
-});
-
 Route::get('pengumuman/home', function() {
     $pengumumanH = DB::table('pengumumen')->select('judul_pengumuman','tanggal_pengumuman')->orderBy('created_at', 'desc')->limit(4)->get();
     return response()->json($pengumumanH);
@@ -75,12 +50,12 @@ Route::get('alumni/{tahun}', function($tahun) {
 });
 
 Route::get('ekstrakurikuler/{namaekstra}', function($namaekstra) {
-    $ekskulN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','ekstrakurikuler')->where('judul_konten',$namaekstra)->get();
+    $ekskulN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Ekstrakurikuler')->where('judul_konten',$namaekstra)->get();
     return response()->json($ekskulN);
 });
 
 Route::get('fasilitas/{namafasil}', function($namafasil) {
-    $fasilitasN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','fasilitas')->where('judul_konten',$namafasil)->get();
+    $fasilitasN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Fasilitas')->where('judul_konten',$namafasil)->get();
     return response()->json($fasilitasN);
 });
 
@@ -89,23 +64,18 @@ Route::get('pengumuman/{judul}', function($judul) {
     return response()->json($pengumumanJ);
 });
 
-Route::get('berita/{judul}', function($judul) {
-    $beritaJ = DB::table('artikel')->select('judul_artikel','isi_artikel','foto_artikel')->where('judul_artikel',$judul)->get();
-    return response()->json($beritaJ);
-});
-
 Route::get('list-alumni', function() {
     $lAlumni = DB::table('alumni')->select('angkatan')->get();
     return response()->json($lAlumni);
 });
 
 Route::get('list-fasilitas', function() {
-    $lFasil = DB::table('konten')->select('judul_konten')->where('kelompok_konten','fasilitas')->get();
+    $lFasil = DB::table('konten')->select('judul_konten')->where('kelompok_konten','Fasilitas')->get();
     return response()->json($lFasil);
 });
 
 Route::get('list-ekstrakurikuler', function() {
-    $lEkstrakurikuler = DB::table('konten')->select('judul_konten')->where('kelompok_konten','ekstrakurikuler')->get();
+    $lEkstrakurikuler = DB::table('konten')->select('judul_konten')->where('kelompok_konten','Ekstrakurikuler')->get();
     return response()->json($lEkstrakurikuler);
 });
 
@@ -123,3 +93,43 @@ Route::get('berita/{judul}', function($judul){
     $berita = DB::table('artikel')->select('judul_artikel','isi_artikel','foto_artikel')->where('judul_artikel',$judul)->get();
     return response()->json($berita);
 });
+
+Route::get('program-unggulan', function(){
+    $email = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Program Unggulan')->get();
+    return response()->json($email);
+});
+
+Route::get('prestasi/{offset}/{limit}', function($offset,$limit){
+    $prestasi = DB::table('prestasi')->select('nama_prestasi','juara_prestasi','tingkat_prestasi','id_prestasi')->orderBy('id_prestasi', 'desc')->offset($offset)->limit($limit)->get();
+    return response()->json($prestasi);
+});
+
+Route::get('berita/{offset}/{limit}', function($offset,$limit){
+    $berita = DB::table('artikel')->select('judul_artikel','foto_artikel','created_at')->orderBy('created_at','desc')->offset($offset)->limit($limit)->get();
+    return response()->json($berita);
+});
+
+Route::get('menu',function(){
+    $menu = array();
+
+    $menu['fasilitas'] = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','Fasilitas')->limit(1)->get();
+    $menu['ekskul'] = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','Ekstrakurikuler')->limit(1)->get();
+    $menu['alumni'] = DB::table('alumni')->select('angkatan')->orderBy('angkatan', 'desc')->limit(1)->get();
+    $menu['profil'] = DB::table('konten')->select('judul_konten')->where('kelompok_konten','Profil')->get();
+    $menu['web-terkait'] = DB::table('web_terkait')->select('nama_web','link_web')->get();
+
+    return response()->json($menu);
+});
+
+Route::get('footer',function(){
+    $footer = array();
+
+    $footer['profil-footer'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Profil Footer')->limit(1)->get();
+    $footer['email'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Email')->limit(1)->get();
+    $footer['lokasi'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Lokasi')->limit(1)->get();
+    $footer['whatsapp'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','WhatsApp')->limit(1)->get();
+    $footer['youtube'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Youtube')->limit(1)->get();
+
+    return response()->json($footer);
+});
+

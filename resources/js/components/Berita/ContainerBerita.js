@@ -23,18 +23,14 @@ const ContainerBerita = () => {
     }
 
     const renderHasilSearch = async () => { 
-        var jsonSearch = [1,2,3,4,5,6];
-        await new Promise((resolve)=>{
-            setTimeout(()=>{
-                jsonSearch = 
-                        jsonSearch.map((i, index) => (
-                            <Berita key={index}/>
-                        ));
-                resolve(0);
-            },1000)
+        var data;
+        await axios.get(window.origin+'/api/berita/search/'+dataSearch)
+        .then((res)=>{
+            data = res.data.map((data ,i)=>
+                <Berita key={i} judul={data.judul_artikel} foto={data.foto_artikel} tanggal={data.created_at}/>
+            )
         });
-
-        return wrapperHasilSearch(jsonSearch);
+        return wrapperHasilSearch(data);
     }
 
     const renderBerita = () =>{

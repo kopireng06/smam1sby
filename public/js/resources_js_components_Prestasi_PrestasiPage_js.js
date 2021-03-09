@@ -2404,6 +2404,9 @@ var Prestasi = function Prestasi(props) {
       iconDropDown = _useState4[0],
       setIconDropDown = _useState4[1];
 
+  var juara = props.juara,
+      nama = props.nama,
+      tingkat = props.tingkat;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.pos == props.posActive) {
       setClassHeight(' h-36');
@@ -2418,7 +2421,7 @@ var Prestasi = function Prestasi(props) {
       className: "m-2 mb-0 flex justify-between items-center px-3 h-14 bg-yellow-400",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "font-bold text-smam1 text-sm uppercase",
-        children: "lomba maido wong"
+        children: nama
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "text-smam1 cursor-pointer",
         onClick: function onClick() {
@@ -2433,12 +2436,12 @@ var Prestasi = function Prestasi(props) {
         style: {
           backgroundImage: 'url(image/menang.jpg)'
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "text-white",
-        children: "Juara : 1"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        children: ["Juara : ", juara]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "text-white",
-        children: "Tingkat : Nasional"
+        children: ["Tingkat : ", tingkat]
       })]
     })]
   });
@@ -2477,8 +2480,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
- // import Prestasi from '../Home/Prestasi';
-// import SkeletonPrestasi from './SkeletonPrestasi';
 
 
 
@@ -2486,10 +2487,7 @@ var ContainerPrestasi = function ContainerPrestasi() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       posActive = _useState2[0],
-      setPosActive = _useState2[1]; // const [dataSearch, setDataSearch] = useState('');
-  // const [dataPost, setDataPost]= useState('');
-  // const [hasilSearch, setHasilSearch] = useState();
-
+      setPosActive = _useState2[1];
 
   var changePosActive = function changePosActive(posActive2) {
     console.log(posActive2);
@@ -2499,31 +2497,7 @@ var ContainerPrestasi = function ContainerPrestasi() {
     } else {
       setPosActive(posActive2);
     }
-  }; // const handleSubmitSearch = (event) => {
-  //     renderHasilSearch().then(function(done) {
-  //        setHasilSearch(done);
-  //     });
-  //     setDataPost(dataSearch);
-  //     setHasilSearch(<SkeletonPrestasi/>);
-  //     event.preventDefault();
-  // }
-  // const handleChangeSearch = (event) => {
-  //     setDataSearch(event.target.value);
-  // }
-  // const renderHasilSearch = async () => { 
-  //     var jsonSearch = [1,2,3,4,5,6];
-  //     await new Promise((resolve)=>{
-  //         setTimeout(()=>{
-  //             jsonSearch = 
-  //                     jsonSearch.map((i, index) => (
-  //                         <Prestasi pos={index+1} posActive={posActive} changePosActive={changePosActive} key={index}/>
-  //                     ));
-  //             resolve(0);
-  //         },1000)
-  //     });
-  //     return jsonSearch;
-  // }
-
+  };
 
   var renderPrestasi = function renderPrestasi() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_InfinitePrestasi__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -2560,11 +2534,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_infinite_scroll_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-infinite-scroll-component */ "./node_modules/react-infinite-scroll-component/dist/index.es.js");
-/* harmony import */ var _Home_Prestasi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Home/Prestasi */ "./resources/js/components/Home/Prestasi.js");
-/* harmony import */ var _SkeletonPrestasi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SkeletonPrestasi */ "./resources/js/components/Prestasi/SkeletonPrestasi.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_infinite_scroll_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-infinite-scroll-component */ "./node_modules/react-infinite-scroll-component/dist/index.es.js");
+/* harmony import */ var _Home_Prestasi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Home/Prestasi */ "./resources/js/components/Home/Prestasi.js");
+/* harmony import */ var _SkeletonPrestasi__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SkeletonPrestasi */ "./resources/js/components/Prestasi/SkeletonPrestasi.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -2583,47 +2566,89 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var InfinitePrestasi = function InfinitePrestasi(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(Array.from({
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(Array.from({
     length: 0
   })),
       _useState2 = _slicedToArray(_useState, 2),
       dataPrestasi = _useState2[0],
       setDataPrestasi = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
       hasMoreItems = _useState4[0],
       setHasMoreItems = _useState4[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(10),
+      _useState6 = _slicedToArray(_useState5, 2),
+      limit = _useState6[0],
+      setLimit = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
+      _useState8 = _slicedToArray(_useState7, 2),
+      offset = _useState8[0],
+      setOffset = _useState8[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     getDataPrestasi();
   }, []);
 
-  var getDataPrestasi = function getDataPrestasi() {
-    if (dataPrestasi.length >= 30) {
-      setHasMoreItems(false);
-      return;
-    }
+  var callDataPrestasi = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
+      var data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_6___default().get(window.origin + '/api/prestasi/' + offset + '/' + limit).then(function (res) {
+                data = res.data;
+              });
 
-    setTimeout(function () {
-      setDataPrestasi(dataPrestasi.concat(Array.from({
-        length: 10
-      })));
-    }, 1000);
+            case 2:
+              return _context.abrupt("return", data);
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function callDataPrestasi() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var getDataPrestasi = function getDataPrestasi() {
+    callDataPrestasi().then(function (res) {
+      if (res.length % 10 != 0) {
+        setHasMoreItems(false);
+        setDataPrestasi(dataPrestasi.concat(res));
+        setOffset(offset + 10);
+      } else {
+        setDataPrestasi(dataPrestasi.concat(res));
+        setOffset(offset + 10);
+      }
+    });
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_infinite_scroll_component__WEBPACK_IMPORTED_MODULE_2__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_infinite_scroll_component__WEBPACK_IMPORTED_MODULE_3__.default, {
     dataLength: dataPrestasi.length,
     next: getDataPrestasi,
     hasMore: hasMoreItems,
-    loader: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SkeletonPrestasi__WEBPACK_IMPORTED_MODULE_4__.default, {}),
-    children: dataPrestasi.map(function (i, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Home_Prestasi__WEBPACK_IMPORTED_MODULE_3__.default, {
-        pos: index + 1,
+    loader: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SkeletonPrestasi__WEBPACK_IMPORTED_MODULE_5__.default, {}),
+    children: dataPrestasi.map(function (data, i) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Home_Prestasi__WEBPACK_IMPORTED_MODULE_4__.default, {
+        pos: i + 1,
         posActive: props.posActive,
-        changePosActive: props.changePosActive
-      }, index);
+        changePosActive: props.changePosActive,
+        nama: data.nama_prestasi,
+        juara: data.juara_prestasi,
+        tingkat: data.tingkat_prestasi
+      }, i);
     })
   });
 };

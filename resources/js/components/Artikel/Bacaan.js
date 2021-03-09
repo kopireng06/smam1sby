@@ -4,8 +4,8 @@ import ReactHtmlParser from 'react-html-parser';
 const Bacaan = (props) => {
 
     useEffect(() => {
-        // console.log(props.data[0]);
-    },[]);
+        console.log(props.data[0]);
+    }, []);
 
     return (
         (()=>{
@@ -23,8 +23,29 @@ const Bacaan = (props) => {
                     </>
                 )
             }
+            if(props.data[0].judul_pengumuman){
+                return(
+                    <>
+                        <div className="w-11/12 md:w-7/12 mx-auto my-2">
+                            <div className="text-smam1 text-xl md:text-2xl text-center font-bold my-5">{props.data[0].judul_pengumuman}</div>
+                        </div>
+                        <div className="w-11/12 md:w-7/12 mx-auto mb-5">
+                            {ReactHtmlParser(props.data[0].isi_pengumuman)}
+                        </div>
+                    </>
+                )
+            }
             else{
-               return <div>mno</div>
+               return(
+                   <>
+                        <div className="w-11/12 md:w-7/12 mx-auto my-2">
+                            <div className="text-smam1 text-xl md:text-2xl text-center font-bold my-5">{props.data[0].judul_konten}</div>
+                        </div>
+                        <div className="w-11/12 md:w-8/12 mx-auto mb-5">
+                            {ReactHtmlParser(props.data[0].isi_konten)}
+                        </div>
+                   </>
+               )
             }
         })()
     );
