@@ -25,9 +25,9 @@
                                             <label for="file"><strong>Kelompok Konten</strong></label>
                                             <select name="kelompok_konten" class="form-control" id="exampleFormControlSelect1" required>
                                                 <option selected disabled>Choose One</option>
-                                                @foreach ($kelkonten as $kelkonten)
-                                                    <option value="{{$kelkonten->nama_kelompok_konten}}">{{$kelkonten->nama_kelompok_konten}}</option>
-                                                @endforeach
+                                                <option value="ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="fasilitas">Fasilitas</option>
+                                                <option value="profil">Profil</option>
                                             </select>
                                         </div>
 

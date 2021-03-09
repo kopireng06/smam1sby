@@ -63,7 +63,7 @@
                                     <tr>
                                         <td>{{$count++}}</td>
                                         <td>{{ Str::limit($konten1->judul_konten,40) }}</td>
-                                        <td>{{$konten1->kelkonten->nama_kelompok_konten}}</td>
+                                        <td>{{$konten1->kelompok_konten}}</td>
                                         <td>{!! Str::limit($konten1->isi_konten,50) !!}</td>
 
                                         <td>

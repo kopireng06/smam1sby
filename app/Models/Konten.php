@@ -11,8 +11,4 @@ class Konten extends Model
     protected $table = "konten";
     protected $primaryKey = "id_konten";
     protected $fillable = ["judul_konten","kelompok_konten","isi_konten"];
-
-    public function kelompok(){
-        return $this->belongsTo(KelKonten::class, 'kelompok_konten');
-    }
 }

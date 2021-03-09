@@ -21,12 +21,6 @@ class CreateDatabase extends Migration
             $table->timestamps();
         });
 
-        Schema::create('kelompok_konten', function (Blueprint $table) {
-            $table->increments('id_kelompok_konten');
-            $table->string('nama_kelompok_konten');
-            $table->timestamps();
-        });
-
         Schema::create('alumni', function (Blueprint $table) {
             $table->increments('id_alumni');
             $table->string('nama_alumni');

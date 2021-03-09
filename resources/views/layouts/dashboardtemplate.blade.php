@@ -55,11 +55,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/dashboard/kelompok-konten" class="arialrounded-mt-bold my-1 d-block">
-                        Kelompok Konten
-                    </a>
-                </li>
-                <li>
                     <a href="/dashboard/konten" class="arialrounded-mt-bold my-1 d-block">
                         Konten
                     </a>

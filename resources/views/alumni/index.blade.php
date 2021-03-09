@@ -16,14 +16,14 @@
                             <a href="/dashboard/alumni/import-alumni" class="btn btn-primary float-right">
                                 Import Alumni
                             </a>
-                            <form action="{{ route('pengumuman.index') }}" method="GET" role="search">
+                            <form action="/dashboard/alumni" method="GET" role="search">
                                 {{csrf_field()}}
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="search" placeholder="Cari Nama" value="{{ request()->query('search') }}">
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary float-right" type="submit">Search</button>
                                     </span>
-                                    <a href="{{ route('pengumuman.index') }}">
+                                    <a href="/dashboard/alumni">
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-danger px-3"><i class="fas fa-users" aria-hidden="true"></i>Refresh</button>
                                         </span>

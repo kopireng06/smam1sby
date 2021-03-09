@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Konten;
-use App\Models\KelKonten;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,24 +13,21 @@ class KontenController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $konten = Konten::where('judul_konten', 'LIKE', "%{$search}%")->with('kelompok_konten')->orderBy('created_at', 'DESC')->simplePaginate(5);
+            $konten = Konten::where('judul_konten', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }else{            
-            $konten = Konten::with('kelompok_konten')->orderBy('created_at', 'DESC')->simplePaginate(5);
+            $konten = Konten::orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }
 
         $count = $konten->firstItem();
 
-        $kelkonten = KelKonten::all();
-
-        return view("konten.index",compact('konten','count','kelkonten'));
+        return view("konten.index",compact('konten','count'));
     }
 
     public function createKonten()
     {
-        $kelkonten = KelKonten::all();
-        return view("konten.create",['kelkonten' => $kelkonten]);
+        return view("konten.create");
     }
 
     public function create(Request $request)
@@ -45,8 +41,7 @@ class KontenController extends Controller
     public function edit($id_konten)
     {
         $konten = Konten::find($id_konten);
-        $kelkonten = KelKonten::all();
-        return view('konten.edit',['konten' => $konten],['kelkonten' => $kelkonten]);
+        return view('konten.edit',['konten' => $konten]);
     }
 
     public function update(Request $request, $id_konten)
