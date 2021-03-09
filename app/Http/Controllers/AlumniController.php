@@ -48,8 +48,7 @@ class AlumniController extends Controller
     public function edit($id_alumni)
     {
         $alumni = Alumni::find($id_alumni);
-        return redirect("/dashboard/alumni")
-            ->with('success', 'Alumni Berhasil Diubah !');
+        return view('alumni.edit',compact('alumni'));
     }
 
     public function update(Request $request, $id_alumni)
@@ -57,14 +56,15 @@ class AlumniController extends Controller
         $alumni = Alumni::find($id_alumni);
         $alumni->update($request->all());
         return redirect("/dashboard/alumni")
-            ->with('success', 'Alumni Berhasil Dihapus !');
+            ->with('success', 'Alumni Berhasil Diubah !');
     }
 
     public function delete($id_alumni)
     {
         $alumni = Alumni::find($id_alumni);
         $alumni->delete();
-        return redirect('/dashboard/alumni');
+        return redirect('/dashboard/alumni')
+            ->with('success', 'Alumni Berhasil Dihapus !');
     }
     
     

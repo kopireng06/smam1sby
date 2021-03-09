@@ -16,9 +16,9 @@ class AlumniImport implements ToModel,WithHeadingRow
     public function model(array $row)
     {
         return new Alumni([
-            "nama_alumni" => $row["nama_alumni"],
-            "univ_alumni" => $row["univ_alumni"],
-            "jurusan_alumni" => $row["jurusan_alumni"],
+            "nama_alumni" => $row["nama"],
+            "univ_alumni" => $row["universitas"],
+            "jurusan_alumni" => $row["jurusan"],
             "angkatan" => $row["angkatan"],
         ]);
     }

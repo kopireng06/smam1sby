@@ -16,9 +16,9 @@ class PrestasiImport implements ToModel,WithHeadingRow
     public function model(array $row)
     {
         return new Prestasi([
-            "nama_prestasi" => $row["nama_prestasi"],
-            "juara_prestasi" => $row["juara_prestasi"],
-            "tingkat_prestasi" => $row["tingkat_prestasi"],
+            "nama_prestasi" => $row["prestasi"],
+            "juara_prestasi" => $row["juara"],
+            "tingkat_prestasi" => $row["tingkat"],
         ]);
     }
 }

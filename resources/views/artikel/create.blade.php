@@ -41,7 +41,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group mb-2">
+                            <div class="form-group mb-2">
                                     <label for="foto_artikel"><strong>Foto Sampul</strong></label>
                                     <input type="file" name="foto_artikel" class="form-control @error('foto_artikel') is-invalid @enderror" onchange="previewFile(this)" required>
                                     @error('foto_artikel')<div class="invalid-feedback">{{ $message }}</div>@enderror
