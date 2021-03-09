@@ -1,7 +1,4 @@
 @extends('layouts.dashboardtemplate')
-@section('title')
-    <title>Data Alumni</title>
-@endsection
 @section('konten')
 <div class="main">
     <div class="main-content">
@@ -10,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="panel">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Kategori Artikel</h1>
+                            <h1 class="panel-title">Tambah Kategori Artikel</h1>
                         </div>  
                         <div class="panel-body">
                         @if ($errors->any())
@@ -29,12 +26,14 @@
                                 {{csrf_field()}}
                 
                                 <div class="form-group">
-                                    <label for="nama_kategoriartikel">Kategori Artikel</label>                        
+                                    <label for="nama_kategoriartikel"><strong>Kategori Artikel</strong></label>
                                     <input type="text" name="nama_kategoriartikel" class="form-control @error('nama_kategoriartikel') is-invalid @enderror" placeholder="Nama Kategori Artikel" required/>
                                     @error('nama_kategoriartikel')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="d-flex justify-content-between mt-3 mb-3">
+                                <a href="{{ route('kategori-artikel.index') }}" class="btn btn-warning float-right">
+                                Kembali </a>
                                 <button type="submit" class="btn btn-primary">Tambah</button>
                             </div>
                         </form>

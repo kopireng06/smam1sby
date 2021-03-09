@@ -1,7 +1,4 @@
 @extends('layouts.dashboardtemplate')
-@section('title')
-    <title>Data Alumni</title>
-@endsection
 @section('konten')
 <div class="main">
     <div class="main-content">
@@ -18,18 +15,20 @@
                             
                                 {{csrf_field()}}
                 
-                                <div class="form-group">
+                                <div class="form-group mb-2">
                                     <label for="file"><strong>Nama Website</strong></label>
                                     <input type="text" name="nama_web" class="form-control" placeholder="Nama Website" required/>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group mb-2">
                                     <label for="file"><strong>Link Website</strong></label>
                                     <input type="text" name="link_web" class="form-control" placeholder="Link Website" required/>
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
+                            <div class="d-flex justify-content-between mt-3 mb-3">
+                                <a href="/dashboard/web-terkait" class="btn btn-warning float-right">
+                                Kembali </a>
                                 <button type="submit" class="btn btn-primary">Tambah</button>
                             </div>
                         </form>

@@ -1,14 +1,11 @@
 @extends('layouts.dashboardtemplate')
-@section('title')
-    <title>Dashboard</title>
-@endsection
 @section('konten')
 <div class="main">
     <div class="main-content">
         <div class="container-fluid mb-3">
             <div class="row">
                 <div class="col-md-12 mb-3">
-                    <div class="panel">
+                    <div class="panel mb-5">
 					    <div class="panel-heading">
                             <h1 class="panel-title">Kategori Artikel</h1>
                         </div>
@@ -19,7 +16,7 @@
                             <form action="{{ route('kategori-artikel.index') }}" method="GET" role="search">
                                 {{csrf_field()}}
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="search" placeholder="Cari Judul" value="{{ request()->query('search') }}">
+                                    <input type="text" class="form-control" name="search" placeholder="Cari Kategori Artikel" value="{{ request()->query('search') }}">
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary float-right" type="submit">Search</button>
                                     </span>
@@ -63,13 +60,11 @@
                                     <td>{{ $kategori1->nama_kategoriartikel }}</td>
                                     <td>                                       
                                     <form action="{{ route('kategori-artikel.destroy',$kategori1->id_kategoriartikel) }}" method="POST">
-
-                                        <a class="btn btn-warning" href="{{ route('kategori-artikel.show',$kategori1->id_kategoriartikel) }}" >Edit</a>
-
+                                        <a class="btn btn-warning" href="{{ route('kategori-artikel.show',$kategori1->id_kategoriartikel) }}">Edit</a>
                                         @csrf
                                         @method('DELETE')
 
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus?')">Delete</button>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus?\nPastikan tidak ada artikel yang terkait dengan kategori yang akan dihapus ya.')">Delete</button>
                                     </form>
                                     </td>
                                 </tr>

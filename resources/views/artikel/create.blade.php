@@ -1,16 +1,13 @@
 @extends('layouts.dashboardtemplate')
-@section('title')
-    <title>Data Alumni</title>
-@endsection
 @section('konten')
 <div class="main">
     <div class="main-content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="panel">
+                    <div class="panel mb-4">
 					    <div class="panel-heading">
-                            <h1 class="panel-title">Artikel</h1>
+                            <h1 class="panel-title">Tambah Artikel</h1>
                         </div>  
                         <div class="panel-body">
                         @if ($errors->any())
@@ -57,7 +54,9 @@
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
+                            <div class="d-flex justify-content-between mt-3 mb-3">
+                                <a href="{{ route('artikel.index') }}" class="btn btn-warning float-right">
+                                Kembali </a>
                                 <button type="submit" class="btn btn-primary">Tambah</button>
                             </div>
                         </form>

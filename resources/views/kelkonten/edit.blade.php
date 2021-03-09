@@ -25,8 +25,10 @@
                                     </div>
 
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-warning">Save</button>
+                                <div class="d-flex justify-content-between mt-3 mb-3">
+                                    <a href="/dashboard/kelompok-konten" class="btn btn-warning float-right">
+                                    Kembali </a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </form> 
                         </div>

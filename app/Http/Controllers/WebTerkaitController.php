@@ -8,10 +8,21 @@ use Illuminate\Http\Request;
 
 class WebTerkaitController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $web = WebTerkait::all();
-        return view ('WebTerkait.index',['web_terkait'=>$web]);
+        $search = request()->query('search');
+
+        if($search){
+            $web_terkait = WebTerkait::where('nama_web', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(5);
+
+        }else{            
+            $web_terkait = WebTerkait::orderBy('created_at', 'DESC')->simplePaginate(5);
+
+        }
+
+        $count = $web_terkait->firstItem();
+
+        return view ('WebTerkait.index',compact('web_terkait', 'count'));
     }
 
     public function createWebTerkait()
@@ -22,7 +33,9 @@ class WebTerkaitController extends Controller
     public function create(Request $request)
     {
         WebTerkait::create($request->all());
-        return redirect('/dashboard/web-terkait');
+        
+        return redirect('/dashboard/web-terkait')
+            ->with('success', 'Website Terkait Berhasil Ditambahkan !');
     }
 
     public function edit($id_web)
@@ -35,13 +48,15 @@ class WebTerkaitController extends Controller
     {
         $web = WebTerkait::find($id_web);
         $web->update($request->all());
-        return redirect('/dashboard/web-terkait');
+        return redirect('/dashboard/web-terkait')
+        ->with('success', 'Website Terkait Berhasil Diubah !');
     }
 
     public function delete($id_web)
     {
         $web = WebTerkait::find($id_web);
         $web->delete();
-        return redirect('/dashboard/web-terkait');
+        return redirect('/dashboard/web-terkait')
+        ->with('success', 'Website Terkait Berhasil Dihapus !');
     }
 }

@@ -9,12 +9,23 @@ use Illuminate\Http\Request;
 
 class KontenController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $konten = Konten::all();
+        $search = request()->query('search');
+
+        if($search){
+            $konten = Konten::where('judul_konten', 'LIKE', "%{$search}%")->with('kelompok_konten')->orderBy('created_at', 'DESC')->simplePaginate(5);
+
+        }else{            
+            $konten = Konten::with('kelompok_konten')->orderBy('created_at', 'DESC')->simplePaginate(5);
+
+        }
+
+        $count = $konten->firstItem();
+
         $kelkonten = KelKonten::all();
 
-        return view("konten.index",['konten' => $konten],['kelkonten' => $kelkonten]);
+        return view("konten.index",compact('konten','count','kelkonten'));
     }
 
     public function createKonten()
@@ -26,7 +37,9 @@ class KontenController extends Controller
     public function create(Request $request)
     {
         Konten::create($request->all());
-        return redirect('/dashboard/konten');
+
+        return redirect('/dashboard/konten')
+            ->with('success', 'Konten Berhasil Ditambahkan !');        
     }
 
     public function edit($id_konten)
@@ -40,13 +53,15 @@ class KontenController extends Controller
     {
         $konten = Konten::find($id_konten);
         $konten->update($request->all());
-        return redirect('/dashboard/konten');
+        return redirect('/dashboard/konten')
+            ->with('success', 'Konten Berhasil Diubah !');
     }
 
     public function delete($id_konten)
     {
         $konten = Konten::find($id_konten);
         $konten->delete();
-        return redirect('/dashboard/konten');
+        return redirect('/dashboard/konten')
+            ->with('success', 'Konten Berhasil Dihapus !');
     }
 }

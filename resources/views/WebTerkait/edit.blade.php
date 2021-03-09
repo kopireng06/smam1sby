@@ -1,7 +1,4 @@
 @extends('layouts.dashboardtemplate')
-@section('title')
-    <title>Data Prestasi</title>
-@endsection
 @section('konten')
 <div class="main">
     <div class="main-content">
@@ -12,9 +9,6 @@
 					    <div class="panel-heading">
                             <h1 class="panel-title">Edit Website Terkait</h1>
                         </div>
-                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Tambah Data Website Terkait
-                        </button>
                             
                         <div class="panel-body">
                             <form action="/dashboard/web-terkait/{{$web_terkait->id_web}}/update" method="POST" enctype="multipart/form-data">
@@ -33,9 +27,12 @@
                                     </div>
 
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-warning">Save</button>
+                                <div class="d-flex justify-content-between mt-3 mb-3">
+                                    <a href="/dashboard/web-terkait" class="btn btn-warning float-right">
+                                    Kembali </a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
+                            </div>
                             </form>
                         </div>
                     </div>

@@ -11,11 +11,22 @@ use Carbon\Carbon;
 
 class AlumniController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data_alumni = Alumni::all();
+        $search = request()->query('search');
+
+        if($search){
+            $data_alumni = Alumni::where('nama_alumni', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(10);
+
+        }else{            
+            $data_alumni = Alumni::orderBy('created_at', 'DESC')->simplePaginate(10);
+
+        }
+        
+        $count = $data_alumni->firstItem();
+
         Alumni::where('created_at', '<', Carbon::now()->subYears(7))->delete();
-        return view('alumni.index',['data_alumni' => $data_alumni]);
+        return view('alumni.index',compact('data_alumni', 'count'));
     }
 
     public function importAlumni()
@@ -29,20 +40,24 @@ class AlumniController extends Controller
 
         Excel::import(new AlumniImport, $file);
 
-        return redirect("/dashboard/alumni");
+        return redirect("/dashboard/alumni")
+            ->with('success', 'Alumni Berhasil Diimport !');
+        
     }
     
     public function edit($id_alumni)
     {
         $alumni = Alumni::find($id_alumni);
-        return view('alumni.edit',['alumni' => $alumni]);
+        return redirect("/dashboard/alumni")
+            ->with('success', 'Alumni Berhasil Diubah !');
     }
 
     public function update(Request $request, $id_alumni)
     {
         $alumni = Alumni::find($id_alumni);
         $alumni->update($request->all());
-        return redirect('/dashboard/alumni');
+        return redirect("/dashboard/alumni")
+            ->with('success', 'Alumni Berhasil Dihapus !');
     }
 
     public function delete($id_alumni)

@@ -10,9 +10,21 @@ class CarouselController extends Controller
 {
     public function index()
     {
-        $carousel = Carousel::all();
+        $search = request()->query('search');
 
-        return view("carousel.index",['carousel' => $carousel]);
+        if($search){
+
+            $carousel= Carousel::where('judul_car', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(5);
+            
+        }else{
+
+            $carousel = Carousel::orderBy('created_at', 'DESC')->simplePaginate(5);
+
+        }
+
+        $count = $carousel->firstItem();
+
+        return view("carousel.index",compact('count','carousel'));
     }
 
     public function createCarousel()
@@ -33,7 +45,9 @@ class CarouselController extends Controller
         $carousel->judul_car = $judul;
         $carousel->isi_car = $isi;
         $carousel->save();
-        return redirect("/dashboard/carousel");
+        
+        return redirect("/dashboard/carousel")
+            ->with('success', 'Carousel Berhasil Ditambahkan !');
     }
 
     public function edit($id_car)
@@ -68,13 +82,15 @@ class CarouselController extends Controller
             $carousel->isi_car = $isi;
             $carousel->save();
         }
-        return redirect('/dashboard/carousel');
+return redirect("/dashboard/carousel")
+            ->with('success', 'Carousel Berhasil Diubah !');
     }
 
     public function delete($id_car)
     {
         $carousel = Carousel::find($id_car);
         $carousel->delete();
-        return redirect('/dashboard/carousel');
+return redirect("/dashboard/carousel")
+            ->with('success', 'Carousel Berhasil Dihapus !');
     }
 }
