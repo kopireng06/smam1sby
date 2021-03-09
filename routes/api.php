@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('profil', function() {
-    $profil = DB::table('konten')->select('judul_konten')->where('kelompok_konten','profil')->get();
+    $profil = DB::table('konten')->select('judul_konten')->where('kelompok_konten','Profil')->get();
     return response()->json($profil);
 });
 
@@ -30,12 +30,12 @@ Route::get('alumni', function() {
 });
 
 Route::get('ekstrakurikuler', function() {
-    $ekskul = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','ekstrakurikuler')->limit(1)->get();
+    $ekskul = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','Ekstrakurikuler')->limit(1)->get();
     return response()->json($ekskul);
 });
 
 Route::get('fasilitas', function() {
-    $fasilitas = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','fasilitas')->limit(1)->get();
+    $fasilitas = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','Fasilitas')->limit(1)->get();
     return response()->json($fasilitas);
 });
 
@@ -75,12 +75,12 @@ Route::get('alumni/{tahun}', function($tahun) {
 });
 
 Route::get('ekstrakurikuler/{namaekstra}', function($namaekstra) {
-    $ekskulN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','ekstrakurikuler')->where('judul_konten',$namaekstra)->get();
+    $ekskulN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Ekstrakurikuler')->where('judul_konten',$namaekstra)->get();
     return response()->json($ekskulN);
 });
 
 Route::get('fasilitas/{namafasil}', function($namafasil) {
-    $fasilitasN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','fasilitas')->where('judul_konten',$namafasil)->get();
+    $fasilitasN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Fasilitas')->where('judul_konten',$namafasil)->get();
     return response()->json($fasilitasN);
 });
 
@@ -100,12 +100,12 @@ Route::get('list-alumni', function() {
 });
 
 Route::get('list-fasilitas', function() {
-    $lFasil = DB::table('konten')->select('judul_konten')->where('kelompok_konten','fasilitas')->get();
+    $lFasil = DB::table('konten')->select('judul_konten')->where('kelompok_konten','Fasilitas')->get();
     return response()->json($lFasil);
 });
 
 Route::get('list-ekstrakurikuler', function() {
-    $lEkstrakurikuler = DB::table('konten')->select('judul_konten')->where('kelompok_konten','ekstrakurikuler')->get();
+    $lEkstrakurikuler = DB::table('konten')->select('judul_konten')->where('kelompok_konten','Ekstrakurikuler')->get();
     return response()->json($lEkstrakurikuler);
 });
 
@@ -122,4 +122,34 @@ Route::get('carousel', function() {
 Route::get('berita/{judul}', function($judul){
     $berita = DB::table('artikel')->select('judul_artikel','isi_artikel','foto_artikel')->where('judul_artikel',$judul)->get();
     return response()->json($berita);
+});
+
+Route::get('program-unggulan', function(){
+    $email = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Program Unggulan')->get();
+    return response()->json($email);
+});
+
+Route::get('profil-footer', function(){
+    $profilF = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Profil Footer')->limit(1)->get();
+    return response()->json($profilF);
+});
+
+Route::get('email', function(){
+    $email = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Email')->limit(1)->get();
+    return response()->json($email);
+});
+
+Route::get('lokasi', function(){
+    $lokasi = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Lokasi')->limit(1)->get();
+    return response()->json($lokasi);
+});
+
+Route::get('whatsapp', function(){
+    $whatsapp = DB::table('konten')->select('isi_konten')->where('kelompok_konten','WhatsApp')->limit(1)->get();
+    return response()->json($whatsapp);
+});
+
+Route::get('youtube', function(){
+    $youtube = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Youtube')->limit(1)->get();
+    return response()->json($youtube);
 });

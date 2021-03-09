@@ -16,19 +16,106 @@
                                     
                                         {{csrf_field()}}
                         
-                                        <div class="form-group">
-                                            <label for="file"><strong>Judul Konten</strong></label>
-                                            <input type="text" name="judul_konten" class="form-control" value="{{$konten->judul_konten}}"/>
-                                        </div>
-                                        
                                         <div class="dropdown">
                                             <label for="file"><strong>Kelompok Konten</strong></label>
                                             <select name="kelompok_konten" class="form-control" id="exampleFormControlSelect1" required>
-                                                <option selected disabled>Choose One</option>
-                                                <option value="ekstrakurikuler">Ekstrakurikuler</option>
-                                                <option value="fasilitas">Fasilitas</option>
-                                                <option value="profil">Profil</option>
+                                            @if($konten->kelompok_konten == 'Ekstrakurikuler')
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Profil">Profil</option>
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Youtube">Youtube</option>
+                                            @elseif($konten->kelompok_konten == 'Email')
+                                                <option value="Email">Email</option>
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Profil">Profil</option>
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Youtube">Youtube</option>
+                                            @elseif($konten->kelompok_konten == 'Fasilitas')
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Profil">Profil</option>
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Youtube">Youtube</option>
+                                            @elseif($konten->kelompok_konten == 'Lokasi')
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Profil">Profil</option>
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Youtube">Youtube</option>
+                                            @elseif($konten->kelompok_konten == 'Profil')
+                                                <option value="Profil">Profil</option>
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Youtube">Youtube</option>
+                                            @elseif($konten->kelompok_konten == 'Profil Footer')
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Profil">Profil</option>
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Youtube">Youtube</option>
+                                            @elseif($konten->kelompok_konten == 'Program Unggulan')
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Profil">Profil</option>
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Youtube">Youtube</option>
+                                            @elseif($konten->kelompok_konten == 'WhatsApp')
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Profil">Profil</option>
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="Youtube">Youtube</option>
+                                            @elseif($konten->kelompok_konten == 'Youtube')
+                                                <option value="Youtube">Youtube</option>
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Profil">Profil</option>
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                            @endif
                                             </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="file"><strong>Judul Konten</strong></label>
+                                            <input type="text" name="judul_konten" class="form-control" value="{{$konten->judul_konten}}"/>
                                         </div>
 
                                         <div class="form-group">

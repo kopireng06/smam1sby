@@ -13,10 +13,10 @@ class KontenController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $konten = Konten::where('judul_konten', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(5);
+            $konten = Konten::where('judul_konten', 'LIKE', "%{$search}%")->orderBy('kelompok_konten', 'ASC')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }else{            
-            $konten = Konten::orderBy('created_at', 'DESC')->simplePaginate(5);
+            $konten = Konten::orderBy('kelompok_konten', 'ASC')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
         }
 

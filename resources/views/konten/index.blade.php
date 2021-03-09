@@ -62,8 +62,8 @@
                                     @forelse($konten as $konten1)
                                     <tr>
                                         <td>{{$count++}}</td>
-                                        <td>{{ Str::limit($konten1->judul_konten,40) }}</td>
                                         <td>{{$konten1->kelompok_konten}}</td>
+                                        <td>{{ Str::limit($konten1->judul_konten,40) }}</td>
                                         <td>{!! Str::limit($konten1->isi_konten,50) !!}</td>
 
                                         <td>

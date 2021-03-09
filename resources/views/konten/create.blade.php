@@ -17,20 +17,26 @@
                             <div class="modal-body">
                             
                                 {{csrf_field()}}
-                
-                                <div class="form-group">
-                                    <label for="file"><strong>Judul Konten</strong></label>
-                                    <input type="text" name="judul_konten" class="form-control" placeholder="Judul Konten" required/>
-                                </div>
-                                
+
                                 <div class="dropdown">
                                     <label for="file">Kelompok Konten</label>
                                     <select name="kelompok_konten" class="form-control" id="exampleFormControlSelect1" required>
                                         <option selected disabled>Choose One</option>
-                                        <option value="ekstrakurikuler">Ekstrakurikuler</option>
-                                        <option value="fasilitas">Fasilitas</option>
-                                        <option value="profil">Profil</option>
+                                        <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                        <option value="Email">Email</option>
+                                        <option value="Fasilitas">Fasilitas</option>
+                                        <option value="Lokasi">Lokasi</option>
+                                        <option value="Profil">Profil</option>
+                                        <option value="Profil Footer">Profil Footer</option>
+                                        <option value="Program Unggulan">Program Unggulan</option>
+                                        <option value="WhatsApp">WhatsApp</option>
+                                        <option value="Youtube">Youtube</option>
                                     </select>
+                                </div>
+                
+                                <div class="form-group">
+                                    <label for="file"><strong>Judul Konten</strong></label>
+                                    <input type="text" name="judul_konten" class="form-control" placeholder="Judul Konten" required/>
                                 </div>
 
                                 <div class="form-group">
