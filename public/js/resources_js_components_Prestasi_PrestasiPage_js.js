@@ -2324,7 +2324,7 @@ var Footer = function Footer() {
               _context.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().get(window.origin + '/api/footer').then(function (res) {
                 data = res.data;
-                console.log(data);
+                console.log(data.youtube);
               });
 
             case 2:
@@ -2410,7 +2410,7 @@ var Footer = function Footer() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                   className: "container-yt",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("iframe", {
-                    src: "https://www.youtube.com/embed/p6_2bSprl44",
+                    src: dataFooter.youtube,
                     frameBorder: "0",
                     allowFullScreen: true,
                     className: "video"

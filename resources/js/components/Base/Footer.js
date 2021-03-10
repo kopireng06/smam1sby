@@ -17,7 +17,7 @@ const Footer = () => {
         await axios.get(window.origin+'/api/footer')
             .then((res)=>{
                 data = res.data;
-                console.log(data);
+                console.log(data.youtube);
             });
         return data;
     }
@@ -58,7 +58,7 @@ const Footer = () => {
                                             <div className="text-lg font-bold text-white my-2">YOUTUBE</div>
                                             <div className="h-0.5 w-10 bg-yellow-400 mb-3"></div>
                                             <div className="container-yt">
-                                                <iframe src="https://www.youtube.com/embed/p6_2bSprl44" frameBorder="0" allowFullScreen className="video"></iframe>
+                                                <iframe src={dataFooter.youtube} frameBorder="0" allowFullScreen className="video"></iframe>
                                             </div>
                                         </div>
                                     </div> 

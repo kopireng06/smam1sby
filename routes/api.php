@@ -164,8 +164,8 @@ Route::get('footer',function(){
     $footer['email'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Email')->limit(1)->get();
     $footer['lokasi'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Lokasi')->limit(1)->get();
     $footer['whatsapp'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','WhatsApp')->limit(1)->get();
-    $footer['youtube'] = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Youtube')->limit(1)->get();
-
+    $footer['youtube'] = preg_replace('/<[^>]*>/', '', DB::table('konten')->select('isi_konten')->where('kelompok_konten','Youtube')->limit(1)->first()->isi_konten);    
+ 
     return response()->json($footer);
 
 });
