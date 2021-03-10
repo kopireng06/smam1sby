@@ -17,7 +17,7 @@ class AlumniController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $data_alumni = Alumni::where('nama_alumni', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(10);
+            $data_alumni = Alumni::where('nama_alumni', 'LIKE', "%{$search}%")->orWhere('univ_alumni', 'LIKE', "%{$search}%")->orWhere('jurusan_alumni', 'LIKE', "%{$search}%")->orWhere('angkatan', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(10);
 
         }else{            
             $data_alumni = Alumni::orderBy('created_at', 'DESC')->simplePaginate(10);
@@ -68,22 +68,5 @@ class AlumniController extends Controller
             ->with('success', 'Alumni Berhasil Dihapus !');
     }
     
-    public function regex(Request $request)
-    {   
-<<<<<<< HEAD
-=======
 
-        //dd(preg_replace('/<[^>]*>/', '', '<p>jaisjiajsiajsiajisjasi</p>'));
->>>>>>> a4ff1bbc8fe69e21beab2a6c55f840cfa6f5b08d
-        $namafasil = $request->namafasil;
-        $data = DB::table('konten')->select('judul_konten','isi_konten')->where('judul_konten',$namafasil)->first();
-        if(preg_match_all('/img src="[^"]*/', $data->isi_konten, $matches)) {
-            foreach ($matches as $key => $value) {
-                $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
-            }
-            dd($matches[0][0]);
-        }
-        //dd($data->isi_konten);
-    }
-    
 }
