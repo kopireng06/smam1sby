@@ -34,12 +34,14 @@ Route::get('/keong', function () {
 
 
 
-
+Route::get('/test/regex/{namafasil}',[AlumniController::class,'regex']);
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard', function () {
         return redirect('/dashboard/alumni');
     });
+
+
 
     Route::get('/dashboard/alumni',[AlumniController::class,'index']);
     Route::get('/dashboard/alumni/import-alumni',[AlumniController::class,'importAlumni']);

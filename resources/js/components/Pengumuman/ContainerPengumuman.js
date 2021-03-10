@@ -27,18 +27,14 @@ const ContainerPengumuman = () => {
     }
 
     const renderHasilSearch = async () => { 
-        var jsonSearch = [1,2,3,4,5,6];
-
-        await new Promise((resolve)=>{
-            setTimeout(()=>{
-                jsonSearch = jsonSearch.map((i, index) => (
-                    <Pengumuman key={index}/>
-                ));
-                resolve(0);
-            },1000)
+        var data;
+        await axios.get(window.origin+'/api/pengumuman/search/'+dataSearch)
+        .then((res)=>{
+            data = res.data.map((data ,i)=>
+                <Pengumuman key={i} judul={data.judul_pengumuman} tanggal={data.created_at}/>
+            )
         });
-
-        return jsonSearch;
+        return data;
     }
 
     const renderPengumuman = () =>{

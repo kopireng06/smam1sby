@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Imports\AlumniImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use DB;
 
 class AlumniController extends Controller
 {
@@ -67,5 +68,17 @@ class AlumniController extends Controller
             ->with('success', 'Alumni Berhasil Dihapus !');
     }
     
+    public function regex(Request $request)
+    {
+        $namafasil = $request->namafasil;
+        $data = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','fasilitas')->where('judul_konten',$namafasil)->first();
+        if(preg_match_all('/img src="[^"]*/', $data->isi_konten, $matches)) {
+            foreach ($matches as $key => $value) {
+                $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
+            }
+            dd($matches);
+        }
+        dd($data->isi_konten);
+    }
     
 }

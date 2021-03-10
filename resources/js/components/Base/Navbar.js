@@ -5,31 +5,6 @@ import axios from 'axios';
 
 const Navbar = () => {
 
-    const callDataNavbar = async () => {
-        var data = {};
-        await axios.get(window.origin+'/api/ekstrakurikuler')
-            .then((res)=>{
-                data.eskul = res.data[0].judul_konten;
-            });
-        await axios.get(window.origin+'/api/profil')
-            .then((res)=>{
-                data.profil = res.data;
-            });   
-        await axios.get(window.origin+'/api/fasilitas')
-            .then((res)=>{
-                data.fasilitas = res.data[0].judul_konten;
-            }); 
-        await axios.get(window.origin+'/api/alumni')
-            .then((res)=>{
-                data.alumni = res.data[0].angkatan;
-            }); 
-        await axios.get(window.origin+'/api/web')
-            .then((res)=>{
-                data.link_terkait = res.data;
-            }); 
-        return data;
-    }
-
     const[navbarColor,setNavbarColor] = useState('');
     const[linkColor,setLinkColor] = useState(' text-white');
     const[hamburgerColor,setHamburgerColor] = useState(' hamburger-white');
@@ -62,6 +37,19 @@ const Navbar = () => {
         }
     });
     
+    const callDataNavbar = async () => {
+        var data = {};
+        await axios.get(window.origin+'/api/menu')
+        .then((res)=>{
+            data.eskul = res.data.ekskul[0].judul_konten;
+            data.fasilitas = res.data.fasilitas[0].judul_konten;
+            data.alumni = res.data.alumni[0].angkatan;
+            data.profil = res.data.profil;
+            data.link_terkait = res.data.link_terkait;
+        });
+        return data;
+    }
+
     const changeSidebarStat = () => {
         if(sidebarStat==0){
             setSidebarStat(1);
@@ -109,9 +97,16 @@ const Navbar = () => {
                                         }
                                     </div>
                                 </div>
-                                <Link to="/berita" className={"hidden lg:block font-bold mx-2"+linkColor}>
+                                <div className={"cursor-pointer multi-link relative hidden lg:block font-bold mx-2"+linkColor}>
+                                    KABAR <span className={"inline-block relative text-xs transform rotate-90"+linkColor}> {'>'} </span>
+                                    <div className="sub-link absolute rounded shadow-md w-40 p-3 bg-white flex flex-col">
+                                            <Link to="/berita" className="block text-smam1 hover:text-yellow-400 text-sm my-1">berita</Link>
+                                            <Link to="/pengumuman" className="block text-smam1 hover:text-yellow-400 text-sm my-1">pengumuman</Link>
+                                    </div>
+                                </div>
+                                {/* <Link to="/berita" className={"hidden lg:block font-bold mx-2"+linkColor}>
                                     BERITA
-                                </Link>
+                                </Link> */}
                                 <Link to="/kumpulan-prestasi" className={"hidden lg:block font-bold mx-2"+linkColor}>
                                     PRESTASI
                                 </Link>

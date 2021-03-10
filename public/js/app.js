@@ -2614,6 +2614,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2626,69 +2630,12 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 
 
 
 
 
 var Navbar = function Navbar() {
-  var callDataNavbar = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
-      var data;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              data = {};
-              _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/ekstrakurikuler').then(function (res) {
-                data.eskul = res.data[0].judul_konten;
-              });
-
-            case 3:
-              _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/profil').then(function (res) {
-                data.profil = res.data;
-              });
-
-            case 5:
-              _context.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/fasilitas').then(function (res) {
-                data.fasilitas = res.data[0].judul_konten;
-              });
-
-            case 7:
-              _context.next = 9;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/alumni').then(function (res) {
-                data.alumni = res.data[0].angkatan;
-              });
-
-            case 9:
-              _context.next = 11;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/web').then(function (res) {
-                data.link_terkait = res.data;
-              });
-
-            case 11:
-              return _context.abrupt("return", data);
-
-            case 12:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function callDataNavbar() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       navbarColor = _useState2[0],
@@ -2746,6 +2693,39 @@ var Navbar = function Navbar() {
     };
   });
 
+  var callDataNavbar = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
+      var data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              data = {};
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/menu').then(function (res) {
+                data.eskul = res.data.ekskul[0].judul_konten;
+                data.fasilitas = res.data.fasilitas[0].judul_konten;
+                data.alumni = res.data.alumni[0].angkatan;
+                data.profil = res.data.profil;
+                data.link_terkait = res.data.link_terkait;
+              });
+
+            case 3:
+              return _context.abrupt("return", data);
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function callDataNavbar() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
   var changeSidebarStat = function changeSidebarStat() {
     if (sidebarStat == 0) {
       setSidebarStat(1);
@@ -2797,10 +2777,23 @@ var Navbar = function Navbar() {
                       });
                     }()
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-                  to: "/berita",
-                  className: "hidden lg:block font-bold mx-2" + linkColor,
-                  children: "BERITA"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "cursor-pointer multi-link relative hidden lg:block font-bold mx-2" + linkColor,
+                  children: ["KABAR ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                    className: "inline-block relative text-xs transform rotate-90" + linkColor,
+                    children: [" ", '>', " "]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                    className: "sub-link absolute rounded shadow-md w-40 p-3 bg-white flex flex-col",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+                      to: "/berita",
+                      className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
+                      children: "berita"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+                      to: "/pengumuman",
+                      className: "block text-smam1 hover:text-yellow-400 text-sm my-1",
+                      children: "pengumuman"
+                    })]
+                  })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                   to: "/kumpulan-prestasi",
                   className: "hidden lg:block font-bold mx-2" + linkColor,
@@ -2955,10 +2948,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -2976,24 +2977,71 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Sidebar = function Sidebar(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(props.sidebarStat),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(props.sidebarStat),
       _useState2 = _slicedToArray(_useState, 2),
       toggleLeft = _useState2[0],
       setToggleLeft = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(' h-0'),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(' h-0'),
       _useState4 = _slicedToArray(_useState3, 2),
       heightSubProfil = _useState4[0],
       setHeightSubProfil = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(' h-0'),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(' h-0'),
       _useState6 = _slicedToArray(_useState5, 2),
       heightSubLinkTerkait = _useState6[0],
       setHeightSubLinkTerkait = _useState6[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(' h-0'),
+      _useState8 = _slicedToArray(_useState7, 2),
+      heightSubKabar = _useState8[0],
+      setHeightSubKabar = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
+      _useState10 = _slicedToArray(_useState9, 2),
+      dataSidebar = _useState10[0],
+      setDataSideBar = _useState10[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    callDataSideBar().then(function (res) {
+      setDataSideBar(res);
+    });
     setToggleLeft(props.sidebarStat);
   }, [props]);
+
+  var callDataSideBar = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
+      var data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              data = {};
+              _context.next = 3;
+              return axios.get(window.origin + '/api/menu').then(function (res) {
+                data.eskul = res.data.ekskul[0].judul_konten;
+                data.fasilitas = res.data.fasilitas[0].judul_konten;
+                data.alumni = res.data.alumni[0].angkatan;
+                data.profil = res.data.profil;
+                data.link_terkait = res.data.link_terkait;
+                console.log(data.link_terkait);
+              });
+
+            case 3:
+              return _context.abrupt("return", data);
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function callDataSideBar() {
+      return _ref.apply(this, arguments);
+    };
+  }();
 
   var handleClickProfil = function handleClickProfil() {
     if (heightSubProfil == ' h-0') {
@@ -3011,66 +3059,93 @@ var Sidebar = function Sidebar(props) {
     }
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+  var handleClickSubKabar = function handleClickSubKabar() {
+    if (heightSubKabar == ' h-0') {
+      setHeightSubKabar(' h-5');
+    } else {
+      setHeightSubKabar(' h-0');
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: "w-60 transition-all duration-1000 p-7 pt-14 flex flex-col fixed z-20 top-0 h-screen bg-smam1 shadow-md",
     style: {
       left: toggleLeft
     },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "/",
-      className: "font-bold text-white text-sm my-1",
-      children: "HOME"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "font-bold cursor-pointer text-white text-sm my-1",
-      onClick: handleClickProfil,
-      children: ["PROFIL ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-        className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
-        children: [" ", '>', " "]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "/kumpulan-profil/SAMBUTAN KEPSEK",
-      className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
-      children: "SAMBUTAN KEPSEK"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "/kumpulan-profil/SMAMSA",
-      className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
-      children: "SMAMSA"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "/berita",
-      className: "font-bold text-white text-sm my-1",
-      children: "BERITA"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "/kumpulan-prestasi",
-      className: "font-bold text-white text-sm my-1",
-      children: "PRESTASI"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "/kumpulan-alumni/2018",
-      className: "font-bold text-white text-sm my-1",
-      children: "ALUMNI"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "/kumpulan-ekstrakurikuler/IPM",
-      className: "font-bold text-white text-sm my-1",
-      children: "EKSTRAKURIKULER"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "/kumpulan-fasilitas/AULA",
-      className: "font-bold text-white text-sm my-1",
-      children: "FASILITAS"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "font-bold cursor-pointer text-white text-sm my-1",
-      onClick: handleClickLinkTerkait,
-      children: ["LINK TERKAIT ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-        className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
-        children: [" ", '>', " "]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
-      className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubLinkTerkait,
-      children: "PPDB"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-      to: "#",
-      className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubLinkTerkait,
-      children: "E-LEARNING"
-    })]
+    children: function () {
+      if (dataSidebar == 0) {
+        return '';
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/",
+            className: "font-bold text-white text-sm my-1",
+            children: "HOME"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "font-bold cursor-pointer text-white text-sm my-1",
+            onClick: handleClickProfil,
+            children: ["PROFIL ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+              className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
+              children: [" ", '>', " "]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-profil/SAMBUTAN KEPSEK",
+            className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
+            children: "SAMBUTAN KEPSEK"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-profil/SMAMSA",
+            className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
+            children: "SMAMSA"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "font-bold cursor-pointer text-white text-sm my-1",
+            onClick: handleClickSubKabar,
+            children: ["KABAR ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+              className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
+              children: [" ", '>', " "]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-profil/BERITA",
+            className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubKabar,
+            children: "BERITA"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-profil/PENGUMUMAN",
+            className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubKabar,
+            children: "PENGUMUMAN"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-prestasi",
+            className: "font-bold text-white text-sm my-1",
+            children: "PRESTASI"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-alumni/" + dataSidebar.alumni,
+            className: "font-bold text-white text-sm my-1",
+            children: "ALUMNI"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-ekstrakurikuler/" + dataSidebar.eskul,
+            className: "font-bold text-white text-sm my-1",
+            children: "EKSTRAKURIKULER"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: "/kumpulan-fasilitas/" + dataSidebar.fasilitas,
+            className: "font-bold text-white text-sm my-1",
+            children: "FASILITAS"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "font-bold cursor-pointer text-white text-sm my-1",
+            onClick: handleClickLinkTerkait,
+            children: ["LINK TERKAIT ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+              className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
+              children: [" ", '>', " "]
+            })]
+          }), function () {
+            return dataSidebar.link_terkait.map(function (data, i) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: data.link_web,
+                className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubLinkTerkait,
+                children: data.nama_web
+              }, i);
+            });
+          }()]
+        });
+      }
+    }()
   });
 };
 

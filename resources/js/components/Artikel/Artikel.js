@@ -33,7 +33,6 @@ const Artikel = (props) => {
         var data;
         await axios.get(window.origin+'/api/'+props.centerPath+'/'+props.pembeda)
             .then((res)=>{
-                console.log(res);
                 if(props.centerPath=='kumpulan-alumni'){
                     data = (<Tabel data={res.data}/>)
                 }

@@ -7,19 +7,34 @@ import SkeletonPengumuman from './SkeletonPengumuman';
 const InfinitePengumuman = () => {
     const [dataPengumuman,setDataPengumuman] = useState(Array.from({length:0}));
     const [hasMoreItems, setHasMoreItems] = useState(true);
+    const [limit,setLimit] = useState(7);
+    const [offset,setOffset] = useState(0);
 
     useEffect(() => {
         getDataPengumuman();
     }, []);
 
+    const callDataPengumuman = async ()=>{
+        var data;
+        await axios.get(window.origin+'/api/pengumuman/'+offset+'/'+limit)
+        .then((res)=>{
+            data = res.data;
+        });
+        return data;
+    }
+
     const getDataPengumuman = () => {
-        if (dataPengumuman.length >= 30) {
-            setHasMoreItems(false);
-            return;
-          }
-          setTimeout(() => {
-            setDataPengumuman(dataPengumuman.concat(Array.from({length:10})));
-          }, 1000);     
+        callDataPengumuman().then((res)=>{
+            if(res.length % 7 !=0){
+                setHasMoreItems(false);
+                setDataPengumuman(dataPengumuman.concat(res));
+                setOffset(offset+7);
+            }
+            else{
+                setDataPengumuman(dataPengumuman.concat(res));
+                setOffset(offset+7);
+            }
+        });  
     }
 
     return (  
@@ -30,8 +45,8 @@ const InfinitePengumuman = () => {
             loader={
                 <SkeletonPengumuman/>
             }>
-                    {dataPengumuman.map((i, index) => (
-                        <Pengumuman key={index}/>
+                    {dataPengumuman.map((data, i) => (
+                        <Pengumuman key={i} judul={data.judul_pengumuman} tanggal={data.created_at}/>
                     ))}
         </InfiniteScroll>
     );

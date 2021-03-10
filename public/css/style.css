@@ -133,6 +133,13 @@
 .multi-link:hover .sub-link{
     display: block;
 }
+#isi-slider > p {
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 10px;
+    font-style: italic;
+}
 
 p {
     margin: 10px 0;

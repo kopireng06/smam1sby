@@ -1,12 +1,8 @@
-import React ,{useEffect} from 'react';
+import React  from 'react';
 
 
 
 const Tabel = (props) => {
-
-    useEffect(() => {
-        console.log(props.data);
-    },[]);
 
     return ( 
         <table className="w-10/12 mx-auto mb-10">

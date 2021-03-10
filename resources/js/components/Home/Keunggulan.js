@@ -1,6 +1,25 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import ReactHtmlParser from 'react-html-parser';
 
 const Keunggulan = () => {
+
+    const [dataKeunggulan,setDataKeunggulan] = useState([]);
+
+    const callDataKeunggulan = async () =>{
+        var data;
+        await axios.get(window.origin+'/api/program-unggulan')
+        .then((res)=>{
+            data = res.data;
+        });
+        return data;
+    }
+
+    useEffect(()=>{
+        callDataKeunggulan().then((res)=>{
+            setDataKeunggulan(res);
+        });
+    },[])
+
     return ( 
         <div className="w-full bg-gray-100 xl:relative xl:mb-24 xl:h-72 pb-10 xl:pb-0">
             <div className="lg:container mx-auto">
@@ -9,26 +28,20 @@ const Keunggulan = () => {
                 </div>
                 <div className="text-center mb-8 text-xl italic text-smam1">"Excellent With Morality"</div>
                 <div className="lg:container  xl:absolute xl:absolute-x-center px-5 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-center place-items-center gap-4">
-                    <div className="h-56 w-11/12 bg-smam1 rounded shadow">
-                        <div className="text-smam1 text-xl text-center font-bold py-3 bg-white rounded-t">GURU KOMPETEN</div>
-                        <div className="text-center text-white text-sm p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Animi maiores numquam, laboriosam hic necessitatibus labore? Excepturi, earum quod et</div>
-                    </div>
-                    <div className="h-56 w-11/12 bg-smam1 rounded shadow">
-                        <div className="text-smam1 text-xl text-center font-bold py-3 bg-white rounded-t">MULTI KURIKULUM</div>
-                        <div className="text-center text-white text-sm p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Animi maiores numquam, laboriosam hic necessitatibus labore? Excepturi, earum quod et</div>
-                    </div>
-                    <div className="h-56 w-11/12 bg-smam1 rounded shadow">
-                        <div className="text-smam1 text-xl text-center font-bold py-3 bg-white rounded-t">PENGENALAN BUDAYA JEPANG</div>
-                        <div className="text-center text-white text-sm p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Animi maiores numquam, laboriosam hic necessitatibus labore? Excepturi, earum quod et</div>
-                    </div>
-                    <div className="h-56 w-11/12 bg-smam1 rounded shadow">
-                        <div className="text-smam1 text-xl text-center font-bold py-3 bg-white rounded-t">BANYAK BEASISWA</div>
-                        <div className="text-center text-white text-sm p-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Animi maiores numquam, laboriosam hic necessitatibus labore? Excepturi, earum quod et</div>
-                    </div>
+                    {
+                        (()=>{
+                            return(
+                                dataKeunggulan.map((data,i)=>{
+                                    return(
+                                        <div key={i} className="h-56 w-11/12 bg-smam1 rounded shadow">
+                                            <div className="text-smam1 text-xl text-center font-bold py-3 bg-white rounded-t">{ReactHtmlParser(data.judul_konten)}</div>
+                                            <div className="text-center text-white text-sm px-5 pt-3">{ReactHtmlParser(data.isi_konten)}</div>
+                                        </div>
+                                    )
+                                })
+                            )
+                        })()
+                    }
                 </div>
             </div> 
         </div>
