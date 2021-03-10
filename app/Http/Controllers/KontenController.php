@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Konten;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KontenController extends Controller
 {
@@ -52,9 +53,22 @@ class KontenController extends Controller
             ->with('success', 'Konten Berhasil Diubah !');
     }
 
-    public function delete($id_konten)
+    public function delete(Request $request, $id_konten)
     {
+        
         $konten = Konten::find($id_konten);
+        $data = $konten->isi_konten;
+        
+        if(preg_match_all('/img src="[^"]*/', $data, $matches)) {
+            foreach ($matches as $key => $value) {
+                $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
+            }
+            
+        }
+        for ($i = 0; $i < count($matches[0]); $i++)
+        {
+            unlink(public_path('/').$matches[0][$i]);
+        }
         $konten->delete();
         return redirect('/dashboard/konten')
             ->with('success', 'Konten Berhasil Dihapus !');

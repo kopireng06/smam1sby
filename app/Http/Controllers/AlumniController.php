@@ -70,6 +70,11 @@ class AlumniController extends Controller
     
     public function regex(Request $request)
     {   
+<<<<<<< HEAD
+=======
+
+        //dd(preg_replace('/<[^>]*>/', '', '<p>jaisjiajsiajsiajisjasi</p>'));
+>>>>>>> a4ff1bbc8fe69e21beab2a6c55f840cfa6f5b08d
         $namafasil = $request->namafasil;
         $data = DB::table('konten')->select('judul_konten','isi_konten')->where('judul_konten',$namafasil)->first();
         if(preg_match_all('/img src="[^"]*/', $data->isi_konten, $matches)) {

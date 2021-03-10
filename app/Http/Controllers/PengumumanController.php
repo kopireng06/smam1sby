@@ -140,8 +140,20 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        $pengumuman = Pengumuman::find($id)
-        ->delete();
+        $pengumuman = Pengumuman::find($id);
+        $data = $pengumuman->isi_pengumuman;
+        
+        if(preg_match_all('/img src="[^"]*/', $data, $matches)) {
+            foreach ($matches as $key => $value) {
+                $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
+            }
+            
+        }
+        for ($i = 0; $i < count($matches[0]); $i++)
+        {
+            unlink(public_path('/').$matches[0][$i]);
+        } 
+        $pengumuman->delete();
 
         return redirect()->route('pengumuman.index')
             ->with('success', 'Pengumuman Berhasil Dihapus !');

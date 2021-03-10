@@ -189,7 +189,19 @@ class ArtikelController extends Controller
     public function destroy($id)
     {        
         $artikel = Artikel::find($id);
-        unlink(public_path('images/artikel').'/'.$artikel->foto_artikel); 
+        unlink(public_path('images/artikel').'/'.$artikel->foto_artikel);
+        $data = $artikel->isi_artikel;
+        
+        if(preg_match_all('/img src="[^"]*/', $data, $matches)) {
+            foreach ($matches as $key => $value) {
+                $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
+            }
+            
+        }
+        for ($i = 0; $i < count($matches[0]); $i++)
+        {
+            unlink(public_path('/').$matches[0][$i]);
+        } 
         $artikel->delete();
         
         

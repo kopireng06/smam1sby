@@ -58,7 +58,7 @@
                                     <tr>
                                         <td>{{$count++}}</td>
                                         <td>{{ Str::limit($pengumuman1->judul_pengumuman, 40) }}</td>
-                                        <td>{!! Str::limit($pengumuman1->isi_pengumuman, 55) !!}</td>
+                                        <td>{{Str::limit($pengumuman1->isi_pengumuman, 55)}}</td>
                                         <td>                                       
                                         <form action="{{ route('pengumuman.destroy',$pengumuman1->id_pengumuman) }}" method="POST">
                                             <a class="btn btn-warning" href="{{ route('pengumuman.show',$pengumuman1->id_pengumuman) }}" >Edit</a>

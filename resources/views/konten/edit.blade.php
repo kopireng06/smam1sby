@@ -59,6 +59,17 @@
                                                 <option value="Program Unggulan">Program Unggulan</option>
                                                 <option value="WhatsApp">WhatsApp</option>
                                                 <option value="Youtube">Youtube</option>
+                                            @elseif($konten->kelompok_konten == 'Pop Up')
+                                                <option value="Profil">Profil</option>
+                                                <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Fasilitas">Fasilitas</option>
+                                                <option value="Lokasi">Lokasi</option>
+                                                <option value="Profil">Profil</option>
+                                                <option value="Profil Footer">Profil Footer</option>
+                                                <option value="Program Unggulan">Program Unggulan</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Youtube">Youtube</option>
                                             @elseif($konten->kelompok_konten == 'Profil')
                                                 <option value="Profil">Profil</option>
                                                 <option value="Ekstrakurikuler">Ekstrakurikuler</option>

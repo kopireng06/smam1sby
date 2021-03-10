@@ -17,7 +17,7 @@
                 <div class="w-100">
                     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
                         <div class="container-fluid d-flex justify-content-between">
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="/">
                                 <img src="{{asset('image/logo-sma.png')}}" style="width:125px;">
                             </a>
                             <button class="navbar-toggler" type="button">

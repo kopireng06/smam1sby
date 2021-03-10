@@ -52,8 +52,8 @@
                                 <thead>
                                     <tr>
                                         <th width="20px">No.</th>
-                                        <th>Judul Konten</th>
                                         <th>Kelompok Konten</th>
+                                        <th>Judul Konten</th>
                                         <th>Isi Konten</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -64,7 +64,7 @@
                                         <td>{{$count++}}</td>
                                         <td>{{$konten1->kelompok_konten}}</td>
                                         <td>{{ Str::limit($konten1->judul_konten,40) }}</td>
-                                        <td>{!! Str::limit($konten1->isi_konten,50) !!}</td>
+                                        <td>{{Str::limit($konten1->isi_konten,50)}}</td>
 
                                         <td>
                                             <a href="/dashboard/konten/{{$konten1->id_konten}}/edit" class="btn btn-warning btn-sm">Edit</a>
