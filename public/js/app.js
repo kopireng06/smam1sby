@@ -3144,7 +3144,6 @@ var Sidebar = function Sidebar(props) {
                 data.alumni = res.data.alumni[0].angkatan;
                 data.profil = res.data.profil;
                 data.link_terkait = res.data.link_terkait;
-                console.log(data.link_terkait);
               });
 
             case 3:
