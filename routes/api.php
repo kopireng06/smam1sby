@@ -188,7 +188,6 @@ Route::get('brosur',function(){
     }
     $brosur['foto'] = $matches[0][0];
     $brosur['judul'] = DB::table('konten')->select('judul_konten')->where('kelompok_konten','Pop Up')->limit(1)->first()->judul_konten;
-    $brosur['web'] = DB::table('web_terkait')->select('link_web')->where('nama_web',$brosur['judul'])->first()->link_web;
 
     return response()->json($brosur);
 
