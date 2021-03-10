@@ -73,19 +73,23 @@ const Sidebar = (props) => {
                                 <div className="font-bold cursor-pointer text-white text-sm my-1" onClick={handleClickProfil}>
                                     PROFIL <span className="text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90"> {'>'} </span>
                                 </div>
-                                    <Link to="/kumpulan-profil/SAMBUTAN KEPSEK" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubProfil}>
-                                        SAMBUTAN KEPSEK
-                                    </Link>
-                                    <Link to="/kumpulan-profil/SMAMSA" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubProfil}>
-                                        SMAMSA
-                                    </Link>
+                                    {
+                                        (()=>{
+                                            return(
+                                                dataSidebar.profil.map((data,i)=>
+                                                    <Link key={i} to={'/kumpulan-profil/'+data.judul_konten}
+                                                     className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubProfil}>{data.judul_konten}</Link>
+                                                )
+                                            )
+                                        })()
+                                    }
                                 <div className="font-bold cursor-pointer text-white text-sm my-1" onClick={handleClickSubKabar}>
                                     KABAR <span className="text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90"> {'>'} </span>
                                 </div>
-                                    <Link to="/kumpulan-profil/BERITA" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubKabar}>
+                                    <Link to="/BERITA" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubKabar}>
                                         BERITA
                                     </Link>
-                                    <Link to="/kumpulan-profil/PENGUMUMAN" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubKabar}>
+                                    <Link to="/PENGUMUMAN" className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubKabar}>
                                         PENGUMUMAN
                                     </Link>
                                 <Link to="/kumpulan-prestasi" className="font-bold text-white text-sm my-1">

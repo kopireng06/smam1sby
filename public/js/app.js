@@ -3088,15 +3088,15 @@ var Sidebar = function Sidebar(props) {
               className: "text-white ml-1 inline-block relative -top-1 text-xs transform rotate-90",
               children: [" ", '>', " "]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: "/kumpulan-profil/SAMBUTAN KEPSEK",
-            className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
-            children: "SAMBUTAN KEPSEK"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: "/kumpulan-profil/SMAMSA",
-            className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
-            children: "SMAMSA"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          }), function () {
+            return dataSidebar.profil.map(function (data, i) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+                to: '/kumpulan-profil/' + data.judul_konten,
+                className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubProfil,
+                children: data.judul_konten
+              }, i);
+            });
+          }(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             className: "font-bold cursor-pointer text-white text-sm my-1",
             onClick: handleClickSubKabar,
             children: ["KABAR ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
@@ -3104,11 +3104,11 @@ var Sidebar = function Sidebar(props) {
               children: [" ", '>', " "]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: "/kumpulan-profil/BERITA",
+            to: "/BERITA",
             className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubKabar,
             children: "BERITA"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: "/kumpulan-profil/PENGUMUMAN",
+            to: "/PENGUMUMAN",
             className: "ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000" + heightSubKabar,
             children: "PENGUMUMAN"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
