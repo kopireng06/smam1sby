@@ -26,6 +26,7 @@
                                         <option value="Email">Email</option>
                                         <option value="Fasilitas">Fasilitas</option>
                                         <option value="Lokasi">Lokasi</option>
+                                        <option value="Pop Up">Pop Up</option>
                                         <option value="Profil">Profil</option>
                                         <option value="Profil Footer">Profil Footer</option>
                                         <option value="Program Unggulan">Program Unggulan</option>

@@ -59,7 +59,7 @@
                                         <tr>
                                             <td>{{ $count++ }}</td>
                                             <td>{{ Str::limit( $artikel1->judul_artikel, 20 ) }}</td>
-                                            <td>{!! Str::limit( $artikel1->isi_artikel, 30  ) !!}</td>
+                                            <td>{{Str::limit( $artikel1->isi_artikel, 30  )}}</td>
                                             <td>{{ $artikel1->kategori->nama_kategoriartikel }}</td>
                                             <td>
                                                 <form action="{{ route('artikel.destroy',$artikel1->id_artikel) }}" method="POST">                                             

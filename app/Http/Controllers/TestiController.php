@@ -188,7 +188,19 @@ class TestiController extends Controller
     public function destroy($id)
     {
         $testi=Testi::find($id);
-        unlink(public_path('images/testimoni').'/'.$testi->foto_testi); 
+        unlink(public_path('images/testimoni').'/'.$testi->foto_testi);
+        $data = $testi->isi_testi;
+        
+        if(preg_match_all('/img src="[^"]*/', $data, $matches)) {
+            foreach ($matches as $key => $value) {
+                $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
+            }
+            
+        }
+        for ($i = 0; $i < count($matches[0]); $i++)
+        {
+            unlink(public_path('/').$matches[0][$i]);
+        }
         // \File::delete('public/images/testimoni'.$testi->foto_testi);
         $testi->delete();
             

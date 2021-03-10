@@ -82,15 +82,17 @@ class CarouselController extends Controller
             $carousel->isi_car = $isi;
             $carousel->save();
         }
-return redirect("/dashboard/carousel")
+        return redirect("/dashboard/carousel")
             ->with('success', 'Carousel Berhasil Diubah !');
-    }
+        }
 
     public function delete($id_car)
     {
         $carousel = Carousel::find($id_car);
+        unlink(public_path('images/carousel/').$carousel->foto_car);
         $carousel->delete();
-return redirect("/dashboard/carousel")
+
+        return redirect("/dashboard/carousel")
             ->with('success', 'Carousel Berhasil Dihapus !');
     }
 }

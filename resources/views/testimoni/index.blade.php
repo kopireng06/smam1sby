@@ -63,7 +63,7 @@
                                         <tr>
                                             <td>{{ $count++ }}</td>
                                             <td>{{ Str::limit($testi1->nama_testi, 40) }}</td>
-                                            <td>{!! Str::limit($testi1->isi_testi, 55) !!}</td>
+                                            <td>{{Str::limit($testi1->isi_testi, 55)}}</td>
                                             <td>                                       
                                             <form action="{{ route('testimoni.destroy',$testi1->id_testi) }}" method="POST">
                                                 <a class="btn btn-warning" href="{{ route('testimoni.show',$testi1->id_testi) }}" >Edit</a>

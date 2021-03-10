@@ -174,3 +174,22 @@ Route::get('program-unggulan', function(){
     $email = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Program Unggulan')->get();
     return response()->json($email);
 });
+
+Route::get('brosur',function(){
+    $brosur = array();
+
+    $ganti = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Pop Up')->limit(1)->first();
+    if(preg_match_all('/img src="[^"]*/', $ganti->isi_konten, $matches)) {
+        foreach ($matches as $key => $value) {
+            $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
+        }
+        $matches;
+        //dd($matches[0][0]);
+    }
+    $brosur['foto'] = $matches[0][0];
+    $brosur['judul'] = DB::table('konten')->select('judul_konten')->where('kelompok_konten','Pop Up')->limit(1)->first()->judul_konten;
+    $brosur['web'] = DB::table('web_terkait')->select('link_web')->where('nama_web',$brosur['judul'])->first()->link_web;
+
+    return response()->json($brosur);
+
+});
