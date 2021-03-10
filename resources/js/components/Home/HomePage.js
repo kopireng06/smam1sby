@@ -5,7 +5,6 @@ import ContainerKaPres from './ContainerKaPres';
 import Keunggulan from './Keunggulan';
 import Footer from '../Base/Footer';
 
-
 class HomePage extends Component {
     
     constructor(props) {

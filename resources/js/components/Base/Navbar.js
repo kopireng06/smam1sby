@@ -35,7 +35,7 @@ const Navbar = () => {
                 setShadowNavbar(' shadow-none');
             }
         }
-    });
+    },[]);
     
     const callDataNavbar = async () => {
         var data = {};

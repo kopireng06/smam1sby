@@ -69,16 +69,18 @@ class AlumniController extends Controller
     }
     
     public function regex(Request $request)
-    {
+    {   
+
+        dd(preg_replace('/<[^>]*>/', '', '<p>jaisjiajsiajsiajisjasi</p>'));
         $namafasil = $request->namafasil;
-        $data = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','fasilitas')->where('judul_konten',$namafasil)->first();
+        $data = DB::table('konten')->select('judul_konten','isi_konten')->where('judul_konten',$namafasil)->first();
         if(preg_match_all('/img src="[^"]*/', $data->isi_konten, $matches)) {
             foreach ($matches as $key => $value) {
                 $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
             }
             dd($matches);
         }
-        dd($data->isi_konten);
+        //dd($data->isi_konten);
     }
     
 }

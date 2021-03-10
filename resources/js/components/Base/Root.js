@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import loadable from '@loadable/component';
 import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
 import Navbar from './Navbar'
+import Brosur from './Brosur';
 
 const HomePage = loadable(() => import('../Home/HomePage'));
 const PengumumanPage = loadable(() => import('../Pengumuman/PengumumanPage'));
@@ -15,6 +16,7 @@ const Root = () => {
     return(
         <Router>
             <Navbar/>
+            <Brosur/>
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/pengumuman" component={PengumumanPage} />

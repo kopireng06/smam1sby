@@ -14,7 +14,7 @@ const Sidebar = (props) => {
             setDataSideBar(res);
         });
         setToggleLeft(props.sidebarStat);
-    },[props]);
+    },[props.sidebarStat]);
 
     const callDataSideBar = async()=>{
         var data = {};
