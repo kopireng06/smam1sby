@@ -17,7 +17,6 @@ const Footer = () => {
         await axios.get(window.origin+'/api/footer')
             .then((res)=>{
                 data = res.data;
-                console.log(data.youtube);
             });
         return data;
     }

@@ -110,7 +110,7 @@ const Sidebar = (props) => {
                                         (()=>{
                                             return(
                                                 dataSidebar.link_terkait.map((data,i)=>
-                                                    <a key={i} href={data.link_web}
+                                                    <a key={i} href={data.link_web} target="_blank"
                                                      className={"ml-3 overflow-hidden font-bold text-white text-sm transition-all duration-1000"+heightSubLinkTerkait}>{data.nama_web}</a>
                                                 )
                                             )
