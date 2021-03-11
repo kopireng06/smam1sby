@@ -67,10 +67,4 @@ class AlumniController extends Controller
         return redirect('/dashboard/alumni')
             ->with('success', 'Alumni Berhasil Dihapus !');
     }
-    
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> d512dc1205f592d09a356dc3db6ccd93f629fee8
 }

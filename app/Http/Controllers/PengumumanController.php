@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pengumuman;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PengumumanController extends Controller
 {
@@ -19,6 +20,12 @@ class PengumumanController extends Controller
     {
         $search = request()->query('search');
 
+        $timpa = DB::table('pengumumen')->count();
+        
+        if ($timpa > 30){
+            $hapus = DB::table('pengumumen')->select('id_pengumuman')->orderBy('created_at','ASC')->limit(1)->delete();
+        }
+
         if($search){
             $pengumuman = Pengumuman::where('judul_pengumuman', 'LIKE', "%{$search}%")->with('user')->orderBy('created_at', 'DESC')->simplePaginate(5);
 
@@ -28,8 +35,6 @@ class PengumumanController extends Controller
         }
 
         $count = $pengumuman->firstItem();
-
-        Pengumuman::where('created_at', '<', Carbon::now()->subYears(3))->delete(); //Auto delete untuk durasi 3 tahun
 
         return view('pengumuman.index', compact('pengumuman', 'count'));
     }

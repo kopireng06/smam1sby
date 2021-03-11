@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Kategori_artikel;
 use App\Models\User;
 use App\Models\Artikel;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class ArtikelController extends Controller
@@ -24,6 +25,12 @@ class ArtikelController extends Controller
     {
         $search = request()->query('search');
 
+        $timpa = DB::table('artikel')->count();
+        
+        if ($timpa > 30){
+            $hapus = DB::table('artikel')->select('id_artikel')->orderBy('created_at','ASC')->limit(1)->delete();
+        }
+
         if($search){
 
             $artikel= Artikel::where('judul_artikel', 'LIKE', "%{$search}%")->with('user', 'kategori')->orderBy('created_at', 'DESC')->simplePaginate(5);
@@ -36,8 +43,6 @@ class ArtikelController extends Controller
         
         $kategori = Kategori_artikel::all();
         $count = $artikel->firstItem();
-
-        Artikel::where('created_at', '<', Carbon::now()->subYears(2))->delete(); //Auto delete untuk durasi 2 tahun
 
         return view('artikel.index', compact('artikel', 'count', 'kategori'));
     }
