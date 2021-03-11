@@ -44,8 +44,6 @@ class ArtikelController extends Controller
         $kategori = Kategori_artikel::all();
         $count = $artikel->firstItem();
 
-        Artikel::where('created_at', '<', Carbon::now()->subYears(2))->delete(); //Auto delete untuk durasi 2 tahun
-
         return view('artikel.index', compact('artikel', 'count', 'kategori'));
     }
 

@@ -36,8 +36,6 @@ class PengumumanController extends Controller
 
         $count = $pengumuman->firstItem();
 
-        Pengumuman::where('created_at', '<', Carbon::now()->subYears(3))->delete(); //Auto delete untuk durasi 3 tahun
-
         return view('pengumuman.index', compact('pengumuman', 'count'));
     }
 
