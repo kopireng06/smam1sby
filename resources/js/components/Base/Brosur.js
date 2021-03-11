@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 
 const Brosur = () => {
 
-    const[displayBrosur,setDisplayBrosur] = useState(' flex');
+    const[displayBrosur,setDisplayBrosur] = useState(' hidden');
     const [dataGambar,setDataGambar] = useState('');
     const [linkGambar,setLinkGambar] = useState('');
 
@@ -15,14 +15,16 @@ const Brosur = () => {
         await axios.get(window.origin+'/api/brosur')
           .then((res)=>{
             data = res.data;
-            console.log(data);
           })
         return data;
       }
       useEffect(()=>{
         callDataBrosur().then((res)=>{
+          if(res.foto != undefined){
+            setDisplayBrosur(' flex');
             setDataGambar(res.foto);
             setLinkGambar(res.judul);
+          }
         })
       },[])
 
@@ -31,7 +33,7 @@ const Brosur = () => {
             <div className="bg-red-600 h-10 w-10 mb-0 flex justify-center items-center pb-2 cursor-pointer" onClick={changeDisplayBrosur}>
                 <div className="text-2xl text-white leading-none">x</div>
             </div>
-            <a href={linkGambar} className="w-full mx-auto h-3/6 md:h-4/6 bg-center bg-contain bg-no-repeat relative" style={{backgroundImage:"url("+window.origin+"/"+dataGambar+")"}}></a>
+            <a href={linkGambar} target="_blank" className="w-full mx-auto h-3/6 md:h-4/6 bg-center bg-contain bg-no-repeat relative" style={{backgroundImage:"url("+window.origin+"/"+dataGambar+")"}}></a>
         </div>
     )
 

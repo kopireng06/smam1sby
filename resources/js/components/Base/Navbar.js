@@ -104,9 +104,6 @@ const Navbar = () => {
                                             <Link to="/pengumuman" className="block text-smam1 hover:text-yellow-400 text-sm my-1">pengumuman</Link>
                                     </div>
                                 </div>
-                                {/* <Link to="/berita" className={"hidden lg:block font-bold mx-2"+linkColor}>
-                                    BERITA
-                                </Link> */}
                                 <Link to="/kumpulan-prestasi" className={"hidden lg:block font-bold mx-2"+linkColor}>
                                     PRESTASI
                                 </Link>
@@ -126,7 +123,7 @@ const Navbar = () => {
                                             (()=>{
                                                 return(
                                                     dataNavbar.link_terkait.map((data,i)=>
-                                                        <a key={i} href={data.link_web} className="block text-smam1 hover:text-yellow-400 text-sm my-1">{data.nama_web}</a>
+                                                        <a key={i} href={data.link_web} target="_blank" className="block text-smam1 hover:text-yellow-400 text-sm my-1">{data.nama_web}</a>
                                                     )
                                                 )
                                             })()

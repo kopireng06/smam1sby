@@ -179,6 +179,9 @@ Route::get('brosur',function(){
     $brosur = array();
 
     $ganti = DB::table('konten')->select('isi_konten')->where('kelompok_konten','Pop Up')->limit(1)->first();
+    if($ganti==null){
+        return response()->json($ganti);
+    }
     if(preg_match_all('/img src="[^"]*/', $ganti->isi_konten, $matches)) {
         foreach ($matches as $key => $value) {
             $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);

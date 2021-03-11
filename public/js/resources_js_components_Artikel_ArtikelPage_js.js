@@ -3105,7 +3105,6 @@ var Footer = function Footer() {
               _context.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().get(window.origin + '/api/footer').then(function (res) {
                 data = res.data;
-                console.log(data.youtube);
               });
 
             case 2:
