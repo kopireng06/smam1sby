@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Kategori_artikel;
 use App\Models\User;
 use App\Models\Artikel;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class ArtikelController extends Controller
@@ -23,6 +24,12 @@ class ArtikelController extends Controller
     public function index(Request $request)
     {
         $search = request()->query('search');
+
+        $timpa = DB::table('artikel')->count();
+        
+        if ($timpa > 30){
+            $hapus = DB::table('artikel')->select('id_artikel')->orderBy('created_at','ASC')->limit(1)->delete();
+        }
 
         if($search){
 

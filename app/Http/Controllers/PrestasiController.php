@@ -16,7 +16,7 @@ class PrestasiController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $prestasi = Prestasi::where('nama_prestasi', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(10);
+            $prestasi = Prestasi::where('nama_prestasi', 'LIKE', "%{$search}%")->orWhere('tingkat_prestasi', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(10);
 
         }else{            
             $prestasi = Prestasi::orderBy('created_at', 'DESC')->simplePaginate(10);
