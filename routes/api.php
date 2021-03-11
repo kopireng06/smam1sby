@@ -19,31 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('profil', function() {
-    $profil = DB::table('konten')->select('judul_konten')->where('kelompok_konten','profil')->get();
-    return response()->json($profil);
-});
-
-Route::get('alumni', function() {
-    $alumni = DB::table('alumni')->select('angkatan')->orderBy('angkatan', 'desc')->limit(1)->get();
-    return response()->json($alumni);
-});
-
-Route::get('ekstrakurikuler', function() {
-    $ekskul = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','ekstrakurikuler')->limit(1)->get();
-    return response()->json($ekskul);
-});
-
-Route::get('fasilitas', function() {
-    $fasilitas = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','fasilitas')->limit(1)->get();
-    return response()->json($fasilitas);
-});
-
-Route::get('web', function() {
-    $web = DB::table('web_terkait')->select('nama_web','link_web')->get();
-    return response()->json($web);
-});
-
 Route::get('pengumuman/home', function() {
     $pengumumanH = DB::table('pengumumen')->select('judul_pengumuman','created_at')->orderBy('created_at', 'desc')->limit(4)->get();
     return response()->json($pengumumanH);
