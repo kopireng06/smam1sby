@@ -17,7 +17,7 @@ class AlumniController extends Controller
         $search = request()->query('search');
 
         if($search){
-            $data_alumni = Alumni::where('nama_alumni', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(10);
+            $data_alumni = Alumni::where('nama_alumni', 'LIKE', "%{$search}%")->orWhere('univ_alumni', 'LIKE', "%{$search}%")->orWhere('jurusan_alumni', 'LIKE', "%{$search}%")->orWhere('angkatan', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->simplePaginate(10);
 
         }else{            
             $data_alumni = Alumni::orderBy('created_at', 'DESC')->simplePaginate(10);
@@ -68,5 +68,9 @@ class AlumniController extends Controller
             ->with('success', 'Alumni Berhasil Dihapus !');
     }
     
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> d512dc1205f592d09a356dc3db6ccd93f629fee8
 }
