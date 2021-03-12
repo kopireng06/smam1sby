@@ -2309,9 +2309,15 @@ var Footer = function Footer() {
       setDataFooter = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    var isSubscribed = true;
     callDataFooter().then(function (res) {
-      setDataFooter(res);
+      if (isSubscribed) {
+        setDataFooter(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+    };
   }, []);
 
   var callDataFooter = /*#__PURE__*/function () {
@@ -2646,7 +2652,22 @@ var InfinitePengumuman = function InfinitePengumuman() {
       setOffset = _useState8[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    getDataPengumuman();
+    var isSubscribed = true;
+    callDataPengumuman().then(function (res) {
+      if (isSubscribed) {
+        if (res.length % 7 != 0) {
+          setHasMoreItems(false);
+          setDataPengumuman(dataPengumuman.concat(res));
+          setOffset(offset + 7);
+        } else {
+          setDataPengumuman(dataPengumuman.concat(res));
+          setOffset(offset + 7);
+        }
+      }
+    });
+    return function () {
+      isSubscribed = false;
+    };
   }, []);
 
   var callDataPengumuman = /*#__PURE__*/function () {
@@ -2659,6 +2680,8 @@ var InfinitePengumuman = function InfinitePengumuman() {
               _context.next = 2;
               return axios.get(window.origin + '/api/pengumuman/' + offset + '/' + limit).then(function (res) {
                 data = res.data;
+              })["catch"](function (error) {
+                console.error(error);
               });
 
             case 2:

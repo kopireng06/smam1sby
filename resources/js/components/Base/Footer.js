@@ -7,9 +7,16 @@ const Footer = () => {
     const [dataFooter,setDataFooter] = useState(0);
 
     useEffect(() => {
+        var isSubscribed = true;
         callDataFooter().then((res)=>{
-            setDataFooter(res);
+            if(isSubscribed){
+                setDataFooter(res);
+            }
+
         })
+        return ()=>{
+            isSubscribed=false;
+        }
     }, []);
 
     const callDataFooter = async ()=>{

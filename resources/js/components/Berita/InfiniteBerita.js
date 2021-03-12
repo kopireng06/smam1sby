@@ -8,9 +8,26 @@ const InfiniteBerita = () => {
     const [hasMoreItems, setHasMoreItems] = useState(true);
     const [limit,setLimit] = useState(9);
     const [offset,setOffset] = useState(0);
-
+    
+    
     useEffect(() => {
-        getDataBerita();
+        var isSubscribed = true;
+        callDataBerita().then((res)=>{
+            if(isSubscribed){
+                if(res.length % 9 != 0){
+                    setHasMoreItems(false);
+                    setDataBerita(dataBerita.concat(res));
+                    setOffset(offset+9);
+                }
+                else{
+                    setDataBerita(dataBerita.concat(res));
+                    setOffset(offset+9);
+                }
+            }
+        });  
+        return ()=>{
+            isSubscribed = false;
+        }
     }, []);
 
     const callDataBerita = async ()=>{

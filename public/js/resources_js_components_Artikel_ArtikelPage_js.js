@@ -2131,8 +2131,12 @@ var Artikel = function Artikel(props) {
       renderedArtikel = _useState2[0],
       setRenderedArtikel = _useState2[1];
 
+  var abortController = new AbortController();
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     renderArtikel();
+    return function () {
+      abortController.abort();
+    };
   }, [props.pembeda]);
 
   var renderArtikel = function renderArtikel() {
@@ -2285,9 +2289,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Bacaan = function Bacaan(props) {
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log(props.data[0].created_at);
-  }, []);
   return function () {
     if (props.data[0].foto_artikel) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -2421,6 +2422,8 @@ var ContainerArtikel = function ContainerArtikel() {
       dataOption = _useState4[0],
       setDataOption = _useState4[1];
 
+  var source = axios__WEBPACK_IMPORTED_MODULE_8___default().CancelToken.source();
+
   var callDataOption = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
       var data;
@@ -2436,10 +2439,14 @@ var ContainerArtikel = function ContainerArtikel() {
               }
 
               _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/list-alumni').then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/list-alumni', {
+                cancelToken: source.token
+              }).then(function (res) {
                 data = res.data.map(function (data) {
                   return data.angkatan;
                 });
+              })["catch"](function (err) {
+                console.log(err.message);
               });
 
             case 4:
@@ -2449,11 +2456,15 @@ var ContainerArtikel = function ContainerArtikel() {
               }
 
               _context.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/list-fasilitas').then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/list-fasilitas', {
+                cancelToken: source.token
+              }).then(function (res) {
                 console.log(res.data[1].judul_konten);
                 data = res.data.map(function (data) {
                   return data.judul_konten;
                 });
+              })["catch"](function (err) {
+                console.log(err.message);
               });
 
             case 7:
@@ -2463,11 +2474,15 @@ var ContainerArtikel = function ContainerArtikel() {
               }
 
               _context.next = 10;
-              return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/profil').then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/profil', {
+                cancelToken: source.token
+              }).then(function (res) {
                 console.log(res.data[1].judul_konten);
                 data = res.data.map(function (data) {
                   return data.judul_konten;
                 });
+              })["catch"](function (err) {
+                console.log(err.message);
               });
 
             case 10:
@@ -2477,11 +2492,15 @@ var ContainerArtikel = function ContainerArtikel() {
               }
 
               _context.next = 13;
-              return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/list-ekstrakurikuler').then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/list-ekstrakurikuler', {
+                cancelToken: source.token
+              }).then(function (res) {
                 console.log(res.data[1].judul_konten);
                 data = res.data.map(function (data) {
                   return data.judul_konten;
                 });
+              })["catch"](function (err) {
+                console.log(err.message);
               });
 
             case 13:
@@ -2501,10 +2520,17 @@ var ContainerArtikel = function ContainerArtikel() {
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var isSubscribed = true;
     callDataOption().then(function (res) {
-      setDataOption(res);
-      setPembeda(lastPath);
+      if (isSubscribed) {
+        setDataOption(res);
+        setPembeda(lastPath);
+      }
     });
+    return function () {
+      isSubscribed = false;
+      source.cancel("cancel");
+    };
   }, [centerPath, lastPath]);
 
   var handleClick = function handleClick(e) {
@@ -2614,7 +2640,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var SearchArtikel = function SearchArtikel(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("select", {
-    className: "w-8/12 block md:hidden mx-auto mb-4 rounded shadow border-smam1",
+    className: "w-8/12 block md:hidden mx-auto mb-4 py-3 pl-1 rounded shadow border-smam1",
     value: props.pembeda,
     onChange: props.handleOptionChange,
     children: function () {
@@ -3090,9 +3116,15 @@ var Footer = function Footer() {
       setDataFooter = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    var isSubscribed = true;
     callDataFooter().then(function (res) {
-      setDataFooter(res);
+      if (isSubscribed) {
+        setDataFooter(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+    };
   }, []);
 
   var callDataFooter = /*#__PURE__*/function () {

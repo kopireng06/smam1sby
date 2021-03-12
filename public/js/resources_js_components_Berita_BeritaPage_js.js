@@ -2309,9 +2309,15 @@ var Footer = function Footer() {
       setDataFooter = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    var isSubscribed = true;
     callDataFooter().then(function (res) {
-      setDataFooter(res);
+      if (isSubscribed) {
+        setDataFooter(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+    };
   }, []);
 
   var callDataFooter = /*#__PURE__*/function () {
@@ -2727,7 +2733,22 @@ var InfiniteBerita = function InfiniteBerita() {
       setOffset = _useState8[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    getDataBerita();
+    var isSubscribed = true;
+    callDataBerita().then(function (res) {
+      if (isSubscribed) {
+        if (res.length % 9 != 0) {
+          setHasMoreItems(false);
+          setDataBerita(dataBerita.concat(res));
+          setOffset(offset + 9);
+        } else {
+          setDataBerita(dataBerita.concat(res));
+          setOffset(offset + 9);
+        }
+      }
+    });
+    return function () {
+      isSubscribed = false;
+    };
   }, []);
 
   var callDataBerita = /*#__PURE__*/function () {

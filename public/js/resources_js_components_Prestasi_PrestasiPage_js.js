@@ -2309,9 +2309,15 @@ var Footer = function Footer() {
       setDataFooter = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    var isSubscribed = true;
     callDataFooter().then(function (res) {
-      setDataFooter(res);
+      if (isSubscribed) {
+        setDataFooter(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+    };
   }, []);
 
   var callDataFooter = /*#__PURE__*/function () {
@@ -2662,8 +2668,12 @@ var InfinitePrestasi = function InfinitePrestasi(props) {
       offset = _useState8[0],
       setOffset = _useState8[1];
 
+  var abortController = new AbortController();
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     getDataPrestasi();
+    return function () {
+      abortController.abort();
+    };
   }, []);
 
   var callDataPrestasi = /*#__PURE__*/function () {

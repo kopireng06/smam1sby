@@ -50,9 +50,15 @@ var Footer = function Footer() {
       setDataFooter = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    var isSubscribed = true;
     callDataFooter().then(function (res) {
-      setDataFooter(res);
+      if (isSubscribed) {
+        setDataFooter(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+    };
   }, []);
 
   var callDataFooter = /*#__PURE__*/function () {

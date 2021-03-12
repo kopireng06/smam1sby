@@ -8,9 +8,13 @@ import axios from 'axios';
 const Artikel = (props) => {
     
     const [renderedArtikel,setRenderedArtikel] = useState(0);
+    const abortController = new AbortController();
 
     useEffect(() => {
         renderArtikel();
+        return ()=>{
+            abortController.abort();
+        }
     },[props.pembeda]);
     
     const renderArtikel = () => {

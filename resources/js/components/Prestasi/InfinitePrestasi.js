@@ -9,9 +9,13 @@ const InfinitePrestasi = (props) => {
     const [hasMoreItems, setHasMoreItems] = useState(true);
     const [limit,setLimit] = useState(10);
     const [offset,setOffset] = useState(0);
-
+    const abortController = new AbortController();
+    
     useEffect(() => {
         getDataPrestasi();
+        return ()=>{
+            abortController.abort();
+        }
     }, []);
 
     const callDataPrestasi = async ()=>{

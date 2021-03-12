@@ -11,7 +11,23 @@ const InfinitePengumuman = () => {
     const [offset,setOffset] = useState(0);
 
     useEffect(() => {
-        getDataPengumuman();
+        var isSubscribed = true;
+        callDataPengumuman().then((res)=>{
+            if(isSubscribed){
+                if(res.length % 7 !=0){
+                    setHasMoreItems(false);
+                    setDataPengumuman(dataPengumuman.concat(res));
+                    setOffset(offset+7);
+                }
+                else{
+                    setDataPengumuman(dataPengumuman.concat(res));
+                    setOffset(offset+7);
+                }
+            }
+        });  
+        return ()=>{
+            isSubscribed = false;
+        }
     }, []);
 
     const callDataPengumuman = async ()=>{
@@ -19,7 +35,10 @@ const InfinitePengumuman = () => {
         await axios.get(window.origin+'/api/pengumuman/'+offset+'/'+limit)
         .then((res)=>{
             data = res.data;
-        });
+        })
+        .catch(error => {
+            console.error(error);
+          });
         return data;
     }
 

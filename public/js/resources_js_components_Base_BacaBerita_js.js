@@ -2131,8 +2131,12 @@ var Artikel = function Artikel(props) {
       renderedArtikel = _useState2[0],
       setRenderedArtikel = _useState2[1];
 
+  var abortController = new AbortController();
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     renderArtikel();
+    return function () {
+      abortController.abort();
+    };
   }, [props.pembeda]);
 
   var renderArtikel = function renderArtikel() {
@@ -2214,9 +2218,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Bacaan = function Bacaan(props) {
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log(props.data[0].created_at);
-  }, []);
   return function () {
     if (props.data[0].foto_artikel) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -2706,9 +2707,15 @@ var Footer = function Footer() {
       setDataFooter = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    var isSubscribed = true;
     callDataFooter().then(function (res) {
-      setDataFooter(res);
+      if (isSubscribed) {
+        setDataFooter(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+    };
   }, []);
 
   var callDataFooter = /*#__PURE__*/function () {

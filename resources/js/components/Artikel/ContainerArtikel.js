@@ -13,47 +13,67 @@ const ContainerArtikel = () => {
     const {centerPath} = useParams();
     const {lastPath} = useParams();
     const [dataOption,setDataOption] = useState();
+    const source = axios.CancelToken.source();
 
     const callDataOption = async () =>{
         var data = {};
         
         if(centerPath=='kumpulan-alumni'){
-            await axios.get(window.origin+'/api/list-alumni')
+            await axios.get(window.origin+'/api/list-alumni', { cancelToken: source.token })
             .then((res)=>{
                 data = res.data.map((data)=>data.angkatan)
-            }); 
+            })
+            .catch((err) => {
+                console.log(err.message);
+            })  
         }
         if(centerPath=='kumpulan-fasilitas'){
-            await axios.get(window.origin+'/api/list-fasilitas')
+            await axios.get(window.origin+'/api/list-fasilitas' ,{ cancelToken: source.token })
             .then((res)=>{
                 console.log(res.data[1].judul_konten);
                 data = res.data.map((data)=>data.judul_konten);
-            }); 
+            })
+            .catch((err) => {
+                console.log(err.message);
+            }) 
         }
         if(centerPath=='kumpulan-profil'){
-            await axios.get(window.origin+'/api/profil')
+            await axios.get(window.origin+'/api/profil' ,{ cancelToken: source.token })
             .then((res)=>{
                 console.log(res.data[1].judul_konten);
                 data = res.data.map((data)=>data.judul_konten);
-            });   
+            })
+            .catch((err) => {
+                console.log(err.message);
+            }) 
         }
         if(centerPath=='kumpulan-ekstrakurikuler'){
-            await axios.get(window.origin+'/api/list-ekstrakurikuler')
+            await axios.get(window.origin+'/api/list-ekstrakurikuler', { cancelToken: source.token })
             .then((res)=>{
                 console.log(res.data[1].judul_konten);
                 data = res.data.map((data)=>data.judul_konten)
 
-            }); 
+            })
+            .catch((err) => {
+                console.log(err.message);
+            }) 
         }
 
         return data;
     }
 
     useEffect(() => {
+        var isSubscribed = true;
         callDataOption().then((res)=>{
-            setDataOption(res);
-            setPembeda(lastPath);
+            if(isSubscribed){
+                setDataOption(res);
+                setPembeda(lastPath);
+            }
         })
+        return ()=>{
+            isSubscribed = false;
+            source.cancel("cancel");
+        }
     },[centerPath,lastPath]);
 
     

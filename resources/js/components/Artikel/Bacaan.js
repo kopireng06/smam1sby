@@ -3,10 +3,6 @@ import ReactHtmlParser from 'react-html-parser';
 
 const Bacaan = (props) => {
 
-    useEffect(() => {
-        console.log(props.data[0].created_at);
-    }, []);
-
     return (
         (()=>{
             if(props.data[0].foto_artikel){
