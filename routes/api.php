@@ -41,7 +41,7 @@ Route::get('prestasi', function() {
 });
 
 Route::get('kumpulan-profil/{judul}', function($judul) {
-    $progilJ = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','profil')->where('judul_konten',$judul)->get();
+    $progilJ = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Profil')->where('judul_konten',$judul)->get();
     return response()->json($progilJ);
 });
 
@@ -51,12 +51,12 @@ Route::get('kumpulan-alumni/{tahun}', function($tahun) {
 });
 
 Route::get('kumpulan-ekstrakurikuler/{namaekstra}', function($namaekstra) {
-    $ekskulN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','ekstrakurikuler')->where('judul_konten',$namaekstra)->get();
+    $ekskulN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Ekstrakurikuler')->where('judul_konten',$namaekstra)->get();
     return response()->json($ekskulN);
 });
 
 Route::get('kumpulan-fasilitas/{namafasil}', function($namafasil) {
-    $fasilitasN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','fasilitas')->where('judul_konten',$namafasil)->get();
+    $fasilitasN = DB::table('konten')->select('judul_konten','isi_konten')->where('kelompok_konten','Fasilitas')->where('judul_konten',$namafasil)->get();
     return response()->json($fasilitasN);
 });
 
@@ -76,7 +76,7 @@ Route::get('list-alumni', function() {
 });
 
 Route::get('list-fasilitas', function() {
-    $lFasil = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','fasilitas')->get();
+    $lFasil = DB::table('konten')->select('judul_konten')->orderBy('created_at', 'desc')->where('kelompok_konten','Fasilitas')->get();
     return response()->json($lFasil);
 });
 
