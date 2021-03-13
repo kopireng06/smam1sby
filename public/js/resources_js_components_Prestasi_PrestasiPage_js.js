@@ -2668,11 +2668,24 @@ var InfinitePrestasi = function InfinitePrestasi(props) {
       offset = _useState8[0],
       setOffset = _useState8[1];
 
-  var abortController = new AbortController();
+  var source = axios__WEBPACK_IMPORTED_MODULE_6___default().CancelToken.source();
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    getDataPrestasi();
+    var isSubscribed = true;
+    callDataPrestasi().then(function (res) {
+      if (isSubscribed) {
+        if (res.length % 10 != 0) {
+          setHasMoreItems(false);
+          setDataPrestasi(dataPrestasi.concat(res));
+          setOffset(offset + 10);
+        } else {
+          setDataPrestasi(dataPrestasi.concat(res));
+          setOffset(offset + 10);
+        }
+      }
+    });
     return function () {
-      abortController.abort();
+      isSubscribed = false;
+      source.cancel("cancel");
     };
   }, []);
 
@@ -2684,7 +2697,9 @@ var InfinitePrestasi = function InfinitePrestasi(props) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_6___default().get(window.origin + '/api/prestasi/' + offset + '/' + limit).then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_6___default().get(window.origin + '/api/prestasi/' + offset + '/' + limit, {
+                cancelToken: source.token
+              }).then(function (res) {
                 data = res.data;
               });
 

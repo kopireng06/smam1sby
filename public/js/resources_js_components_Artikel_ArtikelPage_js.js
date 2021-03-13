@@ -2131,11 +2131,24 @@ var Artikel = function Artikel(props) {
       renderedArtikel = _useState2[0],
       setRenderedArtikel = _useState2[1];
 
-  var abortController = new AbortController();
+  var source = axios__WEBPACK_IMPORTED_MODULE_7___default().CancelToken.source();
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    renderArtikel();
+    var isSubscribed = true;
+    getDataArtikel().then(function (result) {
+      if (isSubscribed) {
+        setRenderedArtikel(result);
+      }
+    });
+    setRenderedArtikel(function () {
+      if (props.centerPath == 'kumpulan-alumni') {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SkeletonTabel__WEBPACK_IMPORTED_MODULE_3__.default, {});
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SkeletonArtikel__WEBPACK_IMPORTED_MODULE_5__.default, {});
+      }
+    });
     return function () {
-      abortController.abort();
+      isSubscribed = false;
+      source.cancel("cancel");
     };
   }, [props.pembeda]);
 
@@ -2160,7 +2173,9 @@ var Artikel = function Artikel(props) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_7___default().get(window.origin + '/api/' + props.centerPath + '/' + props.pembeda).then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_7___default().get(window.origin + '/api/' + props.centerPath + '/' + props.pembeda, {
+                cancelToken: source.token
+              }).then(function (res) {
                 if (props.centerPath == 'kumpulan-alumni') {
                   data = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Tabel__WEBPACK_IMPORTED_MODULE_4__.default, {
                     data: res.data
@@ -2417,7 +2432,7 @@ var ContainerArtikel = function ContainerArtikel() {
   var _useParams2 = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useParams)(),
       lastPath = _useParams2.lastPath;
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
       dataOption = _useState4[0],
       setDataOption = _useState4[1];
@@ -2639,19 +2654,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SearchArtikel = function SearchArtikel(props) {
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    console.log(props.dataOption);
+  }, [props]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("select", {
     className: "w-8/12 block md:hidden mx-auto mb-4 py-3 pl-1 rounded shadow border-smam1",
     value: props.pembeda,
     onChange: props.handleOptionChange,
     children: function () {
-      var option = [];
-      props.dataOption.forEach(function (i) {
-        option.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
-          value: i,
-          children: i
-        }, i));
+      return props.dataOption.map(function (data, i) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+          value: data,
+          children: data
+        }, i);
       });
-      return option;
     }()
   });
 };

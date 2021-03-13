@@ -2732,6 +2732,7 @@ var InfiniteBerita = function InfiniteBerita() {
       offset = _useState8[0],
       setOffset = _useState8[1];
 
+  var source = axios.CancelToken.source();
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     var isSubscribed = true;
     callDataBerita().then(function (res) {
@@ -2748,6 +2749,7 @@ var InfiniteBerita = function InfiniteBerita() {
     });
     return function () {
       isSubscribed = false;
+      source.cancel("cancel");
     };
   }, []);
 
@@ -2759,7 +2761,9 @@ var InfiniteBerita = function InfiniteBerita() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios.get(window.origin + '/api/berita/' + offset + '/' + limit).then(function (res) {
+              return axios.get(window.origin + '/api/berita/' + offset + '/' + limit, {
+                cancelToken: source.token
+              }).then(function (res) {
                 data = res.data;
               });
 

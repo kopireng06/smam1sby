@@ -12,7 +12,7 @@ const ContainerArtikel = () => {
     const [pembeda,setPembeda] = useState(useParams().lastPath);
     const {centerPath} = useParams();
     const {lastPath} = useParams();
-    const [dataOption,setDataOption] = useState();
+    const [dataOption,setDataOption] = useState([]);
     const source = axios.CancelToken.source();
 
     const callDataOption = async () =>{

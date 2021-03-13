@@ -24,7 +24,7 @@ const Carousel = () => {
 
     const callDataCarousel = async () => {
       var data;
-      await axios.get(window.origin+'/api/carousel')
+      await axios.get(window.origin+'/api/carousel' , { cancelToken: source.token })
         .then((res)=>{
           data = res.data;
         })
@@ -33,12 +33,23 @@ const Carousel = () => {
       
     const [nextSlide, setNextSlide] = useState(0);
     const [dataCarousel, setDataCarousel] = useState([]);
+    const source = axios.CancelToken.source();
 
     useEffect(() => {
+      var isSubscribed = true;
+
       callDataCarousel()
       .then((data)=>{
-        setDataCarousel(data);
+        if(isSubscribed){
+          setDataCarousel(data);
+        }
       })
+
+      return ()=>{
+        isSubscribed = false;
+        source.cancel("cancel");
+      }
+
     },[]);
   
     return (

@@ -9,18 +9,34 @@ const InfinitePrestasi = (props) => {
     const [hasMoreItems, setHasMoreItems] = useState(true);
     const [limit,setLimit] = useState(10);
     const [offset,setOffset] = useState(0);
-    const abortController = new AbortController();
+    const source = axios.CancelToken.source();
     
     useEffect(() => {
-        getDataPrestasi();
+        var isSubscribed = true;
+
+        callDataPrestasi().then((res)=>{
+            if (isSubscribed){
+                if(res.length % 10 !=0){
+                    setHasMoreItems(false);
+                    setDataPrestasi(dataPrestasi.concat(res));
+                    setOffset(offset+10);
+                }
+                else{
+                    setDataPrestasi(dataPrestasi.concat(res));
+                    setOffset(offset+10);
+                }
+            }
+        }); 
+
         return ()=>{
-            abortController.abort();
+            isSubscribed = false;
+            source.cancel("cancel");
         }
     }, []);
 
     const callDataPrestasi = async ()=>{
         var data;
-        await axios.get(window.origin+'/api/prestasi/'+offset+'/'+limit)
+        await axios.get(window.origin+'/api/prestasi/'+offset+'/'+limit , { cancelToken: source.token })
         .then((res)=>{
             data = res.data;
         });

@@ -9,6 +9,7 @@ const InfinitePengumuman = () => {
     const [hasMoreItems, setHasMoreItems] = useState(true);
     const [limit,setLimit] = useState(7);
     const [offset,setOffset] = useState(0);
+    const source = axios.CancelToken.source();
 
     useEffect(() => {
         var isSubscribed = true;
@@ -27,12 +28,13 @@ const InfinitePengumuman = () => {
         });  
         return ()=>{
             isSubscribed = false;
+            source.cancel("cancel");
         }
     }, []);
 
     const callDataPengumuman = async ()=>{
         var data;
-        await axios.get(window.origin+'/api/pengumuman/'+offset+'/'+limit)
+        await axios.get(window.origin+'/api/pengumuman/'+offset+'/'+limit , { cancelToken: source.token })
         .then((res)=>{
             data = res.data;
         })

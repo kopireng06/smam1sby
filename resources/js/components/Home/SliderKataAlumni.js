@@ -9,7 +9,8 @@ import axios from 'axios';
 const SliderKataAlumni = () => {
 
     const [dataAlumni,setDataAlumni] = useState(0);
-    
+    const source = axios.CancelToken.source();
+
     const settings = {
         dots: true,
         infinite: true,
@@ -34,7 +35,7 @@ const SliderKataAlumni = () => {
 
     const callDataKataAlumni = async ()=>{
         var data;
-        await axios.get(window.origin+"/api/testimoni")
+        await axios.get(window.origin+"/api/testimoni"  , { cancelToken: source.token })
             .then((res)=>{
                 data = res.data;
                 console.log(data.alumni[0].angkatan);
@@ -43,9 +44,19 @@ const SliderKataAlumni = () => {
     }
 
     useEffect(()=>{
+        var isSubscribed = true;
+        
         callDataKataAlumni().then((res)=>{
-            setDataAlumni(res);
+            if(isSubscribed){
+                setDataAlumni(res);
+            }
         });
+
+        return ()=>{
+            isSubscribed = false;
+            source.cancel("cancel");
+        }
+
     },[]);
 
     return (

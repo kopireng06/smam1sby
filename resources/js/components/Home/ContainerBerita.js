@@ -6,10 +6,11 @@ import axios from 'axios';
 const ContainerBerita = () => {
 
     const [dataBerita,setDataBerita] = useState([]);
+    const source = axios.CancelToken.source();
 
     const callDataBerita = async () =>{
         var data;
-        await axios.get(window.origin+'/api/berita/home')
+        await axios.get(window.origin+'/api/berita/home' , { cancelToken: source.token })
         .then((res)=>{
             data = res.data;
         });
@@ -17,9 +18,19 @@ const ContainerBerita = () => {
     }
 
     useEffect(()=>{
+        var isSubscribed = true;
+
         callDataBerita().then((res)=>{
-            setDataBerita(res);
+            if(isSubscribed){
+                setDataBerita(res);
+            }
         });
+
+        return ()=>{
+            isSubscribed = false;
+            source.cancel("cancel");
+        }
+
     },[])
 
     return (

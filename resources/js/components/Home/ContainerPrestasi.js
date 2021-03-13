@@ -7,6 +7,7 @@ const ContainerPrestasi = () => {
 
     const [posActive, setPosActive] = useState('');
     const [dataPrestasi, setDataPrestasi] = useState([]);
+    const source = axios.CancelToken.source();
 
     const changePosActive = (posActive2) => {
         if(posActive2 == posActive){
@@ -19,7 +20,7 @@ const ContainerPrestasi = () => {
 
     const callDataPrestasi = async () =>{
         var data;
-        await axios.get(window.origin+'/api/prestasi')
+        await axios.get(window.origin+'/api/prestasi'  , { cancelToken: source.token })
             .then((res)=>{
                 data = res.data;
             });
@@ -27,9 +28,19 @@ const ContainerPrestasi = () => {
     }
 
     useEffect(() => {
+        var isSubscribed = true;
+
         callDataPrestasi().then((res)=>{
-            setDataPrestasi(res);
+            if(isSubscribed){
+                setDataPrestasi(res);
+            }
         });
+
+        return ()=>{
+            isSubscribed = false;
+            source.cancel("cancel");
+        }
+
     },[]);
 
     return (  

@@ -6,11 +6,11 @@ import axios from 'axios';
 const ContainerPengumuman = () => {
 
     const [dataPengumuman,setDataPengumuman] = useState([]);
-
+    const source = axios.CancelToken.source();
 
     const callDataPengumuman = async () =>{
         var data;
-        await axios.get(window.origin+'/api/pengumuman/home')
+        await axios.get(window.origin+'/api/pengumuman/home' , { cancelToken: source.token })
             .then((res)=>{
                 data = res.data;
             });
@@ -18,9 +18,20 @@ const ContainerPengumuman = () => {
     }
 
     useEffect(() => {
+
+        var isSubscribed = true;
+
         callDataPengumuman().then((res)=>{
-            setDataPengumuman(res);
+            if(isSubscribed){
+                setDataPengumuman(res);   
+            }
         })
+
+        return ()=>{
+            isSubscribed = false;
+            source.cancel("cancel");
+        }
+
     }, []);
 
 

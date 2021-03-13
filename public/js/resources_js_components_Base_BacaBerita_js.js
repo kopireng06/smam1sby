@@ -2131,11 +2131,24 @@ var Artikel = function Artikel(props) {
       renderedArtikel = _useState2[0],
       setRenderedArtikel = _useState2[1];
 
-  var abortController = new AbortController();
+  var source = axios__WEBPACK_IMPORTED_MODULE_7___default().CancelToken.source();
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    renderArtikel();
+    var isSubscribed = true;
+    getDataArtikel().then(function (result) {
+      if (isSubscribed) {
+        setRenderedArtikel(result);
+      }
+    });
+    setRenderedArtikel(function () {
+      if (props.centerPath == 'kumpulan-alumni') {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SkeletonTabel__WEBPACK_IMPORTED_MODULE_3__.default, {});
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SkeletonArtikel__WEBPACK_IMPORTED_MODULE_5__.default, {});
+      }
+    });
     return function () {
-      abortController.abort();
+      isSubscribed = false;
+      source.cancel("cancel");
     };
   }, [props.pembeda]);
 
@@ -2160,7 +2173,9 @@ var Artikel = function Artikel(props) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_7___default().get(window.origin + '/api/' + props.centerPath + '/' + props.pembeda).then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_7___default().get(window.origin + '/api/' + props.centerPath + '/' + props.pembeda, {
+                cancelToken: source.token
+              }).then(function (res) {
                 if (props.centerPath == 'kumpulan-alumni') {
                   data = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Tabel__WEBPACK_IMPORTED_MODULE_4__.default, {
                     data: res.data

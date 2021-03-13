@@ -8,12 +8,30 @@ import axios from 'axios';
 const Artikel = (props) => {
     
     const [renderedArtikel,setRenderedArtikel] = useState(0);
-    const abortController = new AbortController();
+    const source = axios.CancelToken.source();
 
     useEffect(() => {
-        renderArtikel();
+
+        var isSubscribed = true;
+        getDataArtikel().then((result)=>{
+            if(isSubscribed){
+                setRenderedArtikel(result);
+            }
+        });
+        setRenderedArtikel(
+            ()=>{
+                if(props.centerPath=='kumpulan-alumni'){
+                    return (<SkeletonTabel/>)
+                }
+                else{
+                    return (<SkeletonArtikel/>)
+                }
+            }
+        )
+
         return ()=>{
-            abortController.abort();
+            isSubscribed = false;
+            source.cancel("cancel");
         }
     },[props.pembeda]);
     
@@ -35,7 +53,7 @@ const Artikel = (props) => {
 
     const getDataArtikel = async () => {
         var data;
-        await axios.get(window.origin+'/api/'+props.centerPath+'/'+props.pembeda)
+        await axios.get(window.origin+'/api/'+props.centerPath+'/'+props.pembeda , { cancelToken: source.token })
             .then((res)=>{
                 if(props.centerPath=='kumpulan-alumni'){
                     data = (<Tabel data={res.data}/>)

@@ -8,6 +8,7 @@ const InfiniteBerita = () => {
     const [hasMoreItems, setHasMoreItems] = useState(true);
     const [limit,setLimit] = useState(9);
     const [offset,setOffset] = useState(0);
+    const source = axios.CancelToken.source();
     
     
     useEffect(() => {
@@ -27,12 +28,13 @@ const InfiniteBerita = () => {
         });  
         return ()=>{
             isSubscribed = false;
+            source.cancel("cancel");
         }
     }, []);
 
     const callDataBerita = async ()=>{
         var data;
-        await axios.get(window.origin+'/api/berita/'+offset+'/'+limit)
+        await axios.get(window.origin+'/api/berita/'+offset+'/'+limit , { cancelToken: source.token })
         .then((res)=>{
             data = res.data;
         });

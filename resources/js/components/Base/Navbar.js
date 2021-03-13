@@ -12,12 +12,17 @@ const Navbar = () => {
     const[windowOrigin,setWindowOrigin] = useState(window.location.origin+'/');
     const[sidebarStat, setSidebarStat] = useState(0);
     const[dataNavbar, setDataNavbar] = useState(0);
+    const source = axios.CancelToken.source();
 
     useEffect(() => {
 
+        var isSubscribed = true;
+
         if(dataNavbar == 0 && window.pageYOffset == 0){
             callDataNavbar().then((res)=>{
-                setDataNavbar(res);
+                if(isSubscribed){
+                    setDataNavbar(res);
+                }
             })
         }
 
@@ -35,11 +40,17 @@ const Navbar = () => {
                 setShadowNavbar(' shadow-none');
             }
         }
+
+        return ()=>{
+            isSubscribed = false;
+            source.cancel("cancel");
+        }
+
     },[]);
     
     const callDataNavbar = async () => {
         var data = {};
-        await axios.get(window.origin+'/api/menu')
+        await axios.get(window.origin+'/api/menu' , { cancelToken: source.token })
         .then((res)=>{
             data.eskul = res.data.ekskul[0].judul_konten;
             data.fasilitas = res.data.fasilitas[0].judul_konten;

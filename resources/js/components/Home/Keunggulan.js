@@ -4,10 +4,11 @@ import ReactHtmlParser from 'react-html-parser';
 const Keunggulan = () => {
 
     const [dataKeunggulan,setDataKeunggulan] = useState([]);
+    const source = axios.CancelToken.source();
 
     const callDataKeunggulan = async () =>{
         var data;
-        await axios.get(window.origin+'/api/program-unggulan')
+        await axios.get(window.origin+'/api/program-unggulan' , { cancelToken: source.token })
         .then((res)=>{
             data = res.data;
         });
@@ -15,9 +16,20 @@ const Keunggulan = () => {
     }
 
     useEffect(()=>{
+        var isSubscribed = true;
+
         callDataKeunggulan().then((res)=>{
-            setDataKeunggulan(res);
+
+            if(isSubscribed){
+                setDataKeunggulan(res);   
+            }
         });
+
+        return ()=>{
+            isSubscribed = false;
+            source.cancel("cancel");
+        }
+
     },[])
 
     return ( 

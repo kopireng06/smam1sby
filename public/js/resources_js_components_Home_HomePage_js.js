@@ -326,7 +326,9 @@ var Carousel = function Carousel() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/carousel').then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/carousel', {
+                cancelToken: source.token
+              }).then(function (res) {
                 data = res.data;
               });
 
@@ -356,10 +358,18 @@ var Carousel = function Carousel() {
       dataCarousel = _useState4[0],
       setDataCarousel = _useState4[1];
 
+  var source = axios__WEBPACK_IMPORTED_MODULE_4___default().CancelToken.source();
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var isSubscribed = true;
     callDataCarousel().then(function (data) {
-      setDataCarousel(data);
+      if (isSubscribed) {
+        setDataCarousel(data);
+      }
     });
+    return function () {
+      isSubscribed = false;
+      source.cancel("cancel");
+    };
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -455,6 +465,8 @@ var ContainerBerita = function ContainerBerita() {
       dataBerita = _useState2[0],
       setDataBerita = _useState2[1];
 
+  var source = axios__WEBPACK_IMPORTED_MODULE_4___default().CancelToken.source();
+
   var callDataBerita = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
       var data;
@@ -463,7 +475,9 @@ var ContainerBerita = function ContainerBerita() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/berita/home').then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/berita/home', {
+                cancelToken: source.token
+              }).then(function (res) {
                 data = res.data;
               });
 
@@ -484,9 +498,16 @@ var ContainerBerita = function ContainerBerita() {
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var isSubscribed = true;
     callDataBerita().then(function (res) {
-      setDataBerita(res);
+      if (isSubscribed) {
+        setDataBerita(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+      source.cancel("cancel");
+    };
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "w-full lg:w-8/12",
@@ -636,6 +657,8 @@ var ContainerPengumuman = function ContainerPengumuman() {
       dataPengumuman = _useState2[0],
       setDataPengumuman = _useState2[1];
 
+  var source = axios__WEBPACK_IMPORTED_MODULE_4___default().CancelToken.source();
+
   var callDataPengumuman = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
       var data;
@@ -644,7 +667,9 @@ var ContainerPengumuman = function ContainerPengumuman() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/pengumuman/home').then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/pengumuman/home', {
+                cancelToken: source.token
+              }).then(function (res) {
                 data = res.data;
               });
 
@@ -665,9 +690,16 @@ var ContainerPengumuman = function ContainerPengumuman() {
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var isSubscribed = true;
     callDataPengumuman().then(function (res) {
-      setDataPengumuman(res);
+      if (isSubscribed) {
+        setDataPengumuman(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+      source.cancel("cancel");
+    };
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "w-full lg:w-4/12 px-4 lg:px-0",
@@ -754,6 +786,8 @@ var ContainerPrestasi = function ContainerPrestasi() {
       dataPrestasi = _useState4[0],
       setDataPrestasi = _useState4[1];
 
+  var source = axios__WEBPACK_IMPORTED_MODULE_4___default().CancelToken.source();
+
   var changePosActive = function changePosActive(posActive2) {
     if (posActive2 == posActive) {
       setPosActive('');
@@ -770,7 +804,9 @@ var ContainerPrestasi = function ContainerPrestasi() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/prestasi').then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().get(window.origin + '/api/prestasi', {
+                cancelToken: source.token
+              }).then(function (res) {
                 data = res.data;
               });
 
@@ -791,9 +827,16 @@ var ContainerPrestasi = function ContainerPrestasi() {
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var isSubscribed = true;
     callDataPrestasi().then(function (res) {
-      setDataPrestasi(res);
+      if (isSubscribed) {
+        setDataPrestasi(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+      source.cancel("cancel");
+    };
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "relative md:absolute right-0 h-auto pb-5 md:h-full w-full md:w-6/12 lg:w-5/12 bg-yellow-400",
@@ -1014,6 +1057,8 @@ var Keunggulan = function Keunggulan() {
       dataKeunggulan = _useState2[0],
       setDataKeunggulan = _useState2[1];
 
+  var source = axios.CancelToken.source();
+
   var callDataKeunggulan = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
       var data;
@@ -1022,7 +1067,9 @@ var Keunggulan = function Keunggulan() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios.get(window.origin + '/api/program-unggulan').then(function (res) {
+              return axios.get(window.origin + '/api/program-unggulan', {
+                cancelToken: source.token
+              }).then(function (res) {
                 data = res.data;
               });
 
@@ -1043,9 +1090,16 @@ var Keunggulan = function Keunggulan() {
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var isSubscribed = true;
     callDataKeunggulan().then(function (res) {
-      setDataKeunggulan(res);
+      if (isSubscribed) {
+        setDataKeunggulan(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+      source.cancel("cancel");
+    };
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: "w-full bg-gray-100 xl:relative xl:mb-24 xl:h-72 pb-10 xl:pb-0",
@@ -1274,6 +1328,7 @@ var SliderKataAlumni = function SliderKataAlumni() {
       dataAlumni = _useState2[0],
       setDataAlumni = _useState2[1];
 
+  var source = axios__WEBPACK_IMPORTED_MODULE_7___default().CancelToken.source();
   var settings = {
     dots: true,
     infinite: true,
@@ -1306,7 +1361,9 @@ var SliderKataAlumni = function SliderKataAlumni() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_7___default().get(window.origin + "/api/testimoni").then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_7___default().get(window.origin + "/api/testimoni", {
+                cancelToken: source.token
+              }).then(function (res) {
                 data = res.data;
                 console.log(data.alumni[0].angkatan);
               });
@@ -1328,9 +1385,16 @@ var SliderKataAlumni = function SliderKataAlumni() {
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var isSubscribed = true;
     callDataKataAlumni().then(function (res) {
-      setDataAlumni(res);
+      if (isSubscribed) {
+        setDataAlumni(res);
+      }
     });
+    return function () {
+      isSubscribed = false;
+      source.cancel("cancel");
+    };
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "w-full md:w-6/12 lg:w-7/12",

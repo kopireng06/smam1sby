@@ -8,17 +8,29 @@ const Sidebar = (props) => {
     const [heightSubLinkTerkait, setHeightSubLinkTerkait] = useState(' h-0');
     const [heightSubKabar, setHeightSubKabar] = useState(' h-0');
     const [dataSidebar,setDataSideBar] = useState(0);
+    const source = axios.CancelToken.source();
 
     useEffect(() => {
+
+        var isSubscribed = true;
+
         callDataSideBar().then((res)=>{
-            setDataSideBar(res);
+            if(isSubscribed){
+                setDataSideBar(res);
+            }
         });
         setToggleLeft(props.sidebarStat);
+
+        return ()=>{
+            isSubscribed = false;
+            source.cancel("cancel");
+        }
+
     },[props.sidebarStat]);
 
     const callDataSideBar = async()=>{
         var data = {};
-        await axios.get(window.origin+'/api/menu')
+        await axios.get(window.origin+'/api/menu' , { cancelToken: source.token })
         .then((res)=>{
             data.eskul = res.data.ekskul[0].judul_konten;
             data.fasilitas = res.data.fasilitas[0].judul_konten;
