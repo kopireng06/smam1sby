@@ -11,12 +11,14 @@ const BeritaPage = loadable(() => import('../Berita/BeritaPage'));
 const PrestasiPage = loadable(() => import('../Prestasi/PrestasiPage'));
 const ArtikelPage =  loadable(() => import('../Artikel/ArtikelPage'));
 const BacaBerita = loadable(() => import('../Base/BacaBerita'));
+const Jajal = loadable(() => import('../Base/Jajal'));
+
 
 const Root = () => {
     return(
         <Router>
-            <Navbar/>
-            <Brosur/>
+            {/* <Navbar/>
+            <Brosur/> */}
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/pengumuman" component={PengumumanPage} />
@@ -25,6 +27,7 @@ const Root = () => {
                 <Route exact path="/pengumuman/:judul" component={BacaBerita} />
                 <Route exact path="/kumpulan-prestasi" component={PrestasiPage} />
                 <Route exact path="/:centerPath/:lastPath" component={ArtikelPage}/>
+                <Route exact path="/jajal" component={Jajal}/>
             </Switch>
         </Router> 
     );

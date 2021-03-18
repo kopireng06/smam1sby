@@ -13,7 +13,7 @@
     <body class="w-100" style="overflow-x-hidden">
         <div class="d-flex flex-nowrap flex-row">
             <div class="spacer-sidebar"></div>
-            <div class="flex-grow-1">
+            <div class="w-85">
                 <div class="w-100">
                     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
                         <div class="container-fluid d-flex justify-content-between">
@@ -26,7 +26,7 @@
                         </div>
                     </nav>
                 </div>
-                <div class="w-90 shadow-sm p-4 rounded mx-auto mt-5">
+                <div class="w-100 mx-auto shadow-sm p-4 rounded mt-5">
                     @yield('konten')
                 </div>
             </div>
