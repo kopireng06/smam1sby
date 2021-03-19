@@ -19,6 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('profil', function() {
+    $profil = DB::table('konten')->select('judul_konten')->where('kelompok_konten','profil')->get();
+    return response()->json($profil);
+});
+
 Route::get('pengumuman/home', function() {
     $pengumumanH = DB::table('pengumumen')->select('judul_pengumuman','created_at')->orderBy('created_at', 'desc')->limit(4)->get();
     return response()->json($pengumumanH);

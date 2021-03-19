@@ -1,37 +1,38 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState,Suspense} from 'react';
 
-const useWindowsWidth = () => {
-    const [isScreenSmall, setIsScreenSmall] = useState(false);
+const Navbar = React.lazy(()=>import('./Navbar'));
+
+// const useWindowsWidth = () => {
+//     const [isScreenSmall, setIsScreenSmall] = useState(false);
   
-    let checkScreenSize = () => {
-      setIsScreenSmall(window.innerWidth < 600);
-    };
-    useEffect(() => {
-      checkScreenSize();
-      window.addEventListener("resize", checkScreenSize);
-      //console.log(isScreenSmall);
+//     let checkScreenSize = () => {
+//       setIsScreenSmall(window.innerWidth < 600);
+//     };
+//     useEffect(() => {
+//       checkScreenSize();
+//       window.addEventListener("resize", checkScreenSize);
+//       //console.log(isScreenSmall);
   
-      return () => window.removeEventListener("resize", checkScreenSize);
-    });
+//       return () => window.removeEventListener("resize", checkScreenSize);
+//     });
   
-    return isScreenSmall;
-  };
+//     return isScreenSmall;
+//   };
 
 
 const Jajal = () => {
     
-    const onSmallScreen = useWindowsWidth();
-    const keong = useState(0);
-     
     useEffect(() => {
-       console.log(onSmallScreen);
-       return ()=>{
-           console.log(onSmallScreen);
-       }
+       
     });
 
     return ( 
-        <div onClick={()=>{}}>HALO</div>
+      <>
+          <div onClick={()=>{}}>HALO</div>
+          <Suspense fallback={<div>sek entenono</div>}>
+            <Navbar/>
+          </Suspense>
+      </>
      )
 }
  

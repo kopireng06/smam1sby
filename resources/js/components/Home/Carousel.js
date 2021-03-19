@@ -11,13 +11,14 @@ const Carousel = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 3000,
         slidesToShow: 1,
         slidesToScroll: 1,
         fade:true,
         arrows:false,
         dotsClass:'mydot',
-        autoplay:false,
+        autoplay:true,
+        pauseOnHover:true,
         beforeChange: (current, next) => setNextSlide(next),
         customPaging: i => <div className="custom-paging bg-yellow-400 h-2 cursor-pointer transition-all duration-150 w-4 mx-1 rounded"></div>
     }
@@ -30,7 +31,8 @@ const Carousel = () => {
         })
       return data;
     }
-      
+
+
     const [nextSlide, setNextSlide] = useState(0);
     const [dataCarousel, setDataCarousel] = useState([]);
     const source = axios.CancelToken.source();

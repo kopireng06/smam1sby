@@ -2487,7 +2487,7 @@ var Prestasi = function Prestasi(props) {
       tingkat = props.tingkat;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.pos == props.posActive) {
-      setClassHeight(' h-36');
+      setClassHeight(' h-20');
       setIconDropDown('-');
     } else {
       setClassHeight(' h-0');
@@ -2509,12 +2509,7 @@ var Prestasi = function Prestasi(props) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
       className: "mx-2 mt-0 px-3 flex flex-col justify-center bg-smam1 text-sm overflow-hidden transition-all duration-1000" + classHeight,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "h-20 w-16 my-1 border-2 border-white bg-cover bg-no-repeat bg-center",
-        style: {
-          backgroundImage: 'url(image/menang.jpg)'
-        }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "text-white",
         children: ["Juara : ", juara]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {

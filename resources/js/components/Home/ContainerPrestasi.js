@@ -45,10 +45,10 @@ const ContainerPrestasi = () => {
 
     return (  
         <div className="relative md:absolute right-0 h-auto pb-5 md:h-full w-full md:w-6/12 lg:w-5/12 bg-yellow-400">
-            <div className="text-4xl px-5 mt-5 text-smam1 text-white font-bold mb-8 md:mb-8">
+            <div className="text-4xl px-5 mt-5 text-smam1 text-white font-bold mb-8 md:mb-16">
                 PRESTASI
             </div>
-            <div className="mx-auto xl:ml-8 mb-12 md:mb-0 max-w-md-2 pb-2 rounded-md bg-white shadow-md flex flex-col">
+            <div className="mx-auto xl:ml-8 mb-12 md:mb-0 w-11/12 md:max-w-md-2 pb-2 rounded-md bg-white shadow-md flex flex-col">
                 {
                     (()=>{
                         return(

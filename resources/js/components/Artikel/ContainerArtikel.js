@@ -30,7 +30,6 @@ const ContainerArtikel = () => {
         if(centerPath=='kumpulan-fasilitas'){
             await axios.get(window.origin+'/api/list-fasilitas' ,{ cancelToken: source.token })
             .then((res)=>{
-                console.log(res.data[1].judul_konten);
                 data = res.data.map((data)=>data.judul_konten);
             })
             .catch((err) => {
@@ -40,7 +39,6 @@ const ContainerArtikel = () => {
         if(centerPath=='kumpulan-profil'){
             await axios.get(window.origin+'/api/profil' ,{ cancelToken: source.token })
             .then((res)=>{
-                console.log(res.data[1].judul_konten);
                 data = res.data.map((data)=>data.judul_konten);
             })
             .catch((err) => {
@@ -50,9 +48,7 @@ const ContainerArtikel = () => {
         if(centerPath=='kumpulan-ekstrakurikuler'){
             await axios.get(window.origin+'/api/list-ekstrakurikuler', { cancelToken: source.token })
             .then((res)=>{
-                console.log(res.data[1].judul_konten);
                 data = res.data.map((data)=>data.judul_konten)
-
             })
             .catch((err) => {
                 console.log(err.message);

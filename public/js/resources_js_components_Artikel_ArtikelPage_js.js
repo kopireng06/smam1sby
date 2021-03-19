@@ -2474,7 +2474,6 @@ var ContainerArtikel = function ContainerArtikel() {
               return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/list-fasilitas', {
                 cancelToken: source.token
               }).then(function (res) {
-                console.log(res.data[1].judul_konten);
                 data = res.data.map(function (data) {
                   return data.judul_konten;
                 });
@@ -2492,7 +2491,6 @@ var ContainerArtikel = function ContainerArtikel() {
               return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/profil', {
                 cancelToken: source.token
               }).then(function (res) {
-                console.log(res.data[1].judul_konten);
                 data = res.data.map(function (data) {
                   return data.judul_konten;
                 });
@@ -2510,7 +2508,6 @@ var ContainerArtikel = function ContainerArtikel() {
               return axios__WEBPACK_IMPORTED_MODULE_8___default().get(window.origin + '/api/list-ekstrakurikuler', {
                 cancelToken: source.token
               }).then(function (res) {
-                console.log(res.data[1].judul_konten);
                 data = res.data.map(function (data) {
                   return data.judul_konten;
                 });

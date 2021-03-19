@@ -3,6 +3,7 @@ import ReactHtmlParser from 'react-html-parser';
 
 const Bacaan = (props) => {
 
+
     return (
         (()=>{
             if(props.data[0].foto_artikel){

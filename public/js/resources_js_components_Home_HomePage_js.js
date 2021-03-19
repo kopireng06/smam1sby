@@ -301,13 +301,14 @@ var Carousel = function Carousel() {
   var settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
     arrows: false,
     dotsClass: 'mydot',
-    autoplay: false,
+    autoplay: true,
+    pauseOnHover: true,
     beforeChange: function beforeChange(current, next) {
       return setNextSlide(next);
     },
@@ -841,10 +842,10 @@ var ContainerPrestasi = function ContainerPrestasi() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "relative md:absolute right-0 h-auto pb-5 md:h-full w-full md:w-6/12 lg:w-5/12 bg-yellow-400",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "text-4xl px-5 mt-5 text-smam1 text-white font-bold mb-8 md:mb-8",
+      className: "text-4xl px-5 mt-5 text-smam1 text-white font-bold mb-8 md:mb-16",
       children: "PRESTASI"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "mx-auto xl:ml-8 mb-12 md:mb-0 max-w-md-2 pb-2 rounded-md bg-white shadow-md flex flex-col",
+      className: "mx-auto xl:ml-8 mb-12 md:mb-0 w-11/12 md:max-w-md-2 pb-2 rounded-md bg-white shadow-md flex flex-col",
       children: function () {
         return dataPrestasi.map(function (data, i) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Prestasi__WEBPACK_IMPORTED_MODULE_3__.default, {
@@ -1223,7 +1224,7 @@ var Prestasi = function Prestasi(props) {
       tingkat = props.tingkat;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.pos == props.posActive) {
-      setClassHeight(' h-36');
+      setClassHeight(' h-20');
       setIconDropDown('-');
     } else {
       setClassHeight(' h-0');
@@ -1245,12 +1246,7 @@ var Prestasi = function Prestasi(props) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
       className: "mx-2 mt-0 px-3 flex flex-col justify-center bg-smam1 text-sm overflow-hidden transition-all duration-1000" + classHeight,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "h-20 w-16 my-1 border-2 border-white bg-cover bg-no-repeat bg-center",
-        style: {
-          backgroundImage: 'url(image/menang.jpg)'
-        }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
         className: "text-white",
         children: ["Juara : ", juara]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {

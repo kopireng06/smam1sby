@@ -17,8 +17,8 @@ const Jajal = loadable(() => import('../Base/Jajal'));
 const Root = () => {
     return(
         <Router>
-            {/* <Navbar/>
-            <Brosur/> */}
+            <Navbar/>
+            <Brosur/>
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/pengumuman" component={PengumumanPage} />
