@@ -37,7 +37,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1"><strong>Angkatan</strong></label>
-                                        <input name="angkatan" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$alumni->angkatan}}">
+                                        <input name="angkatan" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$alumni->angkatan}}">
                                     </div>
 
                                 </div>

@@ -95,7 +95,7 @@ class ArtikelController extends Controller
         $kat = $request->id_kategoriartikel;
         $foto = $request->file('foto_artikel');
         $nama_foto = time().'.'.$foto->extension();
-        $foto->move(public_path('images\artikel'), $nama_foto);
+        $foto->move(public_path('images/artikel'), $nama_foto);
 
         $artikel = new Artikel;
         $artikel->judul_artikel = $judul;        
@@ -199,7 +199,7 @@ class ArtikelController extends Controller
         
         if(preg_match_all('/img src="[^"]*/', $data, $matches)) {
             foreach ($matches as $key => $value) {
-                $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
+                $matches[$key]=str_replace('img src="http://smam1-sby.sch.id/',"",$matches[$key]);
             }
             
         }
@@ -221,7 +221,7 @@ class ArtikelController extends Controller
         if ($request->hasFile('upload')) {
             $foto = $request->file('upload');
             $nama_foto = time().'.'.$foto->extension();
-            $foto->move(public_path('images\artikel'), $nama_foto);
+            $foto->move(public_path('images/artikel'), $nama_foto);
             // \Log::debug("bbb");
             // $img_title = Str::random(100);
             // $img = Image::make($request->upload);

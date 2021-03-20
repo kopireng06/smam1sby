@@ -23,7 +23,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1"><strong>Juara</strong></label>
-                                        <input name="juara_prestasi" type="integer" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$prestasi->juara_prestasi}}">
+                                        <input name="juara_prestasi" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$prestasi->juara_prestasi}}">
                                     </div>
 
                                     <div class="form-group">

@@ -164,7 +164,7 @@ Route::get('brosur',function(){
     }
     elseif(preg_match_all('/img src="[^"]*/', $ganti->isi_konten, $matches)) {
         foreach ($matches as $key => $value) {
-            $matches[$key]=str_replace('img src="http://127.0.0.1:8000/',"",$matches[$key]);
+            $matches[$key]=str_replace('img src="http://smam1-sby.sch.id/',"",$matches[$key]);
         }
         $matches;
         //dd($matches[0][0]);
